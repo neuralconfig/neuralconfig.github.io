@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>neuralconfig</title>
+    <style>
+        :root {
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --accent: #00ff9d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-green);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .brackets {
+            color: var(--accent);
+        }
+
+        .terminal {
+            background: var(--darker-bg);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards 0.3s;
+            height: 80px;
+            width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            0% { content: "|"; }
+            25% { content: "/"; }
+            50% { content: "─"; }
+            75% { content: "\\"; }
+        }
+
+        .spinner::after {
+            content: "|";
+            color: var(--accent);
+            animation: spin 0.4s steps(4) infinite;
+        }
+
+        .message {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .message.visible {
+            opacity: 1;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .contact {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <div class="container">
+        <div class="logo">
+            neural<span class="brackets">[</span>config<span class="brackets">]</span><span class="spinner"></span>
+        </div>
+        
+        <div class="terminal">
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <a href="mailto:contact@neuralconfig.com" class="contact">contact@neuralconfig.com</a>
+
+    <script>
+        // Matrix background effect
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+        const characters = matrix.split("");
+        const fontSize = 14;
+        const columns = canvas.width/fontSize;
+        const drops = [];
+
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                } else {
+                    drops[i]++;
+                }
+            }
+        }
+
+        // Start matrix effect
+        drawMatrix();
+        const matrixInterval = setInterval(drawMatrix, 50);
+
+        // Message rotation system
+        const messages = [
+            "Stealth mode activated...",
+            "Initializing transformer architecture...",
+            "Quantum attention mechanisms engaged...",
+            "Training on encrypted datasets...",
+            "Neural pathways configured...",
+            "Deploying zero-shot agents...",
+            "Optimizing latent space...",
+            "Recalibrating diffusion models...",
+            "Synthesizing parallel networks...",
+            "Implementing ethical constraints...",
+            "Activating multi-modal fusion...",
+            "Scaling transformer heads...",
+            "Deploying autonomous agents...",
+            "Calculating entropy vectors...",
+            "Adjusting learning rate...",
+            "> ACCESS RESTRICTED <"
+        ];
+
+        let currentMessage = 0;
+        const messageElement = document.getElementById('message');
+
+        function updateMessage() {
+            messageElement.classList.remove('visible');
+            
+            setTimeout(() => {
+                messageElement.textContent = messages[currentMessage];
+                messageElement.classList.add('visible');
+                currentMessage = (currentMessage + 1) % messages.length;
+            }, 500);
+        }
+
+        // Initial message
+        updateMessage();
+        // Rotate messages every 10.5 seconds
+        setInterval(updateMessage, 10500);
+
+        // Responsive canvas resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
