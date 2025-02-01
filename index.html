@@ -104,10 +104,16 @@
             z-index: -1;
         }
 
-        .contact {
+        .footer-links {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .footer-link {
             color: var(--accent);
             text-decoration: none;
             font-size: 0.9rem;
@@ -115,8 +121,12 @@
             transition: opacity 0.3s ease;
         }
 
-        .contact:hover {
+        .footer-link:hover {
             opacity: 1;
+        }
+
+        .footer-link .brackets {
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -133,7 +143,10 @@
         </div>
     </div>
 
-    <a href="mailto:contact@neuralconfig.com" class="contact">contact@neuralconfig.com</a>
+    <div class="footer-links">
+        <a href="https://github.com/neuralconfig" class="footer-link"><span class="brackets">[</span>portfolio<span class="brackets">]</span></a>
+        <a href="mailto:contact@neuralconfig.com" class="footer-link">contact@neuralconfig.com</a>
+    </div>
 
     <script>
         // Matrix background effect
