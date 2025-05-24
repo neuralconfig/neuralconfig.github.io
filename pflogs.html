@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pfLogs | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .project-detail-title {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+        
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(5, 5, 5, 0.5);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .feature-card h3 {
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            color: var(--neon-green);
+            white-space: pre;
+            line-height: 1.4;
+        }
+        
+        .code-block .comment {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .code-block .keyword {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .code-block .string {
+            color: #ffa500;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+        
+        .project-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .action-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        
+        .action-button.primary {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+        
+        .action-button.primary:hover {
+            background: var(--neon-green);
+        }
+        
+        .threat-alert {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .threat-alert h4 {
+            color: #ff4444;
+            margin-bottom: 0.5rem;
+        }
+        
+        .log-example {
+            background: #000;
+            border: 1px solid #333;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .log-example .timestamp {
+            color: #666;
+        }
+        
+        .log-example .action {
+            color: #ff4444;
+            font-weight: bold;
+        }
+        
+        .log-example .ip {
+            color: var(--network-accent);
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="skills.html" class="nav-link">skills</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-detail-header">
+            <h1 class="project-detail-title">pfLogs</h1>
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Security Analytics
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: Log Analysis
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Overview</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                A high-performance log parsing and analysis tool specifically designed for pfSense firewalls. 
+                pfLogs transforms raw firewall logs into actionable security intelligence, providing real-time 
+                threat detection, traffic pattern analysis, and automated incident response capabilities.
+            </p>
+            <p style="line-height: 1.8;">
+                Built to handle enterprise-scale log volumes, this tool processes millions of log entries per hour 
+                while maintaining sub-second alert latency for critical security events.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Security Detection Capabilities</h2>
+            <div class="threat-alert">
+                <h4>⚠️ Real-Time Threat Detection</h4>
+                <p>Automated detection of port scans, DDoS attempts, brute force attacks, and anomalous traffic patterns</p>
+            </div>
+            
+            <div class="log-example">
+                <pre><span class="timestamp">2025-05-24 10:45:23</span> <span class="action">BLOCK</span> <span class="ip">192.168.1.100</span> → <span class="ip">10.0.0.5:22</span> [ALERT: SSH Brute Force Detected]
+<span class="timestamp">2025-05-24 10:45:24</span> <span class="action">BLOCK</span> <span class="ip">192.168.1.100</span> → <span class="ip">10.0.0.5:22</span> [Pattern: 50 attempts in 60s]
+<span class="timestamp">2025-05-24 10:45:25</span> AUTO-BAN: <span class="ip">192.168.1.100</span> [Duration: 24h] [Reason: SSH_BRUTE_FORCE]</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Stream Processing</h3>
+                    <p>Real-time log ingestion and analysis with Apache Kafka integration</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Pattern Recognition</h3>
+                    <p>ML-based anomaly detection for zero-day threat identification</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Automated Response</h3>
+                    <p>Dynamic firewall rule creation and threat actor blocking</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Visualization</h3>
+                    <p>Interactive dashboards with geolocation and traffic flow mapping</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                pfLogs implements a real-time stream processing architecture that combines traditional signature-based 
+                threat detection with advanced machine learning for comprehensive security monitoring. Technical stack:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Stream Processing:</strong> Apache Kafka for high-throughput log ingestion with guaranteed delivery</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Pattern Matching:</strong> Custom regex engine optimized for firewall log formats with pre-compiled patterns</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Anomaly Detection:</strong> Isolation Forest algorithm for identifying unusual traffic patterns and zero-day threats</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>GeoIP Enrichment:</strong> MaxMind database integration for geographic threat intelligence</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Storage Backend:</strong> Elasticsearch for indexed log storage with time-series optimization</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Threat Intelligence:</strong> Integration with MISP and commercial threat feeds for known IOC matching</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Auto-Response:</strong> pfSense API integration for dynamic rule creation and threat mitigation</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Visualization:</strong> Grafana dashboards with custom panels for security metrics</li>
+            </ul>
+            <p style="line-height: 1.8;">
+                The multi-layered detection approach processes logs through parallel pipelines: signature matching for 
+                known threats, statistical analysis for baseline deviations, and ML models for complex attack patterns. 
+                The system maintains rolling baselines for normal traffic patterns, enabling accurate anomaly detection 
+                while minimizing false positives.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Performance Metrics</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Processing Speed</h3>
+                    <p>High-throughput log processing with efficient parsing</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Detection Capability</h3>
+                    <p>Pattern matching and anomaly detection algorithms</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Storage Efficiency</h3>
+                    <p>Compressed storage with indexed search capability</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.11+</div>
+                <div class="tech-item">Apache Kafka</div>
+                <div class="tech-item">Elasticsearch</div>
+                <div class="tech-item">scikit-learn</div>
+                <div class="tech-item">Redis</div>
+                <div class="tech-item">Grafana</div>
+                <div class="tech-item">PostgreSQL</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Security Engineering Excellence</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                pfLogs demonstrates advanced capabilities in:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Threat Intelligence:</strong> Integration with MISP and commercial threat feeds</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Incident Response:</strong> Automated containment and forensic data collection</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Compliance:</strong> Built-in reports for GDPR, HIPAA, and SOC2 requirements</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Scalability:</strong> Designed for multi-firewall deployments</li>
+            </ul>
+        </section>
+
+        <div class="project-actions">
+            <a href="https://github.com/neuralconfig/pflogs" class="action-button primary">View on GitHub</a>
+            <a href="projects.html" class="action-button">Back to Projects</a>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+</body>
+</html>

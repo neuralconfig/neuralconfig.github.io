@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SZ-ACL | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .project-detail-title {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+        
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(5, 5, 5, 0.5);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .feature-card h3 {
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .code-block code {
+            color: var(--neon-green);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+        
+        .project-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .action-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        
+        .action-button.primary {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+        
+        .action-button.primary:hover {
+            background: var(--neon-green);
+        }
+        
+        .security-highlight {
+            background: rgba(0, 191, 255, 0.1);
+            border-left: 3px solid var(--network-accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="skills.html" class="nav-link">skills</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-detail-header">
+            <h1 class="project-detail-title">SZ-ACL</h1>
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Network Security
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: ACL Management
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Overview</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                An advanced Access Control List (ACL) management system designed for enterprise network security. 
+                SZ-ACL automates the complex task of ACL rule generation, validation, and deployment while providing 
+                intelligent conflict detection and resolution capabilities.
+            </p>
+            <p style="line-height: 1.8;">
+                This project addresses the critical challenge of maintaining secure, efficient network policies at scale, 
+                combining security best practices with automation to reduce human error and improve network performance.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Rule Generation</h3>
+                    <p>Automated ACL rule creation based on security policies and network topology</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Conflict Detection</h3>
+                    <p>Advanced algorithms to identify and resolve rule conflicts before deployment</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Performance Optimization</h3>
+                    <p>Rule ordering and consolidation for optimal packet processing</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Audit Trail</h3>
+                    <p>Comprehensive logging and change tracking for compliance</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                The ACL management system employs sophisticated algorithms and data structures to handle complex 
+                network security policies at scale. Key technical innovations include:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Interval Trees:</strong> Efficient O(log n) lookups for IP range overlaps and rule conflicts</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Graph Theory:</strong> NetworkX-based topology analysis for understanding rule impact across network segments</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Conflict Resolution:</strong> Multi-dimensional conflict detection considering source, destination, port, and protocol</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Rule Optimization:</strong> Automatic reordering and consolidation to minimize packet processing overhead</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Vendor Abstraction:</strong> Unified internal representation with adapters for Cisco, Juniper, and pfSense formats</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Caching Layer:</strong> Redis-based caching for frequently accessed rule evaluations</li>
+            </ul>
+            <p style="line-height: 1.8;">
+                The engine processes rules through a multi-stage pipeline: parsing, normalization, conflict detection, 
+                optimization, and deployment. Each stage is independently scalable, allowing the system to handle 
+                enterprise-scale deployments with thousands of rules while maintaining sub-millisecond validation times.
+            </p>
+        </section>
+
+        <div class="security-highlight">
+            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Security Innovation</h3>
+            <p style="opacity: 0.9;">
+                This project introduces a novel approach to ACL management by combining graph theory with machine learning 
+                to predict potential security gaps and suggest optimal rule configurations based on network traffic patterns.
+            </p>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.11+</div>
+                <div class="tech-item">NetworkX</div>
+                <div class="tech-item">Pandas</div>
+                <div class="tech-item">Cisco/Juniper APIs</div>
+                <div class="tech-item">Redis</div>
+                <div class="tech-item">FastAPI</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Enterprise Impact</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                SZ-ACL demonstrates expertise in:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Security Architecture:</strong> Designing systems that enforce security policies at scale</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Performance Engineering:</strong> Optimizing critical network path operations</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Automation:</strong> Reducing manual configuration errors significantly</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Compliance:</strong> Built-in support for SOC2, PCI-DSS requirements</li>
+            </ul>
+        </section>
+
+        <div class="project-actions">
+            <a href="https://github.com/neuralconfig/sz-acl" class="action-button primary">View on GitHub</a>
+            <a href="projects.html" class="action-button">Back to Projects</a>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+</body>
+</html>

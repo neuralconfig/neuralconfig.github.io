@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>osTicket Agent | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .project-detail-title {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+        
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(5, 5, 5, 0.5);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .feature-card h3 {
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            color: var(--neon-green);
+            white-space: pre;
+            line-height: 1.4;
+        }
+        
+        .code-block .comment {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .code-block .keyword {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .code-block .string {
+            color: #ffa500;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+        
+        .project-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .action-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        
+        .action-button.primary {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+        
+        .action-button.primary:hover {
+            background: var(--neon-green);
+        }
+        
+        .ai-highlight {
+            background: rgba(255, 20, 147, 0.1);
+            border-left: 3px solid var(--ai-accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .workflow-diagram {
+            background: rgba(5, 5, 5, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="skills.html" class="nav-link">skills</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-detail-header">
+            <h1 class="project-detail-title">osTicket Agent</h1>
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: AI Automation
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>License<span class="brackets">]</span>: MIT
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Overview</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                An intelligent support ticket automation agent for osTicket that leverages natural language processing 
+                and machine learning to automatically categorize, prioritize, and respond to support tickets. This system 
+                significantly reduces response times while maintaining high-quality customer service.
+            </p>
+            <p style="line-height: 1.8;">
+                By combining AI-powered intent recognition with a comprehensive knowledge base, the agent can handle 
+                routine inquiries autonomously while escalating complex issues to human agents with enriched context.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> AI-Powered Workflow</h2>
+            <div class="workflow-diagram">
+                <pre style="color: var(--neon-green); font-size: 0.9rem;">
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│ Incoming Ticket │────▶│ NLP Processing   │────▶│ Intent          │
+│                 │     │ • Tokenization   │     │ Classification  │
+└─────────────────┘     │ • Entity Extract │     └─────────────────┘
+               └──────────────────┘              │
+                                                 ▼
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│ Human Escalation│◀────│ Confidence Check │◀────│ Knowledge Base  │
+│ + Context       │     │ Threshold: 0.85  │     │ Query           │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+                                                 │
+                                                 ▼
+                                                 ┌──────────────────┐
+                                                 │ Auto-Response    │
+                                                 │ Generation       │
+                                                 └──────────────────┘
+                </pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Intent Recognition</h3>
+                    <p>ML-powered classification of ticket intent for improved routing</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Smart Routing</h3>
+                    <p>Automatic assignment to appropriate departments based on content analysis</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Response Generation</h3>
+                    <p>Context-aware responses using templating and LLM integration</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Sentiment Analysis</h3>
+                    <p>Priority escalation for frustrated customers</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                The osTicket automation agent implements a sophisticated NLP pipeline that intelligently processes 
+                support tickets through multiple stages of analysis. Core technical components:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>NLP Pipeline:</strong> Multi-stage processing with spaCy for tokenization, entity extraction, and dependency parsing</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Intent Classification:</strong> Fine-tuned BERT model (bert-base-uncased) trained on support ticket corpus</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Confidence Scoring:</strong> Probabilistic thresholds to determine automation vs. human escalation paths</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Knowledge Base:</strong> PostgreSQL-backed repository with full-text search and similarity matching</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Response Generation:</strong> Template-based system with dynamic variable injection and personalization</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Context Enrichment:</strong> Historical ticket analysis and similar case retrieval for agent assistance</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Async Processing:</strong> Celery task queue for handling high ticket volumes without blocking</li>
+            </ul>
+            <p style="line-height: 1.8;">
+                The architecture prioritizes reliability through confidence-based routing - only tickets with high 
+                classification confidence receive automated responses, while complex or ambiguous cases are escalated 
+                to human agents with enriched context. This hybrid approach balances efficiency with service quality.
+            </p>
+        </section>
+
+        <div class="ai-highlight">
+            <h3 style="color: var(--ai-accent); margin-bottom: 0.5rem;">AI Innovation</h3>
+            <p style="opacity: 0.9;">
+                This project showcases practical AI implementation in customer service, demonstrating how LLMs and 
+                traditional ML can work together to create reliable automation systems. The hybrid approach balances 
+                automation efficiency with the need for human oversight in complex scenarios.
+            </p>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.11+</div>
+                <div class="tech-item">Transformers (Hugging Face)</div>
+                <div class="tech-item">spaCy</div>
+                <div class="tech-item">FastAPI</div>
+                <div class="tech-item">PostgreSQL</div>
+                <div class="tech-item">Redis</div>
+                <div class="tech-item">Celery</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Business Impact</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                Key achievements and capabilities:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Response Time:</strong> Faster ticket categorization and routing</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Automation:</strong> Reduced manual ticket classification workload</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Context Enhancement:</strong> Better information for support agents</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Scalability:</strong> Handle increased ticket volume efficiently</li>
+            </ul>
+        </section>
+
+        <div class="project-actions">
+            <a href="https://github.com/neuralconfig/osticket-agent" class="action-button primary">View on GitHub</a>
+            <a href="projects.html" class="action-button">Back to Projects</a>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+</body>
+</html>
