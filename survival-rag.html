@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival RAG | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .project-detail-title {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+        
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(5, 5, 5, 0.5);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .feature-card h3 {
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .code-block code {
+            color: var(--neon-green);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+        
+        .project-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .action-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        
+        .action-button.primary {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+        
+        .action-button.primary:hover {
+            background: var(--neon-green);
+        }
+        
+        .architecture-diagram {
+            background: rgba(5, 5, 5, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="skills.html" class="nav-link">skills</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-detail-header">
+            <h1 class="project-detail-title">Survival RAG</h1>
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: AI/RAG System
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: Knowledge Retrieval
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Overview</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                A Retrieval-Augmented Generation (RAG) system specialized in survival and emergency preparedness knowledge. 
+                This project demonstrates advanced RAG implementation techniques, combining vector databases with LLMs to 
+                provide accurate, context-aware information retrieval.
+            </p>
+            <p style="line-height: 1.8;">
+                The system showcases how domain-specific knowledge can be effectively organized and retrieved using modern 
+                AI techniques, making it an excellent example of practical RAG architecture for specialized applications.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> RAG Architecture</h2>
+            <div class="architecture-diagram">
+                <pre style="color: var(--neon-green); font-size: 0.9rem;">
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  Document       │────▶│  Embedding       │────▶│  Vector         │
+│  Ingestion      │     │  Generation      │     │  Database       │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+                                                           │
+                                                           ▼
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  User Query     │────▶│  Semantic        │────▶│  Retrieved      │
+│                 │     │  Search          │     │  Context        │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+                                                           │
+                                                           ▼
+                                                  ┌─────────────────┐
+                                                  │  LLM Response   │
+                                                  │  Generation     │
+                                                  └─────────────────┘
+                </pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Vector Search</h3>
+                    <p>Semantic similarity search using state-of-the-art embedding models</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Context Augmentation</h3>
+                    <p>Intelligent context injection for improved response accuracy</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Knowledge Curation</h3>
+                    <p>Structured ingestion pipeline for domain-specific content</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Response Synthesis</h3>
+                    <p>Advanced prompt engineering for coherent, factual outputs</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                The RAG system implements a sophisticated pipeline that combines vector similarity search with LLM generation 
+                to provide accurate, context-aware responses. Core technical components include:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Embedding Generation:</strong> Sentence Transformers (all-MiniLM-L6-v2) for converting text to high-quality vector representations</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Vector Storage:</strong> ChromaDB for efficient similarity search with metadata filtering capabilities</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Document Processing:</strong> Custom chunking strategies that preserve context across splits</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Retrieval Logic:</strong> Hybrid approach combining semantic search with keyword matching for improved recall</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Prompt Engineering:</strong> Dynamic prompt templates that inject retrieved context while maintaining coherence</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>LLM Integration:</strong> Async interface to OpenAI/Anthropic APIs with streaming support</li>
+            </ul>
+            <p style="line-height: 1.8;">
+                The architecture emphasizes modularity, allowing independent optimization of each component. The system includes 
+                comprehensive logging and metrics collection for monitoring retrieval quality and response accuracy, 
+                enabling continuous improvement through data-driven insights.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.11+</div>
+                <div class="tech-item">LangChain</div>
+                <div class="tech-item">ChromaDB</div>
+                <div class="tech-item">Sentence Transformers</div>
+                <div class="tech-item">OpenAI API</div>
+                <div class="tech-item">FAISS</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> AI Engineering Insights</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                This RAG implementation demonstrates several advanced concepts:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Hybrid Search:</strong> Combining semantic and keyword search for optimal retrieval</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Chunking Strategies:</strong> Intelligent document segmentation for better context preservation</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Reranking:</strong> Using cross-encoders to improve retrieval quality</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Evaluation Metrics:</strong> Implementing RAGAS for systematic performance assessment</li>
+            </ul>
+        </section>
+
+        <div class="project-actions">
+            <a href="https://github.com/neuralconfig/survival-rag" class="action-button primary">View on GitHub</a>
+            <a href="projects.html" class="action-button">Back to Projects</a>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+</body>
+</html>

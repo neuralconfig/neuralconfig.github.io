@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="projects.html" class="nav-link active">projects</a>
+                <a href="skills.html" class="nav-link">skills</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container projects-container">
+        <h1 class="page-title">
+            <span class="terminal-prompt">$</span> ls -la projects/
+        </h1>
+        
+        <div class="projects-grid">
+            <!-- AI Projects -->
+            <div class="project-card ai-project">
+                <div class="project-header">
+                    <h3>openrouter-chat-app</h3>
+                    <span class="project-type">[AI]</span>
+                </div>
+                <p class="project-description">Simple yet powerful AI chat interface leveraging OpenRouter's API to access multiple LLM providers through a single endpoint.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">LLM Integration</span>
+                    <span class="tech-tag">API Design</span>
+                </div>
+                <div class="project-links">
+                    <a href="openrouter-chat-app.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/openrouter-chat-app" class="project-link">github →</a>
+                </div>
+            </div>
+
+            <div class="project-card ai-project">
+                <div class="project-header">
+                    <h3>survival-rag</h3>
+                    <span class="project-type">[AI]</span>
+                </div>
+                <p class="project-description">Retrieval-Augmented Generation system for survival knowledge, demonstrating practical RAG implementation and vector database integration.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">RAG</span>
+                    <span class="tech-tag">Vector DB</span>
+                </div>
+                <div class="project-links">
+                    <a href="survival-rag.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/survival-rag" class="project-link">github →</a>
+                </div>
+            </div>
+
+            <!-- Network/Security Projects -->
+            <div class="project-card network-project">
+                <div class="project-header">
+                    <h3>sz-acl</h3>
+                    <span class="project-type">[NETWORK]</span>
+                </div>
+                <p class="project-description">Advanced ACL management system for network security, featuring automated rule generation and conflict detection.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Network Security</span>
+                    <span class="tech-tag">ACL Management</span>
+                </div>
+                <div class="project-links">
+                    <a href="sz-acl.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/sz-acl" class="project-link">github →</a>
+                </div>
+            </div>
+
+            <div class="project-card network-project">
+                <div class="project-header">
+                    <h3>wifi-test</h3>
+                    <span class="project-type">[NETWORK]</span>
+                </div>
+                <p class="project-description">Comprehensive WiFi network testing and analysis tool for performance benchmarking and troubleshooting.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Network Testing</span>
+                    <span class="tech-tag">Performance Analysis</span>
+                </div>
+                <div class="project-links">
+                    <a href="wifi-test.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/wifi-test" class="project-link">github →</a>
+                </div>
+            </div>
+
+            <!-- Automation Projects -->
+            <div class="project-card automation-project">
+                <div class="project-header">
+                    <h3>osticket-agent</h3>
+                    <span class="project-type">[AUTOMATION]</span>
+                </div>
+                <p class="project-description">Intelligent support ticket automation agent for osTicket, featuring natural language processing and automated response generation.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">Automation</span>
+                </div>
+                <div class="project-links">
+                    <a href="osticket-agent.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/osticket-agent" class="project-link">github →</a>
+                </div>
+            </div>
+
+            <div class="project-card automation-project">
+                <div class="project-header">
+                    <h3>pflogs</h3>
+                    <span class="project-type">[SECURITY]</span>
+                </div>
+                <p class="project-description">Advanced log parsing and analysis tool for pfSense firewalls, providing real-time security insights and threat detection.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Log Analysis</span>
+                    <span class="tech-tag">Security Monitoring</span>
+                </div>
+                <div class="project-links">
+                    <a href="pflogs.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/pflogs" class="project-link">github →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+</body>
+</html>

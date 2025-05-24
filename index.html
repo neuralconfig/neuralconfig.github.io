@@ -3,35 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>neuralconfig</title>
+    <title>neuralconfig | AI Systems Engineer</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        :root {
-            --neon-green: #39ff14;
-            --dark-bg: #0a0a0a;
-            --darker-bg: #050505;
-            --accent: #00ff9d;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Courier New', monospace;
-        }
-
-        body {
-            background-color: var(--dark-bg);
-            color: var(--neon-green);
-            line-height: 1.6;
-            min-height: 100vh;
+        /* Home page specific styles */
+        .home-container {
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
         }
 
-        .container {
+        .hero-content {
             text-align: center;
             padding: 2rem;
+            max-width: 800px;
         }
 
         .logo {
@@ -57,8 +43,9 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 0.8s ease forwards 0.3s;
-            height: 80px;
-            width: 600px;
+            min-height: 100px;
+            max-width: 700px;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,36 +91,65 @@
             z-index: -1;
         }
 
-        .footer-links {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+        .cta-buttons {
+            margin-top: 3rem;
             display: flex;
-            gap: 1.5rem;
-            align-items: center;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards 0.6s;
         }
 
-        .footer-link {
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
             color: var(--accent);
             text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-link:hover {
-            opacity: 1;
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 157, 0.3);
         }
 
-        .footer-link .brackets {
-            opacity: 0.8;
+        .cta-button.primary {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+
+        .cta-button.primary:hover {
+            background: var(--neon-green);
+            box-shadow: 0 5px 20px rgba(57, 255, 20, 0.3);
         }
     </style>
 </head>
 <body>
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
     
-    <div class="container">
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">home</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="skills.html" class="nav-link">skills</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="home-container">
+        <div class="hero-content">
         <div class="logo">
             neural<span class="brackets">[</span>config<span class="brackets">]</span><span class="spinner"></span>
         </div>
@@ -141,53 +157,17 @@
         <div class="terminal">
             <div id="message" class="message"></div>
         </div>
+        
+        <div class="cta-buttons">
+            <a href="projects.html" class="cta-button primary">View Projects</a>
+            <a href="skills.html" class="cta-button">Technical Skills</a>
+            <a href="mailto:contact@neuralconfig.com" class="cta-button">Get In Touch</a>
+        </div>
+    </div>
     </div>
 
-    <div class="footer-links">
-        <a href="https://github.com/neuralconfig" class="footer-link"><span class="brackets">[</span>portfolio<span class="brackets">]</span></a>
-        <a href="mailto:contact@neuralconfig.com" class="footer-link">contact@neuralconfig.com</a>
-    </div>
-
+    <script src="matrix.js"></script>
     <script>
-        // Matrix background effect
-        const canvas = document.getElementById('matrixCanvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
-        const characters = matrix.split("");
-        const fontSize = 14;
-        const columns = canvas.width/fontSize;
-        const drops = [];
-
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = "#0F0";
-            ctx.font = fontSize + "px monospace";
-
-            for(let i = 0; i < drops.length; i++) {
-                const text = characters[Math.floor(Math.random() * characters.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                } else {
-                    drops[i]++;
-                }
-            }
-        }
-
-        // Start matrix effect
-        drawMatrix();
-        const matrixInterval = setInterval(drawMatrix, 50);
 
         // Message rotation system
         const messages = [
@@ -206,7 +186,9 @@
             "Deploying autonomous agents...",
             "Calculating entropy vectors...",
             "Adjusting learning rate...",
-            "> ACCESS RESTRICTED <"
+            "Building the future of AI...",
+            "Systems ready for deployment...",
+            "> HUMAN-AI COLLABORATION <"
         ];
 
         let currentMessage = 0;
@@ -224,14 +206,9 @@
 
         // Initial message
         updateMessage();
-        // Rotate messages every 10.5 seconds
-        setInterval(updateMessage, 10500);
-
-        // Responsive canvas resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        // Rotate messages every 8 seconds
+        setInterval(updateMessage, 8000);
     </script>
 </body>
 </html>
+
