@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tools-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tools-title {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+        
+        .tools-subtitle {
+            opacity: 0.8;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tool-card {
+            background: rgba(5, 5, 5, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
+        }
+        
+        .tool-icon {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-name {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .tool-description {
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tool-features li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .tool-features li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+        }
+        
+        .tool-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--neon-green);
+            margin-top: 1rem;
+        }
+        
+        .coming-soon {
+            background: rgba(0, 191, 255, 0.1);
+            border-color: rgba(0, 191, 255, 0.3);
+            color: var(--network-accent);
+        }
+        
+        .beta-banner {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .beta-banner p {
+            margin: 0;
+            color: var(--neon-green);
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="skills.html" class="nav-link">skills</a>
+                <a href="tools.html" class="nav-link active">tools</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tools-header">
+            <h1 class="tools-title">Automation Tools</h1>
+            <p class="tools-subtitle">
+                Powerful web-based tools designed to streamline network management and automation workflows. 
+                Built with enterprise-grade security and deployed on Google Cloud Platform.
+            </p>
+        </div>
+
+        <div class="beta-banner">
+            <p>🚀 Our tools collection is growing! Check back regularly for new additions.</p>
+        </div>
+
+        <div class="tools-grid">
+            <a href="https://szacl.neuralconfig.com" class="tool-card" target="_blank">
+                <div class="tool-icon">🔒</div>
+                <h2 class="tool-name">SZ-ACL</h2>
+                <p class="tool-description">
+                    Advanced Access Control List management for Ruckus SmartZone networks. 
+                    Create, update, and manage Layer 3 ACL policies through an intuitive web interface.
+                </p>
+                <ul class="tool-features">
+                    <li>Web-based ACL policy editor</li>
+                    <li>Bulk import/export via CSV</li>
+                    <li>Wildcard template support</li>
+                    <li>Firewall profile management</li>
+                    <li>Rate limiting configuration</li>
+                </ul>
+                <span class="tool-status">Live</span>
+            </a>
+
+            <div class="tool-card" style="opacity: 0.6; cursor: not-allowed;">
+                <div class="tool-icon">📊</div>
+                <h2 class="tool-name">Network Analyzer</h2>
+                <p class="tool-description">
+                    Real-time network traffic analysis and visualization tool. Monitor bandwidth usage, 
+                    identify bottlenecks, and optimize network performance.
+                </p>
+                <ul class="tool-features">
+                    <li>Live traffic monitoring</li>
+                    <li>Protocol analysis</li>
+                    <li>Performance metrics</li>
+                    <li>Historical trending</li>
+                </ul>
+                <span class="tool-status coming-soon">Coming Soon</span>
+            </div>
+
+            <div class="tool-card" style="opacity: 0.6; cursor: not-allowed;">
+                <div class="tool-icon">🛡️</div>
+                <h2 class="tool-name">Security Auditor</h2>
+                <p class="tool-description">
+                    Automated security assessment tool for network configurations. 
+                    Identify vulnerabilities and compliance issues across your infrastructure.
+                </p>
+                <ul class="tool-features">
+                    <li>Configuration scanning</li>
+                    <li>Vulnerability detection</li>
+                    <li>Compliance reporting</li>
+                    <li>Remediation guidance</li>
+                </ul>
+                <span class="tool-status coming-soon">Coming Soon</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+</body>
+</html>
