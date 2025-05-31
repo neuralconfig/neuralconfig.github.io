@@ -184,7 +184,7 @@
             <div class="nav-links">
                 <a href="index.html" class="nav-link">home</a>
                 <a href="projects.html" class="nav-link">projects</a>
-                <a href="skills.html" class="nav-link">skills</a>
+                <a href="skills.html" class="nav-link">about</a>
                 <a href="tools.html" class="nav-link">tools</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
@@ -210,13 +210,13 @@
         <section class="section">
             <h2><span class="terminal-prompt">></span> Overview</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                A high-performance log parsing and analysis tool specifically designed for pfSense firewalls. 
-                pfLogs transforms raw firewall logs into actionable security intelligence, providing real-time 
-                threat detection, traffic pattern analysis, and automated incident response capabilities.
+                An ML-enhanced security analysis system for PF-based firewalls that focuses on log parsing, 
+                geolocation enrichment, and threat intelligence integration. pfLogs provides structured analysis 
+                of firewall logs with plans for advanced threat detection and security recommendations.
             </p>
             <p style="line-height: 1.8;">
-                Built to handle enterprise-scale log volumes, this tool processes millions of log entries per hour 
-                while maintaining sub-second alert latency for critical security events.
+                The system efficiently processes compressed log files, enriches data with geolocation and ASN 
+                information, and stores results in structured formats for analysis and visualization.
             </p>
         </section>
 
@@ -238,20 +238,20 @@
             <h2><span class="terminal-prompt">></span> Key Features</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h3>Stream Processing</h3>
-                    <p>Real-time log ingestion and analysis with Apache Kafka integration</p>
+                    <h3>Log Parsing</h3>
+                    <p>Efficient parsing of PF firewall logs with support for compressed files</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Pattern Recognition</h3>
-                    <p>ML-based anomaly detection for zero-day threat identification</p>
+                    <h3>Data Enrichment</h3>
+                    <p>GeoIP and ASN lookup using MaxMind databases for enhanced context</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Automated Response</h3>
-                    <p>Dynamic firewall rule creation and threat actor blocking</p>
+                    <h3>Threat Intelligence</h3>
+                    <p>Integration with threat intelligence feeds for IOC identification</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Visualization</h3>
-                    <p>Interactive dashboards with geolocation and traffic flow mapping</p>
+                    <h3>Structured Storage</h3>
+                    <p>Parquet file format for efficient storage and analysis of processed logs</p>
                 </div>
             </div>
         </section>
@@ -259,24 +259,20 @@
         <section class="section">
             <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                pfLogs implements a real-time stream processing architecture that combines traditional signature-based 
-                threat detection with advanced machine learning for comprehensive security monitoring. Technical stack:
+                pfLogs provides a foundation for security analysis through efficient log processing and data enrichment. 
+                Current implementation features:
             </p>
             <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>Stream Processing:</strong> Apache Kafka for high-throughput log ingestion with guaranteed delivery</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Pattern Matching:</strong> Custom regex engine optimized for firewall log formats with pre-compiled patterns</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Anomaly Detection:</strong> Isolation Forest algorithm for identifying unusual traffic patterns and zero-day threats</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>GeoIP Enrichment:</strong> MaxMind database integration for geographic threat intelligence</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Storage Backend:</strong> Elasticsearch for indexed log storage with time-series optimization</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Threat Intelligence:</strong> Integration with MISP and commercial threat feeds for known IOC matching</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Auto-Response:</strong> pfSense API integration for dynamic rule creation and threat mitigation</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Visualization:</strong> Grafana dashboards with custom panels for security metrics</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Log Processing:</strong> Multi-threaded parsing of PF firewall logs with support for .gz compressed files</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Data Enrichment:</strong> MaxMind GeoLite2 integration for IP geolocation and ASN identification</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Threat Intelligence:</strong> Framework for threat intelligence feed integration and IOC matching</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Data Storage:</strong> Pandas DataFrames with Parquet export for efficient data handling</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>CLI Interface:</strong> Command-line tools for log processing and analysis</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Python API:</strong> Programmatic access for integration with other security tools</li>
             </ul>
             <p style="line-height: 1.8;">
-                The multi-layered detection approach processes logs through parallel pipelines: signature matching for 
-                known threats, statistical analysis for baseline deviations, and ML models for complex attack patterns. 
-                The system maintains rolling baselines for normal traffic patterns, enabling accurate anomaly detection 
-                while minimizing false positives.
+                The system is designed as an extensible platform for security analysis, with planned features including 
+                anomaly detection, attack classification, automated rule generation, and visualization capabilities.
             </p>
         </section>
 

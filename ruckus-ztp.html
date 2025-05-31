@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SZ-ACL | neuralconfig</title>
+    <title>Ruckus ZTP | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         .project-detail-header {
@@ -121,7 +121,7 @@
             background: var(--neon-green);
         }
         
-        .security-highlight {
+        .automation-highlight {
             background: rgba(0, 191, 255, 0.1);
             border-left: 3px solid var(--network-accent);
             padding: 1rem 1.5rem;
@@ -147,16 +147,16 @@
 
     <div class="container">
         <div class="project-detail-header">
-            <h1 class="project-detail-title">SZ-ACL</h1>
+            <h1 class="project-detail-title">Ruckus ZTP</h1>
             <div class="project-meta">
                 <div class="project-meta-item">
-                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Network Security
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Network Automation
                 </div>
                 <div class="project-meta-item">
                     <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
                 </div>
                 <div class="project-meta-item">
-                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: ACL Management
+                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: Zero-Touch Provisioning
                 </div>
             </div>
         </div>
@@ -164,18 +164,20 @@
         <section class="section">
             <h2><span class="terminal-prompt">></span> Overview</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                An advanced Access Control List (ACL) management system designed for Ruckus SmartZone enterprise networks. 
-                SZ-ACL provides both CLI tools and a web interface to automate the complex task of ACL rule generation, 
-                validation, and deployment while providing intelligent conflict detection and resolution capabilities.
+                An <strong>Agentic AI system</strong> that autonomously manages RUCKUS ICX network infrastructure through 
+                Zero-Touch Provisioning (ZTP). This cutting-edge project showcases the power of AI agents with tool-calling 
+                capabilities to interact with physical network devices, make intelligent decisions, and execute complex 
+                network operations without human intervention.
             </p>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                This project addresses the critical challenge of maintaining secure, efficient network policies at scale, 
-                combining security best practices with automation to reduce human error and improve network performance.
+                The AI agent uses advanced tool orchestration to discover devices, analyze network topology, generate 
+                optimal configurations, and deploy them across the infrastructure. Starting with a single seed switch, 
+                the agent autonomously builds out entire networks while continuously monitoring and self-healing.
             </p>
             <p style="line-height: 1.8;">
-                <strong>Now available as a web application:</strong> The SZ-ACL tool is deployed on Google Cloud Platform 
-                and accessible at <a href="https://szacl.neuralconfig.com" style="color: var(--neon-green);">szacl.neuralconfig.com</a>, 
-                providing a user-friendly interface for managing Layer 3 Access Control Policies without CLI expertise.
+                <strong>Key Innovation:</strong> Natural language chat interface powered by LLMs enables network engineers 
+                to interact with the infrastructure using conversational commands. The AI agent translates these into 
+                specific tool calls that configure switches, analyze problems, and provide intelligent recommendations.
             </p>
         </section>
 
@@ -183,81 +185,93 @@
             <h2><span class="terminal-prompt">></span> Key Features</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h3>Web Interface</h3>
-                    <p>User-friendly web app deployed on Google Cloud for easy ACL management</p>
+                    <h3>Automated Discovery</h3>
+                    <p>LLDP and L2 trace-based device discovery with MAC tracking for complete network mapping</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Bulk Operations</h3>
-                    <p>Support for CSV import/export and bulk policy creation across network segments</p>
+                    <h3>Web & CLI Interfaces</h3>
+                    <p>Dual interface design for both GUI users and automation workflows</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Wildcard Support</h3>
-                    <p>Template-based ACL creation with wildcard replacement for multi-site deployments</p>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Continuous background monitoring with automated configuration drift detection</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Rate Limiting</h3>
-                    <p>Firewall profile configuration with integrated rate limiting capabilities</p>
+                    <h3>Agentic AI with Tools</h3>
+                    <p>Autonomous AI agent with tool-calling capabilities to configure switches, analyze logs, and execute network commands</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Topology Visualization</h3>
+                    <p>Dynamic network topology mapping with real-time status updates</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Credential Management</h3>
+                    <p>Secure, automatic credential handling across the network infrastructure</p>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
+            <h2><span class="terminal-prompt">></span> Technical Architecture</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                The ACL management system provides efficient Layer 3 Access Control Policy management for Ruckus 
-                SmartZone controllers through REST API interactions. Key technical features include:
+                The ZTP agent employs a sophisticated multi-threaded architecture designed for scalability and reliability:
             </p>
             <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>REST API Integration:</strong> Direct communication with Ruckus SmartZone controllers</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Wildcard Support:</strong> Template-based rule creation with IP address substitution for multi-site deployments</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Bulk Operations:</strong> CSV and JSON-based policy creation and management</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Policy Lifecycle:</strong> Create, retrieve, update, and delete operations for ACL policies</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Firewall Profile Management:</strong> Integrated management of firewall profiles with rate limiting</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Clean-up Utilities:</strong> Tools for removing test and temporary configurations</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Discovery Engine:</strong> Multi-protocol device discovery using LLDP, CDP, and MAC address tables</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Configuration Engine:</strong> Template-based configuration with variable substitution and validation</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Monitoring Daemon:</strong> Continuous background monitoring with configurable intervals</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>State Machine:</strong> Device lifecycle management with rollback capabilities</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>REST API:</strong> Full-featured API for integration with existing tools</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Event System:</strong> Real-time event streaming for monitoring and alerting</li>
             </ul>
             <p style="line-height: 1.8;">
-                The system provides both CLI and web interfaces for policy management, supporting standardized 
-                configurations across multiple sites while maintaining flexibility for site-specific requirements.
+                The system maintains a comprehensive device database tracking configuration state, connectivity, 
+                and operational metrics, enabling intelligent decision-making for configuration updates and 
+                troubleshooting scenarios.
             </p>
         </section>
 
-        <div class="security-highlight">
-            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Security Innovation</h3>
+        <div class="automation-highlight">
+            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Agentic AI Innovation</h3>
             <p style="opacity: 0.9;">
-                This project streamlines ACL management for enterprise networks by providing intuitive tools for policy 
-                creation and deployment. The wildcard substitution feature enables consistent security policies across 
-                multiple sites while reducing configuration errors and administrative overhead.
+                This project exemplifies the future of network management through Agentic AI - autonomous systems that 
+                combine LLMs with tool-calling to interact with physical infrastructure. The AI agent makes decisions, 
+                executes actions, and learns from network behavior to continuously improve operations.
             </p>
         </div>
 
         <section class="section">
             <h2><span class="terminal-prompt">></span> Technology Stack</h2>
             <div class="tech-stack">
-                <div class="tech-item">Python 3.11+</div>
-                <div class="tech-item">Google App Engine</div>
-                <div class="tech-item">Ruckus SmartZone API</div>
-                <div class="tech-item">Requests</div>
-                <div class="tech-item">CSV/JSON Processing</div>
-                <div class="tech-item">Cloud Deployment</div>
+                <div class="tech-item">Python (81.4%)</div>
+                <div class="tech-item">JavaScript (11.4%)</div>
+                <div class="tech-item">HTML/CSS</div>
+                <div class="tech-item">SNMP/SSH</div>
+                <div class="tech-item">REST API</div>
+                <div class="tech-item">WebSockets</div>
+                <div class="tech-item">Agentic AI</div>
+                <div class="tech-item">Tool Calling</div>
+                <div class="tech-item">LLM Integration</div>
             </div>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Enterprise Impact</h2>
+            <h2><span class="terminal-prompt">></span> Enterprise Value</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                SZ-ACL demonstrates expertise in:
+                Ruckus ZTP demonstrates cutting-edge expertise in:
             </p>
             <ul style="list-style: none; padding-left: 1.5rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>Security Architecture:</strong> Designing systems that enforce security policies at scale</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Performance Engineering:</strong> Optimizing critical network path operations</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Automation:</strong> Reducing manual configuration errors significantly</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Compliance:</strong> Built-in support for SOC2, PCI-DSS requirements</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Agentic AI Systems:</strong> Building autonomous agents that interact with physical infrastructure</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Tool Orchestration:</strong> AI agents that intelligently select and execute tools based on context</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Natural Language Operations:</strong> Conversational interfaces for complex technical systems</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Autonomous Decision Making:</strong> AI that analyzes, decides, and acts without human intervention</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Self-Healing Networks:</strong> Intelligent agents that detect and resolve issues proactively</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Future-Ready Architecture:</strong> Positioned at the forefront of AI-driven infrastructure management</li>
             </ul>
         </section>
 
         <div class="project-actions">
-            <a href="https://szacl.neuralconfig.com" class="action-button primary">Try Web App</a>
-            <a href="https://github.com/neuralconfig/sz-acl" class="action-button">View on GitHub</a>
+            <a href="https://github.com/neuralconfig/ruckus-ztp" class="action-button primary">View on GitHub</a>
             <a href="projects.html" class="action-button">Back to Projects</a>
         </div>
     </div>
