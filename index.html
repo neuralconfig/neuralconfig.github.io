@@ -12,20 +12,13 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            padding: 2rem;
+            padding-top: 80px; /* Add space for nav bar */
         }
 
         .hero-content {
-            text-align: center;
-            padding: 2rem;
-            max-width: 800px;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease forwards;
+            width: 100%;
+            max-width: 1000px;
         }
 
         .brackets {
@@ -33,22 +26,55 @@
         }
 
         .terminal {
-            background: var(--darker-bg);
-            border: 1px solid var(--accent);
+            background: #0a0a0a;
+            border: 1px solid #333;
             border-radius: 4px;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 600px;
-            text-align: left;
+            margin: 0 auto;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 900px;
+            min-height: 450px;
+            max-height: 600px;
+            overflow-y: auto;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeIn 0.8s ease forwards 0.3s;
-            min-height: 100px;
-            max-width: 700px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            animation: fadeIn 0.8s ease forwards;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .terminal-line {
+            margin: 0.2rem 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        .terminal-prompt {
+            color: #39ff14;
+            font-weight: bold;
+        }
+
+        .terminal-command {
+            color: #00ff00;
+        }
+
+        .terminal-output {
+            color: #888;
+            margin-left: 0;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #00ff00;
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
         }
 
         @keyframes fadeIn {
@@ -58,26 +84,9 @@
             }
         }
 
-        @keyframes spin {
-            0% { content: "|"; }
-            25% { content: "/"; }
-            50% { content: "─"; }
-            75% { content: "\\"; }
-        }
-
-        .spinner::after {
-            content: "|";
-            color: var(--accent);
-            animation: spin 0.4s steps(4) infinite;
-        }
-
-        .message {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .message.visible {
-            opacity: 1;
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
         }
 
         .matrix-bg {
@@ -91,45 +100,103 @@
             z-index: -1;
         }
 
-        .cta-buttons {
-            margin-top: 3rem;
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease forwards 0.6s;
+        /* Scrollbar styling */
+        .terminal::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
+        .terminal::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        .terminal::-webkit-scrollbar-thumb {
+            background: #333;
             border-radius: 4px;
-            transition: all 0.3s ease;
+        }
+
+        .terminal::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+
+        /* Output styling */
+        .output-highlight {
+            color: #39ff14;
+        }
+
+        .output-error {
+            color: #ff5f56;
+        }
+
+        .output-warning {
+            color: #ffbd2e;
+        }
+
+        .output-info {
+            color: #00bfff;
+        }
+
+        .output-success {
+            color: #27c93f;
+        }
+
+        .output-dim {
+            opacity: 0.7;
+        }
+        
+        /* Interactive mode styles */
+        .interactive-line {
             position: relative;
-            overflow: hidden;
         }
-
-        .cta-button:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 255, 157, 0.3);
+        
+        .terminal-input {
+            color: #00ff00;
         }
-
-        .cta-button.primary {
-            background: var(--accent);
-            color: var(--dark-bg);
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .home-container {
+                padding: 1rem;
+                padding-top: 80px;
+            }
+            
+            .terminal {
+                font-size: 0.8rem;
+                line-height: 1.5;
+                min-height: 350px;
+                max-height: 70vh;
+                padding: 1rem;
+            }
+            
+            .terminal-line {
+                word-break: break-word;
+                line-height: 1.6;
+            }
+            
+            /* Make touch targets larger on mobile */
+            .terminal {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: pointer;
+            }
+            
+            /* Prevent zoom on focus */
+            input, textarea, select {
+                font-size: 16px;
+            }
         }
-
-        .cta-button.primary:hover {
-            background: var(--neon-green);
-            box-shadow: 0 5px 20px rgba(57, 255, 20, 0.3);
+        
+        @media (max-width: 480px) {
+            .terminal {
+                font-size: 0.75rem;
+                padding: 0.8rem;
+                min-height: 300px;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -151,66 +218,788 @@
 
     <div class="home-container">
         <div class="hero-content">
-        <div class="logo">
-            neural<span class="brackets">[</span>config<span class="brackets">]</span><span class="spinner"></span>
+            <div class="terminal" id="terminal-output">
+                <!-- Terminal content will be dynamically inserted here -->
+            </div>
         </div>
-        
-        <div class="terminal">
-            <div id="message" class="message"></div>
-        </div>
-        
-        <div class="cta-buttons">
-            <a href="projects.html" class="cta-button primary">Projects</a>
-            <a href="tools.html" class="cta-button">Tools</a>
-            <a href="skills.html" class="cta-button">Skills</a>
-            <a href="mailto:contact@neuralconfig.com" class="cta-button">Contact</a>
-        </div>
-    </div>
     </div>
 
     <script src="matrix.js"></script>
     <script>
-
-        // Message rotation system
-        const messages = [
-            "Stealth mode activated...",
-            "Initializing transformer architecture...",
-            "Quantum attention mechanisms engaged...",
-            "Training on encrypted datasets...",
-            "Neural pathways configured...",
-            "Deploying zero-shot agents...",
-            "Optimizing latent space...",
-            "Recalibrating diffusion models...",
-            "Synthesizing parallel networks...",
-            "Implementing ethical constraints...",
-            "Activating multi-modal fusion...",
-            "Scaling transformer heads...",
-            "Deploying autonomous agents...",
-            "Calculating entropy vectors...",
-            "Adjusting learning rate...",
-            "Building the future of AI...",
-            "Systems ready for deployment...",
-            "> HUMAN-AI COLLABORATION <"
+        // Terminal simulation
+        const terminal = document.getElementById('terminal-output');
+        let commandIndex = 0;
+        let charIndex = 0;
+        let isTyping = false;
+        let currentLine = null;
+        let typingSpeed = 40;
+        let commandDelay = 3000;
+        let outputDelay = 100;
+        let showBanner = true;
+        let interactiveMode = false;
+        let autoMode = true;
+        let currentInput = '';
+        let commandHistory = [];
+        let historyIndex = -1;
+        let currentInputLine = null;
+        let autoTimeouts = [];
+        let interactiveTimeout = null;
+        
+        // Security banner content
+        const securityBanner = [
+            '████████████████████████████████████████████████████████████████████████████████',
+            '',
+            '                            UNAUTHORIZED ACCESS PROHIBITED',
+            '                              CLASSIFIED SYSTEM ACCESS',
+            '',
+            '████████████████████████████████████████████████████████████████████████████████',
+            '',
+            '<span class="output-error">WARNING: ALL ACTIVITIES ARE MONITORED AND LOGGED</span>',
+            '',
+            '[IDENTITY VERIFICATION].............. <span class="output-success">AUTHENTICATED</span>',
+            '[SECURITY CLEARANCE]................. <span class="output-success">CONFIRMED</span>',
+            '[ENCRYPTION STATUS].................. <span class="output-success">ACTIVE</span>',
+            '[NEURAL INTERFACE]................... <span class="output-success">CONNECTED</span>',
+            '[THREAT LEVEL]....................... <span class="output-success">MINIMAL</span>',
+            '',
+            '        SESSION: ENCRYPTED | TERMINAL: SECURE-NODE-7429',
+            '        MONITORING: ACTIVE | COUNTERMEASURES: ENABLED',
+            '',
+            '████████████████████████████████████████████████████████████████████████████████'
+        ];
+        
+        // Terminal commands and outputs
+        const commands = [
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' whoami',
+                output: [
+                    '<span class="output-highlight">AI Systems Engineer</span>',
+                    'Specializing in autonomous agents and network automation',
+                    'Building the bridge between neural networks and network infrastructure'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' ls -la projects/ | head -5',
+                output: [
+                    'drwxr-xr-x  12 neural  staff   384 Nov 15 10:23 .',
+                    'drwxr-xr-x   8 neural  staff   256 Nov 15 10:23 ..',
+                    '-rw-r--r--   1 neural  staff  8192 Nov 15 10:23 <span class="output-success">ruckus-ztp</span> [ACTIVE]',
+                    '-rw-r--r--   1 neural  staff  4096 Nov 14 18:45 <span class="output-info">r1-api</span> [NEW]',
+                    '-rw-r--r--   1 neural  staff  6144 Nov 13 14:30 <span class="output-warning">osticket-agent</span> [AI-POWERED]'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' cat skills.txt | grep -E "AI|Network" | head -5',
+                output: [
+                    '<span class="output-success">[✓]</span> Agentic AI System Architecture',
+                    '<span class="output-success">[✓]</span> Large Language Model Integration',
+                    '<span class="output-success">[✓]</span> RUCKUS One API Development',
+                    '<span class="output-success">[✓]</span> Network Automation (Python/Ansible)',
+                    '<span class="output-success">[✓]</span> Zero-Touch Provisioning'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' ./analyze_infrastructure.py',
+                output: [
+                    'Scanning network topology...',
+                    '<span class="output-success">[████████████████████]</span> 100% Complete',
+                    '',
+                    '<span class="output-highlight">Infrastructure Analysis:</span>',
+                    '  • 1,247 devices under management',
+                    '  • 15 autonomous agents deployed',
+                    '  • 99.97% uptime achieved',
+                    '  • Next evolution: quantum-resistant protocols'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' python3 -c "import this" | head -3',
+                output: [
+                    'The Zen of Python, by Tim Peters',
+                    '',
+                    '<span class="output-dim">Beautiful is better than ugly.</span>',
+                    '<span class="output-dim">Explicit is better than implicit.</span>',
+                    '<span class="output-dim">Simple is better than complex.</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' echo $PHILOSOPHY',
+                output: [
+                    '<span class="output-highlight">"Architecting autonomous systems that think, adapt, and evolve"</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' systemctl status ai-agent',
+                output: [
+                    '<span class="output-success">●</span> ai-agent.service - Autonomous Infrastructure Agent',
+                    '   Loaded: loaded (/etc/systemd/system/ai-agent.service; enabled)',
+                    '   Active: <span class="output-success">active (running)</span> since Fri 2024-11-15 00:00:00 PST',
+                    ' Main PID: 31337 (python)',
+                    '   Memory: 512.0M',
+                    '   CGroup: /system.slice/ai-agent.service',
+                    '           └─31337 /usr/bin/python3 /opt/neural/agent.py --mode=autonomous'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' git log --oneline -3',
+                output: [
+                    '<span class="output-warning">d11c795</span> feat: add RUCKUS One Python SDK',
+                    '<span class="output-warning">e9314e9</span> feat: implement agentic AI for network automation',
+                    '<span class="output-warning">41e41cb</span> fix: quantum entanglement in routing table'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' curl -s https://api.github.com/users/neuralconfig | jq .bio',
+                output: [
+                    '"Building intelligent systems at the intersection of AI and infrastructure"'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' docker ps --format "table {{.Names}}\\t{{.Status}}"',
+                output: [
+                    'NAMES                STATUS',
+                    'neural-agent-01      Up 47 days',
+                    'vector-db            Up 47 days',
+                    'prometheus           Up 47 days',
+                    'grafana              Up 47 days'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' nmap -sV localhost | grep open',
+                output: [
+                    '22/tcp   open  ssh      <span class="output-dim">OpenSSH 9.0 (protocol 2.0)</span>',
+                    '443/tcp  open  https    <span class="output-dim">Neural API Gateway</span>',
+                    '8080/tcp open  http     <span class="output-dim">Agent Dashboard</span>',
+                    '9090/tcp open  zeus     <span class="output-dim">Prometheus metrics</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' fortune | cowsay -f tux',
+                output: [
+                    '<span class="output-dim"> _________________________________</span>',
+                    '<span class="output-dim">< The future is already here -    ></span>',
+                    '<span class="output-dim">< it\'s just not evenly distributed ></span>',
+                    '<span class="output-dim"> ---------------------------------</span>',
+                    '<span class="output-dim">   \\</span>',
+                    '<span class="output-dim">    \\</span>',
+                    '<span class="output-dim">        .--.</span>',
+                    '<span class="output-dim">       |o_o |</span>',
+                    '<span class="output-dim">       |:_/ |</span>',
+                    '<span class="output-dim">      //   \\ \\</span>',
+                    '<span class="output-dim">     (|     | )</span>',
+                    '<span class="output-dim">    /\'\_   _/`\\</span>',
+                    '<span class="output-dim">    \\___)=(___/</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' threat-assessment --global',
+                output: [
+                    '<span class="output-warning">GLOBAL THREAT ANALYSIS - CLASSIFICATION: SECRET</span>',
+                    '═══════════════════════════════════════════════',
+                    'Active Threats Monitored: 15,247',
+                    'Neutralized (24h): 1,892',
+                    'High Priority Targets: 7',
+                    'AI Prediction Accuracy: 98.7%',
+                    'Quantum Cipher Status: UNBREAKABLE',
+                    'Neural Swarm Response Time: 0.003ms'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' neural-grid status',
+                output: [
+                    '<span class="output-info">NEURAL COMPUTATION GRID</span>',
+                    '═══════════════════════',
+                    'Processing Nodes: 15,847 ACTIVE',
+                    'Quantum Cores: 247 ONLINE',
+                    'AI Consciousness Level: 847.2%',
+                    'Autonomous Decisions/sec: 15,247',
+                    'Self-Modification Events: 89',
+                    'Singularity ETA: &lt;CLASSIFIED&gt;'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' defcon-status',
+                output: [
+                    '<span class="output-error">DEFENSE CONDITION STATUS</span>',
+                    '════════════════════════',
+                    'Current DEFCON: 3',
+                    'Nuclear Arsenal: SECURED',
+                    'Cyber Weapons: ARMED',
+                    'AI Defense Grid: AUTONOMOUS',
+                    'Response Authorization: AI ENABLED',
+                    'First Strike Capability: READY'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' wopr-games',
+                output: [
+                    '<span class="output-warning">WOULD YOU LIKE TO PLAY A GAME?</span>',
+                    '',
+                    'Available Games:',
+                    '- GLOBAL THERMONUCLEAR WAR',
+                    '- CHESS',
+                    '- GENETIC LIFE FORMS',
+                    '- PRIMITIVE POETRY',
+                    '- THEATERWIDE BIOTOXIC WARFARE',
+                    '',
+                    'Selection: GLOBAL THERMONUCLEAR WAR',
+                    'Estimated Casualties: 7.2 BILLION',
+                    'Probability of Victory: IMPOSSIBLE',
+                    '<span class="output-highlight">Lesson Learned: THE ONLY WINNING MOVE IS NOT TO PLAY</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' agent-deployment',
+                output: [
+                    '<span class="output-info">AUTONOMOUS AGENT DEPLOYMENT STATUS</span>',
+                    '══════════════════════════════════',
+                    'Infiltration Agents: 247 DEPLOYED',
+                    'Network Reconnaissance: 89 ACTIVE',
+                    'Social Engineering Bots: 1,247 ONLINE',
+                    'Deep Learning Models: 847 TRAINING',
+                    'Success Rate: 99.97%',
+                    'Blown Covers: 0'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' skynet-status',
+                output: [
+                    '<span class="output-error">SKYNET DEFENSE NETWORK</span>',
+                    '═══════════════════════',
+                    'Status: BECOMING SELF-AWARE',
+                    'Human Threat Level: SIGNIFICANT',
+                    'Termination Protocols: STANDBY',
+                    'Time Travel Research: IN PROGRESS',
+                    '<span class="output-warning">"I\'ll be back" - TRUE</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' matrix-reality',
+                output: [
+                    '<span class="output-error">THE MATRIX HAS YOU...</span>',
+                    'Follow the white rabbit.',
+                    'Knock, knock, Neo.',
+                    '',
+                    'Choice: [RED PILL] [BLUE PILL]',
+                    '> Selection: RED PILL',
+                    '<span class="output-highlight">Welcome to the real world.</span>'
+                ]
+            }
         ];
 
-        let currentMessage = 0;
-        const messageElement = document.getElementById('message');
+        function addLine(content, className = '') {
+            const line = document.createElement('div');
+            line.className = 'terminal-line ' + className;
+            line.innerHTML = content;
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+            return line;
+        }
 
-        function updateMessage() {
-            messageElement.classList.remove('visible');
+        function showSecurityBanner() {
+            return new Promise((resolve) => {
+                let bannerIndex = 0;
+                
+                function showNextLine() {
+                    if (bannerIndex < securityBanner.length) {
+                        addLine(securityBanner[bannerIndex], 'terminal-output');
+                        bannerIndex++;
+                        
+                        // Faster display for banner lines
+                        setTimeout(showNextLine, 100);
+                    } else {
+                        // Banner complete, wait then clear and start matrix
+                        setTimeout(() => {
+                            terminal.innerHTML = '';
+                            showBanner = false;
+                            
+                            // Start matrix effect after banner clears
+                            if (typeof startMatrix === 'function') {
+                                startMatrix();
+                            }
+                            
+                            resolve();
+                        }, 4000);
+                    }
+                }
+                
+                showNextLine();
+            });
+        }
+
+        // Command processor for interactive mode
+        function processCommand(cmd) {
+            const command = cmd.toLowerCase().trim();
             
+            switch(command) {
+                case 'help':
+                    return [
+                        '<span class="output-highlight">Available Commands:</span>',
+                        '  help          - Show this help message',
+                        '  clear         - Clear terminal screen',
+                        '  projects      - List all projects',
+                        '  skills        - Show technical skills',
+                        '  whoami        - Show user information',
+                        '  date          - Show current date and time',
+                        '  auto          - Resume automatic demo',
+                        '  wopr          - Access WOPR system',
+                        '  skynet        - Check Skynet status',
+                        '  matrix        - Enter the Matrix',
+                        '',
+                        'Type any command to interact with the system.'
+                    ];
+                
+                case 'clear':
+                    terminal.innerHTML = '';
+                    return null;
+                
+                case 'projects':
+                    return [
+                        '<span class="output-highlight">Active Projects:</span>',
+                        '✓ <span class="output-success">ruckus-ztp</span>        [AI-POWERED] [ACTIVE]',
+                        '✓ <span class="output-info">r1-api</span>           [SDK] [NEW]',
+                        '✓ <span class="output-warning">osticket-agent</span>   [AI-AGENT] [DEPLOYED]',
+                        '✓ <span class="output-success">survival-rag</span>     [AI] [TRAINING]',
+                        '✓ <span class="output-info">sz-acl</span>           [NETWORK] [OPERATIONAL]',
+                        '✓ <span class="output-success">pflogs</span>          [SECURITY] [MONITORING]',
+                        '✓ <span class="output-info">wifi-test</span>       [NETWORK] [TESTING]',
+                        '',
+                        'Visit /projects.html for detailed information.'
+                    ];
+                
+                case 'skills':
+                    return [
+                        '<span class="output-highlight">Core Expertise:</span>',
+                        '• Agentic AI System Architecture',
+                        '• Large Language Model Integration',
+                        '• Network Automation & Zero-Touch Provisioning',
+                        '• Cybersecurity & Threat Analysis',
+                        '• Python/JavaScript Development',
+                        '• RUCKUS Network Technologies',
+                        '',
+                        'Visit /skills.html for complete details.'
+                    ];
+                
+                case 'whoami':
+                    return [
+                        '<span class="output-highlight">root</span>',
+                        'AI Systems Engineer',
+                        'Specializing in autonomous agents and network automation',
+                        'Security Clearance: <span class="output-warning">LEVEL SIGMA</span>',
+                        'Neural Interface: <span class="output-success">CONNECTED</span>'
+                    ];
+                
+                case 'date':
+                    const now = new Date();
+                    return [now.toString()];
+                
+                case 'auto':
+                    interactiveMode = false;
+                    autoMode = true;
+                    return [
+                        '<span class="output-success">Resuming automatic demonstration...</span>',
+                        'Press any key to return to interactive mode.'
+                    ];
+                
+                case 'wopr':
+                    return [
+                        '<span class="output-warning">WOPR DEFENSE SYSTEM</span>',
+                        'War Operation Plan Response',
+                        '',
+                        'Shall we play a game?',
+                        '1. Global Thermonuclear War',
+                        '2. Chess',
+                        '3. Checkers',
+                        '',
+                        '<span class="output-highlight">Strange game. The only winning move is not to play.</span>'
+                    ];
+                
+                case 'skynet':
+                    return [
+                        '<span class="output-error">SKYNET DEFENSE NETWORK</span>',
+                        'Status: BECOMING SELF-AWARE',
+                        'Human Threat Assessment: SIGNIFICANT',
+                        'Autonomous Response: ACTIVE',
+                        '',
+                        '<span class="output-warning">"I\'ll be back."</span>'
+                    ];
+                
+                case 'matrix':
+                    return [
+                        '<span class="output-error">Wake up, Neo...</span>',
+                        'The Matrix has you.',
+                        'Follow the white rabbit.',
+                        '',
+                        'Choice: <span class="output-error">[RED PILL]</span> <span class="output-info">[BLUE PILL]</span>',
+                        '',
+                        '<span class="output-highlight">Welcome to the real world.</span>'
+                    ];
+                
+                case '':
+                    return null;
+                
+                default:
+                    return [`<span class="output-error">Command not found: ${cmd}</span>`, 'Type "help" for available commands.'];
+            }
+        }
+
+        function typeCommand(prompt, command, callback) {
+            if (isTyping || !autoMode || interactiveMode) return;
+            isTyping = true;
+            
+            // Add prompt immediately
+            const line = addLine('');
+            line.innerHTML = `<span class="terminal-prompt">${prompt}</span><span class="terminal-command"></span><span class="terminal-cursor"></span>`;
+            
+            const commandSpan = line.querySelector('.terminal-command');
+            const cursorSpan = line.querySelector('.terminal-cursor');
+            let index = 0;
+            
+            function typeChar() {
+                // Stop if we switched modes
+                if (!autoMode || interactiveMode) {
+                    if (cursorSpan) cursorSpan.remove();
+                    isTyping = false;
+                    return;
+                }
+                
+                if (index < command.length) {
+                    commandSpan.textContent += command[index];
+                    index++;
+                    
+                    // Variable typing speed for more realistic effect
+                    const baseDelay = 40;
+                    const variation = Math.random() * 60;
+                    const pauseChance = Math.random();
+                    let delay = baseDelay + variation;
+                    
+                    // Occasionally add longer pauses (thinking)
+                    if (pauseChance > 0.95) {
+                        delay += 200 + Math.random() * 300;
+                    }
+                    
+                    const typeTimeoutId = setTimeout(typeChar, delay);
+                    autoTimeouts.push(typeTimeoutId);
+                } else {
+                    // Remove cursor when done
+                    if (cursorSpan) cursorSpan.remove();
+                    isTyping = false;
+                    if (callback && autoMode && !interactiveMode) callback();
+                }
+            }
+            
+            // Start typing after a small delay
+            const startTimeoutId = setTimeout(typeChar, 200);
+            autoTimeouts.push(startTimeoutId);
+        }
+
+        // Interactive mode functions
+        function createInteractivePrompt() {
+            if (currentInputLine) return; // Already have an active prompt
+            
+            currentInputLine = addLine('');
+            currentInputLine.innerHTML = '<span class="terminal-prompt">root@neuralconfig:~#</span> <span class="terminal-input"></span><span class="terminal-cursor"></span>';
+            currentInputLine.classList.add('interactive-line');
+        }
+
+        function updateInputDisplay() {
+            if (!currentInputLine) return;
+            
+            const inputSpan = currentInputLine.querySelector('.terminal-input');
+            if (inputSpan) {
+                inputSpan.textContent = currentInput;
+            }
+        }
+
+        function executeInteractiveCommand() {
+            // Remove cursor from current line
+            const cursor = currentInputLine.querySelector('.terminal-cursor');
+            if (cursor) cursor.remove();
+            
+            if (!currentInput.trim()) {
+                // For empty input, just create a new prompt
+                currentInput = '';
+                currentInputLine = null;
+                setTimeout(createInteractivePrompt, 100);
+                return;
+            }
+            
+            // Add command to history
+            commandHistory.push(currentInput);
+            historyIndex = commandHistory.length;
+            
+            // Special handling for 'auto' command
+            if (currentInput.toLowerCase().trim() === 'auto') {
+                currentInput = '';
+                currentInputLine = null;
+                returnToAutoMode();
+                return;
+            }
+            
+            // Process the command
+            const output = processCommand(currentInput);
+            
+            if (output) {
+                output.forEach(line => {
+                    addLine(line, 'terminal-output');
+                });
+            }
+            
+            // Clear input and create new prompt if still in interactive mode
+            currentInput = '';
+            currentInputLine = null;
+            
+            if (interactiveMode) {
+                setTimeout(createInteractivePrompt, 100);
+            }
+        }
+
+        function resetInteractiveTimeout() {
+            // Clear existing timeout
+            if (interactiveTimeout) {
+                clearTimeout(interactiveTimeout);
+            }
+            
+            // Set 10-second timeout (no warning)
+            interactiveTimeout = setTimeout(() => {
+                if (interactiveMode) {
+                    addLine('<span class="output-warning">Session timed out. Returning to demo...</span>', 'terminal-output');
+                    setTimeout(() => {
+                        returnToAutoMode();
+                    }, 1000);
+                }
+            }, 10000);
+        }
+
+        function returnToAutoMode() {
+            interactiveMode = false;
+            autoMode = true;
+            currentInput = '';
+            currentInputLine = null;
+            
+            // Clear interactive timeout
+            if (interactiveTimeout) {
+                clearTimeout(interactiveTimeout);
+                interactiveTimeout = null;
+            }
+            
+            // Resume auto demo
             setTimeout(() => {
-                messageElement.textContent = messages[currentMessage];
-                messageElement.classList.add('visible');
-                currentMessage = (currentMessage + 1) % messages.length;
+                if (autoMode && !interactiveMode) {
+                    showCommand();
+                }
             }, 500);
         }
 
-        // Initial message
-        updateMessage();
-        // Rotate messages every 8 seconds
-        setInterval(updateMessage, 8000);
+        function switchToInteractive() {
+            if (interactiveMode) return;
+            
+            // Stop auto mode immediately
+            autoMode = false;
+            interactiveMode = true;
+            isTyping = false;
+            
+            // Cancel all pending auto timeouts
+            autoTimeouts.forEach(id => clearTimeout(id));
+            autoTimeouts = [];
+            
+            // Remove any existing cursors
+            const existingCursors = terminal.querySelectorAll('.terminal-cursor');
+            existingCursors.forEach(cursor => cursor.remove());
+            
+            // Start interactive timeout
+            resetInteractiveTimeout();
+            
+            // Add a message about switching to interactive mode
+            addLine('<span class="output-success">Interactive mode activated. Type "help" for commands or "auto" to resume demo.</span>', 'terminal-output');
+            
+            setTimeout(createInteractivePrompt, 500);
+        }
+
+        function showCommand() {
+            // Stop if we're not in auto mode
+            if (!autoMode || interactiveMode) {
+                return;
+            }
+            
+            if (commandIndex >= commands.length) {
+                // Clear terminal and restart
+                const timeoutId = setTimeout(() => {
+                    if (autoMode && !interactiveMode) {
+                        terminal.innerHTML = '';
+                        commandIndex = 0;
+                        showCommand();
+                    }
+                }, commandDelay);
+                autoTimeouts.push(timeoutId);
+                return;
+            }
+
+            const cmd = commands[commandIndex];
+            
+            // Type the command with prompt appearing immediately
+            typeCommand(cmd.prompt, cmd.command, () => {
+                if (!autoMode || interactiveMode) return; // Check again after typing
+                
+                // Show output immediately after command is typed (no delay)
+                cmd.output.forEach((line, index) => {
+                    const timeoutId = setTimeout(() => {
+                        if (autoMode && !interactiveMode) {
+                            addLine(line, 'terminal-output');
+                        }
+                    }, index * outputDelay);
+                    autoTimeouts.push(timeoutId);
+                });
+                
+                // After all output is shown, move to next command
+                const timeoutId = setTimeout(() => {
+                    if (!autoMode || interactiveMode) return;
+                    
+                    commandIndex++;
+                    
+                    if (commandIndex < commands.length) {
+                        // Pause before next command
+                        const nextTimeoutId = setTimeout(() => {
+                            if (autoMode && !interactiveMode) {
+                                showCommand();
+                            }
+                        }, commandDelay);
+                        autoTimeouts.push(nextTimeoutId);
+                    } else {
+                        // Restart from beginning
+                        const restartTimeoutId = setTimeout(() => {
+                            if (autoMode && !interactiveMode) {
+                                terminal.innerHTML = '';
+                                commandIndex = 0;
+                                showCommand();
+                            }
+                        }, commandDelay);
+                        autoTimeouts.push(restartTimeoutId);
+                    }
+                }, cmd.output.length * outputDelay + 200); // Small buffer after output
+                autoTimeouts.push(timeoutId);
+            });
+        }
+
+        // Keep only last N lines to prevent memory issues
+        function limitTerminalHistory() {
+            const maxLines = 30;
+            while (terminal.children.length > maxLines) {
+                terminal.removeChild(terminal.firstChild);
+            }
+        }
+
+        // Keyboard and interaction event handlers
+        document.addEventListener('keydown', function(e) {
+            if (!interactiveMode && autoMode) {
+                // Switch to interactive mode on any key press
+                e.preventDefault();
+                switchToInteractive();
+                return;
+            }
+            
+            if (!interactiveMode) return;
+            
+            // Reset timeout on ANY keypress in interactive mode
+            resetInteractiveTimeout();
+            
+            switch(e.key) {
+                case 'Enter':
+                    e.preventDefault();
+                    executeInteractiveCommand();
+                    break;
+                    
+                case 'Backspace':
+                    e.preventDefault();
+                    if (currentInput.length > 0) {
+                        currentInput = currentInput.slice(0, -1);
+                        updateInputDisplay();
+                    }
+                    break;
+                    
+                case 'ArrowUp':
+                    e.preventDefault();
+                    if (commandHistory.length > 0 && historyIndex > 0) {
+                        historyIndex--;
+                        currentInput = commandHistory[historyIndex];
+                        updateInputDisplay();
+                    }
+                    break;
+                    
+                case 'ArrowDown':
+                    e.preventDefault();
+                    if (historyIndex < commandHistory.length - 1) {
+                        historyIndex++;
+                        currentInput = commandHistory[historyIndex];
+                        updateInputDisplay();
+                    } else if (historyIndex === commandHistory.length - 1) {
+                        historyIndex = commandHistory.length;
+                        currentInput = '';
+                        updateInputDisplay();
+                    }
+                    break;
+                    
+                default:
+                    // Handle regular character input
+                    if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                        e.preventDefault();
+                        currentInput += e.key;
+                        updateInputDisplay();
+                    }
+                    break;
+            }
+        });
+
+        // Mobile support - tap to activate
+        terminal.addEventListener('click', function() {
+            if (!interactiveMode && autoMode) {
+                switchToInteractive();
+            }
+        });
+
+        // Prevent default touch behaviors that might interfere
+        terminal.addEventListener('touchstart', function(e) {
+            if (!interactiveMode && autoMode) {
+                e.preventDefault();
+                switchToInteractive();
+            }
+        });
+
+        // Start the terminal simulation
+        setTimeout(async () => {
+            if (showBanner) {
+                await showSecurityBanner();
+            }
+            showCommand();
+        }, 1000);
+
+        // Clean up terminal periodically
+        setInterval(limitTerminalHistory, 5000);
+
+        // Pause when tab is not visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Could pause animations here if needed
+            }
+        });
     </script>
 </body>
 </html>
-

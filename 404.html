@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            padding: 2rem;
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-green);
+        }
+        
+        .error-description {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .error-terminal {
+            background: var(--darker-bg);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .error-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .error-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        
+        .glitch {
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-1px, 1px); }
+            40% { transform: translate(-1px, -1px); }
+            60% { transform: translate(1px, 1px); }
+            80% { transform: translate(1px, -1px); }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">home</a>
+                <a href="/projects.html" class="nav-link">projects</a>
+                <a href="/skills.html" class="nav-link">about</a>
+                <a href="/tools.html" class="nav-link">tools</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-code glitch">404</div>
+            <div class="error-message">Resource Not Found</div>
+            <p class="error-description">
+                The neural pathway you're looking for doesn't exist in this dimension.
+                It may have been moved, deleted, or perhaps it never existed at all.
+            </p>
+            
+            <div class="error-terminal">
+                <div><span class="terminal-prompt">$</span> ls -la /requested/path/</div>
+                <div style="color: #ff6b6b; margin-top: 0.5rem;">ls: cannot access '/requested/path/': No such file or directory</div>
+                <div style="margin-top: 1rem;"><span class="terminal-prompt">$</span> suggest --alternatives</div>
+                <div style="margin-top: 0.5rem; color: var(--accent);">
+                    → Try navigating to the home page<br>
+                    → Check out the projects section<br>
+                    → View available tools<br>
+                    → Search the GitHub repository
+                </div>
+                <div style="margin-top: 1rem;"><span class="terminal-prompt">$</span> <span class="terminal-cursor">_</span></div>
+            </div>
+            
+            <div class="error-actions">
+                <a href="/" class="error-button">Return Home</a>
+                <a href="/projects.html" class="error-button">View Projects</a>
+                <a href="https://github.com/neuralconfig" class="error-button">GitHub</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/matrix.js"></script>
+</body>
+</html>
