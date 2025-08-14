@@ -34,8 +34,23 @@ function drawMatrix() {
     }
 }
 
-// Start matrix effect
-setInterval(drawMatrix, 50);
+// Matrix animation control
+let matrixInterval = null;
+
+function startMatrix() {
+    if (!matrixInterval) {
+        matrixInterval = setInterval(drawMatrix, 50);
+    }
+}
+
+function stopMatrix() {
+    if (matrixInterval) {
+        clearInterval(matrixInterval);
+        matrixInterval = null;
+    }
+}
+
+// Don't start automatically - will be started after banner
 
 // Responsive canvas resize
 window.addEventListener('resize', () => {

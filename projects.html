@@ -27,6 +27,21 @@
             <span class="terminal-prompt">$</span> ls -la projects/
         </h1>
         
+        <div class="project-controls" style="margin: 2rem 0;">
+            <div class="search-box" style="margin-bottom: 1rem;">
+                <input type="text" id="project-search" placeholder="Search projects... (press / to focus)" 
+                       style="width: 100%; padding: 0.8rem; background: rgba(5,5,5,0.5); border: 1px solid var(--accent); 
+                              color: var(--text-color); border-radius: 4px; font-size: 1rem;">
+            </div>
+            <div class="project-filters" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="network">Network</button>
+                <button class="filter-btn" data-filter="ai">AI</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="automation">Automation</button>
+            </div>
+        </div>
+        
         <div class="projects-grid">
             <!-- Agentic AI Projects (Priority) -->
             <div class="project-card network-project">
@@ -105,6 +120,25 @@
             <!-- Network/Security Projects -->
             <div class="project-card network-project">
                 <div class="project-header">
+                    <h3>r1-api</h3>
+                    <span class="project-type">[NETWORK]</span>
+                    <span class="project-type">[SDK]</span>
+                </div>
+                <p class="project-description">Comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SDK Development</span>
+                    <span class="tech-tag">OAuth2</span>
+                    <span class="tech-tag">CLI Tools</span>
+                </div>
+                <div class="project-links">
+                    <a href="r1-api.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/r1-api" class="project-link">github →</a>
+                </div>
+            </div>
+
+            <div class="project-card network-project">
+                <div class="project-header">
                     <h3>sz-acl</h3>
                     <span class="project-type">[NETWORK]</span>
                 </div>
@@ -157,5 +191,99 @@
     </div>
 
     <script src="matrix.js"></script>
+    <style>
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover {
+            background: rgba(0, 255, 157, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+        
+        .project-card {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .project-card.hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        // Project filtering and search
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            const searchInput = document.getElementById('project-search');
+            let currentFilter = 'all';
+            
+            // Filter function
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                projectCards.forEach(card => {
+                    // Check filter
+                    let matchesFilter = currentFilter === 'all' || 
+                                       card.classList.contains(currentFilter + '-project');
+                    
+                    // Check search
+                    let matchesSearch = true;
+                    if (searchTerm) {
+                        const cardText = card.textContent.toLowerCase();
+                        matchesSearch = cardText.includes(searchTerm);
+                    }
+                    
+                    // Show/hide card
+                    if (matchesFilter && matchesSearch) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Filter button clicks
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    applyFilters();
+                });
+            });
+            
+            // Search input
+            searchInput.addEventListener('input', applyFilters);
+            
+            // Keyboard shortcut for search (/)
+            document.addEventListener('keydown', function(e) {
+                if (e.key === '/' && document.activeElement !== searchInput) {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+            });
+            
+            // Clear search on Escape
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    applyFilters();
+                    this.blur();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

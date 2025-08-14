@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R1 API | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .project-detail-title {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+        
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(5, 5, 5, 0.5);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .feature-card h3 {
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-block {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .code-block code {
+            color: var(--neon-green);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+        
+        .project-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .action-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        
+        .action-button.primary {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+        
+        .action-button.primary:hover {
+            background: var(--neon-green);
+        }
+        
+        .sdk-highlight {
+            background: rgba(0, 191, 255, 0.1);
+            border-left: 3px solid var(--network-accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+    
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">home</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="skills.html" class="nav-link">about</a>
+                <a href="tools.html" class="nav-link">tools</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-detail-header">
+            <h1 class="project-detail-title">RUCKUS One Python SDK</h1>
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Network SDK
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: API Development
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Overview</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                A comprehensive <strong>Python SDK</strong> for the RUCKUS One network management system, providing a 
+                Pythonic interface to manage enterprise wireless and wired infrastructure at scale. This SDK transforms 
+                complex REST API interactions into simple, intuitive Python methods while maintaining full API coverage.
+            </p>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                The project includes an innovative CLI tool with an interactive "network switch-like" mode that mimics 
+                the familiar command-line experience of physical network devices, complete with tab completion, command 
+                history, and contextual help - bringing the best of both worlds together.
+            </p>
+            <p style="line-height: 1.8;">
+                <strong>Key Innovation:</strong> Modular architecture with intelligent OAuth2 token management, automatic 
+                retry logic, and comprehensive error handling makes this SDK production-ready for enterprise deployments 
+                managing thousands of access points and switches.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Complete API Coverage</h3>
+                    <p>Full implementation of RUCKUS One API endpoints for venues, APs, switches, WLANs, and VLANs</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Interactive CLI Mode</h3>
+                    <p>Network device-like CLI with tab completion, command history, and contextual help</p>
+                </div>
+                <div class="feature-card">
+                    <h3>OAuth2 Authentication</h3>
+                    <p>Secure token management with automatic refresh and credential handling</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Pythonic Interface</h3>
+                    <p>Clean, intuitive API design following Python best practices and conventions</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Bulk Operations</h3>
+                    <p>Efficient batch processing for managing large-scale network deployments</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Error Resilience</h3>
+                    <p>Comprehensive error handling with automatic retry logic and detailed logging</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technical Architecture</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                The SDK employs a modular, extensible architecture designed for reliability and ease of use:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Core API Client:</strong> Base client with OAuth2 authentication and request handling</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Resource Modules:</strong> Dedicated modules for each resource type (APs, switches, WLANs, etc.)</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>CLI Framework:</strong> Interactive command interpreter with network device emulation</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Token Manager:</strong> Automatic token refresh with secure credential storage</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Response Models:</strong> Structured data models for API responses</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Utility Functions:</strong> Helper functions for common network operations</li>
+            </ul>
+            <p style="line-height: 1.8;">
+                The modular design allows for easy extension and customization, making it suitable for integration 
+                into larger automation frameworks or standalone network management applications.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> CLI Interface Example</h2>
+            <div class="code-block">
+                <code>
+$ r1cli --interactive<br>
+<br>
+RUCKUS One CLI v0.1.0<br>
+Type 'help' for available commands<br>
+<br>
+R1> show venues<br>
+╭──────────────────────────────────────╮<br>
+│ ID   │ Name           │ AP Count    │<br>
+├──────────────────────────────────────┤<br>
+│ 001  │ Headquarters   │ 245         │<br>
+│ 002  │ Branch Office  │ 87          │<br>
+│ 003  │ Warehouse      │ 156         │<br>
+╰──────────────────────────────────────╯<br>
+<br>
+R1> config venue 001<br>
+R1(venue-001)> show aps<br>
+R1(venue-001)> reboot ap MAC:AD:DR:ES:S1<br>
+Rebooting AP... Success<br>
+                </code>
+            </div>
+        </section>
+
+        <div class="sdk-highlight">
+            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Enterprise-Ready SDK</h3>
+            <p style="opacity: 0.9;">
+                This SDK bridges the gap between modern cloud-based network management and traditional CLI workflows, 
+                enabling network engineers to leverage familiar interfaces while accessing powerful API capabilities. 
+                Perfect for automation, monitoring, and large-scale network operations.
+            </p>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.8+</div>
+                <div class="tech-item">OAuth2</div>
+                <div class="tech-item">REST API</div>
+                <div class="tech-item">Click CLI</div>
+                <div class="tech-item">Requests</div>
+                <div class="tech-item">Rich Tables</div>
+                <div class="tech-item">AsyncIO</div>
+                <div class="tech-item">JSON Schema</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Use Cases</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                The R1 API SDK enables powerful network automation scenarios:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Automated Provisioning:</strong> Deploy configurations across thousands of devices programmatically</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Monitoring Integration:</strong> Feed real-time network data into monitoring platforms</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Compliance Automation:</strong> Enforce configuration standards and audit network settings</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Troubleshooting Tools:</strong> Build custom diagnostic tools for network operations teams</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Migration Scripts:</strong> Automate migration from legacy systems to RUCKUS One</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Custom Dashboards:</strong> Create specialized views and reports for different teams</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Installation</h2>
+            <div class="code-block">
+                <code>
+# Install from PyPI (when published)<br>
+pip install r1-api<br>
+<br>
+# Or install from GitHub<br>
+pip install git+https://github.com/neuralconfig/r1-api.git<br>
+<br>
+# Quick start<br>
+from r1_api import R1Client<br>
+<br>
+client = R1Client(api_key="your-api-key")<br>
+venues = client.venues.list()<br>
+                </code>
+            </div>
+        </section>
+
+        <div class="project-actions">
+            <a href="https://github.com/neuralconfig/r1-api" class="action-button primary">
+                View on GitHub <span id="github-stats" style="font-size: 0.9em; opacity: 0.8;"></span>
+            </a>
+            <a href="projects.html" class="action-button">Back to Projects</a>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+    <script>
+        // Fetch GitHub stats
+        (function() {
+            const repo = 'neuralconfig/r1-api';
+            const statsElement = document.getElementById('github-stats');
+            
+            // Check localStorage for cached data
+            const cacheKey = `github-stats-${repo}`;
+            const cached = localStorage.getItem(cacheKey);
+            const cacheExpiry = 3600000; // 1 hour
+            
+            if (cached) {
+                const data = JSON.parse(cached);
+                if (Date.now() - data.timestamp < cacheExpiry) {
+                    if (data.stars || data.forks) {
+                        statsElement.textContent = `(★ ${data.stars} | ⑂ ${data.forks})`;
+                    }
+                    return;
+                }
+            }
+            
+            // Fetch fresh data
+            fetch(`https://api.github.com/repos/${repo}`)
+                .then(response => response.json())
+                .then(data => {
+                    const stats = {
+                        stars: data.stargazers_count || 0,
+                        forks: data.forks_count || 0,
+                        timestamp: Date.now()
+                    };
+                    
+                    // Update UI
+                    if (stats.stars || stats.forks) {
+                        statsElement.textContent = `(★ ${stats.stars} | ⑂ ${stats.forks})`;
+                    }
+                    
+                    // Cache the data
+                    localStorage.setItem(cacheKey, JSON.stringify(stats));
+                })
+                .catch(error => {
+                    console.log('GitHub API fetch failed:', error);
+                });
+        })();
+    </script>
+</body>
+</html>
