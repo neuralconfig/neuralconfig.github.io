@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SZ-ACL | neuralconfig</title>
+    <title>WISPr Portal | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         .project-detail-header {
@@ -11,76 +11,62 @@
             padding-bottom: 2rem;
             border-bottom: 1px solid var(--border-color);
         }
-        
+
         .project-detail-title {
             font-size: 2.5rem;
             color: var(--neon-green);
             margin-bottom: 1rem;
         }
-        
+
         .project-meta {
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
             opacity: 0.8;
         }
-        
+
         .project-meta-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .section {
             margin-bottom: 3rem;
         }
-        
+
         .section h2 {
             color: var(--accent);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
-        
+
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-        
+
         .feature-card {
             background: rgba(5, 5, 5, 0.5);
             padding: 1.5rem;
             border-radius: 4px;
             border: 1px solid var(--border-color);
         }
-        
+
         .feature-card h3 {
             color: var(--neon-green);
             margin-bottom: 0.5rem;
         }
-        
-        .code-block {
-            background: var(--darker-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-        
-        .code-block code {
-            color: var(--neon-green);
-            font-family: 'Courier New', monospace;
-        }
-        
+
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 1rem;
         }
-        
+
         .tech-item {
             background: rgba(57, 255, 20, 0.1);
             border: 1px solid rgba(57, 255, 20, 0.3);
@@ -88,13 +74,14 @@
             border-radius: 4px;
             color: var(--accent);
         }
-        
+
         .project-actions {
             display: flex;
             gap: 1.5rem;
             margin-top: 3rem;
+            flex-wrap: wrap;
         }
-        
+
         .action-button {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -105,23 +92,14 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
-        
+
         .action-button:hover {
             background: var(--accent);
             color: var(--dark-bg);
             transform: translateY(-2px);
         }
-        
-        .action-button.primary {
-            background: var(--accent);
-            color: var(--dark-bg);
-        }
-        
-        .action-button.primary:hover {
-            background: var(--neon-green);
-        }
-        
-        .security-highlight {
+
+        .troubleshooting-highlight {
             background: rgba(0, 191, 255, 0.1);
             border-left: 3px solid var(--network-accent);
             padding: 1rem 1.5rem;
@@ -144,10 +122,6 @@
                 gap: 1rem;
             }
 
-            .tech-stack {
-                gap: 0.75rem;
-            }
-
             .project-actions {
                 flex-direction: column;
                 gap: 1rem;
@@ -164,7 +138,7 @@
                 font-size: 1.75rem;
             }
 
-            .feature-card, .security-highlight {
+            .feature-card, .troubleshooting-highlight {
                 padding: 1rem;
             }
         }
@@ -172,7 +146,7 @@
 </head>
 <body>
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-    
+
     <nav class="nav-bar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
@@ -188,16 +162,16 @@
 
     <div class="container">
         <div class="project-detail-header">
-            <h1 class="project-detail-title">SZ-ACL</h1>
+            <h1 class="project-detail-title">WISPr Portal Diagnostic Tool</h1>
             <div class="project-meta">
                 <div class="project-meta-item">
-                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Network Security
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Network Troubleshooting
                 </div>
                 <div class="project-meta-item">
-                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python/Flask
                 </div>
                 <div class="project-meta-item">
-                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: ACL Management
+                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: Captive Portal Testing
                 </div>
             </div>
         </div>
@@ -205,18 +179,15 @@
         <section class="section">
             <h2><span class="terminal-prompt">></span> Overview</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                An advanced Access Control List (ACL) management system designed for Ruckus SmartZone enterprise networks. 
-                SZ-ACL provides both CLI tools and a web interface to automate the complex task of ACL rule generation, 
-                validation, and deployment while providing intelligent conflict detection and resolution capabilities.
+                A specialized diagnostic web application designed for troubleshooting Wireless Internet Service Provider (WISPr)
+                portal authentication and redirection in RUCKUS One network environments. This tool provides network engineers
+                with detailed visibility into captive portal authentication flows, helping diagnose connectivity issues that
+                can be challenging to troubleshoot with standard network monitoring tools.
             </p>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                This project addresses the critical challenge of maintaining secure, efficient network policies at scale, 
-                combining security best practices with automation to reduce human error and improve network performance.
-            </p>
-            <p style="line-height: 1.8;">
-                <strong>Now available as a web application:</strong> The SZ-ACL tool is deployed on Google Cloud Platform 
-                and accessible at <a href="https://szacl.neuralconfig.com" style="color: var(--neon-green);">szacl.neuralconfig.com</a>, 
-                providing a user-friendly interface for managing Layer 3 Access Control Policies without CLI expertise.
+                When users connect to wireless networks with captive portal authentication, they're redirected through a complex
+                authentication flow involving multiple URL parameters and API calls. This tool simulates and logs every step of
+                that process, making it invaluable for diagnosing authentication failures, redirect issues, and integration problems.
             </p>
         </section>
 
@@ -224,88 +195,103 @@
             <h2><span class="terminal-prompt">></span> Key Features</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h3>Web Interface</h3>
-                    <p>User-friendly web app deployed on Google Cloud for easy ACL management</p>
+                    <h3>Authentication Simulation</h3>
+                    <p>Simulates WISPr captive portal authentication flows to test network configurations</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Bulk Operations</h3>
-                    <p>Support for CSV import/export and bulk policy creation across network segments</p>
+                    <h3>Parameter Logging</h3>
+                    <p>Displays detailed URL parameters and headers during network connection handshake</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Wildcard Support</h3>
-                    <p>Template-based ACL creation with wildcard replacement for multi-site deployments</p>
+                    <h3>Multiple Auth Modes</h3>
+                    <p>Supports "Always Accept" and "User Credentials" authentication modes for testing</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Rate Limiting</h3>
-                    <p>Firewall profile configuration with integrated rate limiting capabilities</p>
+                    <h3>API Communication Log</h3>
+                    <p>Comprehensive logging of client-server-API communications for debugging</p>
                 </div>
             </div>
         </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Why WISPr Matters</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                WISPr (Wireless Internet Service Provider roaming) is a protocol for captive portal authentication in wireless networks.
+                It defines how clients are redirected to authentication portals and how credentials are validated. Common issues include:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Redirect Failures:</strong> Clients not reaching the authentication portal</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Parameter Issues:</strong> Missing or malformed URL parameters</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>AAA Integration:</strong> Authentication server communication problems</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Session Management:</strong> Timeout or state tracking issues</li>
+            </ul>
+            <p style="line-height: 1.8;">
+                This tool helps network engineers diagnose these issues by providing visibility into every step
+                of the authentication process, from initial redirect to final authorization.
+            </p>
+        </section>
+
+        <div class="troubleshooting-highlight">
+            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Troubleshooting Power</h3>
+            <p style="opacity: 0.9;">
+                Essential tool for network engineers managing guest wireless access. Quickly identify whether
+                connectivity issues stem from portal configuration, AAA server integration, or client-side problems.
+                Particularly valuable when deploying or troubleshooting RUCKUS One wireless networks with captive
+                portal authentication.
+            </p>
+        </div>
 
         <section class="section">
             <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                The ACL management system provides efficient Layer 3 Access Control Policy management for Ruckus 
-                SmartZone controllers through REST API interactions. Key technical features include:
+                Built as a Flask web application with support for both local development and cloud deployment.
+                The tool provides two authentication modes for testing different scenarios:
             </p>
             <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>REST API Integration:</strong> Direct communication with Ruckus SmartZone controllers</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Wildcard Support:</strong> Template-based rule creation with IP address substitution for multi-site deployments</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Bulk Operations:</strong> CSV and JSON-based policy creation and management</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Policy Lifecycle:</strong> Create, retrieve, update, and delete operations for ACL policies</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Firewall Profile Management:</strong> Integrated management of firewall profiles with rate limiting</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Clean-up Utilities:</strong> Tools for removing test and temporary configurations</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Always Accept Mode:</strong> Automatically approves all connection attempts - ideal for testing redirect flows</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>User Credentials Mode:</strong> Validates against external AAA servers - tests full authentication chain</li>
             </ul>
-            <p style="line-height: 1.8;">
-                The system provides both CLI and web interfaces for policy management, supporting standardized 
-                configurations across multiple sites while maintaining flexibility for site-specific requirements.
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                Tested extensively with RUCKUS One cloud management and RUCKUS R770 access points running firmware 7.1.0.510.1041.
             </p>
         </section>
-
-        <div class="security-highlight">
-            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Security Innovation</h3>
-            <p style="opacity: 0.9;">
-                This project streamlines ACL management for enterprise networks by providing intuitive tools for policy 
-                creation and deployment. The wildcard substitution feature enables consistent security policies across 
-                multiple sites while reducing configuration errors and administrative overhead.
-            </p>
-        </div>
 
         <section class="section">
             <h2><span class="terminal-prompt">></span> Technology Stack</h2>
             <div class="tech-stack">
-                <div class="tech-item">Python 3.11+</div>
-                <div class="tech-item">Google App Engine</div>
-                <div class="tech-item">Ruckus SmartZone API</div>
-                <div class="tech-item">Requests</div>
-                <div class="tech-item">CSV/JSON Processing</div>
-                <div class="tech-item">Cloud Deployment</div>
+                <div class="tech-item">Python 3.x</div>
+                <div class="tech-item">Flask</div>
+                <div class="tech-item">Google Cloud Run</div>
+                <div class="tech-item">RUCKUS One API</div>
+                <div class="tech-item">WISPr Protocol</div>
+                <div class="tech-item">HTML/JavaScript</div>
             </div>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Enterprise Impact</h2>
+            <h2><span class="terminal-prompt">></span> Use Cases</h2>
             <p style="line-height: 1.8; margin-bottom: 1rem;">
-                SZ-ACL demonstrates expertise in:
+                This tool is particularly valuable for:
             </p>
             <ul style="list-style: none; padding-left: 1.5rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>Security Architecture:</strong> Designing systems that enforce security policies at scale</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Performance Engineering:</strong> Optimizing critical network path operations</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Automation:</strong> Reducing manual configuration errors significantly</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Compliance:</strong> Built-in support for SOC2, PCI-DSS requirements</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Guest Network Deployment:</strong> Validate captive portal configuration before going live</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Authentication Troubleshooting:</strong> Diagnose why users can't authenticate to guest wireless</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>AAA Integration Testing:</strong> Verify proper communication with RADIUS/AAA servers</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Client Behavior Analysis:</strong> Understand how different devices handle portal redirects</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Migration Validation:</strong> Test portal functionality when moving between platforms</li>
             </ul>
         </section>
 
         <div class="project-actions">
-            <a href="https://szacl.neuralconfig.com" class="action-button primary">Try Web App</a>
-            <a href="https://github.com/neuralconfig/sz-acl" class="action-button">View on GitHub</a>
+            <a href="https://github.com/neuralconfig/wispr-portal" class="action-button">View on GitHub</a>
             <a href="projects.html" class="action-button">Back to Projects</a>
         </div>
     </div>
 
-    <script src="matrix.js"></script>
     <footer class="footer">
         © 2025 NeuralConfig LLC
     </footer>
+
+    <script src="matrix.js"></script>
 </body>
 </html>

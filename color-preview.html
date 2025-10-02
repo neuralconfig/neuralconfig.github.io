@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Scheme Preview | neuralconfig</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'IBM Plex Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        body {
+            background: #000;
+            color: #33ff33;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #33ff33;
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .info-box {
+            background: rgba(51, 255, 51, 0.1);
+            border: 1px solid #33ff33;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            color: #00ff9d;
+            margin-bottom: 0.5rem;
+        }
+
+        .scheme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .scheme-card {
+            border: 2px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .scheme-card:hover {
+            border-color: #00ff9d;
+            transform: translateY(-5px);
+        }
+
+        .scheme-header {
+            background: #0a0a0a;
+            border-bottom: 1px solid #333;
+            padding: 1rem 1.5rem;
+        }
+
+        .scheme-name {
+            font-size: 1.2rem;
+            color: #00ff9d;
+            margin-bottom: 0.5rem;
+        }
+
+        .scheme-description {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .scheme-preview {
+            padding: 2rem;
+            min-height: 400px;
+        }
+
+        /* Color Schemes */
+        .scheme-current {
+            background: #0a0a0a;
+            color: #33ff33;
+        }
+
+        .scheme-current .highlight { color: #00ff9d; }
+        .scheme-current .dim { opacity: 0.7; }
+
+        .scheme-charcoal {
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        .scheme-charcoal .highlight { color: #569cd6; }
+        .scheme-charcoal .dim { color: #9cdcfe; }
+
+        .scheme-terminal {
+            background: #001e3d;
+            color: #61dafb;
+        }
+
+        .scheme-terminal .highlight { color: #80dfff; }
+        .scheme-terminal .dim { color: #4db8e8; }
+
+        .scheme-amber {
+            background: #2b1d0e;
+            color: #ffb86c;
+        }
+
+        .scheme-amber .highlight { color: #ffd700; }
+        .scheme-amber .dim { color: #daa520; }
+
+        .scheme-paper {
+            background: #f5f5f0;
+            color: #2e3436;
+        }
+
+        .scheme-paper .highlight { color: #204a87; }
+        .scheme-paper .dim { color: #5c3566; }
+
+        .scheme-muted {
+            background: #1a1a1a;
+            color: #a8cc8c;
+        }
+
+        .scheme-muted .highlight { color: #66b2b2; }
+        .scheme-muted .dim { color: #739199; }
+
+        .content-sample h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .content-sample p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-sample ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-sample li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .content-sample li:before {
+            content: "▸";
+            position: absolute;
+            left: -1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.3rem 0.8rem;
+            border: 1px solid currentColor;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .action-btn {
+            background: transparent;
+            border: 1px solid currentColor;
+            color: inherit;
+            padding: 0.6rem 1.5rem;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .scheme-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Color Scheme Preview for Project Pages</h1>
+        <p class="subtitle">
+            Test easier-to-read color schemes for project detail pages while maintaining the terminal aesthetic.
+            The home and about pages will keep the classic green-on-black terminal look.
+        </p>
+
+        <div class="info-box">
+            <h3>📋 Instructions</h3>
+            <p>
+                • Scroll through the options below to see how each color scheme looks with real content<br>
+                • Each preview shows project page content with headings, paragraphs, lists, and code tags<br>
+                • Consider readability for extended reading vs. aesthetic appeal<br>
+                • Let me know which scheme you prefer for project detail pages
+            </p>
+        </div>
+
+        <div class="scheme-grid">
+            <!-- Current Scheme -->
+            <div class="scheme-card">
+                <div class="scheme-header">
+                    <div class="scheme-name">Current: Phosphor Green</div>
+                    <div class="scheme-description">Current website scheme - bright green on black</div>
+                </div>
+                <div class="scheme-preview scheme-current">
+                    <div class="content-sample">
+                        <h3 class="highlight">Overview</h3>
+                        <p>
+                            A comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.
+                            The SDK provides programmatic access to all RUCKUS One cloud management features.
+                        </p>
+                        <p>
+                            <strong class="highlight">Key Features:</strong>
+                        </p>
+                        <ul>
+                            <li class="dim">OAuth2 authentication with automatic token management</li>
+                            <li class="dim">Complete coverage of RUCKUS One REST APIs</li>
+                            <li class="dim">Interactive CLI tool for network operations</li>
+                            <li class="dim">Type-safe request/response handling</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python 3.11+</span>
+                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <button class="action-btn">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charcoal Modern -->
+            <div class="scheme-card">
+                <div class="scheme-header">
+                    <div class="scheme-name">Modern Charcoal</div>
+                    <div class="scheme-description">VS Code inspired - easy to read, professional</div>
+                </div>
+                <div class="scheme-preview scheme-charcoal">
+                    <div class="content-sample">
+                        <h3 class="highlight">Overview</h3>
+                        <p>
+                            A comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.
+                            The SDK provides programmatic access to all RUCKUS One cloud management features.
+                        </p>
+                        <p>
+                            <strong class="highlight">Key Features:</strong>
+                        </p>
+                        <ul>
+                            <li class="dim">OAuth2 authentication with automatic token management</li>
+                            <li class="dim">Complete coverage of RUCKUS One REST APIs</li>
+                            <li class="dim">Interactive CLI tool for network operations</li>
+                            <li class="dim">Type-safe request/response handling</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python 3.11+</span>
+                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <button class="action-btn">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Blue -->
+            <div class="scheme-card">
+                <div class="scheme-header">
+                    <div class="scheme-name">Terminal Blue</div>
+                    <div class="scheme-description">Cyan on dark blue - retro terminal, easier than green</div>
+                </div>
+                <div class="scheme-preview scheme-terminal">
+                    <div class="content-sample">
+                        <h3 class="highlight">Overview</h3>
+                        <p>
+                            A comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.
+                            The SDK provides programmatic access to all RUCKUS One cloud management features.
+                        </p>
+                        <p>
+                            <strong class="highlight">Key Features:</strong>
+                        </p>
+                        <ul>
+                            <li class="dim">OAuth2 authentication with automatic token management</li>
+                            <li class="dim">Complete coverage of RUCKUS One REST APIs</li>
+                            <li class="dim">Interactive CLI tool for network operations</li>
+                            <li class="dim">Type-safe request/response handling</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python 3.11+</span>
+                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <button class="action-btn">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amber Classic -->
+            <div class="scheme-card">
+                <div class="scheme-header">
+                    <div class="scheme-name">Amber Classic</div>
+                    <div class="scheme-description">Orange/amber on dark brown - warm vintage terminal</div>
+                </div>
+                <div class="scheme-preview scheme-amber">
+                    <div class="content-sample">
+                        <h3 class="highlight">Overview</h3>
+                        <p>
+                            A comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.
+                            The SDK provides programmatic access to all RUCKUS One cloud management features.
+                        </p>
+                        <p>
+                            <strong class="highlight">Key Features:</strong>
+                        </p>
+                        <ul>
+                            <li class="dim">OAuth2 authentication with automatic token management</li>
+                            <li class="dim">Complete coverage of RUCKUS One REST APIs</li>
+                            <li class="dim">Interactive CLI tool for network operations</li>
+                            <li class="dim">Type-safe request/response handling</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python 3.11+</span>
+                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <button class="action-btn">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paper Mode -->
+            <div class="scheme-card">
+                <div class="scheme-header">
+                    <div class="scheme-name">Paper Mode</div>
+                    <div class="scheme-description">Dark text on off-white - maximum readability, print-like</div>
+                </div>
+                <div class="scheme-preview scheme-paper">
+                    <div class="content-sample">
+                        <h3 class="highlight">Overview</h3>
+                        <p>
+                            A comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.
+                            The SDK provides programmatic access to all RUCKUS One cloud management features.
+                        </p>
+                        <p>
+                            <strong class="highlight">Key Features:</strong>
+                        </p>
+                        <ul>
+                            <li class="dim">OAuth2 authentication with automatic token management</li>
+                            <li class="dim">Complete coverage of RUCKUS One REST APIs</li>
+                            <li class="dim">Interactive CLI tool for network operations</li>
+                            <li class="dim">Type-safe request/response handling</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python 3.11+</span>
+                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <button class="action-btn">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Muted Green -->
+            <div class="scheme-card">
+                <div class="scheme-header">
+                    <div class="scheme-name">Muted Green</div>
+                    <div class="scheme-description">Softer green tones - keeps theme but easier to read</div>
+                </div>
+                <div class="scheme-preview scheme-muted">
+                    <div class="content-sample">
+                        <h3 class="highlight">Overview</h3>
+                        <p>
+                            A comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.
+                            The SDK provides programmatic access to all RUCKUS One cloud management features.
+                        </p>
+                        <p>
+                            <strong class="highlight">Key Features:</strong>
+                        </p>
+                        <ul>
+                            <li class="dim">OAuth2 authentication with automatic token management</li>
+                            <li class="dim">Complete coverage of RUCKUS One REST APIs</li>
+                            <li class="dim">Interactive CLI tool for network operations</li>
+                            <li class="dim">Type-safe request/response handling</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python 3.11+</span>
+                            <span class="tech-tag">OAuth2</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <button class="action-btn">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Recommendation</h3>
+            <p>
+                Based on readability studies, the <strong>Modern Charcoal</strong> or <strong>Terminal Blue</strong> schemes offer the best balance of:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-top: 0.5rem;">
+                <li style="margin-bottom: 0.5rem;">✓ Excellent readability for extended reading</li>
+                <li style="margin-bottom: 0.5rem;">✓ Maintains terminal/hacker aesthetic</li>
+                <li style="margin-bottom: 0.5rem;">✓ Professional appearance for GitHub/portfolio viewing</li>
+                <li style="margin-bottom: 0.5rem;">✓ Reduces eye strain compared to bright green</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+                The <strong>Muted Green</strong> option keeps your brand colors while improving readability,
+                and <strong>Paper Mode</strong> offers maximum readability if aesthetic is secondary.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -6,6 +6,124 @@
     <title>Tools | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Modern Charcoal color scheme override */
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        .tools-title {
+            color: #569cd6;
+            font-size: 2rem;
+        }
+
+        .tools-subtitle {
+            color: #d4d4d4;
+            font-size: 1rem;
+        }
+
+        .tools-header {
+            border-bottom-color: #3e3e42;
+        }
+
+        .tool-card {
+            background: rgba(37, 37, 38, 0.8);
+            border-color: #3e3e42;
+        }
+
+        .tool-card:hover {
+            border-color: #569cd6;
+            box-shadow: 0 10px 30px rgba(86, 156, 214, 0.2);
+        }
+
+        .tool-icon {
+            color: #569cd6;
+        }
+
+        .tool-name {
+            color: #9cdcfe;
+        }
+
+        .tool-description, .tool-features li {
+            color: #d4d4d4;
+        }
+
+        .tool-features li:before {
+            color: #569cd6;
+        }
+
+        .tool-status {
+            background: rgba(86, 156, 214, 0.1);
+            border-color: rgba(86, 156, 214, 0.3);
+            color: #569cd6;
+        }
+
+        .coming-soon {
+            background: rgba(78, 201, 176, 0.1);
+            border-color: rgba(78, 201, 176, 0.3);
+            color: #4ec9b0;
+        }
+
+        .beta-banner {
+            background: rgba(86, 156, 214, 0.1) !important;
+            border-color: rgba(86, 156, 214, 0.3) !important;
+        }
+
+        .beta-banner p {
+            color: #569cd6 !important;
+        }
+
+        .footer {
+            border-top-color: #3e3e42;
+            color: #9cdcfe;
+        }
+
+        .nav-bar {
+            background: rgba(37, 37, 38, 0.95);
+            border-bottom-color: #569cd6;
+        }
+
+        .nav-logo {
+            color: #569cd6;
+        }
+
+        .brackets {
+            color: #9cdcfe;
+        }
+
+        .nav-link {
+            color: #9cdcfe;
+        }
+
+        .nav-link.active {
+            color: #569cd6;
+        }
+
+        .matrix-bg {
+            opacity: 0.05;
+        }
+
+        /* Override page-specific styles that use bright green */
+        .tools-header .tools-title {
+            color: #569cd6 !important;
+        }
+
+        .tool-card:hover {
+            border-color: #569cd6 !important;
+        }
+
+        .tool-icon {
+            color: #569cd6 !important;
+        }
+
+        .tool-features li:before {
+            color: #569cd6 !important;
+        }
+
+        .tool-status {
+            color: #569cd6 !important;
+        }
+
         .tools-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -129,10 +247,10 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
-                <a href="index.html" class="nav-link">home</a>
-                <a href="projects.html" class="nav-link">projects</a>
                 <a href="skills.html" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link">open source</a>
                 <a href="tools.html" class="nav-link active">tools</a>
+                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -140,23 +258,39 @@
 
     <div class="container">
         <div class="tools-header">
-            <h1 class="tools-title">Automation Tools</h1>
+            <h1 class="tools-title">Web Applications</h1>
             <p class="tools-subtitle">
-                Powerful web-based tools designed to streamline network management and automation workflows. 
-                Built with enterprise-grade security and deployed on Google Cloud Platform.
+                Production-grade web applications for network engineers and IT professionals.
+                Deployed on enterprise infrastructure with professional hosting and support.
             </p>
         </div>
 
         <div class="beta-banner">
-            <p>🚀 Our tools collection is growing! Check back regularly for new additions.</p>
+            <p>🚀 New applications in development! Check back for updates.</p>
         </div>
 
         <div class="tools-grid">
-            <a href="https://szacl.neuralconfig.com" class="tool-card" target="_blank">
+            <a href="https://neuralconfig.com/fastiron-features/" class="tool-card" target="_blank">
+                <div class="tool-icon">⚙️</div>
+                <h2 class="tool-name">FastIron Feature Navigator</h2>
+                <p class="tool-description">
+                    Interactive tool for exploring and discovering features across Ruckus FastIron switch models.
+                    Compare capabilities and find the right switch for your deployment.
+                </p>
+                <ul class="tool-features">
+                    <li>Feature comparison across models</li>
+                    <li>Interactive search and filtering</li>
+                    <li>Model-specific capabilities</li>
+                    <li>Quick reference guide</li>
+                </ul>
+                <span class="tool-status">Live</span>
+            </a>
+
+            <a href="maintenance.html" class="tool-card">
                 <div class="tool-icon">🔒</div>
                 <h2 class="tool-name">SZ-ACL</h2>
                 <p class="tool-description">
-                    Advanced Access Control List management for Ruckus SmartZone networks. 
+                    Advanced Access Control List management for Ruckus SmartZone networks.
                     Create, update, and manage Layer 3 ACL policies through an intuitive web interface.
                 </p>
                 <ul class="tool-features">
@@ -166,14 +300,14 @@
                     <li>Firewall profile management</li>
                     <li>Rate limiting configuration</li>
                 </ul>
-                <span class="tool-status">Live</span>
+                <span class="tool-status" style="background: rgba(220, 220, 170, 0.1); border-color: rgba(220, 220, 170, 0.3); color: #dcdcaa;">Maintenance</span>
             </a>
 
             <div class="tool-card" style="opacity: 0.6; cursor: not-allowed;">
                 <div class="tool-icon">📊</div>
                 <h2 class="tool-name">Network Analyzer</h2>
                 <p class="tool-description">
-                    Real-time network traffic analysis and visualization tool. Monitor bandwidth usage, 
+                    Real-time network traffic analysis and visualization tool. Monitor bandwidth usage,
                     identify bottlenecks, and optimize network performance.
                 </p>
                 <ul class="tool-features">
@@ -189,7 +323,7 @@
                 <div class="tool-icon">🛡️</div>
                 <h2 class="tool-name">Security Auditor</h2>
                 <p class="tool-description">
-                    Automated security assessment tool for network configurations. 
+                    Automated security assessment tool for network configurations.
                     Identify vulnerabilities and compliance issues across your infrastructure.
                 </p>
                 <ul class="tool-features">
@@ -202,6 +336,10 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        © 2025 NeuralConfig LLC
+    </footer>
 
     <script src="matrix.js"></script>
 </body>
