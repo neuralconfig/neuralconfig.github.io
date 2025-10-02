@@ -3,8 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | neuralconfig</title>
+    <title>Open Source Projects | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modern Charcoal color scheme override */
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        .page-title {
+            color: #569cd6;
+            font-size: 1.75rem;
+        }
+
+        .project-header h3 {
+            color: #569cd6;
+            font-size: 1.1rem;
+        }
+
+        .terminal-prompt, .brackets {
+            color: #9cdcfe;
+        }
+
+        .project-type {
+            color: #9cdcfe;
+        }
+
+        .ai-project .project-type {
+            color: #c586c0;
+        }
+
+        .network-project .project-type {
+            color: #4ec9b0;
+        }
+
+        .automation-project .project-type {
+            color: #dcdcaa;
+        }
+
+        .project-card {
+            background: #252526;
+            border-color: #3e3e42;
+        }
+
+        .project-card:hover {
+            border-color: #569cd6;
+            box-shadow: 0 10px 30px rgba(86, 156, 214, 0.2);
+        }
+
+        .ai-project:hover {
+            border-color: #c586c0;
+            box-shadow: 0 10px 30px rgba(197, 134, 192, 0.2);
+        }
+
+        .network-project:hover {
+            border-color: #4ec9b0;
+            box-shadow: 0 10px 30px rgba(78, 201, 176, 0.2);
+        }
+
+        .automation-project:hover {
+            border-color: #dcdcaa;
+            box-shadow: 0 10px 30px rgba(220, 220, 170, 0.2);
+        }
+
+        .tech-tag {
+            background: rgba(86, 156, 214, 0.1);
+            border-color: rgba(86, 156, 214, 0.3);
+            color: #9cdcfe;
+        }
+
+        .project-link {
+            color: #569cd6;
+        }
+
+        .project-link:hover {
+            color: #9cdcfe;
+        }
+
+        .filter-btn {
+            border-color: #569cd6;
+            color: #569cd6;
+        }
+
+        .filter-btn:hover {
+            background: rgba(86, 156, 214, 0.1);
+        }
+
+        .filter-btn.active {
+            background: #569cd6;
+            color: #1e1e1e;
+        }
+
+        #project-search {
+            background: rgba(37, 37, 38, 0.5);
+            border-color: #569cd6;
+            color: #d4d4d4;
+        }
+
+        .footer {
+            border-top-color: #3e3e42;
+            color: #9cdcfe;
+        }
+
+        .nav-bar {
+            background: rgba(37, 37, 38, 0.95);
+            border-bottom-color: #569cd6;
+        }
+
+        .nav-logo {
+            color: #569cd6;
+        }
+
+        .nav-link {
+            color: #9cdcfe;
+        }
+
+        .nav-link.active {
+            color: #569cd6;
+        }
+
+        .matrix-bg {
+            opacity: 0.05;
+        }
+    </style>
 </head>
 <body>
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
@@ -13,10 +135,10 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
-                <a href="index.html" class="nav-link">home</a>
-                <a href="projects.html" class="nav-link active">projects</a>
                 <a href="skills.html" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link active">open source</a>
                 <a href="tools.html" class="nav-link">tools</a>
+                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -24,7 +146,7 @@
 
     <div class="container projects-container">
         <h1 class="page-title">
-            <span class="terminal-prompt">$</span> ls -la projects/
+            <span class="terminal-prompt">$</span> ls -la ~/open-source/
         </h1>
         
         <div class="project-controls" style="margin: 2rem 0;">
@@ -187,6 +309,43 @@
                     <a href="https://github.com/neuralconfig/wifi-test" class="project-link">github →</a>
                 </div>
             </div>
+
+            <div class="project-card network-project">
+                <div class="project-header">
+                    <h3>wispr-portal</h3>
+                    <span class="project-type">[NETWORK]</span>
+                    <span class="project-type">[TROUBLESHOOTING]</span>
+                </div>
+                <p class="project-description">Diagnostic web application for troubleshooting WISPr captive portal authentication and redirection in RUCKUS One environments.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">WISPr</span>
+                    <span class="tech-tag">Diagnostics</span>
+                </div>
+                <div class="project-links">
+                    <a href="wispr-portal.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/wispr-portal" class="project-link">github →</a>
+                </div>
+            </div>
+
+            <div class="project-card automation-project">
+                <div class="project-header">
+                    <h3>ap-reboot-manager</h3>
+                    <span class="project-type">[AUTOMATION]</span>
+                </div>
+                <p class="project-description">Mass Access Point reboot management tool for RUCKUS One with safety controls, simulation mode, and batch processing capabilities.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Network Automation</span>
+                    <span class="tech-tag">CLI Tools</span>
+                    <span class="tech-tag">Batch Operations</span>
+                </div>
+                <div class="project-links">
+                    <a href="ap-reboot-manager.html" class="project-link">details →</a>
+                    <a href="https://github.com/neuralconfig/ap-reboot-manager" class="project-link">github →</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -285,5 +444,9 @@
             });
         });
     </script>
+
+    <footer class="footer">
+        © 2025 NeuralConfig LLC
+    </footer>
 </body>
 </html>

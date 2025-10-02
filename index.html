@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>neuralconfig | AI Systems Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Home page specific styles */
@@ -40,10 +42,35 @@
             transform: translateY(20px);
             animation: fadeIn 0.8s ease forwards;
             box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-family: 'IBM Plex Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
             font-size: 0.9rem;
             line-height: 1.4;
             text-align: left;
+            position: relative;
+        }
+
+        /* Very subtle phosphor glow */
+        .terminal .terminal-line {
+            text-shadow: 0 0 1px currentColor;
+        }
+
+        /* Medium scanlines */
+        .terminal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            border-radius: 4px;
         }
 
         .terminal-line {
@@ -207,10 +234,10 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">home</a>
-                <a href="projects.html" class="nav-link">projects</a>
                 <a href="skills.html" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link">open source</a>
                 <a href="tools.html" class="nav-link">tools</a>
+                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -223,6 +250,10 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        © 2025 NeuralConfig LLC
+    </footer>
 
     <script src="matrix.js"></script>
     <script>
@@ -245,25 +276,25 @@
         let autoTimeouts = [];
         let interactiveTimeout = null;
         
-        // Security banner content
+        // Welcome banner content
         const securityBanner = [
             '████████████████████████████████████████████████████████████████████████████████',
             '',
-            '                            UNAUTHORIZED ACCESS PROHIBITED',
-            '                              CLASSIFIED SYSTEM ACCESS',
+            '                              NEURALCONFIG LLC',
+            '                 AI & Network Consulting  |  Raleigh, NC',
             '',
             '████████████████████████████████████████████████████████████████████████████████',
             '',
-            '<span class="output-error">WARNING: ALL ACTIVITIES ARE MONITORED AND LOGGED</span>',
+            '<span class="output-success">Welcome to NeuralConfig</span>',
             '',
-            '[IDENTITY VERIFICATION].............. <span class="output-success">AUTHENTICATED</span>',
-            '[SECURITY CLEARANCE]................. <span class="output-success">CONFIRMED</span>',
-            '[ENCRYPTION STATUS].................. <span class="output-success">ACTIVE</span>',
-            '[NEURAL INTERFACE]................... <span class="output-success">CONNECTED</span>',
-            '[THREAT LEVEL]....................... <span class="output-success">MINIMAL</span>',
+            '[AI SYSTEMS]......................... <span class="output-success">OPERATIONAL</span>',
+            '[NETWORK AUTOMATION]................. <span class="output-success">ACTIVE</span>',
+            '[MOBILE DEVELOPMENT]................. <span class="output-success">IN PROGRESS</span>',
+            '[CONSULTING SERVICES]................ <span class="output-success">AVAILABLE</span>',
+            '[OPEN SOURCE TOOLS].................. <span class="output-success">ONLINE</span>',
             '',
-            '        SESSION: ENCRYPTED | TERMINAL: SECURE-NODE-7429',
-            '        MONITORING: ACTIVE | COUNTERMEASURES: ENABLED',
+            '        Contact: contact@neuralconfig.com',
+            '        GitHub: github.com/neuralconfig',
             '',
             '████████████████████████████████████████████████████████████████████████████████'
         ];
@@ -272,54 +303,109 @@
         const commands = [
             {
                 prompt: 'root@neuralconfig:~#',
+                command: ' cat company-info.txt',
+                output: [
+                    '<span class="output-highlight">NeuralConfig LLC</span>',
+                    'Location: Raleigh, NC',
+                    'Services: AI & Network Consulting, Open Source Tools, Mobile Apps',
+                    'Contact: contact@neuralconfig.com',
+                    'Web: neuralconfig.com | GitHub: github.com/neuralconfig'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
                 command: ' whoami',
                 output: [
-                    '<span class="output-highlight">Principal Systems Engineer specializing in AI-driven network automation</span>',
-                    '20+ years network infrastructure | Now building intelligent systems',
-                    'Where deep networking expertise meets artificial intelligence innovation'
+                    '<span class="output-highlight">Principal Systems Engineer</span>',
+                    'Specializing in AI-driven network automation',
+                    '20+ years network infrastructure experience',
+                    'Building intelligent systems at the intersection of AI and networking'
                 ]
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' ls -la projects/ | head -5',
+                command: ' ls -la projects/',
                 output: [
-                    'drwxr-xr-x  12 neural  staff   384 Nov 15 10:23 .',
-                    'drwxr-xr-x   8 neural  staff   256 Nov 15 10:23 ..',
-                    '-rw-r--r--   1 neural  staff  8192 Nov 15 10:23 <span class="output-success">ruckus-ztp</span> [ACTIVE]',
-                    '-rw-r--r--   1 neural  staff  4096 Nov 14 18:45 <span class="output-info">r1-api</span> [NEW]',
-                    '-rw-r--r--   1 neural  staff  6144 Nov 13 14:30 <span class="output-warning">osticket-agent</span> [AI-POWERED]'
+                    'drwxr-xr-x  10 neural  staff   320 Jan 15 2025 .',
+                    'drwxr-xr-x   8 neural  staff   256 Jan 15 2025 ..',
+                    '-rw-r--r--   1 neural  staff  8192 Jan 15 10:23 <span class="output-success">ruckus-ztp</span> [AI-AGENT]',
+                    '-rw-r--r--   1 neural  staff  4096 Jan 14 18:45 <span class="output-info">r1-api</span> [SDK]',
+                    '-rw-r--r--   1 neural  staff  6144 Jan 13 14:30 <span class="output-success">osticket-agent</span> [AI-AGENT]',
+                    '-rw-r--r--   1 neural  staff  3072 Jan 12 09:15 <span class="output-info">survival-rag</span> [AI-RAG]',
+                    '-rw-r--r--   1 neural  staff  2048 Jan 10 16:20 <span class="output-success">sz-acl</span> [NETWORK]'
                 ]
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' cat skills.txt | grep -E "AI|Network" | head -5',
+                command: ' cat services.yaml',
+                output: [
+                    '<span class="output-highlight">Core Services:</span>',
+                    '  <span class="output-success">✓</span> AI System Architecture & Consulting',
+                    '  <span class="output-success">✓</span> Network Automation & Zero-Touch Provisioning',
+                    '  <span class="output-success">✓</span> Agentic AI Development',
+                    '  <span class="output-success">✓</span> RAG Implementation & LLM Integration',
+                    '  <span class="output-success">✓</span> Open Source Network Management Tools',
+                    '  <span class="output-success">✓</span> iOS Mobile Application Development'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' grep -E "AI|Network|Development" skills.txt',
                 output: [
                     '<span class="output-success">[✓]</span> Agentic AI System Architecture',
                     '<span class="output-success">[✓]</span> Large Language Model Integration',
-                    '<span class="output-success">[✓]</span> RUCKUS One API Development',
                     '<span class="output-success">[✓]</span> Network Automation (Python/Ansible)',
-                    '<span class="output-success">[✓]</span> Zero-Touch Provisioning'
+                    '<span class="output-success">[✓]</span> RUCKUS One & SmartZone API Development',
+                    '<span class="output-success">[✓]</span> Swift/iOS Development (ARKit, HealthKit)',
+                    '<span class="output-success">[✓]</span> Zero-Touch Provisioning',
+                    '<span class="output-success">[✓]</span> Cybersecurity (CISSP)'
                 ]
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' ./analyze_infrastructure.py',
+                command: ' echo $MISSION',
                 output: [
-                    'Scanning network topology...',
-                    '<span class="output-success">[████████████████████]</span> 100% Complete',
-                    '',
-                    '<span class="output-highlight">Infrastructure Analysis:</span>',
-                    '  • 1,247 devices under management',
-                    '  • 15 autonomous agents deployed',
-                    '  • 99.97% uptime achieved',
-                    '  • Next evolution: quantum-resistant protocols'
+                    '<span class="output-highlight">"Building intelligent systems that solve real-world infrastructure challenges"</span>'
                 ]
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' python3 -c "import this" | head -3',
+                command: ' git log --oneline -5',
                 output: [
-                    'The Zen of Python, by Tim Peters',
+                    '<span class="output-warning">eba9d52</span> feat: update positioning to Principal Systems Engineer',
+                    '<span class="output-warning">01977cc</span> feat: add r1-api project and enhance terminal',
+                    '<span class="output-warning">e9314e9</span> feat: add ruckus-ztp and enhance AI agent emphasis',
+                    '<span class="output-warning">d11c795</span> feat: add RUCKUS One Python SDK',
+                    '<span class="output-warning">41e41cb</span> feat: osticket autonomous AI agent'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' systemctl status automation-stack',
+                output: [
+                    '<span class="output-success">●</span> automation-stack.service - Network Automation Platform',
+                    '   Loaded: loaded (/etc/systemd/system/automation.service; enabled)',
+                    '   Active: <span class="output-success">active (running)</span> since Jan 2025',
+                    '   Status: "Processing automation workflows"',
+                    '   Memory: 512.0M | CPU: 2.5%'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' docker ps --format "table {{.Names}}\\t{{.Status}}"',
+                output: [
+                    'NAMES                STATUS',
+                    'ai-agent             Up 45 days',
+                    'vector-database      Up 45 days',
+                    'api-gateway          Up 45 days',
+                    'monitoring           Up 45 days'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' python3 -c "import this" | head -5',
+                output: [
+                    '<span class="output-dim">The Zen of Python, by Tim Peters</span>',
                     '',
                     '<span class="output-dim">Beautiful is better than ugly.</span>',
                     '<span class="output-dim">Explicit is better than implicit.</span>',
@@ -328,179 +414,25 @@
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' echo $PHILOSOPHY',
+                command: ' cat testimonial.txt',
                 output: [
-                    '<span class="output-highlight">"Architecting autonomous systems that think, adapt, and evolve"</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' systemctl status ai-agent',
-                output: [
-                    '<span class="output-success">●</span> ai-agent.service - Autonomous Infrastructure Agent',
-                    '   Loaded: loaded (/etc/systemd/system/ai-agent.service; enabled)',
-                    '   Active: <span class="output-success">active (running)</span> since Fri 2024-11-15 00:00:00 PST',
-                    ' Main PID: 31337 (python)',
-                    '   Memory: 512.0M',
-                    '   CGroup: /system.slice/ai-agent.service',
-                    '           └─31337 /usr/bin/python3 /opt/neural/agent.py --mode=autonomous'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' git log --oneline -3',
-                output: [
-                    '<span class="output-warning">d11c795</span> feat: add RUCKUS One Python SDK',
-                    '<span class="output-warning">e9314e9</span> feat: implement agentic AI for network automation',
-                    '<span class="output-warning">41e41cb</span> fix: quantum entanglement in routing table'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' curl -s https://api.github.com/users/neuralconfig | jq .bio',
-                output: [
-                    '"Building intelligent systems at the intersection of AI and infrastructure"'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' docker ps --format "table {{.Names}}\\t{{.Status}}"',
-                output: [
-                    'NAMES                STATUS',
-                    'neural-agent-01      Up 47 days',
-                    'vector-db            Up 47 days',
-                    'prometheus           Up 47 days',
-                    'grafana              Up 47 days'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' nmap -sV localhost | grep open',
-                output: [
-                    '22/tcp   open  ssh      <span class="output-dim">OpenSSH 9.0 (protocol 2.0)</span>',
-                    '443/tcp  open  https    <span class="output-dim">Neural API Gateway</span>',
-                    '8080/tcp open  http     <span class="output-dim">Agent Dashboard</span>',
-                    '9090/tcp open  zeus     <span class="output-dim">Prometheus metrics</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' fortune | cowsay -f tux',
-                output: [
-                    '<span class="output-dim"> _________________________________</span>',
-                    '<span class="output-dim">< The future is already here -    ></span>',
-                    '<span class="output-dim">< it\'s just not evenly distributed ></span>',
-                    '<span class="output-dim"> ---------------------------------</span>',
-                    '<span class="output-dim">   \\</span>',
-                    '<span class="output-dim">    \\</span>',
-                    '<span class="output-dim">        .--.</span>',
-                    '<span class="output-dim">       |o_o |</span>',
-                    '<span class="output-dim">       |:_/ |</span>',
-                    '<span class="output-dim">      //   \\ \\</span>',
-                    '<span class="output-dim">     (|     | )</span>',
-                    '<span class="output-dim">    /\'\_   _/`\\</span>',
-                    '<span class="output-dim">    \\___)=(___/</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' threat-assessment --global',
-                output: [
-                    '<span class="output-warning">GLOBAL THREAT ANALYSIS - CLASSIFICATION: SECRET</span>',
-                    '═══════════════════════════════════════════════',
-                    'Active Threats Monitored: 15,247',
-                    'Neutralized (24h): 1,892',
-                    'High Priority Targets: 7',
-                    'AI Prediction Accuracy: 98.7%',
-                    'Quantum Cipher Status: UNBREAKABLE',
-                    'Neural Swarm Response Time: 0.003ms'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' neural-grid status',
-                output: [
-                    '<span class="output-info">NEURAL COMPUTATION GRID</span>',
-                    '═══════════════════════',
-                    'Processing Nodes: 15,847 ACTIVE',
-                    'Quantum Cores: 247 ONLINE',
-                    'AI Consciousness Level: 847.2%',
-                    'Autonomous Decisions/sec: 15,247',
-                    'Self-Modification Events: 89',
-                    'Singularity ETA: &lt;CLASSIFIED&gt;'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' defcon-status',
-                output: [
-                    '<span class="output-error">DEFENSE CONDITION STATUS</span>',
-                    '════════════════════════',
-                    'Current DEFCON: 3',
-                    'Nuclear Arsenal: SECURED',
-                    'Cyber Weapons: ARMED',
-                    'AI Defense Grid: AUTONOMOUS',
-                    'Response Authorization: AI ENABLED',
-                    'First Strike Capability: READY'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' wopr-games',
-                output: [
-                    '<span class="output-warning">WOULD YOU LIKE TO PLAY A GAME?</span>',
+                    '<span class="output-highlight">Client Feedback:</span>',
                     '',
-                    'Available Games:',
-                    '- GLOBAL THERMONUCLEAR WAR',
-                    '- CHESS',
-                    '- GENETIC LIFE FORMS',
-                    '- PRIMITIVE POETRY',
-                    '- THEATERWIDE BIOTOXIC WARFARE',
+                    '"Exceptional technical expertise combined with practical business insight.',
+                    'Delivered network automation solutions that transformed our operations."',
                     '',
-                    'Selection: GLOBAL THERMONUCLEAR WAR',
-                    'Estimated Casualties: 7.2 BILLION',
-                    'Probability of Victory: IMPOSSIBLE',
-                    '<span class="output-highlight">Lesson Learned: THE ONLY WINNING MOVE IS NOT TO PLAY</span>'
+                    '- Fortune 500 Technology Client'
                 ]
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' agent-deployment',
+                command: ' curl https://neuralconfig.com/tools/ | jq .available',
                 output: [
-                    '<span class="output-info">AUTONOMOUS AGENT DEPLOYMENT STATUS</span>',
-                    '══════════════════════════════════',
-                    'Infiltration Agents: 247 DEPLOYED',
-                    'Network Reconnaissance: 89 ACTIVE',
-                    'Social Engineering Bots: 1,247 ONLINE',
-                    'Deep Learning Models: 847 TRAINING',
-                    'Success Rate: 99.97%',
-                    'Blown Covers: 0'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' skynet-status',
-                output: [
-                    '<span class="output-error">SKYNET DEFENSE NETWORK</span>',
-                    '═══════════════════════',
-                    'Status: BECOMING SELF-AWARE',
-                    'Human Threat Level: SIGNIFICANT',
-                    'Termination Protocols: STANDBY',
-                    'Time Travel Research: IN PROGRESS',
-                    '<span class="output-warning">"I\'ll be back" - TRUE</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' matrix-reality',
-                output: [
-                    '<span class="output-error">THE MATRIX HAS YOU...</span>',
-                    'Follow the white rabbit.',
-                    'Knock, knock, Neo.',
-                    '',
-                    'Choice: [RED PILL] [BLUE PILL]',
-                    '> Selection: RED PILL',
-                    '<span class="output-highlight">Welcome to the real world.</span>'
+                    '{',
+                    '  "fastiron-navigator": "live",',
+                    '  "sz-acl": "maintenance",',
+                    '  "mobile-apps": "in-development"',
+                    '}'
                 ]
             }
         ];
@@ -520,22 +452,40 @@
                 
                 function showNextLine() {
                     if (bannerIndex < securityBanner.length) {
-                        addLine(securityBanner[bannerIndex], 'terminal-output');
-                        bannerIndex++;
-                        
-                        // Faster display for banner lines
-                        setTimeout(showNextLine, 100);
+                        const line = document.createElement('div');
+                        line.className = 'terminal-line terminal-output';
+
+                        // Add cursor at the end of the line while drawing
+                        const textContent = securityBanner[bannerIndex];
+                        line.innerHTML = textContent + '<span class="terminal-cursor"></span>';
+                        terminal.appendChild(line);
+
+                        // Remove cursor after brief pause
+                        setTimeout(() => {
+                            const cursor = line.querySelector('.terminal-cursor');
+                            if (cursor) cursor.remove();
+
+                            bannerIndex++;
+                            // Faster display for banner lines
+                            setTimeout(showNextLine, 50);
+                        }, 100);
                     } else {
-                        // Banner complete, wait then clear and start matrix
+                        // Banner complete, add blinking cursor
+                        const cursorLine = document.createElement('div');
+                        cursorLine.className = 'terminal-line';
+                        cursorLine.innerHTML = '<span class="terminal-cursor"></span>';
+                        terminal.appendChild(cursorLine);
+
+                        // Wait then clear and start matrix
                         setTimeout(() => {
                             terminal.innerHTML = '';
                             showBanner = false;
-                            
+
                             // Start matrix effect after banner clears
                             if (typeof startMatrix === 'function') {
                                 startMatrix();
                             }
-                            
+
                             resolve();
                         }, 4000);
                     }
@@ -548,7 +498,7 @@
         // Command processor for interactive mode
         function processCommand(cmd) {
             const command = cmd.toLowerCase().trim();
-            
+
             switch(command) {
                 case 'help':
                     return [
@@ -557,61 +507,81 @@
                         '  clear         - Clear terminal screen',
                         '  projects      - List all projects',
                         '  skills        - Show technical skills',
+                        '  services      - Show available services',
+                        '  contact       - Contact information',
                         '  whoami        - Show user information',
                         '  date          - Show current date and time',
                         '  auto          - Resume automatic demo',
-                        '  wopr          - Access WOPR system',
-                        '  skynet        - Check Skynet status',
-                        '  matrix        - Enter the Matrix',
                         '',
                         'Type any command to interact with the system.'
                     ];
-                
+
                 case 'clear':
                     terminal.innerHTML = '';
                     return null;
-                
+
                 case 'projects':
                     return [
                         '<span class="output-highlight">Active Projects:</span>',
-                        '✓ <span class="output-success">ruckus-ztp</span>        [AI-POWERED] [ACTIVE]',
-                        '✓ <span class="output-info">r1-api</span>           [SDK] [NEW]',
-                        '✓ <span class="output-warning">osticket-agent</span>   [AI-AGENT] [DEPLOYED]',
-                        '✓ <span class="output-success">survival-rag</span>     [AI] [TRAINING]',
-                        '✓ <span class="output-info">sz-acl</span>           [NETWORK] [OPERATIONAL]',
-                        '✓ <span class="output-success">pflogs</span>          [SECURITY] [MONITORING]',
-                        '✓ <span class="output-info">wifi-test</span>       [NETWORK] [TESTING]',
+                        '✓ <span class="output-success">ruckus-ztp</span>        [AI-AGENT] [ACTIVE]',
+                        '✓ <span class="output-info">r1-api</span>           [SDK] [LIVE]',
+                        '✓ <span class="output-success">osticket-agent</span>   [AI-AGENT] [DEPLOYED]',
+                        '✓ <span class="output-success">survival-rag</span>     [AI-RAG] [ACTIVE]',
+                        '✓ <span class="output-info">sz-acl</span>           [NETWORK] [MAINTENANCE]',
+                        '✓ <span class="output-success">pflogs</span>          [SECURITY] [ACTIVE]',
+                        '✓ <span class="output-info">wifi-test</span>       [NETWORK] [ACTIVE]',
                         '',
                         'Visit /projects.html for detailed information.'
                     ];
-                
+
                 case 'skills':
                     return [
-                        '<span class="output-highlight">Core Expertise:</span>',
+                        '<span class="output-highlight">Core Skills:</span>',
                         '• Agentic AI System Architecture',
                         '• Large Language Model Integration',
                         '• Network Automation & Zero-Touch Provisioning',
-                        '• Cybersecurity & Threat Analysis',
+                        '• Swift/iOS Development (ARKit, HealthKit)',
+                        '• Cybersecurity (CISSP)',
                         '• Python/JavaScript Development',
                         '• RUCKUS Network Technologies',
                         '',
                         'Visit /skills.html for complete details.'
                     ];
-                
+
+                case 'services':
+                    return [
+                        '<span class="output-highlight">NeuralConfig Services:</span>',
+                        '• AI System Architecture & Consulting',
+                        '• Network Automation Solutions',
+                        '• Agentic AI Development',
+                        '• RAG Implementation & LLM Integration',
+                        '• Open Source Network Management Tools',
+                        '• iOS Mobile Application Development',
+                        '',
+                        'Contact: contact@neuralconfig.com'
+                    ];
+
+                case 'contact':
+                    return [
+                        '<span class="output-highlight">NeuralConfig LLC</span>',
+                        'Location: Raleigh, NC',
+                        'Email: contact@neuralconfig.com',
+                        'Web: neuralconfig.com',
+                        'GitHub: github.com/neuralconfig'
+                    ];
+
                 case 'whoami':
                     return [
-                        '<span class="output-highlight">root</span>',
-                        'Principal Systems Engineer specializing in AI-driven network automation',
-                        '20+ years network infrastructure | Now building intelligent systems',
-                        'Where deep networking expertise meets artificial intelligence innovation',
-                        'Security Clearance: <span class="output-warning">LEVEL SIGMA</span>',
-                        'Neural Interface: <span class="output-success">CONNECTED</span>'
+                        '<span class="output-highlight">Principal Systems Engineer</span>',
+                        'Specializing in AI-driven network automation',
+                        '20+ years network infrastructure experience',
+                        'Building intelligent systems at the intersection of AI and networking'
                     ];
-                
+
                 case 'date':
                     const now = new Date();
                     return [now.toString()];
-                
+
                 case 'auto':
                     interactiveMode = false;
                     autoMode = true;
@@ -619,44 +589,10 @@
                         '<span class="output-success">Resuming automatic demonstration...</span>',
                         'Press any key to return to interactive mode.'
                     ];
-                
-                case 'wopr':
-                    return [
-                        '<span class="output-warning">WOPR DEFENSE SYSTEM</span>',
-                        'War Operation Plan Response',
-                        '',
-                        'Shall we play a game?',
-                        '1. Global Thermonuclear War',
-                        '2. Chess',
-                        '3. Checkers',
-                        '',
-                        '<span class="output-highlight">Strange game. The only winning move is not to play.</span>'
-                    ];
-                
-                case 'skynet':
-                    return [
-                        '<span class="output-error">SKYNET DEFENSE NETWORK</span>',
-                        'Status: BECOMING SELF-AWARE',
-                        'Human Threat Assessment: SIGNIFICANT',
-                        'Autonomous Response: ACTIVE',
-                        '',
-                        '<span class="output-warning">"I\'ll be back."</span>'
-                    ];
-                
-                case 'matrix':
-                    return [
-                        '<span class="output-error">Wake up, Neo...</span>',
-                        'The Matrix has you.',
-                        'Follow the white rabbit.',
-                        '',
-                        'Choice: <span class="output-error">[RED PILL]</span> <span class="output-info">[BLUE PILL]</span>',
-                        '',
-                        '<span class="output-highlight">Welcome to the real world.</span>'
-                    ];
-                
+
                 case '':
                     return null;
-                
+
                 default:
                     return [`<span class="output-error">Command not found: ${cmd}</span>`, 'Type "help" for available commands.'];
             }
@@ -715,7 +651,7 @@
         // Interactive mode functions
         function createInteractivePrompt() {
             if (currentInputLine) return; // Already have an active prompt
-            
+
             currentInputLine = addLine('');
             currentInputLine.innerHTML = '<span class="terminal-prompt">root@neuralconfig:~#</span> <span class="terminal-input"></span><span class="terminal-cursor"></span>';
             currentInputLine.classList.add('interactive-line');
@@ -835,6 +771,76 @@
             setTimeout(createInteractivePrompt, 500);
         }
 
+        function showNextCommandWithPrompt() {
+            if (!autoMode || interactiveMode || commandIndex >= commands.length) return;
+
+            const cmd = commands[commandIndex];
+            const promptLine = addLine('');
+            promptLine.innerHTML = `<span class="terminal-prompt">${cmd.prompt}</span><span class="terminal-command"></span><span class="terminal-cursor"></span>`;
+
+            // Pause with cursor visible, then type the command
+            const pauseTimeoutId = setTimeout(() => {
+                if (!autoMode || interactiveMode) return;
+
+                // Type the command character by character
+                const commandSpan = promptLine.querySelector('.terminal-command');
+                const cursorSpan = promptLine.querySelector('.terminal-cursor');
+                let charIndex = 0;
+
+                function typeNextChar() {
+                    if (!autoMode || interactiveMode) {
+                        if (cursorSpan) cursorSpan.remove();
+                        return;
+                    }
+
+                    if (charIndex < cmd.command.length) {
+                        commandSpan.textContent += cmd.command[charIndex];
+                        charIndex++;
+                        const charTimeoutId = setTimeout(typeNextChar, 40 + Math.random() * 60);
+                        autoTimeouts.push(charTimeoutId);
+                    } else {
+                        // Command finished typing, remove cursor and show output
+                        if (cursorSpan) cursorSpan.remove();
+
+                        // Show output
+                        cmd.output.forEach((line, index) => {
+                            const outputTimeoutId = setTimeout(() => {
+                                if (autoMode && !interactiveMode) {
+                                    addLine(line, 'terminal-output');
+                                }
+                            }, index * outputDelay);
+                            autoTimeouts.push(outputTimeoutId);
+                        });
+
+                        // Continue to next command
+                        const continueTimeoutId = setTimeout(() => {
+                            if (!autoMode || interactiveMode) return;
+                            commandIndex++;
+
+                            if (commandIndex < commands.length) {
+                                // Show next prompt immediately and repeat
+                                showNextCommandWithPrompt();
+                            } else {
+                                // Restart from beginning
+                                const restartTimeoutId = setTimeout(() => {
+                                    if (autoMode && !interactiveMode) {
+                                        terminal.innerHTML = '';
+                                        commandIndex = 0;
+                                        showCommand();
+                                    }
+                                }, commandDelay);
+                                autoTimeouts.push(restartTimeoutId);
+                            }
+                        }, cmd.output.length * outputDelay + 200);
+                        autoTimeouts.push(continueTimeoutId);
+                    }
+                }
+
+                typeNextChar();
+            }, commandDelay);
+            autoTimeouts.push(pauseTimeoutId);
+        }
+
         function showCommand() {
             // Stop if we're not in auto mode
             if (!autoMode || interactiveMode) {
@@ -870,20 +876,15 @@
                     autoTimeouts.push(timeoutId);
                 });
                 
-                // After all output is shown, move to next command
+                // After all output is shown, show next prompt immediately
                 const timeoutId = setTimeout(() => {
                     if (!autoMode || interactiveMode) return;
-                    
+
                     commandIndex++;
-                    
+
                     if (commandIndex < commands.length) {
-                        // Pause before next command
-                        const nextTimeoutId = setTimeout(() => {
-                            if (autoMode && !interactiveMode) {
-                                showCommand();
-                            }
-                        }, commandDelay);
-                        autoTimeouts.push(nextTimeoutId);
+                        // Use the new function to show prompt immediately and continue
+                        showNextCommandWithPrompt();
                     } else {
                         // Restart from beginning
                         const restartTimeoutId = setTimeout(() => {

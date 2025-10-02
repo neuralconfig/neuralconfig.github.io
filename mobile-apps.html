@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Apps | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modern Charcoal color scheme override */
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        .coming-soon-title {
+            color: #569cd6;
+            font-size: 2rem;
+        }
+
+        .coming-soon-subtitle {
+            color: #d4d4d4;
+            font-size: 1rem;
+        }
+
+        .skill-box {
+            background: rgba(37, 37, 38, 0.8);
+            border-color: #3e3e42;
+        }
+
+        .skill-box h3 {
+            color: #9cdcfe;
+        }
+
+        .skill-box p {
+            color: #d4d4d4;
+        }
+
+        .status-container {
+            background: rgba(86, 156, 214, 0.1);
+            border-color: rgba(86, 156, 214, 0.3);
+        }
+
+        .status-text {
+            color: #569cd6;
+        }
+
+        .footer {
+            border-top-color: #3e3e42;
+            color: #9cdcfe;
+        }
+
+        .nav-bar {
+            background: rgba(37, 37, 38, 0.95);
+            border-bottom-color: #569cd6;
+        }
+
+        .nav-logo {
+            color: #569cd6;
+        }
+
+        .brackets {
+            color: #9cdcfe;
+        }
+
+        .nav-link {
+            color: #9cdcfe;
+        }
+
+        .nav-link.active {
+            color: #569cd6;
+        }
+
+        .matrix-bg {
+            opacity: 0.05;
+        }
+
+        /* Override page-specific styles that use bright green */
+        .coming-soon-title {
+            color: #569cd6 !important;
+        }
+
+        .terminal-line {
+            color: #d4d4d4 !important;
+        }
+
+
+        .coming-soon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+        }
+
+        .coming-soon-title {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .coming-soon-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards 0.2s;
+        }
+
+        .coming-soon-description {
+            max-width: 800px;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards 0.4s;
+        }
+
+        .skills-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .skill-box {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .skill-box:nth-child(1) { animation-delay: 0.5s; }
+        .skill-box:nth-child(2) { animation-delay: 0.6s; }
+        .skill-box:nth-child(3) { animation-delay: 0.7s; }
+        .skill-box:nth-child(4) { animation-delay: 0.8s; }
+
+        .skill-box:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-desc {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="skills.html" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link">open source</a>
+                <a href="tools.html" class="nav-link">tools</a>
+                <a href="mobile-apps.html" class="nav-link active">mobile apps</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="coming-soon-container">
+            <h1 class="coming-soon-title">iOS Apps Coming Soon</h1>
+            <p class="coming-soon-subtitle">Building intelligent mobile experiences</p>
+
+            <p class="coming-soon-description">
+                NeuralConfig is expanding into iOS application development, bringing our expertise in
+                AI systems and network automation to the mobile platform. Our upcoming apps will leverage
+                the latest Apple technologies to deliver powerful, intelligent solutions.
+            </p>
+
+            <div class="skills-preview">
+                <div class="skill-box">
+                    <div class="skill-icon">🔷</div>
+                    <h3 class="skill-name">Swift</h3>
+                    <p class="skill-desc">Native iOS development using Apple's modern programming language</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">🧠</div>
+                    <h3 class="skill-name">Apple Intelligence</h3>
+                    <p class="skill-desc">Integrating AI capabilities with Apple's intelligence frameworks</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">🥽</div>
+                    <h3 class="skill-name">ARKit</h3>
+                    <p class="skill-desc">Augmented reality experiences for immersive applications</p>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">❤️</div>
+                    <h3 class="skill-name">HealthKit</h3>
+                    <p class="skill-desc">Health and fitness data integration for wellness applications</p>
+                </div>
+            </div>
+
+            <div class="terminal" style="margin-top: 3rem; max-width: 800px;">
+                <div class="terminal-line"><span class="terminal-prompt">$</span> ls -la mobile-apps/</div>
+                <div class="terminal-line" style="margin-left: 2rem; opacity: 0.7;">drwxr-xr-x  2 neural  staff   64 Jan 15 2025 .</div>
+                <div class="terminal-line" style="margin-left: 2rem; opacity: 0.7;">drwxr-xr-x  8 neural  staff  256 Jan 15 2025 ..</div>
+                <div class="terminal-line" style="margin-left: 2rem; color: var(--accent);">-rw-r--r--  1 neural  staff 2048 Jan 15 2025 STATUS.txt</div>
+                <div class="terminal-line"><span class="terminal-prompt">$</span> cat mobile-apps/STATUS.txt</div>
+                <div class="terminal-line" style="margin-left: 2rem; color: var(--neon-green);">Status: In Development</div>
+                <div class="terminal-line" style="margin-left: 2rem; opacity: 0.8;">Target Platform: iOS 17+</div>
+                <div class="terminal-line" style="margin-left: 2rem; opacity: 0.8;">Development Tools: Xcode, Swift, SwiftUI</div>
+                <div class="terminal-line" style="margin-left: 2rem; opacity: 0.8;">Focus Areas: AI Integration, Network Tools, Productivity</div>
+                <div class="terminal-line terminal-cursor"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        © 2025 NeuralConfig LLC
+    </footer>
+
+    <script src="matrix.js"></script>
+</body>
+</html>
