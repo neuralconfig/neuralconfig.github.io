@@ -5,10 +5,343 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modern Charcoal theme for about page */
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        .matrix-bg {
+            opacity: 0.02;
+        }
+
+        .nav-bar {
+            background: rgba(37, 37, 38, 0.95);
+            border-bottom-color: #569cd6;
+        }
+
+        .nav-logo {
+            color: #569cd6;
+        }
+
+        .brackets {
+            color: #9cdcfe;
+        }
+
+        .nav-link {
+            color: #9cdcfe;
+        }
+
+        .nav-link.active {
+            color: #569cd6;
+        }
+
+        .footer {
+            border-top-color: #3e3e42;
+            color: #9cdcfe;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #9cdcfe;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-bio {
+            font-size: 1.05rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-top: 2rem;
+        }
+
+        /* What I Do Cards */
+        .what-i-do {
+            margin: 4rem 0;
+        }
+
+        .section-heading {
+            font-size: 1.8rem;
+            color: #569cd6;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #569cd6;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(86, 156, 214, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-content {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Technologies Section */
+        .tech-section {
+            margin: 4rem 0;
+        }
+
+        .tech-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .tech-category-title {
+            font-size: 1.2rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 0 12px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Verdana', 'DejaVu Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 3px;
+            background: #569cd6;
+            color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+
+        .tech-badge.ai { background: #c586c0; }
+        .tech-badge.network { background: #4ec9b0; }
+        .tech-badge.cloud { background: #569cd6; }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-category {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .cert-category h3 {
+            color: #569cd6;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            padding: 0.5rem 0;
+            color: #d4d4d4;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #3e3e42;
+        }
+
+        .cert-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cert-list li::before {
+            content: '✓ ';
+            color: #569cd6;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Experience Highlights */
+        .experience-section {
+            background: #252526;
+            border-left: 4px solid #569cd6;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 4px;
+        }
+
+        .experience-section h2 {
+            color: #569cd6;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .experience-list li {
+            color: #d4d4d4;
+            font-size: 1.05rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-list li::before {
+            content: '▸';
+            color: #569cd6;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Approach Cards */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .approach-card {
+            background: #2d2d30;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .approach-number {
+            font-size: 2rem;
+            color: #569cd6;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .approach-card h3 {
+            color: #569cd6;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-card p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, #252526 0%, #2d2d30 100%);
+            border: 2px solid #569cd6;
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 4rem 0 2rem;
+        }
+
+        .contact-cta h2 {
+            color: #569cd6;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            color: #d4d4d4;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-cta a {
+            display: inline-block;
+            background: #569cd6;
+            color: #1e1e1e;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-cta a:hover {
+            background: #9cdcfe;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #3e3e42, transparent);
+            margin: 4rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-heading {
+                font-size: 1.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-    
+
     <nav class="nav-bar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
@@ -23,163 +356,186 @@
     </nav>
 
     <div class="container">
-        <div class="terminal" style="margin-bottom: 3rem;">
-            <div class="terminal-line"><span class="terminal-prompt">$</span> whoami</div>
-            <div class="terminal-line" style="margin-left: 2rem;">AI & Infrastructure Architect</div>
-            <div class="terminal-line" style="margin-left: 2rem;">20+ years network infrastructure | Now building intelligent systems</div>
-            <div class="terminal-line" style="margin-left: 2rem;">Where deep networking expertise meets artificial intelligence innovation</div>
-            <div class="terminal-line" style="margin-left: 2rem;">Building intelligent systems including Agentic AI, RAG applications, and network automation</div>
-            <div class="terminal-line terminal-cursor"></div>
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">AI & Infrastructure Architect</h1>
+            <p class="hero-subtitle">Building intelligent systems where deep networking expertise meets artificial intelligence</p>
+            <p class="hero-bio">
+                Combining 20+ years of enterprise network infrastructure experience with modern AI development
+                to create production-ready intelligent automation systems. Specializing in the intersection of
+                agentic AI, cybersecurity, and network automation.
+            </p>
         </div>
 
-        <h1 class="page-title">
-            <span class="terminal-prompt">$</span> cat skills.yaml
-        </h1>
-        
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3><span class="brackets">[</span>AI & Development<span class="brackets">]</span></h3>
-                <ul class="skill-list">
-                    <li>Agentic AI System Architecture</li>
-                    <li>Tool-Calling & Autonomous Agent Development</li>
-                    <li>RAG (Retrieval-Augmented Generation)</li>
-                    <li>LLM Integration (OpenAI/Anthropic/Claude)</li>
-                    <li>LangChain & Agent Frameworks</li>
-                    <li>Vector Databases & Embeddings</li>
-                    <li>Python Development & API Design</li>
-                    <li>FastAPI & REST APIs</li>
-                    <li>Swift/iOS Development (ARKit, HealthKit)</li>
-                    <li>JavaScript & Node.js</li>
-                    <li>System Architecture & Design</li>
-                    <li>SDK Development</li>
-                </ul>
+        <!-- What I Do -->
+        <section class="what-i-do">
+            <h2 class="section-heading">What I Do</h2>
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h3 class="card-title">Agentic AI Systems</h3>
+                    <p class="card-content">
+                        Building autonomous AI agents with tool-calling capabilities, RAG implementations,
+                        and LLM integration. From proof-of-concept to production deployment with Claude,
+                        OpenAI, and custom agent frameworks.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="card-title">Network Infrastructure</h3>
+                    <p class="card-content">
+                        Enterprise-grade network architecture with 20+ years experience. CISSP-certified
+                        expertise in zero-trust security, wireless systems (RUCKUS specialist), routing protocols,
+                        and network automation.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="card-title">Pre-Sales Engineering</h3>
+                    <p class="card-content">
+                        15+ years leading Fortune 500 engagements with executive-level presentations,
+                        technical solution architecture, and global opportunity management. Bridge between
+                        complex technical solutions and business value.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Core Technologies -->
+        <section class="tech-section">
+            <h2 class="section-heading">Core Technologies</h2>
+
+            <div class="tech-category">
+                <h3 class="tech-category-title">AI & Development</h3>
+                <div class="tech-badges">
+                    <span class="tech-badge ai">Python</span>
+                    <span class="tech-badge ai">FastAPI</span>
+                    <span class="tech-badge ai">Claude</span>
+                    <span class="tech-badge ai">OpenAI</span>
+                    <span class="tech-badge ai">RAG</span>
+                    <span class="tech-badge ai">Vector Databases</span>
+                    <span class="tech-badge ai">LangChain</span>
+                    <span class="tech-badge ai">Swift/iOS</span>
+                    <span class="tech-badge ai">System Architecture</span>
+                </div>
             </div>
 
-            <div class="skill-category">
-                <h3><span class="brackets">[</span>Network & Security<span class="brackets">]</span></h3>
-                <ul class="skill-list">
-                    <li>Cybersecurity & CISSP</li>
-                    <li>Zero Trust Architecture</li>
-                    <li>Network Security & Firewalls</li>
-                    <li>Enterprise Routing & Switching</li>
-                    <li>BGP, OSPF, MPLS, SD-WAN</li>
-                    <li>Wireless Architecture (RUCKUS Specialist)</li>
-                    <li>Network Automation (Python/Ansible)</li>
-                    <li>Zero-Touch Provisioning (ZTP)</li>
-                    <li>RUCKUS One & SmartZone APIs</li>
-                    <li>VPN & Remote Access</li>
-                    <li>IPv6 Architecture</li>
-                    <li>Protocol Analysis & Troubleshooting</li>
-                </ul>
+            <div class="tech-category">
+                <h3 class="tech-category-title">Network & Security</h3>
+                <div class="tech-badges">
+                    <span class="tech-badge network">CISSP</span>
+                    <span class="tech-badge network">Zero Trust</span>
+                    <span class="tech-badge network">BGP/OSPF/MPLS</span>
+                    <span class="tech-badge network">RUCKUS</span>
+                    <span class="tech-badge network">Wireless Architecture</span>
+                    <span class="tech-badge network">Network Automation</span>
+                    <span class="tech-badge network">ZTP</span>
+                    <span class="tech-badge network">Protocol Analysis</span>
+                </div>
             </div>
 
-            <div class="skill-category">
-                <h3><span class="brackets">[</span>Cloud & Infrastructure<span class="brackets">]</span></h3>
-                <ul class="skill-list">
-                    <li>Cloud Platforms (AWS/GCP/Azure)</li>
-                    <li>Docker & Kubernetes</li>
-                    <li>DevOps & CI/CD Pipelines</li>
-                    <li>Infrastructure as Code (Terraform)</li>
-                    <li>Linux System Administration</li>
-                    <li>Database Design (SQL/NoSQL)</li>
-                    <li>Monitoring (Prometheus/Grafana)</li>
-                    <li>High Availability Design</li>
-                    <li>Load Balancing & Performance</li>
-                    <li>Google Cloud Functions</li>
-                </ul>
+            <div class="tech-category">
+                <h3 class="tech-category-title">Cloud & Infrastructure</h3>
+                <div class="tech-badges">
+                    <span class="tech-badge cloud">AWS</span>
+                    <span class="tech-badge cloud">GCP</span>
+                    <span class="tech-badge cloud">Azure</span>
+                    <span class="tech-badge cloud">Kubernetes</span>
+                    <span class="tech-badge cloud">Docker</span>
+                    <span class="tech-badge cloud">Terraform</span>
+                    <span class="tech-badge cloud">CI/CD</span>
+                    <span class="tech-badge cloud">Prometheus</span>
+                    <span class="tech-badge cloud">Grafana</span>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <h2 style="color: var(--accent); margin: 3rem 0 2rem 0; font-size: 1.5rem;">
-            <span class="terminal-prompt">$</span> cat leadership.yaml
-        </h2>
-        
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3><span class="brackets">[</span>Sales Engineering & Executive Leadership<span class="brackets">]</span></h3>
-                <ul class="skill-list">
-                    <li>15+ years pre-sales systems engineering</li>
-                    <li>Executive-level presentations & C-suite engagement</li>
-                    <li>VP-level relationship management</li>
-                    <li>Global opportunity & deal management</li>
-                    <li>Technical solution architecture</li>
-                    <li>RFP/RFI response leadership</li>
-                    <li>Proof of concept development</li>
-                    <li>Public speaking & technical webinars</li>
-                    <li>Cross-functional team collaboration</li>
-                    <li>Product direction influence</li>
-                </ul>
+        <hr class="section-divider">
+
+        <!-- Experience Highlights -->
+        <section class="experience-section">
+            <h2>Experience Highlights</h2>
+            <ul class="experience-list">
+                <li>20+ years designing and implementing enterprise network infrastructure</li>
+                <li>15+ years pre-sales systems engineering with Fortune 500 customers</li>
+                <li>Led global enterprise deployments across healthcare, education, and enterprise sectors</li>
+                <li>Built production autonomous AI agents for support automation and network provisioning</li>
+                <li>RUCKUS wireless architecture specialist with extensive SmartZone and RUCKUS One experience</li>
+                <li>Developed open source tools used by network engineers worldwide</li>
+            </ul>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Certifications -->
+        <section>
+            <h2 class="section-heading">Certifications & Education</h2>
+            <div class="cert-grid">
+                <div class="cert-category">
+                    <h3>Security & AI</h3>
+                    <ul class="cert-list">
+                        <li>CISSP (ISC²)</li>
+                        <li>Machine Learning Specialization (Stanford/DeepLearning.AI)</li>
+                        <li>Hugging Face Agents Course</li>
+                        <li>Azure AI Fundamentals</li>
+                    </ul>
+                </div>
+
+                <div class="cert-category">
+                    <h3>Cloud & Networking</h3>
+                    <ul class="cert-list">
+                        <li>Kubernetes and Cloud Native Associate (CNCF)</li>
+                        <li>CCNP (Cisco)</li>
+                        <li>Certified Wireless Design Professional (CWDP)</li>
+                        <li>Certified Wireless Security Professional (CWSP)</li>
+                        <li>Ekahau Certified Survey Engineer</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <div class="skill-category">
-                <h3><span class="brackets">[</span>Strategic Business<span class="brackets">]</span></h3>
-                <ul class="skill-list">
-                    <li>ROI/TCO analysis & business case development</li>
-                    <li>Competitive positioning & market analysis</li>
-                    <li>Solution value articulation</li>
-                    <li>Strategic account planning</li>
-                    <li>Partner ecosystem navigation</li>
-                    <li>Contract negotiation support</li>
-                    <li>Sales enablement & training programs</li>
-                    <li>Customer success advocacy</li>
-                    <li>Technical mentorship</li>
-                    <li>Stakeholder alignment</li>
-                </ul>
+        <hr class="section-divider">
+
+        <!-- Approach -->
+        <section>
+            <h2 class="section-heading">Approach</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-number">01</div>
+                    <h3>Production-Ready AI</h3>
+                    <p>
+                        Production systems need more than AI models—they require infrastructure,
+                        security, and operational reliability. Building solutions that work from
+                        network architectures to AI-driven automation.
+                    </p>
+                </div>
+
+                <div class="approach-card">
+                    <div class="approach-number">02</div>
+                    <h3>Full-Stack Expertise</h3>
+                    <p>
+                        From low-level network protocols and RF engineering to AI orchestration
+                        and agent development. This breadth enables secure, scalable, production-ready systems.
+                    </p>
+                </div>
+
+                <div class="approach-card">
+                    <div class="approach-number">03</div>
+                    <h3>Practical Solutions</h3>
+                    <p>
+                        AI-powered network tools, zero-trust architectures, enterprise automation—practical
+                        solutions for real-world problems with security and reliability built in.
+                    </p>
+                </div>
             </div>
-        </div>
+        </section>
 
-
-        <h2 style="color: var(--accent); margin: 3rem 0 2rem 0; font-size: 1.5rem;">
-            <span class="terminal-prompt">$</span> ls -la certifications/
-        </h2>
-        
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3><span class="brackets">[</span>Security & AI<span class="brackets">]</span></h3>
-                <ul class="skill-list">
-                    <li>CISSP (ISC2) - Active</li>
-                    <li>Machine Learning Specialization (Stanford/DeepLearning.AI)</li>
-                    <li>Advanced Learning Algorithms (Stanford)</li>
-                    <li>Hugging Face Agents Course</li>
-                    <li>Microsoft Azure AI Fundamentals</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3><span class="brackets">[</span>Cloud & Networking<span class="brackets">]</span></h3>
-                <ul class="skill-list">
-                    <li>Kubernetes and Cloud Native Associate (CNCF)</li>
-                    <li>Microsoft Azure Fundamentals</li>
-                    <li>CCNP (Cisco)</li>
-                    <li>Certified Wireless Design Professional (CWDP)</li>
-                    <li>Certified Wireless Security Professional (CWSP)</li>
-                    <li>Ekahau Certified Survey Engineer</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="about-section" style="margin-top: 3rem; padding: 2rem; background: rgba(5,5,5,0.5); border-radius: 4px;">
-            <h2 style="color: var(--accent); margin-bottom: 1rem;">Philosophy & Approach</h2>
-            <p style="margin-bottom: 1rem; line-height: 1.8;">
-                We specialize in <strong style="color: var(--neon-green);">building intelligent automation systems</strong> that combine
-                AI capabilities with robust network infrastructure. Our positioning brings 20+ years of deep infrastructure experience
-                together with modern AI development—helping organizations bridge the gap between innovation and production deployment.
-            </p>
-            <p style="margin-bottom: 1rem; line-height: 1.8;">
-                <strong style="color: var(--neon-green);">Why this matters:</strong> Production systems need more than just AI models—they
-                require solid infrastructure, security, networking, and operational reliability. We help bridge this gap, designing solutions
-                that work from high-availability network architectures to AI-driven automation tools.
-            </p>
-            <p style="margin-bottom: 1rem; line-height: 1.8;">
-                Our experience spans the full stack: low-level network protocols, RF engineering, and data center design through to
-                AI orchestration, agent development, and automation frameworks. This breadth enables practical systems that are
-                secure, scalable, and production-ready.
-            </p>
-            <p style="line-height: 1.8;">
-                <strong style="color: var(--neon-green);">Focus:</strong> Intelligent automation at the intersection of AI, cybersecurity,
-                and network infrastructure. Whether building AI-powered network tools, designing zero-trust architectures, or automating
-                enterprise operations, we deliver practical solutions that solve real-world problems with security and reliability in mind.
-            </p>
+        <!-- Contact CTA -->
+        <div class="contact-cta">
+            <h2>Let's Work Together</h2>
+            <p>Interested in AI systems, network automation, or consulting services?</p>
+            <a href="mailto:contact@neuralconfig.com">Get in Touch</a>
         </div>
     </div>
 

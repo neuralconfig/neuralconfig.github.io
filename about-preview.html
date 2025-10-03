@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page Preview | neuralconfig</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Roboto+Mono:wght@400;500;700&family=Inconsolata:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=Raleway:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Control Panel (Fixed) */
+        .control-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #252526;
+            border-bottom: 2px solid #3e3e42;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .control-title {
+            color: #569cd6;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .control-label {
+            color: #9cdcfe;
+            font-size: 0.85rem;
+            min-width: 100px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .ctrl-btn {
+            background: #1e1e1e;
+            border: 1px solid #3e3e42;
+            color: #9cdcfe;
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .ctrl-btn:hover {
+            background: #2d2d30;
+            border-color: #569cd6;
+        }
+
+        .ctrl-btn.active {
+            background: #569cd6;
+            color: #1e1e1e;
+            border-color: #569cd6;
+        }
+
+        /* Preview Content */
+        .preview-container {
+            margin-top: 220px;
+            background: var(--bg-color, #1e1e1e);
+            color: var(--text-color, #d4d4d4);
+            min-height: calc(100vh - 220px);
+            font-family: var(--body-font, 'IBM Plex Mono'), monospace;
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            background: rgba(37, 37, 38, 0.95);
+            border-bottom: 1px solid #569cd6;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            color: var(--logo-color, #569cd6);
+            text-decoration: none;
+            font-family: var(--logo-font, 'IBM Plex Mono'), monospace;
+            font-weight: var(--logo-weight, 500);
+        }
+
+        .brackets {
+            color: var(--bracket-color, #9cdcfe);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #9cdcfe;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* About Page Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #9cdcfe;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-bio {
+            font-size: 1.05rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-top: 2rem;
+        }
+
+        .section-heading {
+            font-size: 1.8rem;
+            color: #569cd6;
+            margin: 3rem 0 2rem 0;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #569cd6;
+            transform: translateY(-4px);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-content {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .tech-category {
+            margin-bottom: 2rem;
+        }
+
+        .tech-category-title {
+            font-size: 1.2rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 0 12px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Verdana', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 3px;
+            background: #569cd6;
+            color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .tech-badge.ai { background: #c586c0; }
+        .tech-badge.network { background: #4ec9b0; }
+
+        /* Font Classes */
+        .font-ibm-plex { font-family: 'IBM Plex Mono', monospace; }
+        .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .font-fira { font-family: 'Fira Code', monospace; }
+        .font-source { font-family: 'Source Code Pro', monospace; }
+        .font-space { font-family: 'Space Mono', monospace; }
+        .font-roboto { font-family: 'Roboto Mono', monospace; }
+        .font-inconsolata { font-family: 'Inconsolata', monospace; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-work-sans { font-family: 'Work Sans', sans-serif; }
+        .font-raleway { font-family: 'Raleway', sans-serif; }
+        .font-archivo { font-family: 'Archivo', sans-serif; }
+        .font-dm-sans { font-family: 'DM Sans', sans-serif; }
+
+        /* Logo Weight Classes */
+        .weight-400 { --logo-weight: 400; }
+        .weight-500 { --logo-weight: 500; }
+        .weight-600 { --logo-weight: 600; }
+        .weight-700 { --logo-weight: 700; }
+
+        /* Logo Color Variables */
+        .logo-blue { --logo-color: #569cd6; --bracket-color: #9cdcfe; }
+        .logo-cyan { --logo-color: #00f5ff; --bracket-color: #808080; }
+        .logo-green { --logo-color: #39ff14; --bracket-color: #808080; }
+        .logo-teal { --logo-color: #00ff9d; --bracket-color: #808080; }
+        .logo-purple { --logo-color: #c586c0; --bracket-color: #808080; }
+        .logo-white { --logo-color: #ffffff; --bracket-color: #808080; }
+        .logo-orange { --logo-color: #ff9d00; --bracket-color: #808080; }
+        .logo-pink { --logo-color: #ff2a6d; --bracket-color: #808080; }
+
+        /* Gradient logos need special handling */
+        .logo-gradient-blue .nav-logo {
+            background: linear-gradient(135deg, #569cd6 0%, #9cdcfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-gradient-cyber .nav-logo {
+            background: linear-gradient(135deg, #00f5ff 0%, #ff2a6d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-gradient-matrix .nav-logo {
+            background: linear-gradient(135deg, #39ff14 0%, #00ff9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            .control-panel {
+                max-height: 300px;
+            }
+            .preview-container {
+                margin-top: 320px;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <div class="control-title">About Page Style Preview</div>
+
+        <div class="control-row">
+            <div class="control-label">Logo Color:</div>
+            <div class="btn-group">
+                <button class="ctrl-btn active" data-logo-color="blue">VSCode Blue</button>
+                <button class="ctrl-btn" data-logo-color="cyan">Cyber Cyan</button>
+                <button class="ctrl-btn" data-logo-color="green">Matrix Green</button>
+                <button class="ctrl-btn" data-logo-color="teal">Bright Teal</button>
+                <button class="ctrl-btn" data-logo-color="purple">AI Purple</button>
+                <button class="ctrl-btn" data-logo-color="white">White</button>
+                <button class="ctrl-btn" data-logo-color="gradient-blue">Gradient Blue</button>
+                <button class="ctrl-btn" data-logo-color="gradient-cyber">Gradient Cyber</button>
+            </div>
+        </div>
+
+        <div class="control-row">
+            <div class="control-label">Logo Font:</div>
+            <div class="btn-group">
+                <button class="ctrl-btn active" data-logo-font="ibm-plex">IBM Plex Mono</button>
+                <button class="ctrl-btn" data-logo-font="jetbrains">JetBrains</button>
+                <button class="ctrl-btn" data-logo-font="fira">Fira Code</button>
+                <button class="ctrl-btn" data-logo-font="inter">Inter</button>
+                <button class="ctrl-btn" data-logo-font="poppins">Poppins</button>
+                <button class="ctrl-btn" data-logo-font="work-sans">Work Sans</button>
+            </div>
+        </div>
+
+        <div class="control-row">
+            <div class="control-label">Logo Weight:</div>
+            <div class="btn-group">
+                <button class="ctrl-btn" data-logo-weight="400">Regular</button>
+                <button class="ctrl-btn active" data-logo-weight="500">Medium</button>
+                <button class="ctrl-btn" data-logo-weight="600">Semi-Bold</button>
+                <button class="ctrl-btn" data-logo-weight="700">Bold</button>
+            </div>
+        </div>
+
+        <div class="control-row">
+            <div class="control-label">Body Font:</div>
+            <div class="btn-group">
+                <button class="ctrl-btn active" data-body-font="ibm-plex">IBM Plex Mono</button>
+                <button class="ctrl-btn" data-body-font="jetbrains">JetBrains</button>
+                <button class="ctrl-btn" data-body-font="fira">Fira Code</button>
+                <button class="ctrl-btn" data-body-font="source">Source Code Pro</button>
+                <button class="ctrl-btn" data-body-font="inter">Inter (Sans)</button>
+                <button class="ctrl-btn" data-body-font="poppins">Poppins (Sans)</button>
+                <button class="ctrl-btn" data-body-font="work-sans">Work Sans (Sans)</button>
+                <button class="ctrl-btn" data-body-font="dm-sans">DM Sans</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Content -->
+    <div class="preview-container" id="preview">
+        <!-- Nav Bar -->
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+                <div class="nav-links">
+                    <a href="#" class="nav-link">about</a>
+                    <a href="#" class="nav-link">open source</a>
+                    <a href="#" class="nav-link">tools</a>
+                    <a href="#" class="nav-link">mobile apps</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h1 class="hero-title">AI & Infrastructure Architect</h1>
+                <p class="hero-subtitle">Building intelligent systems where deep networking expertise meets artificial intelligence</p>
+                <p class="hero-bio">
+                    Combining 20+ years of enterprise network infrastructure experience with modern AI development
+                    to create production-ready intelligent automation systems. Specializing in the intersection of
+                    agentic AI, cybersecurity, and network automation.
+                </p>
+            </div>
+
+            <!-- What I Do -->
+            <section>
+                <h2 class="section-heading">What I Do</h2>
+                <div class="cards-grid">
+                    <div class="info-card">
+                        <h3 class="card-title">Agentic AI Systems</h3>
+                        <p class="card-content">
+                            Building autonomous AI agents with tool-calling capabilities, RAG implementations,
+                            and LLM integration. From proof-of-concept to production deployment with Claude,
+                            OpenAI, and custom agent frameworks.
+                        </p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3 class="card-title">Network Infrastructure</h3>
+                        <p class="card-content">
+                            Enterprise-grade network architecture with 20+ years experience. CISSP-certified
+                            expertise in zero-trust security, wireless systems (RUCKUS specialist), routing protocols,
+                            and network automation.
+                        </p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3 class="card-title">Pre-Sales Engineering</h3>
+                        <p class="card-content">
+                            15+ years leading Fortune 500 engagements with executive-level presentations,
+                            technical solution architecture, and global opportunity management. Bridge between
+                            complex technical solutions and business value.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Core Technologies -->
+            <section>
+                <h2 class="section-heading">Core Technologies</h2>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">AI & Development</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge ai">Python</span>
+                        <span class="tech-badge ai">FastAPI</span>
+                        <span class="tech-badge ai">Claude</span>
+                        <span class="tech-badge ai">OpenAI</span>
+                        <span class="tech-badge ai">RAG</span>
+                        <span class="tech-badge ai">Vector Databases</span>
+                        <span class="tech-badge ai">LangChain</span>
+                        <span class="tech-badge ai">Swift/iOS</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Network & Security</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge network">CISSP</span>
+                        <span class="tech-badge network">Zero Trust</span>
+                        <span class="tech-badge network">BGP/OSPF/MPLS</span>
+                        <span class="tech-badge network">RUCKUS</span>
+                        <span class="tech-badge network">Wireless Architecture</span>
+                        <span class="tech-badge network">Network Automation</span>
+                        <span class="tech-badge network">ZTP</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Cloud & Infrastructure</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">GCP</span>
+                        <span class="tech-badge">Azure</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">CI/CD</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sample Paragraph -->
+            <section style="margin-top: 3rem; background: #252526; padding: 2rem; border-radius: 8px; border-left: 4px solid #569cd6;">
+                <h3 style="color: #569cd6; margin-bottom: 1rem; font-size: 1.3rem;">Sample Paragraph</h3>
+                <p style="color: #b0b0b0; line-height: 1.7; margin-bottom: 1rem;">
+                    Production systems need more than AI modelsthey require infrastructure, security, and operational
+                    reliability. We bridge this gap with solutions that work from network architectures to AI-driven automation.
+                    From low-level network protocols and RF engineering to AI orchestration and agent development, this
+                    breadth enables secure, scalable, production-ready systems.
+                </p>
+                <p style="color: #d4d4d4; line-height: 1.7;">
+                    <strong style="color: #569cd6;">Focus:</strong> AI-powered network tools " Zero-trust architectures "
+                    Enterprise automation " Practical solutions for real-world problems with security and reliability built in.
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const preview = document.getElementById('preview');
+
+        // Logo Color
+        document.querySelectorAll('[data-logo-color]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-logo-color]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const color = this.dataset.logoColor;
+
+                // Remove all logo color classes
+                preview.classList.remove('logo-blue', 'logo-cyan', 'logo-green', 'logo-teal',
+                    'logo-purple', 'logo-white', 'logo-orange', 'logo-pink',
+                    'logo-gradient-blue', 'logo-gradient-cyber', 'logo-gradient-matrix');
+
+                // Add new color class
+                preview.classList.add('logo-' + color);
+            });
+        });
+
+        // Logo Font
+        document.querySelectorAll('[data-logo-font]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-logo-font]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const font = this.dataset.logoFont;
+                const logoEl = document.querySelector('.nav-logo');
+
+                // Remove all font classes from logo
+                logoEl.classList.remove('font-ibm-plex', 'font-jetbrains', 'font-fira',
+                    'font-inter', 'font-poppins', 'font-work-sans', 'font-source');
+
+                // Add new font class
+                logoEl.classList.add('font-' + font);
+            });
+        });
+
+        // Logo Weight
+        document.querySelectorAll('[data-logo-weight]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-logo-weight]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const weight = this.dataset.logoWeight;
+
+                // Remove all weight classes
+                preview.classList.remove('weight-400', 'weight-500', 'weight-600', 'weight-700');
+
+                // Add new weight class
+                preview.classList.add('weight-' + weight);
+            });
+        });
+
+        // Body Font
+        document.querySelectorAll('[data-body-font]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-body-font]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const font = this.dataset.bodyFont;
+
+                // Update CSS variable for body font
+                if (font === 'ibm-plex') {
+                    preview.style.setProperty('--body-font', "'IBM Plex Mono', monospace");
+                } else if (font === 'jetbrains') {
+                    preview.style.setProperty('--body-font', "'JetBrains Mono', monospace");
+                } else if (font === 'fira') {
+                    preview.style.setProperty('--body-font', "'Fira Code', monospace");
+                } else if (font === 'source') {
+                    preview.style.setProperty('--body-font', "'Source Code Pro', monospace");
+                } else if (font === 'inter') {
+                    preview.style.setProperty('--body-font', "'Inter', sans-serif");
+                } else if (font === 'poppins') {
+                    preview.style.setProperty('--body-font', "'Poppins', sans-serif");
+                } else if (font === 'work-sans') {
+                    preview.style.setProperty('--body-font', "'Work Sans', sans-serif");
+                } else if (font === 'dm-sans') {
+                    preview.style.setProperty('--body-font', "'DM Sans', sans-serif");
+                }
+            });
+        });
+
+        // Initialize with defaults
+        preview.classList.add('logo-blue', 'weight-500');
+    </script>
+</body>
+</html>
