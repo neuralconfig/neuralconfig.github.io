@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>neuralconfig | AI Systems Engineer</title>
+    <title>neuralconfig | AI & Infrastructure Architect</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
@@ -280,12 +280,14 @@
         let autoTimeouts = [];
         let interactiveTimeout = null;
         
-        // Welcome banner content
-        const securityBanner = [
+        // Welcome banner content - different versions for mobile and desktop
+        const isMobile = window.innerWidth < 768;
+
+        const desktopBanner = [
             '████████████████████████████████████████████████████████████████████████████████',
             '',
             '                              NEURALCONFIG LLC',
-            '                 AI & Network Consulting  |  Raleigh, NC',
+            '                         AI & Network Consulting',
             '',
             '████████████████████████████████████████████████████████████████████████████████',
             '',
@@ -302,26 +304,38 @@
             '',
             '████████████████████████████████████████████████████████████████████████████████'
         ];
+
+        const mobileBanner = [
+            '═══════════════════════════════════════',
+            '',
+            '         NEURALCONFIG LLC',
+            '    AI & Network Consulting',
+            '',
+            '═══════════════════════════════════════',
+            '',
+            '<span class="output-success">System Status:</span>',
+            '',
+            '[AI SYSTEMS]......... <span class="output-success">ONLINE</span>',
+            '[AUTOMATION]......... <span class="output-success">ACTIVE</span>',
+            '[MOBILE APPS]........ <span class="output-success">DEV</span>',
+            '[CONSULTING]......... <span class="output-success">READY</span>',
+            '',
+            'contact@neuralconfig.com',
+            'github.com/neuralconfig',
+            '',
+            '═══════════════════════════════════════'
+        ];
+
+        const securityBanner = isMobile ? mobileBanner : desktopBanner;
         
         // Terminal commands and outputs
         const commands = [
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' cat company-info.txt',
-                output: [
-                    '<span class="output-highlight">NeuralConfig LLC</span>',
-                    'Location: Raleigh, NC',
-                    'Services: AI & Network Consulting, Open Source Tools, Mobile Apps',
-                    'Contact: contact@neuralconfig.com',
-                    'Web: neuralconfig.com | GitHub: github.com/neuralconfig'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
                 command: ' whoami',
                 output: [
-                    '<span class="output-highlight">Principal Architect - AI Systems & Cybersecurity</span>',
-                    'Specializing in AI development, network automation, and security',
+                    '<span class="output-highlight">AI & Infrastructure Architect</span>',
+                    'Specializing in AI systems, network automation, and cybersecurity',
                     '20+ years network infrastructure experience',
                     'Building intelligent systems at the intersection of AI and networking'
                 ]
@@ -438,6 +452,101 @@
                     '  "mobile-apps": "in-development"',
                     '}'
                 ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' cat ruckus-ztp/agent.py | head -20',
+                output: [
+                    '<span class="output-dim"># AI Agent for RUCKUS Zero-Touch Provisioning</span>',
+                    '<span class="output-dim">from anthropic import Anthropic</span>',
+                    '<span class="output-dim">import json</span>',
+                    '',
+                    '<span class="output-dim">def configure_device(device_info):</span>',
+                    '<span class="output-dim">    """Use AI to generate optimal configuration"""</span>',
+                    '<span class="output-dim">    client = Anthropic()</span>',
+                    '<span class="output-dim">    response = client.messages.create(</span>',
+                    '<span class="output-dim">        model="claude-3-5-sonnet-20241022",</span>',
+                    '<span class="output-dim">        tools=[network_config_tool],</span>',
+                    '<span class="output-dim">        messages=[{</span>',
+                    '<span class="output-dim">            "role": "user",</span>',
+                    '<span class="output-dim">            "content": f"Configure {device_info}"</span>',
+                    '<span class="output-dim">        }]</span>',
+                    '<span class="output-dim">    )</span>',
+                    '',
+                    '<span class="output-success">✓ Autonomous AI configuration engine</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' kubectl get pods -n production',
+                output: [
+                    'NAME                          READY   STATUS    RESTARTS   AGE',
+                    'ai-agent-7d9f8c4b5-x9k2m      1/1     Running   0          15d',
+                    'vector-db-6c8d7f9b4-p7q3n     1/1     Running   0          15d',
+                    'api-gateway-5b7c8d9f2-m4r5t   1/1     Running   0          15d',
+                    'rag-service-8f9d2c3b7-k6p8w   1/1     Running   0          12d',
+                    '',
+                    '<span class="output-success">All systems operational</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' tail -f /var/log/ai-agent/activity.log',
+                output: [
+                    '<span class="output-dim">2025-01-15 14:23:45</span> <span class="output-success">[INFO]</span> Processing support ticket #4521',
+                    '<span class="output-dim">2025-01-15 14:23:46</span> <span class="output-success">[INFO]</span> RAG context retrieved: 15 documents',
+                    '<span class="output-dim">2025-01-15 14:23:47</span> <span class="output-success">[INFO]</span> Agent decision: route to network team',
+                    '<span class="output-dim">2025-01-15 14:23:48</span> <span class="output-success">[INFO]</span> Ticket categorized: L3 routing issue',
+                    '<span class="output-dim">2025-01-15 14:23:49</span> <span class="output-success">[INFO]</span> Response generated and validated',
+                    '',
+                    '<span class="output-dim">^C</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' terraform plan -out=infrastructure.tfplan',
+                output: [
+                    '<span class="output-info">Terraform v1.6.0</span>',
+                    '<span class="output-dim">Refreshing state... [36s elapsed]</span>',
+                    '',
+                    '<span class="output-success">Plan: 3 to add, 0 to change, 0 to destroy.</span>',
+                    '',
+                    '  + google_cloud_function.ai_agent',
+                    '  + google_cloud_run.api_service',
+                    '  + google_compute_instance.monitoring',
+                    '',
+                    '<span class="output-dim">Saved the plan to: infrastructure.tfplan</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' cat osticket-agent/stats.json | jq .',
+                output: [
+                    '{',
+                    '  "tickets_processed": <span class="output-success">2,847</span>,',
+                    '  "avg_response_time": "<span class="output-success">45s</span>",',
+                    '  "accuracy_rate": "<span class="output-success">94.3%</span>",',
+                    '  "categories": {',
+                    '    "network": 1203,',
+                    '    "security": 892,',
+                    '    "application": 752',
+                    '  },',
+                    '  "status": "<span class="output-success">operational</span>"',
+                    '}'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' cat testimonial-2.txt',
+                output: [
+                    '<span class="output-highlight">Enterprise Network Deployment:</span>',
+                    '',
+                    '"Deployed complex AI-driven network automation across 50+ sites.',
+                    'Reduced configuration time by 85% and eliminated human errors.',
+                    'Outstanding technical depth and delivery."',
+                    '',
+                    '- Director of IT Infrastructure, Healthcare Provider'
+                ]
             }
         ];
 
@@ -499,6 +608,828 @@
             });
         }
 
+        // Asteroids game implementation
+        function startAsteroidsGame() {
+            // Remove interactive prompt if it exists
+            if (currentInputLine) {
+                currentInputLine.remove();
+                currentInputLine = null;
+            }
+
+            const WIDTH = 24;
+            const HEIGHT = 8;
+            let gameActive = true;
+            let score = 0;
+            let lives = 3;
+            let level = 1;
+            let upgradeTime = 4; // Seconds until vector graphics upgrade
+            let upgraded = false;
+            let invincible = false;
+            let invincibleTimer = 0;
+            let ship = { x: WIDTH/2, y: HEIGHT/2, angle: 0, vx: 0, vy: 0 };
+            let asteroids = [];
+            let bullets = [];
+            let gameInterval;
+            let lastKeyTime = 0;
+
+            // Helper function to create random asteroid shape
+            function createAsteroidShape() {
+                const sides = 7 + Math.floor(Math.random() * 6); // 7-12 sides
+                const shape = [];
+                for (let i = 0; i < sides; i++) {
+                    const radiusVariation = 0.7 + Math.random() * 0.6; // 0.7 to 1.3
+                    shape.push(radiusVariation);
+                }
+                return shape;
+            }
+
+            // Helper function to spawn asteroid safely (not near ship)
+            function spawnAsteroid(x, y, vx, vy, size, shape) {
+                const safeZone = 100; // pixels
+                const centerX = WIDTH / 2;
+                const centerY = HEIGHT / 2;
+
+                // If position not specified, find safe spawn
+                if (x === undefined) {
+                    do {
+                        x = Math.random() * WIDTH;
+                        y = Math.random() * HEIGHT;
+                    } while (Math.abs(x - centerX) < safeZone/10 && Math.abs(y - centerY) < safeZone/10);
+                }
+
+                asteroids.push({
+                    x: x || Math.random() * WIDTH,
+                    y: y || Math.random() * HEIGHT,
+                    vx: vx || (Math.random() - 0.5) * 0.4, // Slower for retro players
+                    vy: vy || (Math.random() - 0.5) * 0.4,
+                    size: size || 3,
+                    shape: shape || createAsteroidShape()
+                });
+            }
+
+            // Initialize asteroids with safe spawn (fewer for small screen)
+            for (let i = 0; i < 3; i++) {
+                spawnAsteroid();
+            }
+
+            const shipChars = ['^', '>', 'v', '<'];
+
+            function renderGame() {
+                const field = Array(HEIGHT).fill().map(() => Array(WIDTH).fill(' '));
+
+                // Draw asteroids
+                asteroids.forEach(ast => {
+                    const x = Math.floor(ast.x);
+                    const y = Math.floor(ast.y);
+                    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) {
+                        field[y][x] = ast.size === 3 ? 'O' : ast.size === 2 ? 'o' : '*';
+                    }
+                });
+
+                // Draw bullets
+                bullets.forEach(bullet => {
+                    const x = Math.floor(bullet.x);
+                    const y = Math.floor(bullet.y);
+                    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) {
+                        field[y][x] = '·';
+                    }
+                });
+
+                // Draw ship
+                const sx = Math.floor(ship.x);
+                const sy = Math.floor(ship.y);
+                if (sx >= 0 && sx < WIDTH && sy >= 0 && sy < HEIGHT) {
+                    field[sy][sx] = shipChars[ship.angle % 4];
+                }
+
+                // Render inline - minimal oversimplified version
+                let gameContainer = document.getElementById('asteroids-text-game');
+                if (!gameContainer) {
+                    gameContainer = document.createElement('div');
+                    gameContainer.id = 'asteroids-text-game';
+                    gameContainer.style.fontFamily = 'monospace';
+                    gameContainer.style.lineHeight = '1.2';
+                    gameContainer.style.whiteSpace = 'pre';
+                    gameContainer.style.color = '#888';
+                    terminal.appendChild(gameContainer);
+                }
+
+                gameContainer.textContent = field.map(row => row.join('')).join('\n');
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+
+            // Vector graphics upgrade
+            let canvas, ctx, particles = [];
+            let audioContext, sounds = {};
+            let stars = [];
+            let screenShake = 0;
+
+            function triggerUpgrade() {
+                upgraded = true;
+                clearInterval(gameInterval);
+
+                // Remove ASCII keyboard handler
+                document.removeEventListener('keydown', asteroidKeyHandler);
+
+                // Hide terminal and create full-screen game with matrix
+                terminal.style.display = 'none';
+
+                // Start matrix effect
+                if (typeof startMatrix === 'function') {
+                    startMatrix();
+                }
+
+                // Create game container
+                const gameContainer = document.createElement('div');
+                gameContainer.id = 'asteroids-container';
+                gameContainer.style.position = 'fixed';
+                gameContainer.style.top = '50%';
+                gameContainer.style.left = '50%';
+                gameContainer.style.transform = 'translate(-50%, -50%)';
+                gameContainer.style.zIndex = '100';
+                document.body.appendChild(gameContainer);
+
+                // Create canvas with CRT effects
+                canvas = document.createElement('canvas');
+                canvas.width = 700;
+                canvas.height = 480;
+                canvas.style.display = 'block';
+                canvas.style.margin = '0 auto';
+                canvas.style.border = '2px solid #39ff14';
+                canvas.style.borderRadius = '4px';
+                canvas.style.background = '#000';
+                canvas.style.boxShadow = '0 0 30px rgba(57, 255, 20, 0.6), inset 0 0 60px rgba(0, 255, 0, 0.1)';
+                gameContainer.appendChild(canvas);
+                ctx = canvas.getContext('2d');
+
+                // Add scanline overlay
+                const scanlineCanvas = document.createElement('canvas');
+                scanlineCanvas.width = 700;
+                scanlineCanvas.height = 480;
+                scanlineCanvas.style.position = 'absolute';
+                scanlineCanvas.style.top = '0';
+                scanlineCanvas.style.left = '0';
+                scanlineCanvas.style.pointerEvents = 'none';
+                const scanCtx = scanlineCanvas.getContext('2d');
+                for (let y = 0; y < scanlineCanvas.height; y += 3) {
+                    scanCtx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                    scanCtx.fillRect(0, y, scanlineCanvas.width, 1);
+                }
+                gameContainer.appendChild(scanlineCanvas);
+
+                    // NOW convert ship and asteroids for vector mode
+                    ship.angle = ship.angle * (Math.PI / 2); // Convert from 0-3 to radians
+                    ship.x = canvas.width / 2; // Center ship
+                    ship.y = canvas.height / 2;
+                    ship.vx = 0;
+                    ship.vy = 0;
+
+                    // Clear asteroids and respawn safely for vector mode
+                    const oldScore = score;
+                    asteroids = [];
+                    bullets = [];
+
+                    // Spawn asteroids for vector mode with safe zone
+                    for (let i = 0; i < (3 + level); i++) {
+                        const safeZone = 150;
+                        let x, y;
+                        do {
+                            x = Math.random() * canvas.width;
+                            y = Math.random() * canvas.height;
+                        } while (Math.abs(x - canvas.width/2) < safeZone && Math.abs(y - canvas.height/2) < safeZone);
+
+                        asteroids.push({
+                            x, y,
+                            vx: (Math.random() - 0.5) * 2.4,
+                            vy: (Math.random() - 0.5) * 2.4,
+                            size: 25 + Math.random() * 5,
+                            shape: createAsteroidShape()
+                        });
+                    }
+                    score = oldScore;
+
+                    // Initialize starfield
+                    for (let i = 0; i < 50; i++) {
+                        stars.push({
+                            x: Math.random() * canvas.width,
+                            y: Math.random() * canvas.height,
+                            brightness: Math.random()
+                        });
+                    }
+
+                    // Initialize audio
+                    initAudio();
+
+                    // Add vector keyboard handlers
+                    document.addEventListener('keydown', vectorKeyHandler);
+                    document.addEventListener('keyup', vectorKeyHandler);
+
+                    // Start vector game loop immediately
+                    gameInterval = setInterval(updateVectorGame, 16); // ~60fps
+            }
+
+            function initAudio() {
+                try {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                    // Create sound functions
+                    sounds.shoot = () => {
+                        const osc = audioContext.createOscillator();
+                        const gain = audioContext.createGain();
+                        osc.connect(gain);
+                        gain.connect(audioContext.destination);
+                        osc.type = 'square'; // Square wave for retro sound
+                        // Frequency sweep from high to low for "pew pew"
+                        osc.frequency.setValueAtTime(1200, audioContext.currentTime);
+                        osc.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.08);
+                        gain.gain.setValueAtTime(0.15, audioContext.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.08);
+                        osc.start();
+                        osc.stop(audioContext.currentTime + 0.08);
+                    };
+
+                    sounds.explode = () => {
+                        const osc = audioContext.createOscillator();
+                        const gain = audioContext.createGain();
+                        osc.connect(gain);
+                        gain.connect(audioContext.destination);
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(200, audioContext.currentTime);
+                        osc.frequency.exponentialRampToValueAtTime(20, audioContext.currentTime + 0.3);
+                        gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                        osc.start();
+                        osc.stop(audioContext.currentTime + 0.3);
+                    };
+
+                    sounds.thrust = () => {
+                        // Create pink noise buffer for thruster
+                        const bufferSize = audioContext.sampleRate * 0.15;
+                        const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                        const output = buffer.getChannelData(0);
+
+                        // Generate pink noise (filtered white noise)
+                        let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+                        for (let i = 0; i < bufferSize; i++) {
+                            const white = Math.random() * 2 - 1;
+                            b0 = 0.99886 * b0 + white * 0.0555179;
+                            b1 = 0.99332 * b1 + white * 0.0750759;
+                            b2 = 0.96900 * b2 + white * 0.1538520;
+                            b3 = 0.86650 * b3 + white * 0.3104856;
+                            b4 = 0.55000 * b4 + white * 0.5329522;
+                            b5 = -0.7616 * b5 - white * 0.0168980;
+                            output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.11;
+                            b6 = white * 0.115926;
+                        }
+
+                        const noise = audioContext.createBufferSource();
+                        noise.buffer = buffer;
+
+                        const noiseGain = audioContext.createGain();
+                        noise.connect(noiseGain);
+                        noiseGain.connect(audioContext.destination);
+
+                        // Add low frequency rumble
+                        const rumble = audioContext.createOscillator();
+                        rumble.type = 'sawtooth';
+                        rumble.frequency.value = 60;
+                        const rumbleGain = audioContext.createGain();
+                        rumble.connect(rumbleGain);
+                        rumbleGain.connect(audioContext.destination);
+
+                        // Envelope
+                        noiseGain.gain.setValueAtTime(0.08, audioContext.currentTime);
+                        noiseGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.12);
+                        rumbleGain.gain.setValueAtTime(0.03, audioContext.currentTime);
+                        rumbleGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.12);
+
+                        noise.start();
+                        rumble.start();
+                        noise.stop(audioContext.currentTime + 0.15);
+                        rumble.stop(audioContext.currentTime + 0.15);
+                    };
+                } catch (e) {
+                    console.log('Audio not supported');
+                    sounds = { shoot: ()=>{}, explode: ()=>{}, thrust: ()=>{} };
+                }
+            }
+
+            function createParticles(x, y, count = 10) {
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x, y,
+                        vx: (Math.random() - 0.5) * 5,
+                        vy: (Math.random() - 0.5) * 5,
+                        life: 1.0
+                    });
+                }
+            }
+
+            function renderVectorGame() {
+                // Apply screen shake
+                ctx.save();
+                if (screenShake > 0) {
+                    ctx.translate(
+                        (Math.random() - 0.5) * screenShake,
+                        (Math.random() - 0.5) * screenShake
+                    );
+                    screenShake *= 0.9;
+                }
+
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw starfield
+                stars.forEach(star => {
+                    star.brightness += (Math.random() - 0.5) * 0.1;
+                    star.brightness = Math.max(0.3, Math.min(1, star.brightness));
+                    ctx.fillStyle = `rgba(255, 255, 255, ${star.brightness * 0.6})`;
+                    ctx.fillRect(star.x, star.y, 1, 1);
+                });
+
+                // Draw particles with glow
+                particles.forEach(p => {
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = `rgba(0, 255, 0, ${p.life})`;
+                    ctx.fillStyle = `rgba(0, 255, 0, ${p.life})`;
+                    ctx.fillRect(p.x - 2, p.y - 2, 4, 4);
+                });
+                ctx.shadowBlur = 0;
+
+                // Draw asteroids with random shapes and phosphor glow
+                asteroids.forEach(ast => {
+                    // Phosphor glow effect
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#00ff00';
+                    ctx.strokeStyle = '#00ff00';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    const sides = ast.shape ? ast.shape.length : 8;
+                    for (let i = 0; i < sides; i++) {
+                        const angle = (i / sides) * Math.PI * 2;
+                        const radiusVar = ast.shape ? ast.shape[i] : 1;
+                        const radius = ast.size * radiusVar;
+                        const x = ast.x + Math.cos(angle) * radius;
+                        const y = ast.y + Math.sin(angle) * radius;
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.closePath();
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                });
+
+                // Draw bullets with phosphor glow
+                bullets.forEach(b => {
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#00ff00';
+                    ctx.fillStyle = '#00ff00';
+                    ctx.beginPath();
+                    ctx.arc(b.x, b.y, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                });
+
+                // Draw ship (with invincibility flash and phosphor glow)
+                if (!invincible || Math.floor(Date.now() / 100) % 2 === 0) {
+                    ctx.save();
+                    ctx.translate(ship.x, ship.y);
+                    ctx.rotate(ship.angle);
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#00ff00';
+                    ctx.strokeStyle = '#00ff00';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(0, -15);
+                    ctx.lineTo(-10, 10);
+                    ctx.lineTo(0, 5);
+                    ctx.lineTo(10, 10);
+                    ctx.closePath();
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+
+                    // Thrust flame with glow
+                    if (keys.ArrowUp) {
+                        ctx.shadowBlur = 20;
+                        ctx.shadowColor = '#ff6600';
+                        ctx.fillStyle = '#ff6600';
+                        ctx.beginPath();
+                        ctx.moveTo(-5, 10);
+                        ctx.lineTo(0, 20 + Math.random() * 5);
+                        ctx.lineTo(5, 10);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
+                    ctx.restore();
+                }
+
+                // Draw lives with glow
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#00ff00';
+                ctx.strokeStyle = '#00ff00';
+                ctx.lineWidth = 2;
+                for (let i = 0; i < lives - 1; i++) {
+                    ctx.save();
+                    ctx.translate(20 + i * 25, canvas.height - 30);
+                    ctx.beginPath();
+                    ctx.moveTo(0, -8);
+                    ctx.lineTo(-6, 6);
+                    ctx.lineTo(0, 3);
+                    ctx.lineTo(6, 6);
+                    ctx.closePath();
+                    ctx.stroke();
+                    ctx.restore();
+                }
+                ctx.shadowBlur = 0;
+
+                ctx.restore(); // Restore from screen shake
+
+                // Score and Level with phosphor glow
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#00ff00';
+                ctx.fillStyle = '#00ff00';
+                ctx.font = '20px monospace';
+                ctx.fillText(`SCORE: ${score}`, 20, 30);
+                ctx.fillText(`LEVEL: ${level}`, 20, 55);
+                ctx.fillText('H: HYPERSPACE', canvas.width - 180, 30);
+                ctx.fillText('Q: QUIT', canvas.width - 100, 55);
+                ctx.shadowBlur = 0;
+
+                if (!gameActive) {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#ff5f56';
+                    ctx.font = '48px monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2);
+                    ctx.font = '24px monospace';
+                    ctx.fillStyle = '#39ff14';
+                    ctx.fillText(`Final Score: ${score}`, canvas.width / 2, canvas.height / 2 + 40);
+                }
+            }
+
+            let keys = {};
+            function vectorKeyHandler(e) {
+                keys[e.key] = e.type === 'keydown';
+
+                // Hyperspace
+                if ((e.key === 'h' || e.key === 'H') && e.type === 'keydown' && !keys.hyperUsed) {
+                    keys.hyperUsed = true;
+                    createParticles(ship.x, ship.y, 10);
+                    ship.x = Math.random() * canvas.width;
+                    ship.y = Math.random() * canvas.height;
+                    ship.vx = 0;
+                    ship.vy = 0;
+                    createParticles(ship.x, ship.y, 10);
+
+                    // 10% chance of destruction
+                    if (Math.random() < 0.1) {
+                        lives--;
+                        if (lives > 0) {
+                            respawnShip();
+                        } else {
+                            gameActive = false;
+                            clearInterval(gameInterval);
+                        }
+                    }
+                    setTimeout(() => keys.hyperUsed = false, 500);
+                }
+
+                if (e.key === 'q' || e.key === 'Q') {
+                    gameActive = false;
+                    clearInterval(gameInterval);
+                    document.removeEventListener('keydown', vectorKeyHandler);
+                    document.removeEventListener('keyup', vectorKeyHandler);
+
+                    // Clean up game container
+                    const gameContainer = document.getElementById('asteroids-container');
+                    if (gameContainer) gameContainer.remove();
+
+                    // Show terminal and return to auto mode
+                    terminal.style.display = 'block';
+                    terminal.innerHTML = '';
+                    setTimeout(() => {
+                        returnToAutoMode();
+                    }, 100);
+                }
+                e.preventDefault();
+            }
+
+            function respawnShip() {
+                ship.x = canvas.width / 2;
+                ship.y = canvas.height / 2;
+                ship.vx = 0;
+                ship.vy = 0;
+                ship.angle = 0;
+                invincible = true;
+                invincibleTimer = 2500; // 2.5 seconds
+            }
+
+            function updateVectorGame() {
+                if (!gameActive) {
+                    renderVectorGame();
+                    return;
+                }
+
+                // Update invincibility
+                if (invincible) {
+                    invincibleTimer -= 16;
+                    if (invincibleTimer <= 0) {
+                        invincible = false;
+                    }
+                }
+
+                // Ship controls - smooth 360° rotation
+                if (keys.ArrowLeft) ship.angle -= 0.1;
+                if (keys.ArrowRight) ship.angle += 0.1;
+                if (keys.ArrowUp) {
+                    ship.vx += Math.sin(ship.angle) * 0.3;
+                    ship.vy -= Math.cos(ship.angle) * 0.3;
+                    if (sounds.thrust && Math.random() > 0.7) sounds.thrust();
+                }
+                if (keys[' '] && !keys.spaceFired) {
+                    keys.spaceFired = true;
+                    bullets.push({
+                        x: ship.x + Math.sin(ship.angle) * 15,
+                        y: ship.y - Math.cos(ship.angle) * 15,
+                        vx: Math.sin(ship.angle) * 8,
+                        vy: -Math.cos(ship.angle) * 8
+                    });
+                    if (sounds.shoot) sounds.shoot();
+                }
+                if (!keys[' ']) keys.spaceFired = false;
+
+                // Update physics
+                ship.x += ship.vx;
+                ship.y += ship.vy;
+                ship.vx *= 0.98;
+                ship.vy *= 0.98;
+
+                // Wrap
+                if (ship.x < 0) ship.x = canvas.width;
+                if (ship.x > canvas.width) ship.x = 0;
+                if (ship.y < 0) ship.y = canvas.height;
+                if (ship.y > canvas.height) ship.y = 0;
+
+                // Update asteroids
+                asteroids.forEach(ast => {
+                    ast.x += ast.vx;
+                    ast.y += ast.vy;
+                    if (ast.x < 0) ast.x = canvas.width;
+                    if (ast.x > canvas.width) ast.x = 0;
+                    if (ast.y < 0) ast.y = canvas.height;
+                    if (ast.y > canvas.height) ast.y = 0;
+                });
+
+                // Update bullets
+                bullets = bullets.filter(b => {
+                    b.x += b.vx;
+                    b.y += b.vy;
+                    return b.x >= 0 && b.x <= canvas.width && b.y >= 0 && b.y <= canvas.height;
+                });
+
+                // Update particles
+                particles = particles.filter(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.life -= 0.02;
+                    return p.life > 0;
+                });
+
+                // Collisions
+                bullets.forEach((b, bi) => {
+                    asteroids.forEach((ast, ai) => {
+                        const dx = b.x - ast.x;
+                        const dy = b.y - ast.y;
+                        if (dx*dx + dy*dy < ast.size * ast.size) {
+                            bullets.splice(bi, 1);
+                            const oldSize = ast.size;
+                            asteroids.splice(ai, 1);
+                            score += Math.floor((30 - oldSize) * 2);
+                            createParticles(ast.x, ast.y, 15);
+                            screenShake = 5;
+                            if (sounds.explode) sounds.explode();
+
+                            // Check for extra life at 10,000 points
+                            if (score >= 10000 && score - Math.floor((30 - oldSize) * 2) < 10000) {
+                                lives++;
+                            }
+
+                            if (oldSize > 10) {
+                                for (let i = 0; i < 2; i++) {
+                                    asteroids.push({
+                                        x: ast.x,
+                                        y: ast.y,
+                                        vx: (Math.random() - 0.5) * 3,
+                                        vy: (Math.random() - 0.5) * 3,
+                                        size: oldSize / 2,
+                                        shape: createAsteroidShape()
+                                    });
+                                }
+                            }
+                        }
+                    });
+                });
+
+                // Ship collision (with invincibility check)
+                if (!invincible) {
+                    asteroids.forEach(ast => {
+                        const dx = ship.x - ast.x;
+                        const dy = ship.y - ast.y;
+                        // More forgiving hitbox (85% of normal)
+                        if (dx*dx + dy*dy < (ast.size + 8) * (ast.size + 8)) {
+                            lives--;
+                            createParticles(ship.x, ship.y, 30);
+                            screenShake = 10;
+                            if (sounds.explode) sounds.explode();
+
+                            if (lives > 0) {
+                                respawnShip();
+                            } else {
+                                gameActive = false;
+                                clearInterval(gameInterval);
+                            }
+                        }
+                    });
+                }
+
+                // Level progression - check if all asteroids cleared
+                if (asteroids.length === 0) {
+                    level++;
+                    score += 1000 * level;
+                    const newAsteroidCount = Math.min(4 + (level - 1) * 2, 10);
+
+                    // Show level message
+                    clearInterval(gameInterval);
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#00ff00';
+                    ctx.font = '36px monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(`LEVEL ${level}`, canvas.width / 2, canvas.height / 2);
+
+                    setTimeout(() => {
+                        // Spawn new asteroids for next level
+                        for (let i = 0; i < newAsteroidCount; i++) {
+                            const safeZone = 150;
+                            let x, y;
+                            do {
+                                x = Math.random() * canvas.width;
+                                y = Math.random() * canvas.height;
+                            } while (Math.abs(x - canvas.width/2) < safeZone && Math.abs(y - canvas.height/2) < safeZone);
+
+                            asteroids.push({
+                                x, y,
+                                vx: (Math.random() - 0.5) * 2.4, // Slower for retro players
+                                vy: (Math.random() - 0.5) * 2.4,
+                                size: 25 + Math.random() * 5, // Large asteroids
+                                shape: createAsteroidShape()
+                            });
+                        }
+                        gameInterval = setInterval(updateVectorGame, 16);
+                    }, 2000);
+                }
+
+                renderVectorGame();
+            }
+
+            function updateGame() {
+                if (!gameActive) return;
+
+                // Check for upgrade (silent - no countdown display)
+                if (!upgraded && upgradeTime > 0) {
+                    upgradeTime -= 0.1;
+                    if (upgradeTime <= 0) {
+                        upgradeTime = 0;
+                        // Clean up text version
+                        const textGame = document.getElementById('asteroids-text-game');
+                        if (textGame) textGame.remove();
+                        triggerUpgrade();
+                        return;
+                    }
+                }
+
+                // Update ship position
+                ship.x += ship.vx;
+                ship.y += ship.vy;
+                ship.vx *= 0.98;
+                ship.vy *= 0.98;
+
+                // Wrap ship
+                if (ship.x < 0) ship.x = WIDTH - 1;
+                if (ship.x >= WIDTH) ship.x = 0;
+                if (ship.y < 0) ship.y = HEIGHT - 1;
+                if (ship.y >= HEIGHT) ship.y = 0;
+
+                // Update asteroids
+                asteroids.forEach(ast => {
+                    ast.x += ast.vx;
+                    ast.y += ast.vy;
+                    if (ast.x < 0) ast.x = WIDTH - 1;
+                    if (ast.x >= WIDTH) ast.x = 0;
+                    if (ast.y < 0) ast.y = HEIGHT - 1;
+                    if (ast.y >= HEIGHT) ast.y = 0;
+                });
+
+                // Update bullets
+                bullets = bullets.filter(bullet => {
+                    bullet.x += bullet.vx;
+                    bullet.y += bullet.vy;
+                    return bullet.x >= 0 && bullet.x < WIDTH && bullet.y >= 0 && bullet.y < HEIGHT;
+                });
+
+                // Check bullet-asteroid collisions
+                bullets.forEach((bullet, bi) => {
+                    asteroids.forEach((ast, ai) => {
+                        const dx = bullet.x - ast.x;
+                        const dy = bullet.y - ast.y;
+                        if (dx*dx + dy*dy < ast.size * ast.size) {
+                            bullets.splice(bi, 1);
+                            const oldSize = ast.size;
+                            asteroids.splice(ai, 1);
+                            score += (4 - oldSize) * 10;
+
+                            // Break into smaller asteroids
+                            if (oldSize > 1) {
+                                for (let i = 0; i < 2; i++) {
+                                    asteroids.push({
+                                        x: ast.x,
+                                        y: ast.y,
+                                        vx: (Math.random() - 0.5) * 0.8,
+                                        vy: (Math.random() - 0.5) * 0.8,
+                                        size: oldSize - 1
+                                    });
+                                }
+                            }
+                        }
+                    });
+                });
+
+                // Check ship-asteroid collisions
+                asteroids.forEach(ast => {
+                    const dx = ship.x - ast.x;
+                    const dy = ship.y - ast.y;
+                    if (dx*dx + dy*dy < ast.size * ast.size) {
+                        gameActive = false;
+                        clearInterval(gameInterval);
+                    }
+                });
+
+                // Spawn new asteroids if needed
+                if (asteroids.length < 3) {
+                    asteroids.push({
+                        x: Math.random() * WIDTH,
+                        y: Math.random() < 0.5 ? 0 : HEIGHT - 1,
+                        vx: (Math.random() - 0.5) * 0.6,
+                        vy: (Math.random() - 0.5) * 0.6,
+                        size: 3
+                    });
+                }
+
+                renderGame();
+            }
+
+            const asteroidKeyHandler = (e) => {
+                const now = Date.now();
+                if (now - lastKeyTime < 50) return;
+                lastKeyTime = now;
+
+                e.preventDefault();
+
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        ship.angle = (ship.angle + 3) % 4;
+                        break;
+                    case 'ArrowRight':
+                        ship.angle = (ship.angle + 1) % 4;
+                        break;
+                    case 'ArrowUp':
+                        const thrust = 0.3;
+                        const angles = [0, Math.PI/2, Math.PI, -Math.PI/2];
+                        ship.vx += Math.sin(angles[ship.angle]) * thrust;
+                        ship.vy -= Math.cos(angles[ship.angle]) * thrust;
+                        break;
+                    case ' ':
+                        const speed = 1.5;
+                        const angles2 = [0, Math.PI/2, Math.PI, -Math.PI/2];
+                        bullets.push({
+                            x: ship.x,
+                            y: ship.y,
+                            vx: Math.sin(angles2[ship.angle]) * speed,
+                            vy: -Math.cos(angles2[ship.angle]) * speed
+                        });
+                        break;
+                }
+            };
+
+            // Remove existing keyboard handler
+            document.removeEventListener('keydown', arguments.callee);
+            document.addEventListener('keydown', asteroidKeyHandler);
+
+            renderGame();
+            gameInterval = setInterval(updateGame, 100);
+        }
+
         // Command processor for interactive mode
         function processCommand(cmd) {
             const command = cmd.toLowerCase().trim();
@@ -507,17 +1438,29 @@
                 case 'help':
                     return [
                         '<span class="output-highlight">Available Commands:</span>',
-                        '  help          - Show this help message',
-                        '  clear         - Clear terminal screen',
-                        '  projects      - List all projects',
-                        '  skills        - Show technical skills',
-                        '  services      - Show available services',
-                        '  contact       - Contact information',
-                        '  whoami        - Show user information',
-                        '  date          - Show current date and time',
-                        '  auto          - Resume automatic demo',
                         '',
-                        'Type any command to interact with the system.'
+                        '<span class="output-success">Information:</span>',
+                        '  help                    - Show this help message',
+                        '  whoami                  - Show user information',
+                        '  contact                 - Contact information',
+                        '  resume                  - Download resume',
+                        '  certs                   - View certifications',
+                        '',
+                        '<span class="output-success">Projects & Skills:</span>',
+                        '  projects [--filter ai|network|mobile] - List projects',
+                        '  skills                  - Show technical skills',
+                        '  services                - Show available services',
+                        '',
+                        '<span class="output-success">Network Tools:</span>',
+                        '  ping <host>             - Network diagnostic tool',
+                        '',
+                        '<span class="output-success">Games:</span>',
+                        '  asteroids               - Play ASCII Asteroids',
+                        '',
+                        '<span class="output-success">System:</span>',
+                        '  clear                   - Clear terminal screen',
+                        '  date                    - Show current date and time',
+                        '  auto                    - Resume automatic demo'
                     ];
 
                 case 'clear':
@@ -525,18 +1468,56 @@
                     return null;
 
                 case 'projects':
-                    return [
-                        '<span class="output-highlight">Active Projects:</span>',
-                        '✓ <span class="output-success">ruckus-ztp</span>        [AI-AGENT] [ACTIVE]',
-                        '✓ <span class="output-info">r1-api</span>           [SDK] [LIVE]',
-                        '✓ <span class="output-success">osticket-agent</span>   [AI-AGENT] [DEPLOYED]',
-                        '✓ <span class="output-success">survival-rag</span>     [AI-RAG] [ACTIVE]',
-                        '✓ <span class="output-info">sz-acl</span>           [NETWORK] [MAINTENANCE]',
-                        '✓ <span class="output-success">pflogs</span>          [SECURITY] [ACTIVE]',
-                        '✓ <span class="output-info">wifi-test</span>       [NETWORK] [ACTIVE]',
-                        '',
-                        'Visit /projects.html for detailed information.'
-                    ];
+                case 'projects --filter ai':
+                case 'projects --filter network':
+                case 'projects --filter mobile':
+                    let filter = null;
+                    if (cmd.includes('--filter')) {
+                        const parts = cmd.split('--filter');
+                        if (parts.length > 1) {
+                            filter = parts[1].trim().toLowerCase();
+                        }
+                    }
+
+                    const allProjects = {
+                        ai: [
+                            '✓ <span class="output-success">ruckus-ztp</span>        [AI-AGENT] [ACTIVE]',
+                            '✓ <span class="output-success">osticket-agent</span>   [AI-AGENT] [DEPLOYED]',
+                            '✓ <span class="output-success">survival-rag</span>     [AI-RAG] [ACTIVE]'
+                        ],
+                        network: [
+                            '✓ <span class="output-info">r1-api</span>           [SDK] [LIVE]',
+                            '✓ <span class="output-info">sz-acl</span>           [NETWORK] [MAINTENANCE]',
+                            '✓ <span class="output-success">pflogs</span>          [SECURITY] [ACTIVE]',
+                            '✓ <span class="output-info">wifi-test</span>       [NETWORK] [ACTIVE]'
+                        ],
+                        mobile: [
+                            '✓ <span class="output-warning">iOS Apps</span>        [MOBILE] [IN DEVELOPMENT]'
+                        ]
+                    };
+
+                    let output = [];
+
+                    if (filter === 'ai') {
+                        output = ['<span class="output-highlight">AI Projects:</span>', ...allProjects.ai];
+                    } else if (filter === 'network') {
+                        output = ['<span class="output-highlight">Network Projects:</span>', ...allProjects.network];
+                    } else if (filter === 'mobile') {
+                        output = ['<span class="output-highlight">Mobile Projects:</span>', ...allProjects.mobile];
+                    } else {
+                        output = [
+                            '<span class="output-highlight">Active Projects:</span>',
+                            ...allProjects.ai,
+                            ...allProjects.network,
+                            ...allProjects.mobile
+                        ];
+                    }
+
+                    output.push('');
+                    output.push('Use --filter [ai|network|mobile] to filter projects.');
+                    output.push('Visit /projects.html for detailed information.');
+
+                    return output;
 
                 case 'skills':
                     return [
@@ -568,7 +1549,6 @@
                 case 'contact':
                     return [
                         '<span class="output-highlight">NeuralConfig LLC</span>',
-                        'Location: Raleigh, NC',
                         'Email: contact@neuralconfig.com',
                         'Web: neuralconfig.com',
                         'GitHub: github.com/neuralconfig'
@@ -576,7 +1556,7 @@
 
                 case 'whoami':
                     return [
-                        '<span class="output-highlight">Principal Systems Engineer</span>',
+                        '<span class="output-highlight">AI & Infrastructure Architect</span>',
                         'Specializing in AI-driven network automation',
                         '20+ years network infrastructure experience',
                         'Building intelligent systems at the intersection of AI and networking'
@@ -585,6 +1565,59 @@
                 case 'date':
                     const now = new Date();
                     return [now.toString()];
+
+                case 'resume':
+                    return [
+                        '<span class="output-highlight">Resume Information:</span>',
+                        '',
+                        'Download PDF: <span class="output-success">Coming Soon</span>',
+                        'LinkedIn: <a href="https://linkedin.com/in/neuralconfig" style="color: var(--accent)">linkedin.com/in/neuralconfig</a>',
+                        'GitHub: <a href="https://github.com/neuralconfig" style="color: var(--accent)">github.com/neuralconfig</a>',
+                        '',
+                        'Contact: contact@neuralconfig.com for full resume'
+                    ];
+
+                case 'certs':
+                case 'certifications':
+                    return [
+                        '<span class="output-highlight">Active Certifications:</span>',
+                        '',
+                        '<span class="output-success">Security & AI:</span>',
+                        '  • CISSP (ISC2) - Active',
+                        '  • Machine Learning Specialization (Stanford/DeepLearning.AI)',
+                        '  • Advanced Learning Algorithms (Stanford)',
+                        '  • Microsoft Azure AI Fundamentals',
+                        '',
+                        '<span class="output-success">Cloud & Networking:</span>',
+                        '  • Kubernetes and Cloud Native Associate (CNCF)',
+                        '  • CCNP (Cisco)',
+                        '  • Certified Wireless Design Professional (CWDP)',
+                        '  • Certified Wireless Security Professional (CWSP)',
+                        '  • IPv6 Forum Certified Engineer (Gold)',
+                        '',
+                        'Visit /skills.html for complete list'
+                    ];
+
+                case 'ping':
+                case 'ping 8.8.8.8':
+                case 'ping google.com':
+                case 'ping neuralconfig.com':
+                    const pingHost = cmd.split(' ')[1] || 'neuralconfig.com';
+                    return [
+                        `PING ${pingHost} (172.67.178.123): 56 data bytes`,
+                        '64 bytes from 172.67.178.123: icmp_seq=0 ttl=57 time=12.3 ms',
+                        '64 bytes from 172.67.178.123: icmp_seq=1 ttl=57 time=11.8 ms',
+                        '64 bytes from 172.67.178.123: icmp_seq=2 ttl=57 time=12.1 ms',
+                        '64 bytes from 172.67.178.123: icmp_seq=3 ttl=57 time=11.9 ms',
+                        '',
+                        `--- ${pingHost} ping statistics ---`,
+                        '4 packets transmitted, 4 packets received, 0.0% packet loss',
+                        'round-trip min/avg/max/stddev = 11.8/12.0/12.3/0.2 ms'
+                    ];
+
+                case 'asteroids':
+                    startAsteroidsGame();
+                    return null;
 
                 case 'auto':
                     interactiveMode = false;
@@ -598,6 +1631,20 @@
                     return null;
 
                 default:
+                    // Check for ping with custom host
+                    if (cmd.startsWith('ping ')) {
+                        const host = cmd.substring(5).trim();
+                        return [
+                            `PING ${host} (192.0.2.1): 56 data bytes`,
+                            '64 bytes from 192.0.2.1: icmp_seq=0 ttl=57 time=12.3 ms',
+                            '64 bytes from 192.0.2.1: icmp_seq=1 ttl=57 time=11.8 ms',
+                            '64 bytes from 192.0.2.1: icmp_seq=2 ttl=57 time=12.1 ms',
+                            '',
+                            `--- ${host} ping statistics ---`,
+                            '3 packets transmitted, 3 packets received, 0.0% packet loss'
+                        ];
+                    }
+
                     return [`<span class="output-error">Command not found: ${cmd}</span>`, 'Type "help" for available commands.'];
             }
         }
@@ -671,6 +1718,9 @@
         }
 
         function executeInteractiveCommand() {
+            // Guard against null currentInputLine (race condition during mode switch)
+            if (!currentInputLine) return;
+
             // Remove cursor from current line
             const cursor = currentInputLine.querySelector('.terminal-cursor');
             if (cursor) cursor.remove();
@@ -714,20 +1764,38 @@
         }
 
         function resetInteractiveTimeout() {
-            // Clear existing timeout
+            // Clear existing timeouts
             if (interactiveTimeout) {
                 clearTimeout(interactiveTimeout);
             }
-            
-            // Set 10-second timeout (no warning)
+            if (window.interactiveWarningTimeout) {
+                clearTimeout(window.interactiveWarningTimeout);
+            }
+
+            // Set warning at 55 seconds (5 seconds before timeout)
+            window.interactiveWarningTimeout = setTimeout(() => {
+                if (interactiveMode) {
+                    addLine('<span class="output-warning">timeout warning: auto-logout in 5 seconds due to inactivity</span>', 'terminal-output');
+                    if (currentInputLine) {
+                        // Re-add the prompt after warning
+                        currentInputLine.remove();
+                        currentInputLine = null;
+                        setTimeout(() => {
+                            if (interactiveMode) createInteractivePrompt();
+                        }, 50);
+                    }
+                }
+            }, 55000);
+
+            // Set 60-second timeout
             interactiveTimeout = setTimeout(() => {
                 if (interactiveMode) {
-                    addLine('<span class="output-warning">Session timed out. Returning to demo...</span>', 'terminal-output');
+                    addLine('<span class="output-error">auto-logout: timed out waiting for input</span>', 'terminal-output');
                     setTimeout(() => {
                         returnToAutoMode();
                     }, 1000);
                 }
-            }, 10000);
+            }, 60000);
         }
 
         function returnToAutoMode() {
@@ -735,11 +1803,15 @@
             autoMode = true;
             currentInput = '';
             currentInputLine = null;
-            
-            // Clear interactive timeout
+
+            // Clear interactive timeouts
             if (interactiveTimeout) {
                 clearTimeout(interactiveTimeout);
                 interactiveTimeout = null;
+            }
+            if (window.interactiveWarningTimeout) {
+                clearTimeout(window.interactiveWarningTimeout);
+                window.interactiveWarningTimeout = null;
             }
             
             // Resume auto demo
