@@ -170,10 +170,6 @@
             opacity: 0.7;
         }
 
-        .banner-line {
-            color: #39ff14 !important;
-        }
-
         /* Interactive mode styles */
         .interactive-line {
             position: relative;
@@ -256,7 +252,7 @@
     </div>
 
     <footer class="footer">
-        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
+        © 2025 NeuralConfig LLC
     </footer>
 
     <script src="matrix.js"></script>
@@ -457,7 +453,7 @@
                 function showNextLine() {
                     if (bannerIndex < securityBanner.length) {
                         const line = document.createElement('div');
-                        line.className = 'terminal-line terminal-output banner-line';
+                        line.className = 'terminal-line terminal-output';
 
                         // Add cursor at the end of the line while drawing
                         const textContent = securityBanner[bannerIndex];
