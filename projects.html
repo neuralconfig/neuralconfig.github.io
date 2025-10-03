@@ -68,10 +68,59 @@
         }
 
         .tech-tag {
-            background: rgba(86, 156, 214, 0.1);
-            border-color: rgba(86, 156, 214, 0.3);
-            color: #9cdcfe;
+            display: inline-block;
+            padding: 0 10px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Verdana', 'DejaVu Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 3px;
+            background: #569cd6;
+            color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            border: none;
         }
+
+        /* Tech Stack Badges - Shields.io style */
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 0 10px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Verdana', 'DejaVu Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 3px;
+            color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+
+        /* Shield.io color variations */
+        .badge-python { background: #3776ab; }
+        .badge-claude { background: #d97757; }
+        .badge-fastapi { background: #009688; }
+        .badge-flask { background: #000; }
+        .badge-docker { background: #2496ed; }
+        .badge-api { background: #0080ff; }
+        .badge-network { background: #4ec9b0; }
+        .badge-security { background: #ff5f56; }
+        .badge-oauth { background: #eb5424; }
+        .badge-cli { background: #4d4d4d; }
+        .badge-ai { background: #c586c0; }
 
         .project-link {
             color: #569cd6;
@@ -82,23 +131,38 @@
         }
 
         .filter-btn {
-            border-color: #569cd6;
-            color: #569cd6;
+            background: transparent;
+            border: 1px solid #3e3e42;
+            color: #9cdcfe;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
         .filter-btn:hover {
             background: rgba(86, 156, 214, 0.1);
+            border-color: #569cd6;
         }
 
         .filter-btn.active {
             background: #569cd6;
             color: #1e1e1e;
+            border-color: #569cd6;
         }
 
         #project-search {
-            background: rgba(37, 37, 38, 0.5);
-            border-color: #569cd6;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid #3e3e42;
             color: #d4d4d4;
+        }
+
+        #project-search:focus {
+            outline: none;
+            border-color: #569cd6;
+            box-shadow: 0 0 0 2px rgba(86, 156, 214, 0.2);
         }
 
         .footer {
@@ -151,9 +215,8 @@
         
         <div class="project-controls" style="margin: 2rem 0;">
             <div class="search-box" style="margin-bottom: 1rem;">
-                <input type="text" id="project-search" placeholder="Search projects... (press / to focus)" 
-                       style="width: 100%; padding: 0.8rem; background: rgba(5,5,5,0.5); border: 1px solid var(--accent); 
-                              color: var(--text-color); border-radius: 4px; font-size: 1rem;">
+                <input type="text" id="project-search" placeholder="Search projects... (press / to focus)"
+                       style="width: 100%; padding: 0.8rem; border-radius: 4px; font-size: 1rem;">
             </div>
             <div class="project-filters" style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -169,16 +232,16 @@
             <div class="project-card network-project automation-project">
                 <div class="project-header">
                     <h3>osticket-agent</h3>
-                    <span class="project-type">[NETWORK]</span>
-                    <span class="project-type" style="color: var(--ai-accent);">[AI AGENT]</span>
-                    <span class="project-type">[AUTOMATION]</span>
                 </div>
                 <p class="project-description">Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Agentic AI</span>
-                    <span class="tech-tag">NLP</span>
-                    <span class="tech-tag">Tool Use</span>
+                    <span class="tech-tag" style="background: #c586c0;">Agentic AI</span>
+                    <span class="tech-tag" style="background: #4ec9b0;">NLP</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-claude">Claude</span>
+                    <span class="tech-badge badge-api">REST API</span>
                 </div>
                 <div class="project-links">
                     <a href="osticket-agent.html" class="project-link">details →</a>
@@ -189,16 +252,17 @@
             <div class="project-card network-project automation-project">
                 <div class="project-header">
                     <h3>ruckus-ztp</h3>
-                    <span class="project-type">[NETWORK]</span>
-                    <span class="project-type" style="color: var(--ai-accent);">[AI AGENT]</span>
-                    <span class="project-type">[AUTOMATION]</span>
                 </div>
                 <p class="project-description">AI-powered Zero-Touch Provisioning agent with natural language chat interface for RUCKUS ICX switches and APs, featuring autonomous network discovery and configuration.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Agentic AI</span>
-                    <span class="tech-tag">Network Automation</span>
-                    <span class="tech-tag">ZTP</span>
+                    <span class="tech-tag" style="background: #c586c0;">Agentic AI</span>
+                    <span class="tech-tag" style="background: #4ec9b0;">Network Automation</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-claude">Claude</span>
+                    <span class="tech-badge badge-fastapi">FastAPI</span>
+                    <span class="tech-badge badge-network">NETCONF</span>
                 </div>
                 <div class="project-links">
                     <a href="ruckus-ztp.html" class="project-link">details →</a>
@@ -210,13 +274,15 @@
             <div class="project-card ai-project">
                 <div class="project-header">
                     <h3>openrouter-chat-app</h3>
-                    <span class="project-type">[AI]</span>
                 </div>
                 <p class="project-description">Simple yet powerful AI chat interface leveraging OpenRouter's API to access multiple LLM providers through a single endpoint.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">LLM Integration</span>
-                    <span class="tech-tag">API Design</span>
+                    <span class="tech-tag" style="background: #c586c0;">LLM Integration</span>
+                    <span class="tech-tag" style="background: #0080ff;">API Design</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-api">OpenRouter</span>
                 </div>
                 <div class="project-links">
                     <a href="openrouter-chat-app.html" class="project-link">details →</a>
@@ -227,13 +293,16 @@
             <div class="project-card ai-project">
                 <div class="project-header">
                     <h3>survival-rag</h3>
-                    <span class="project-type">[AI]</span>
                 </div>
                 <p class="project-description">Retrieval-Augmented Generation system for survival knowledge, demonstrating practical RAG implementation and vector database integration.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">RAG</span>
-                    <span class="tech-tag">Vector DB</span>
+                    <span class="tech-tag" style="background: #c586c0;">RAG</span>
+                    <span class="tech-tag" style="background: #0080ff;">Vector DB</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-ai">LangChain</span>
+                    <span class="tech-badge badge-api">Pinecone</span>
                 </div>
                 <div class="project-links">
                     <a href="survival-rag.html" class="project-link">details →</a>
@@ -245,15 +314,16 @@
             <div class="project-card network-project automation-project">
                 <div class="project-header">
                     <h3>r1-api</h3>
-                    <span class="project-type">[NETWORK]</span>
-                    <span class="project-type">[AUTOMATION]</span>
                 </div>
                 <p class="project-description">Comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">SDK Development</span>
-                    <span class="tech-tag">OAuth2</span>
-                    <span class="tech-tag">CLI Tools</span>
+                    <span class="tech-tag" style="background: #0080ff;">SDK Development</span>
+                    <span class="tech-tag" style="background: #4ec9b0;">API Wrapper</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-oauth">OAuth2</span>
+                    <span class="tech-badge badge-api">REST API</span>
                 </div>
                 <div class="project-links">
                     <a href="r1-api.html" class="project-link">details →</a>
@@ -264,14 +334,15 @@
             <div class="project-card network-project automation-project">
                 <div class="project-header">
                     <h3>sz-acl</h3>
-                    <span class="project-type">[NETWORK]</span>
-                    <span class="project-type">[AUTOMATION]</span>
                 </div>
                 <p class="project-description">Advanced ACL management system for network security, featuring automated rule generation and conflict detection.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Network Security</span>
-                    <span class="tech-tag">ACL Management</span>
+                    <span class="tech-tag" style="background: #ff5f56;">Network Security</span>
+                    <span class="tech-tag" style="background: #4ec9b0;">Firewall Automation</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-fastapi">FastAPI</span>
                 </div>
                 <div class="project-links">
                     <a href="sz-acl.html" class="project-link">details →</a>
@@ -282,14 +353,15 @@
             <div class="project-card automation-project ai-project">
                 <div class="project-header">
                     <h3>pflogs</h3>
-                    <span class="project-type">[AI]</span>
-                    <span class="project-type">[SECURITY]</span>
                 </div>
                 <p class="project-description">Advanced log parsing and analysis tool for pfSense firewalls, providing real-time security insights and threat detection.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Log Analysis</span>
-                    <span class="tech-tag">Security Monitoring</span>
+                    <span class="tech-tag" style="background: #0080ff;">Log Analysis</span>
+                    <span class="tech-tag" style="background: #ff5f56;">SIEM</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-security">pfSense</span>
                 </div>
                 <div class="project-links">
                     <a href="pflogs.html" class="project-link">details →</a>
@@ -300,13 +372,15 @@
             <div class="project-card network-project">
                 <div class="project-header">
                     <h3>wifi-test</h3>
-                    <span class="project-type">[NETWORK]</span>
                 </div>
                 <p class="project-description">Comprehensive WiFi network testing and analysis tool for performance benchmarking and troubleshooting.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Network Testing</span>
-                    <span class="tech-tag">Performance Analysis</span>
+                    <span class="tech-tag" style="background: #4ec9b0;">Network Testing</span>
+                    <span class="tech-tag" style="background: #dcdcaa;">Performance Analysis</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-network">WiFi</span>
                 </div>
                 <div class="project-links">
                     <a href="wifi-test.html" class="project-link">details →</a>
@@ -317,15 +391,14 @@
             <div class="project-card network-project">
                 <div class="project-header">
                     <h3>wispr-portal</h3>
-                    <span class="project-type">[NETWORK]</span>
-                    <span class="project-type">[TROUBLESHOOTING]</span>
                 </div>
                 <p class="project-description">Diagnostic web application for troubleshooting WISPr captive portal authentication and redirection in RUCKUS One environments.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">WISPr</span>
-                    <span class="tech-tag">Diagnostics</span>
+                    <span class="tech-tag" style="background: #4ec9b0;">Captive Portal</span>
+                    <span class="tech-tag" style="background: #dcdcaa;">Diagnostics</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
                 </div>
                 <div class="project-links">
                     <a href="wispr-portal.html" class="project-link">details →</a>
@@ -336,14 +409,14 @@
             <div class="project-card automation-project">
                 <div class="project-header">
                     <h3>ap-reboot-manager</h3>
-                    <span class="project-type">[AUTOMATION]</span>
                 </div>
                 <p class="project-description">Mass Access Point reboot management tool for RUCKUS One with safety controls, simulation mode, and batch processing capabilities.</p>
                 <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Network Automation</span>
-                    <span class="tech-tag">CLI Tools</span>
-                    <span class="tech-tag">Batch Operations</span>
+                    <span class="tech-tag" style="background: #4ec9b0;">Mass Management</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge badge-python">Python</span>
+                    <span class="tech-badge badge-network">RUCKUS One</span>
                 </div>
                 <div class="project-links">
                     <a href="ap-reboot-manager.html" class="project-link">details →</a>
@@ -355,31 +428,10 @@
 
     <script src="matrix.js"></script>
     <style>
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .filter-btn:hover {
-            background: rgba(0, 255, 157, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .filter-btn.active {
-            background: var(--accent);
-            color: var(--dark-bg);
-        }
-        
         .project-card {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        
+
         .project-card.hidden {
             display: none;
         }
