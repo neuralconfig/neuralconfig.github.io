@@ -1,0 +1,17 @@
+{
+  "totalContributions": 0,
+  "weeks": [
+    {
+      "contributionDays": [
+        {"contributionCount": 0, "date": "2024-10-03"},
+        {"contributionCount": 0, "date": "2024-10-04"},
+        {"contributionCount": 0, "date": "2024-10-05"},
+        {"contributionCount": 0, "date": "2024-10-06"},
+        {"contributionCount": 0, "date": "2024-10-07"},
+        {"contributionCount": 0, "date": "2024-10-08"},
+        {"contributionCount": 0, "date": "2024-10-09"}
+      ]
+    }
+  ],
+  "_note": "This is placeholder data. Run the GitHub Action 'Update GitHub Contributions' to fetch real data. See GITHUB_CONTRIBUTIONS_SETUP.md for instructions."
+}

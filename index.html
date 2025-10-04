@@ -3,11 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>neuralconfig | AI & Infrastructure Architect</title>
+    <title>neuralconfig | AI & Network Infrastructure Tools</title>
+    <meta name="description" content="Building open-source AI and network automation tools. 20+ years infrastructure experience meets modern agentic AI systems. Autonomous agents, RAG, and zero-touch provisioning.">
+    <meta name="keywords" content="AI, network automation, agentic AI, infrastructure, open source, autonomous agents, RAG, zero-touch provisioning, RUCKUS, network security">
+    <meta name="author" content="NeuralConfig">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neuralconfig.com/">
+    <meta property="og:title" content="neuralconfig | AI & Network Infrastructure Tools">
+    <meta property="og:description" content="Building open-source AI and network automation tools. 20+ years infrastructure experience meets modern agentic AI systems.">
+    <meta property="og:site_name" content="NeuralConfig">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="neuralconfig | AI & Network Infrastructure Tools">
+    <meta name="twitter:description" content="Building open-source AI and network automation tools. 20+ years infrastructure experience meets modern agentic AI systems.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://neuralconfig.com/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Skip link for keyboard accessibility - visible only on focus */
+        .skip-link {
+            position: absolute !important;
+            left: -9999px !important;
+            z-index: 9999 !important;
+            padding: 1rem !important;
+            background: #569cd6 !important;
+            color: #000 !important;
+            text-decoration: none !important;
+            font-weight: bold !important;
+        }
+
+        .skip-link:focus {
+            left: 0 !important;
+            top: 0 !important;
+        }
+
         /* Home page specific styles */
         .home-container {
             display: flex;
@@ -232,30 +267,36 @@
     </style>
 </head>
 <body>
-    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-    
-    <nav class="nav-bar">
+    <!-- Skip to main content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <canvas class="matrix-bg" id="matrixCanvas" aria-hidden="true"></canvas>
+
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
-            <div class="nav-links">
-                <a href="skills.html" class="nav-link">about</a>
-                <a href="projects.html" class="nav-link">open source</a>
-                <a href="tools.html" class="nav-link">tools</a>
-                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
-                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            <a href="index.html" class="nav-logo" aria-label="NeuralConfig Home">neural<span class="brackets" aria-hidden="true">[</span>config<span class="brackets" aria-hidden="true">]</span></a>
+            <div class="nav-links" role="list">
+                <a href="skills.html" class="nav-link" role="listitem">about</a>
+                <a href="projects.html" class="nav-link" role="listitem">open source</a>
+                <a href="tools.html" class="nav-link" role="listitem">tools</a>
+                <a href="mobile-apps.html" class="nav-link" role="listitem">mobile apps</a>
+                <a href="blog.html" class="nav-link" role="listitem">blog</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">github</a>
             </div>
         </div>
     </nav>
 
-    <div class="home-container">
-        <div class="hero-content">
-            <div class="terminal" id="terminal-output">
+    <main id="main-content" role="main">
+        <div class="home-container">
+            <div class="hero-content">
+                <div class="terminal" id="terminal-output" role="log" aria-live="polite" aria-label="Terminal output">
                 <!-- Terminal content will be dynamically inserted here -->
             </div>
         </div>
     </div>
+    </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
     </footer>
 
@@ -283,50 +324,85 @@
         // Welcome banner content - different versions for mobile and desktop
         const isMobile = window.innerWidth < 768;
 
-        const desktopBanner = [
-            '████████████████████████████████████████████████████████████████████████████████',
-            '',
-            '                              NEURALCONFIG LLC',
-            '                         AI & Network Consulting',
-            '',
-            '████████████████████████████████████████████████████████████████████████████████',
-            '',
-            '<span class="output-success">Welcome to NeuralConfig</span>',
-            '',
-            '[AI SYSTEMS]......................... <span class="output-success">OPERATIONAL</span>',
-            '[NETWORK AUTOMATION]................. <span class="output-success">ACTIVE</span>',
-            '[MOBILE DEVELOPMENT]................. <span class="output-success">IN PROGRESS</span>',
-            '[CONSULTING SERVICES]................ <span class="output-success">AVAILABLE</span>',
-            '[OPEN SOURCE TOOLS].................. <span class="output-success">ONLINE</span>',
-            '',
-            '        Contact: contact@neuralconfig.com',
-            '        GitHub: github.com/neuralconfig',
-            '',
-            '████████████████████████████████████████████████████████████████████████████████'
-        ];
+        // Calculate terminal width in characters for responsive banner
+        function getTerminalWidth() {
+            const terminal = document.getElementById('terminal');
+            if (!terminal) return 80; // Fallback width
 
-        const mobileBanner = [
-            '═══════════════════════════════════════',
-            '',
-            '         NEURALCONFIG LLC',
-            '    AI & Network Consulting',
-            '',
-            '═══════════════════════════════════════',
-            '',
-            '<span class="output-success">System Status:</span>',
-            '',
-            '[AI SYSTEMS]......... <span class="output-success">ONLINE</span>',
-            '[AUTOMATION]......... <span class="output-success">ACTIVE</span>',
-            '[MOBILE APPS]........ <span class="output-success">DEV</span>',
-            '[CONSULTING]......... <span class="output-success">READY</span>',
-            '',
-            'contact@neuralconfig.com',
-            'github.com/neuralconfig',
-            '',
-            '═══════════════════════════════════════'
-        ];
+            const testSpan = document.createElement('span');
+            testSpan.textContent = '█';
+            testSpan.style.visibility = 'hidden';
+            testSpan.style.position = 'absolute';
+            terminal.appendChild(testSpan);
+            const charWidth = testSpan.offsetWidth;
+            terminal.removeChild(testSpan);
 
-        const securityBanner = isMobile ? mobileBanner : desktopBanner;
+            if (!charWidth || charWidth === 0) return 80; // Fallback if calculation fails
+
+            const terminalWidth = terminal.clientWidth - 48; // Account for padding (1.5rem * 2 = 48px)
+            const calculatedWidth = Math.floor(terminalWidth / charWidth);
+
+            console.log('[BANNER] Terminal width calculation:', {
+                terminalWidth,
+                charWidth,
+                calculatedWidth
+            });
+
+            return calculatedWidth > 0 ? calculatedWidth : 80;
+        }
+
+        function createBanner() {
+            const terminalWidth = getTerminalWidth();
+            const border = '█'.repeat(terminalWidth);
+
+            if (isMobile) {
+                return [
+                    border,
+                    '',
+                    '         NEURALCONFIG LLC',
+                    '    AI & Network Consulting',
+                    '',
+                    border,
+                    '',
+                    '<span class="output-success">System Status:</span>',
+                    '',
+                    '[AI SYSTEMS]......... <span class="output-success">ONLINE</span>',
+                    '[AUTOMATION]......... <span class="output-success">ACTIVE</span>',
+                    '[MOBILE APPS]........ <span class="output-success">DEV</span>',
+                    '[CONSULTING]......... <span class="output-success">READY</span>',
+                    '',
+                    'contact@neuralconfig.com',
+                    'github.com/neuralconfig',
+                    '',
+                    border
+                ];
+            } else {
+                return [
+                    border,
+                    '',
+                    '                              NEURALCONFIG LLC',
+                    '                         AI & Network Consulting',
+                    '',
+                    border,
+                    '',
+                    '<span class="output-success">Welcome to NeuralConfig</span>',
+                    '',
+                    '[AI SYSTEMS]......................... <span class="output-success">OPERATIONAL</span>',
+                    '[NETWORK AUTOMATION]................. <span class="output-success">ACTIVE</span>',
+                    '[MOBILE DEVELOPMENT]................. <span class="output-success">IN PROGRESS</span>',
+                    '[CONSULTING SERVICES]................ <span class="output-success">AVAILABLE</span>',
+                    '[OPEN SOURCE TOOLS].................. <span class="output-success">ONLINE</span>',
+                    '',
+                    '        Contact: contact@neuralconfig.com',
+                    '        GitHub: github.com/neuralconfig',
+                    '',
+                    border
+                ];
+            }
+        }
+
+        // Banner will be created when showSecurityBanner() is called (after DOM ready)
+        let securityBanner = null;
         
         // Terminal commands and outputs
         const commands = [
@@ -334,10 +410,12 @@
                 prompt: 'root@neuralconfig:~#',
                 command: ' whoami',
                 output: [
-                    '<span class="output-highlight">AI & Infrastructure Architect</span>',
-                    'Specializing in AI systems, network automation, and cybersecurity',
-                    '20+ years network infrastructure experience',
-                    'Building intelligent systems at the intersection of AI and networking'
+                    '<span class="output-highlight">Network Engineer × AI Developer</span>',
+                    'Bridging 20+ years of network infrastructure with modern AI systems',
+                    'Building production-ready intelligent automation',
+                    '',
+                    'Most AI devs don\'t understand networks. Most network engineers don\'t build AI.',
+                    'I do both.'
                 ]
             },
             {
@@ -383,7 +461,11 @@
                 prompt: 'root@neuralconfig:~#',
                 command: ' echo $MISSION',
                 output: [
-                    '<span class="output-highlight">"Building intelligent systems that solve real-world infrastructure challenges"</span>'
+                    '<span class="output-highlight">"Building intelligent systems that solve real-world infrastructure challenges"</span>',
+                    '',
+                    'Network engineers: Need AI that understands your stack',
+                    'AI companies: Need someone who knows production infrastructure',
+                    'Enterprise: Need automation that actually works in the real world'
                 ]
             },
             {
@@ -561,8 +643,13 @@
 
         function showSecurityBanner() {
             return new Promise((resolve) => {
+                // Create banner now that terminal is ready
+                if (!securityBanner) {
+                    securityBanner = createBanner();
+                }
+
                 let bannerIndex = 0;
-                
+
                 function showNextLine() {
                     if (bannerIndex < securityBanner.length) {
                         const line = document.createElement('div');
@@ -589,18 +676,26 @@
                         cursorLine.innerHTML = '<span class="terminal-cursor"></span>';
                         terminal.appendChild(cursorLine);
 
-                        // Wait then clear and start matrix
+                        // Wait then start matrix (keep banner visible)
                         setTimeout(() => {
-                            terminal.innerHTML = '';
+                            // Don't start matrix if game is active
+                            if (window.gameActive) {
+                                console.log('[TERMINAL] Skipping matrix start - game is active');
+                                showBanner = false;
+                                resolve();
+                                return;
+                            }
+
+                            console.log('[TERMINAL] Starting matrix effect (keeping banner visible)');
                             showBanner = false;
 
-                            // Start matrix effect after banner clears
+                            // Start matrix effect with banner still visible
                             if (typeof startMatrix === 'function') {
                                 startMatrix();
                             }
 
                             resolve();
-                        }, 4000);
+                        }, 2000);
                     }
                 }
                 
@@ -610,8 +705,24 @@
 
         // Asteroids game implementation
         function startAsteroidsGame() {
+            console.log('[ASTEROIDS] ========== startAsteroidsGame() CALLED ==========');
+            console.log('[ASTEROIDS] Setting window.gameActive = true');
+            // Set flag to prevent matrix resize during game initialization
+            window.gameActive = true;
+
+            console.log('[ASTEROIDS] Disabling modes - interactiveMode:', interactiveMode, 'autoMode:', autoMode);
+            // Disable interactive mode to prevent interference
+            if (interactiveMode) {
+                interactiveMode = false;
+            }
+
+            // Always pause auto mode during game to prevent key handler conflicts
+            autoMode = false;
+            console.log('[ASTEROIDS] Modes after disable - interactiveMode:', interactiveMode, 'autoMode:', autoMode);
+
             // Remove interactive prompt if it exists
             if (currentInputLine) {
+                console.log('[ASTEROIDS] Removing currentInputLine');
                 currentInputLine.remove();
                 currentInputLine = null;
             }
@@ -675,6 +786,7 @@
             const shipChars = ['^', '>', 'v', '<'];
 
             function renderGame() {
+                console.log('[ASTEROIDS] renderGame() called');
                 const field = Array(HEIGHT).fill().map(() => Array(WIDTH).fill(' '));
 
                 // Draw asteroids
@@ -705,17 +817,24 @@
                 // Render inline - minimal oversimplified version
                 let gameContainer = document.getElementById('asteroids-text-game');
                 if (!gameContainer) {
+                    console.log('[ASTEROIDS] Creating new game container (first render)');
                     gameContainer = document.createElement('div');
                     gameContainer.id = 'asteroids-text-game';
+                    gameContainer.className = 'terminal-line'; // Use terminal-line class for consistency
                     gameContainer.style.fontFamily = 'monospace';
                     gameContainer.style.lineHeight = '1.2';
                     gameContainer.style.whiteSpace = 'pre';
                     gameContainer.style.color = '#888';
+                    gameContainer.style.marginTop = '1rem';
+                    gameContainer.style.marginBottom = '0.5rem';
+                    console.log('[ASTEROIDS] Appending game container to terminal');
                     terminal.appendChild(gameContainer);
+                    console.log('[ASTEROIDS] Game container appended successfully');
+                } else {
+                    console.log('[ASTEROIDS] Reusing existing game container');
                 }
 
                 gameContainer.textContent = field.map(row => row.join('')).join('\n');
-                terminal.scrollTop = terminal.scrollHeight;
             }
 
             // Vector graphics upgrade
@@ -723,23 +842,29 @@
             let audioContext, sounds = {};
             let stars = [];
             let screenShake = 0;
+            let heartbeatInterval = null;
+            let heartbeatTempo = 800; // milliseconds between beats (starts slow)
+            let initialAsteroidCount = 0; // Track starting count for tempo calculation
+            let asteroidThreatLevel = 0; // Track threat level for heartbeat (decreases monotonically)
+            let ufo = null; // UFO object
+            let ufoSpawnTimer = 0; // Timer for UFO spawning
+            let ufoSirenOscillator = null; // UFO continuous siren oscillator
+            let ufoSirenGain = null; // UFO siren gain node
 
             function triggerUpgrade() {
+                // Clear flag to allow matrix resize again (though matrix will be hidden anyway)
+                window.gameActive = false;
+
                 upgraded = true;
                 clearInterval(gameInterval);
 
                 // Remove ASCII keyboard handler
                 document.removeEventListener('keydown', asteroidKeyHandler);
 
-                // Hide terminal and create full-screen game with matrix
-                terminal.style.display = 'none';
+                // DON'T restart matrix - it's already running continuously
+                // DON'T hide terminal yet - we'll fade it out smoothly
 
-                // Start matrix effect
-                if (typeof startMatrix === 'function') {
-                    startMatrix();
-                }
-
-                // Create game container
+                // Create game container first
                 const gameContainer = document.createElement('div');
                 gameContainer.id = 'asteroids-container';
                 gameContainer.style.position = 'fixed';
@@ -747,6 +872,8 @@
                 gameContainer.style.left = '50%';
                 gameContainer.style.transform = 'translate(-50%, -50%)';
                 gameContainer.style.zIndex = '100';
+                gameContainer.style.opacity = '0';
+                gameContainer.style.transition = 'opacity 0.5s ease';
                 document.body.appendChild(gameContainer);
 
                 // Create canvas with CRT effects
@@ -790,7 +917,8 @@
                     bullets = [];
 
                     // Spawn asteroids for vector mode with safe zone
-                    for (let i = 0; i < (3 + level); i++) {
+                    const asteroidCount = 3 + level;
+                    for (let i = 0; i < asteroidCount; i++) {
                         const safeZone = 150;
                         let x, y;
                         do {
@@ -807,6 +935,10 @@
                         });
                     }
                     score = oldScore;
+                    initialAsteroidCount = asteroidCount; // Set initial count for heartbeat tempo
+
+                    // Calculate initial threat level (large asteroids = highest threat)
+                    asteroidThreatLevel = asteroids.reduce((total, ast) => total + ast.size, 0);
 
                     // Initialize starfield
                     for (let i = 0; i < 50; i++) {
@@ -824,6 +956,27 @@
                     document.addEventListener('keydown', vectorKeyHandler);
                     document.addEventListener('keyup', vectorKeyHandler);
 
+                    // Smooth transition: fade out terminal, fade in canvas
+                    setTimeout(() => {
+                        // Fade out terminal
+                        terminal.style.transition = 'opacity 0.3s ease';
+                        terminal.style.opacity = '0';
+
+                        // Fade in vector game
+                        gameContainer.style.opacity = '1';
+
+                        // Hide terminal completely after fade
+                        setTimeout(() => {
+                            terminal.style.display = 'none';
+                            console.log('[TERMINAL] Clearing terminal after vector graphics fade');
+                            console.trace('[TERMINAL] Stack trace for terminal clear');
+                            terminal.innerHTML = ''; // Clear content after it's hidden
+                        }, 300);
+                    }, 100);
+
+                    // Start heartbeat background sound
+                    startHeartbeat();
+
                     // Start vector game loop immediately
                     gameInterval = setInterval(updateVectorGame, 16); // ~60fps
             }
@@ -834,32 +987,84 @@
 
                     // Create sound functions
                     sounds.shoot = () => {
-                        const osc = audioContext.createOscillator();
-                        const gain = audioContext.createGain();
-                        osc.connect(gain);
-                        gain.connect(audioContext.destination);
-                        osc.type = 'square'; // Square wave for retro sound
-                        // Frequency sweep from high to low for "pew pew"
-                        osc.frequency.setValueAtTime(1200, audioContext.currentTime);
-                        osc.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.08);
-                        gain.gain.setValueAtTime(0.15, audioContext.currentTime);
-                        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.08);
-                        osc.start();
-                        osc.stop(audioContext.currentTime + 0.08);
+                        // Improved laser sound with harmonic overtones for authentic Atari "pew"
+                        const now = audioContext.currentTime;
+
+                        // Primary oscillator - sharper attack
+                        const osc1 = audioContext.createOscillator();
+                        const gain1 = audioContext.createGain();
+                        osc1.connect(gain1);
+                        gain1.connect(audioContext.destination);
+                        osc1.type = 'square';
+                        osc1.frequency.setValueAtTime(1400, now);
+                        osc1.frequency.exponentialRampToValueAtTime(150, now + 0.06);
+                        gain1.gain.setValueAtTime(0.12, now);
+                        gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+
+                        // Harmonic oscillator for metallic "ping"
+                        const osc2 = audioContext.createOscillator();
+                        const gain2 = audioContext.createGain();
+                        osc2.connect(gain2);
+                        gain2.connect(audioContext.destination);
+                        osc2.type = 'sine';
+                        osc2.frequency.setValueAtTime(2800, now);
+                        osc2.frequency.exponentialRampToValueAtTime(300, now + 0.04);
+                        gain2.gain.setValueAtTime(0.08, now);
+                        gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+
+                        osc1.start(now);
+                        osc2.start(now);
+                        osc1.stop(now + 0.06);
+                        osc2.stop(now + 0.04);
                     };
 
                     sounds.explode = () => {
-                        const osc = audioContext.createOscillator();
-                        const gain = audioContext.createGain();
-                        osc.connect(gain);
-                        gain.connect(audioContext.destination);
-                        osc.type = 'sawtooth';
-                        osc.frequency.setValueAtTime(200, audioContext.currentTime);
-                        osc.frequency.exponentialRampToValueAtTime(20, audioContext.currentTime + 0.3);
-                        gain.gain.setValueAtTime(0.2, audioContext.currentTime);
-                        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-                        osc.start();
-                        osc.stop(audioContext.currentTime + 0.3);
+                        // Improved explosion with multi-frequency sweep and white noise burst
+                        const now = audioContext.currentTime;
+
+                        // Low frequency rumble
+                        const osc1 = audioContext.createOscillator();
+                        const gain1 = audioContext.createGain();
+                        osc1.connect(gain1);
+                        gain1.connect(audioContext.destination);
+                        osc1.type = 'sawtooth';
+                        osc1.frequency.setValueAtTime(250, now);
+                        osc1.frequency.exponentialRampToValueAtTime(20, now + 0.4);
+                        gain1.gain.setValueAtTime(0.25, now);
+                        gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+
+                        // Mid frequency crunch
+                        const osc2 = audioContext.createOscillator();
+                        const gain2 = audioContext.createGain();
+                        osc2.connect(gain2);
+                        gain2.connect(audioContext.destination);
+                        osc2.type = 'triangle';
+                        osc2.frequency.setValueAtTime(450, now);
+                        osc2.frequency.exponentialRampToValueAtTime(50, now + 0.25);
+                        gain2.gain.setValueAtTime(0.15, now);
+                        gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+
+                        // White noise burst for "chunky" explosion
+                        const bufferSize = audioContext.sampleRate * 0.3;
+                        const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                        const output = buffer.getChannelData(0);
+                        for (let i = 0; i < bufferSize; i++) {
+                            output[i] = Math.random() * 2 - 1;
+                        }
+                        const noise = audioContext.createBufferSource();
+                        noise.buffer = buffer;
+                        const noiseGain = audioContext.createGain();
+                        noise.connect(noiseGain);
+                        noiseGain.connect(audioContext.destination);
+                        noiseGain.gain.setValueAtTime(0.15, now);
+                        noiseGain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+
+                        osc1.start(now);
+                        osc2.start(now);
+                        noise.start(now);
+                        osc1.stop(now + 0.4);
+                        osc2.stop(now + 0.25);
+                        noise.stop(now + 0.2);
                     };
 
                     sounds.thrust = () => {
@@ -908,9 +1113,93 @@
                         noise.stop(audioContext.currentTime + 0.15);
                         rumble.stop(audioContext.currentTime + 0.15);
                     };
+
+                    // Heartbeat/Jaws sound - iconic Atari Asteroids background pulse
+                    sounds.heartbeat = (beatNumber) => {
+                        const now = audioContext.currentTime;
+                        const osc = audioContext.createOscillator();
+                        const gain = audioContext.createGain();
+                        osc.connect(gain);
+                        gain.connect(audioContext.destination);
+                        osc.type = 'sine';
+
+                        // Alternate between two frequencies for "heartbeat" effect
+                        const freq = beatNumber % 2 === 0 ? 100 : 80;
+                        osc.frequency.setValueAtTime(freq, now);
+
+                        // Short, punchy envelope
+                        gain.gain.setValueAtTime(0.25, now);
+                        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+
+                        osc.start(now);
+                        osc.stop(now + 0.08);
+                    };
+
+                    // UFO continuous siren - creates a sweeping frequency oscillator
+                    sounds.startUfoSiren = () => {
+                        if (ufoSirenOscillator) return; // Already running
+
+                        const osc = audioContext.createOscillator();
+                        const gain = audioContext.createGain();
+                        osc.connect(gain);
+                        gain.connect(audioContext.destination);
+                        osc.type = 'square';
+
+                        // Set up continuous frequency sweep (siren effect)
+                        const minFreq = 800; // Higher pitched
+                        const maxFreq = 1200;
+                        const sweepDuration = 0.5; // Half second per sweep
+
+                        const now = audioContext.currentTime;
+                        osc.frequency.setValueAtTime(minFreq, now);
+
+                        // Create continuous sweep up and down
+                        let time = now;
+                        for (let i = 0; i < 100; i++) { // 50 seconds worth of sweeps
+                            osc.frequency.linearRampToValueAtTime(maxFreq, time + sweepDuration);
+                            time += sweepDuration;
+                            osc.frequency.linearRampToValueAtTime(minFreq, time + sweepDuration);
+                            time += sweepDuration;
+                        }
+
+                        gain.gain.setValueAtTime(0.08, now);
+
+                        osc.start(now);
+                        ufoSirenOscillator = osc;
+                        ufoSirenGain = gain;
+                    };
+
+                    sounds.stopUfoSiren = () => {
+                        if (ufoSirenOscillator) {
+                            const now = audioContext.currentTime;
+                            ufoSirenGain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                            ufoSirenOscillator.stop(now + 0.1);
+                            ufoSirenOscillator = null;
+                            ufoSirenGain = null;
+                        }
+                    };
+
+                    // UFO shoot sound
+                    sounds.ufoShoot = () => {
+                        const now = audioContext.currentTime;
+                        const osc = audioContext.createOscillator();
+                        const gain = audioContext.createGain();
+                        osc.connect(gain);
+                        gain.connect(audioContext.destination);
+                        osc.type = 'sawtooth';
+
+                        osc.frequency.setValueAtTime(800, now);
+                        osc.frequency.exponentialRampToValueAtTime(200, now + 0.15);
+
+                        gain.gain.setValueAtTime(0.1, now);
+                        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+
+                        osc.start(now);
+                        osc.stop(now + 0.15);
+                    };
                 } catch (e) {
                     console.log('Audio not supported');
-                    sounds = { shoot: ()=>{}, explode: ()=>{}, thrust: ()=>{} };
+                    sounds = { shoot: ()=>{}, explode: ()=>{}, thrust: ()=>{}, heartbeat: ()=>{}, startUfoSiren: ()=>{}, stopUfoSiren: ()=>{}, ufoShoot: ()=>{} };
                 }
             }
 
@@ -923,6 +1212,155 @@
                         life: 1.0
                     });
                 }
+            }
+
+            function startHeartbeat() {
+                if (heartbeatInterval) return; // Already running
+
+                let beatCount = 0;
+                const initialThreat = asteroidThreatLevel; // Capture initial threat level
+
+                function playBeat() {
+                    if (sounds.heartbeat && gameActive) {
+                        sounds.heartbeat(beatCount);
+                        beatCount++;
+
+                        // Calculate tempo based on threat level (lower threat = faster tempo)
+                        const baseRate = 800; // Starting tempo (slow)
+                        const minRate = 200;  // Fastest tempo
+
+                        // Calculate current threat level
+                        const currentThreat = asteroids.reduce((total, ast) => total + ast.size, 0);
+
+                        // Progress from 0 (start) to 1 (all asteroids destroyed)
+                        const progress = initialThreat > 0 ?
+                            1 - (currentThreat / initialThreat) : 0;
+
+                        // Starts at 800ms (slow), accelerates to 200ms (fast) as asteroids destroyed
+                        heartbeatTempo = Math.max(minRate, baseRate - (progress * (baseRate - minRate)));
+
+                        heartbeatInterval = setTimeout(playBeat, heartbeatTempo);
+                    }
+                }
+                playBeat();
+            }
+
+            function stopHeartbeat() {
+                if (heartbeatInterval) {
+                    clearTimeout(heartbeatInterval);
+                    heartbeatInterval = null;
+                }
+            }
+
+            // UFO functions
+            function startUfoSiren() {
+                if (!ufo || ufoSirenOscillator) return;
+                if (sounds.startUfoSiren) {
+                    sounds.startUfoSiren();
+                }
+            }
+
+            function stopUfoSiren() {
+                if (sounds.stopUfoSiren) {
+                    sounds.stopUfoSiren();
+                }
+            }
+
+            function spawnUFO() {
+                if (ufo) return; // UFO already active
+
+                // Determine UFO size based on score (small UFO at higher scores)
+                const isSmall = score > 10000;
+                const size = isSmall ? 15 : 25; // Made smaller: was 20/35
+                const speed = isSmall ? 3 : 1.5;
+
+                // Spawn from left or right edge
+                const fromLeft = Math.random() > 0.5;
+                const x = fromLeft ? -size : canvas.width + size;
+                const y = Math.random() * (canvas.height * 0.6) + (canvas.height * 0.2); // Middle 60% of screen
+
+                ufo = {
+                    x, y,
+                    size,
+                    vx: fromLeft ? speed : -speed,
+                    isSmall,
+                    shootTimer: Math.random() * 2 + 1 // Shoot every 1-3 seconds
+                };
+
+                startUfoSiren();
+            }
+
+            function updateUFO(deltaTime = 0.016) {
+                if (!ufo) return;
+
+                // Move UFO
+                ufo.x += ufo.vx;
+
+                // UFO shoots at player occasionally
+                ufo.shootTimer -= deltaTime;
+                if (ufo.shootTimer <= 0) {
+                    ufo.shootTimer = Math.random() * 2 + 1;
+
+                    // Shoot in player's general direction (with some inaccuracy)
+                    const dx = ship.x - ufo.x;
+                    const dy = ship.y - ufo.y;
+                    const angle = Math.atan2(dy, dx) + (Math.random() - 0.5) * 0.5; // Add inaccuracy
+
+                    bullets.push({
+                        x: ufo.x,
+                        y: ufo.y,
+                        vx: Math.cos(angle) * 4,
+                        vy: Math.sin(angle) * 4,
+                        fromUFO: true
+                    });
+
+                    if (sounds.ufoShoot) sounds.ufoShoot();
+                }
+
+                // Remove UFO if it goes off screen
+                if ((ufo.vx > 0 && ufo.x > canvas.width + ufo.size) ||
+                    (ufo.vx < 0 && ufo.x < -ufo.size)) {
+                    ufo = null;
+                    stopUfoSiren();
+                }
+            }
+
+            function renderUFO() {
+                if (!ufo) return;
+
+                ctx.save();
+                ctx.translate(ufo.x, ufo.y);
+                ctx.strokeStyle = '#00ff00';
+                ctx.lineWidth = 2;
+
+                // Draw classic UFO shape
+                ctx.beginPath();
+
+                // Top dome
+                ctx.arc(0, -ufo.size * 0.3, ufo.size * 0.4, 0, Math.PI, true);
+
+                // Main body
+                ctx.moveTo(-ufo.size, 0);
+                ctx.lineTo(-ufo.size * 0.7, ufo.size * 0.3);
+                ctx.lineTo(ufo.size * 0.7, ufo.size * 0.3);
+                ctx.lineTo(ufo.size, 0);
+                ctx.lineTo(-ufo.size, 0);
+
+                // Bottom section
+                ctx.moveTo(-ufo.size * 0.5, ufo.size * 0.3);
+                ctx.lineTo(-ufo.size * 0.3, ufo.size * 0.5);
+                ctx.lineTo(ufo.size * 0.3, ufo.size * 0.5);
+                ctx.lineTo(ufo.size * 0.5, ufo.size * 0.3);
+
+                ctx.stroke();
+
+                // Add some detail windows
+                ctx.fillStyle = '#00ff00';
+                for (let i = -1; i <= 1; i++) {
+                    ctx.fillRect(i * ufo.size * 0.3 - 2, -ufo.size * 0.25, 4, 4);
+                }
+
+                ctx.restore();
             }
 
             function renderVectorGame() {
@@ -989,6 +1427,9 @@
                     ctx.fill();
                     ctx.shadowBlur = 0;
                 });
+
+                // Draw UFO
+                renderUFO();
 
                 // Draw ship (with invincibility flash and phosphor glow)
                 if (!invincible || Math.floor(Date.now() / 100) % 2 === 0) {
@@ -1091,6 +1532,7 @@
                         } else {
                             gameActive = false;
                             clearInterval(gameInterval);
+                            stopHeartbeat(); // Stop background heartbeat on hyperspace death
                         }
                     }
                     setTimeout(() => keys.hyperUsed = false, 500);
@@ -1099,6 +1541,8 @@
                 if (e.key === 'q' || e.key === 'Q') {
                     gameActive = false;
                     clearInterval(gameInterval);
+                    stopHeartbeat(); // Stop background heartbeat sound
+                    stopUfoSiren(); // Stop UFO sound
                     document.removeEventListener('keydown', vectorKeyHandler);
                     document.removeEventListener('keyup', vectorKeyHandler);
 
@@ -1108,6 +1552,7 @@
 
                     // Show terminal and return to auto mode
                     terminal.style.display = 'block';
+                    terminal.style.opacity = '1'; // Restore full opacity
                     terminal.innerHTML = '';
                     setTimeout(() => {
                         returnToAutoMode();
@@ -1197,6 +1642,16 @@
                     return p.life > 0;
                 });
 
+                // Update UFO
+                updateUFO();
+
+                // UFO spawning timer (spawn every 15-25 seconds, starting from level 1 for testing)
+                ufoSpawnTimer += 0.016; // ~16ms per frame
+                if (!ufo && ufoSpawnTimer > (15 + Math.random() * 10)) {
+                    spawnUFO();
+                    ufoSpawnTimer = 0;
+                }
+
                 // Collisions
                 bullets.forEach((b, bi) => {
                     asteroids.forEach((ast, ai) => {
@@ -1232,7 +1687,87 @@
                     });
                 });
 
-                // Ship collision (with invincibility check)
+                // UFO collision detection
+                if (ufo) {
+                    // Player bullets hitting UFO
+                    for (let i = bullets.length - 1; i >= 0; i--) {
+                        const b = bullets[i];
+                        if (b.fromUFO) continue; // Skip UFO's own bullets
+
+                        const dx = b.x - ufo.x;
+                        const dy = b.y - ufo.y;
+                        if (dx*dx + dy*dy < ufo.size * ufo.size) {
+                            bullets.splice(i, 1);
+
+                            // Award points based on distance (closer = more points)
+                            const distance = Math.sqrt((ship.x - ufo.x)**2 + (ship.y - ufo.y)**2);
+                            const maxDistance = Math.sqrt(canvas.width**2 + canvas.height**2);
+                            const pointsBase = ufo.isSmall ? 1000 : 200;
+                            const bonusPoints = Math.floor(pointsBase * (1 - distance / maxDistance) * 2);
+                            score += pointsBase + bonusPoints;
+
+                            createParticles(ufo.x, ufo.y, 25);
+                            screenShake = 8;
+                            if (sounds.explode) sounds.explode();
+
+                            ufo = null;
+                            stopUfoSiren();
+                            break;
+                        }
+                    }
+
+                    // UFO hitting ship directly
+                    if (ufo && !invincible) {
+                        const dx = ship.x - ufo.x;
+                        const dy = ship.y - ufo.y;
+                        if (dx*dx + dy*dy < (ufo.size + 12) * (ufo.size + 12)) {
+                            lives--;
+                            createParticles(ship.x, ship.y, 30);
+                            screenShake = 10;
+                            if (sounds.explode) sounds.explode();
+
+                            ufo = null;
+                            stopUfoSiren();
+
+                            if (lives > 0) {
+                                respawnShip();
+                            } else {
+                                gameActive = false;
+                                clearInterval(gameInterval);
+                                stopHeartbeat();
+                            }
+                        }
+                    }
+                }
+
+                // UFO bullets hitting ship
+                if (!invincible) {
+                    for (let i = bullets.length - 1; i >= 0; i--) {
+                        const b = bullets[i];
+                        if (!b.fromUFO) continue; // Only check UFO bullets
+
+                        const dx = ship.x - b.x;
+                        const dy = ship.y - b.y;
+                        if (dx*dx + dy*dy < 144) { // 12px radius
+                            bullets.splice(i, 1);
+                            lives--;
+                            createParticles(ship.x, ship.y, 30);
+                            screenShake = 10;
+                            if (sounds.explode) sounds.explode();
+
+                            if (lives > 0) {
+                                respawnShip();
+                            } else {
+                                gameActive = false;
+                                clearInterval(gameInterval);
+                                stopHeartbeat();
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                // Ship collision with asteroids (with invincibility check)
                 if (!invincible) {
                     asteroids.forEach(ast => {
                         const dx = ship.x - ast.x;
@@ -1249,6 +1784,7 @@
                             } else {
                                 gameActive = false;
                                 clearInterval(gameInterval);
+                                stopHeartbeat(); // Stop background heartbeat on game over
                             }
                         }
                     });
@@ -1287,6 +1823,9 @@
                                 shape: createAsteroidShape()
                             });
                         }
+                        // Reset initial count and threat level for new level tempo calculation
+                        initialAsteroidCount = newAsteroidCount;
+                        asteroidThreatLevel = asteroids.reduce((total, ast) => total + ast.size, 0);
                         gameInterval = setInterval(updateVectorGame, 16);
                     }, 2000);
                 }
@@ -1339,32 +1878,48 @@
                     return bullet.x >= 0 && bullet.x < WIDTH && bullet.y >= 0 && bullet.y < HEIGHT;
                 });
 
-                // Check bullet-asteroid collisions
-                bullets.forEach((bullet, bi) => {
-                    asteroids.forEach((ast, ai) => {
+                // Check bullet-asteroid collisions (safe iteration pattern)
+                const bulletsToRemove = new Set();
+                const asteroidsToRemove = new Set();
+                const newAsteroids = [];
+
+                for (let bi = 0; bi < bullets.length; bi++) {
+                    if (bulletsToRemove.has(bi)) continue;
+
+                    const bullet = bullets[bi];
+                    for (let ai = 0; ai < asteroids.length; ai++) {
+                        if (asteroidsToRemove.has(ai)) continue;
+
+                        const ast = asteroids[ai];
                         const dx = bullet.x - ast.x;
                         const dy = bullet.y - ast.y;
+
                         if (dx*dx + dy*dy < ast.size * ast.size) {
-                            bullets.splice(bi, 1);
-                            const oldSize = ast.size;
-                            asteroids.splice(ai, 1);
-                            score += (4 - oldSize) * 10;
+                            bulletsToRemove.add(bi);
+                            asteroidsToRemove.add(ai);
+                            score += (4 - ast.size) * 10;
 
                             // Break into smaller asteroids
-                            if (oldSize > 1) {
+                            if (ast.size > 1) {
                                 for (let i = 0; i < 2; i++) {
-                                    asteroids.push({
+                                    newAsteroids.push({
                                         x: ast.x,
                                         y: ast.y,
                                         vx: (Math.random() - 0.5) * 0.8,
                                         vy: (Math.random() - 0.5) * 0.8,
-                                        size: oldSize - 1
+                                        size: ast.size - 1
                                     });
                                 }
                             }
+                            break; // Bullet can only hit one asteroid
                         }
-                    });
-                });
+                    }
+                }
+
+                // Remove marked items and add new asteroids
+                bullets = bullets.filter((_, i) => !bulletsToRemove.has(i));
+                asteroids = asteroids.filter((_, i) => !asteroidsToRemove.has(i));
+                asteroids.push(...newAsteroids);
 
                 // Check ship-asteroid collisions
                 asteroids.forEach(ast => {
@@ -1372,6 +1927,7 @@
                     const dy = ship.y - ast.y;
                     if (dx*dx + dy*dy < ast.size * ast.size) {
                         gameActive = false;
+                        window.gameActive = false; // Allow matrix resize again
                         clearInterval(gameInterval);
                     }
                 });
@@ -1427,8 +1983,11 @@
             document.removeEventListener('keydown', arguments.callee);
             document.addEventListener('keydown', asteroidKeyHandler);
 
+            console.log('[ASTEROIDS] Calling renderGame() for first time');
             renderGame();
+            console.log('[ASTEROIDS] Starting game interval');
             gameInterval = setInterval(updateGame, 100);
+            console.log('[ASTEROIDS] ========== startAsteroidsGame() COMPLETE ==========');
         }
 
         // Command processor for interactive mode
@@ -1465,6 +2024,8 @@
                     ];
 
                 case 'clear':
+                    console.log('[TERMINAL] Clearing terminal via clear command');
+                    console.trace('[TERMINAL] Stack trace for terminal clear');
                     terminal.innerHTML = '';
                     return null;
 
@@ -1621,12 +2182,10 @@
                     return null;
 
                 case 'auto':
-                    interactiveMode = false;
-                    autoMode = true;
-                    return [
-                        '<span class="output-success">Resuming automatic demonstration...</span>',
-                        'Press any key to return to interactive mode.'
-                    ];
+                    // Note: This case is normally handled in executeInteractiveCommand
+                    // but included here as a fallback
+                    returnToAutoMode();
+                    return null;
 
                 case '':
                     return null;
@@ -1900,10 +2459,13 @@
                             } else {
                                 // Restart from beginning
                                 const restartTimeoutId = setTimeout(() => {
+                                    console.log('[AUTO-DEMO] Restart timeout fired - autoMode:', autoMode, 'interactiveMode:', interactiveMode);
                                     if (autoMode && !interactiveMode) {
-                                        terminal.innerHTML = '';
+                                        console.log('[AUTO-DEMO] Restarting demo from beginning (location 1)');
                                         commandIndex = 0;
                                         showCommand();
+                                    } else {
+                                        console.log('[AUTO-DEMO] Skipping demo restart - conditions not met');
                                     }
                                 }, commandDelay);
                                 autoTimeouts.push(restartTimeoutId);
@@ -1925,12 +2487,15 @@
             }
             
             if (commandIndex >= commands.length) {
-                // Clear terminal and restart
+                // Restart demo from beginning
                 const timeoutId = setTimeout(() => {
+                    console.log('[AUTO-DEMO] End-of-demo timeout fired - autoMode:', autoMode, 'interactiveMode:', interactiveMode);
                     if (autoMode && !interactiveMode) {
-                        terminal.innerHTML = '';
+                        console.log('[AUTO-DEMO] Restarting demo from beginning (location 2)');
                         commandIndex = 0;
                         showCommand();
+                    } else {
+                        console.log('[AUTO-DEMO] Skipping demo restart - conditions not met');
                     }
                 }, commandDelay);
                 autoTimeouts.push(timeoutId);
@@ -1965,10 +2530,13 @@
                     } else {
                         // Restart from beginning
                         const restartTimeoutId = setTimeout(() => {
+                            console.log('[AUTO-DEMO] Final restart timeout fired - autoMode:', autoMode, 'interactiveMode:', interactiveMode);
                             if (autoMode && !interactiveMode) {
-                                terminal.innerHTML = '';
+                                console.log('[AUTO-DEMO] Restarting demo from beginning (location 3)');
                                 commandIndex = 0;
                                 showCommand();
+                            } else {
+                                console.log('[AUTO-DEMO] Skipping demo restart - conditions not met');
                             }
                         }, commandDelay);
                         autoTimeouts.push(restartTimeoutId);

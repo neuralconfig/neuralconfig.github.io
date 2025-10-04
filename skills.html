@@ -6,7 +6,7 @@
     <title>About | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Modern Charcoal theme for about page */
+        /* Blog Layout theme for about page */
         body {
             background-color: #1e1e1e;
             color: #d4d4d4;
@@ -43,37 +43,92 @@
         }
 
         /* Hero Section */
-        .hero-section {
+        .hero {
             text-align: center;
             padding: 4rem 0 3rem;
-            max-width: 800px;
-            margin: 0 auto;
+            border-bottom: 1px solid #3e3e42;
+            margin-bottom: 3rem;
         }
 
-        .hero-title {
+        .hero h1 {
             font-size: 2.5rem;
             color: #569cd6;
             margin-bottom: 1rem;
-            font-weight: 500;
         }
 
-        .hero-subtitle {
-            font-size: 1.3rem;
+        .hero .tagline {
+            font-size: 1.2rem;
             color: #9cdcfe;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+            margin-bottom: 2rem;
         }
 
-        .hero-bio {
+        /* Story Section */
+        .story-section {
+            margin-bottom: 3rem;
+        }
+
+        .story-section h2 {
+            font-size: 1.8rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+        }
+
+        .story-text {
+            color: #d4d4d4;
             font-size: 1.05rem;
-            color: #b0b0b0;
             line-height: 1.8;
-            margin-top: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* What I Do Cards */
-        .what-i-do {
-            margin: 4rem 0;
+        /* Timeline */
+        .timeline {
+            margin: 2rem 0 3rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            bottom: -20px;
+            width: 2px;
+            background: #3e3e42;
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-marker {
+            width: 40px;
+            height: 40px;
+            background: #569cd6;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e1e1e;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .timeline-content h3 {
+            color: #9cdcfe;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #d4d4d4;
+            line-height: 1.6;
         }
 
         .section-heading {
@@ -81,40 +136,6 @@
             color: #569cd6;
             margin-bottom: 2.5rem;
             text-align: center;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .info-card {
-            background: #252526;
-            border: 1px solid #3e3e42;
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .info-card:hover {
-            border-color: #569cd6;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(86, 156, 214, 0.15);
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            color: #569cd6;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .card-content {
-            color: #b0b0b0;
-            line-height: 1.7;
-            font-size: 0.95rem;
         }
 
         /* Technologies Section */
@@ -321,11 +342,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-title {
+            .hero h1 {
                 font-size: 2rem;
             }
 
-            .hero-subtitle {
+            .hero .tagline {
                 font-size: 1.1rem;
             }
 
@@ -333,8 +354,13 @@
                 font-size: 1.5rem;
             }
 
-            .cards-grid {
-                grid-template-columns: 1fr;
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-item::before {
+                display: none;
             }
         }
     </style>
@@ -350,6 +376,7 @@
                 <a href="projects.html" class="nav-link">open source</a>
                 <a href="tools.html" class="nav-link">tools</a>
                 <a href="mobile-apps.html" class="nav-link">mobile apps</a>
+                <a href="blog.html" class="nav-link">blog</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -357,48 +384,58 @@
 
     <div class="container">
         <!-- Hero Section -->
-        <div class="hero-section">
-            <h1 class="hero-title">AI & Infrastructure Architect</h1>
-            <p class="hero-subtitle">Building intelligent systems where deep networking expertise meets artificial intelligence</p>
-            <p class="hero-bio">
-                Combining 20+ years of enterprise network infrastructure experience with modern AI development
-                to create production-ready intelligent automation systems. Specializing in the intersection of
-                agentic AI, cybersecurity, and network automation.
+        <div class="hero">
+            <h1>Building Intelligent Infrastructure</h1>
+            <p class="tagline">From IP networks to neural networks</p>
+        </div>
+
+        <!-- Story Section -->
+        <div class="story-section">
+            <h2>My Story</h2>
+            <p class="story-text">
+                For over 20 years, I've built and operated enterprise network infrastructure—from routing protocols and wireless architectures
+                to zero-trust security. But I always felt there was more we could do with automation.
+            </p>
+            <p class="story-text">
+                Then AI happened. Not the hype, but the real capabilities of LLMs and agentic systems. I saw an opportunity to bridge two worlds:
+                the deep infrastructure knowledge most AI developers don't have, and the modern AI capabilities most network engineers haven't explored.
             </p>
         </div>
 
-        <!-- What I Do -->
-        <section class="what-i-do">
-            <h2 class="section-heading">What I Do</h2>
-            <div class="cards-grid">
-                <div class="info-card">
-                    <h3 class="card-title">Agentic AI Systems</h3>
-                    <p class="card-content">
-                        Building autonomous AI agents with tool-calling capabilities, RAG implementations,
-                        and LLM integration. From proof-of-concept to production deployment with Claude,
-                        OpenAI, and custom agent frameworks.
-                    </p>
-                </div>
-
-                <div class="info-card">
-                    <h3 class="card-title">Network Infrastructure</h3>
-                    <p class="card-content">
-                        Enterprise-grade network architecture with 20+ years experience. CISSP-certified
-                        expertise in zero-trust security, wireless systems (RUCKUS specialist), routing protocols,
-                        and network automation.
-                    </p>
-                </div>
-
-                <div class="info-card">
-                    <h3 class="card-title">Pre-Sales Engineering</h3>
-                    <p class="card-content">
-                        15+ years leading Fortune 500 engagements with executive-level presentations,
-                        technical solution architecture, and global opportunity management. Bridge between
-                        complex technical solutions and business value.
-                    </p>
+        <!-- Timeline -->
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker">01</div>
+                <div class="timeline-content">
+                    <h3>The Foundation: Network Infrastructure</h3>
+                    <p>I began my career building enterprise networks across many verticals. Over two decades, I learned that production systems require more than technical specifications—they demand reliability, security, and operational excellence. I earned my CISSP, CCNP, and multiple wireless certifications while specializing in RUCKUS wireless architecture and zero-trust security implementations.</p>
                 </div>
             </div>
-        </section>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">02</div>
+                <div class="timeline-content">
+                    <h3>The Pivot: Discovering AI</h3>
+                    <p>After completing Stanford's Machine Learning specialization, I built my first AI agent for network automation using Claude. This experience revealed the potential of combining deep infrastructure knowledge with AI capabilities. I immediately began experimenting with RAG systems, autonomous agents, and agentic workflows that could solve real infrastructure challenges.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">03</div>
+                <div class="timeline-content">
+                    <h3>Building in the Open</h3>
+                    <p>I began sharing my tools on GitHub: autonomous agents for support automation, RAG-powered knowledge systems, and zero-touch provisioning platforms. Projects like ruckus-ztp and osticket-agent gained community traction, validating that others also need this intersection of infrastructure expertise and AI capabilities. The open-source approach has been essential for learning and collaboration.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">04</div>
+                <div class="timeline-content">
+                    <h3>What's Next</h3>
+                    <p>I'm expanding into iOS development with Swift, focusing on Apple Intelligence and frontier model integration (Claude, GPT, Gemini) for native mobile experiences. I document the technical challenges as I learn. I'm looking forward to applying agentic AI to network management and cybersecurity challenges.</p>
+                </div>
+            </div>
+        </div>
 
         <hr class="section-divider">
 
@@ -453,21 +490,6 @@
 
         <hr class="section-divider">
 
-        <!-- Experience Highlights -->
-        <section class="experience-section">
-            <h2>Experience Highlights</h2>
-            <ul class="experience-list">
-                <li>20+ years designing and implementing enterprise network infrastructure</li>
-                <li>15+ years pre-sales systems engineering with Fortune 500 customers</li>
-                <li>Led global enterprise deployments across healthcare, education, and enterprise sectors</li>
-                <li>Built production autonomous AI agents for support automation and network provisioning</li>
-                <li>RUCKUS wireless architecture specialist with extensive SmartZone and RUCKUS One experience</li>
-                <li>Developed open source tools used by network engineers worldwide</li>
-            </ul>
-        </section>
-
-        <hr class="section-divider">
-
         <!-- Certifications -->
         <section>
             <h2 class="section-heading">Certifications & Education</h2>
@@ -495,46 +517,10 @@
             </div>
         </section>
 
-        <hr class="section-divider">
-
-        <!-- Approach -->
-        <section>
-            <h2 class="section-heading">Approach</h2>
-            <div class="approach-grid">
-                <div class="approach-card">
-                    <div class="approach-number">01</div>
-                    <h3>Production-Ready AI</h3>
-                    <p>
-                        Production systems need more than AI models—they require infrastructure,
-                        security, and operational reliability. Building solutions that work from
-                        network architectures to AI-driven automation.
-                    </p>
-                </div>
-
-                <div class="approach-card">
-                    <div class="approach-number">02</div>
-                    <h3>Full-Stack Expertise</h3>
-                    <p>
-                        From low-level network protocols and RF engineering to AI orchestration
-                        and agent development. This breadth enables secure, scalable, production-ready systems.
-                    </p>
-                </div>
-
-                <div class="approach-card">
-                    <div class="approach-number">03</div>
-                    <h3>Practical Solutions</h3>
-                    <p>
-                        AI-powered network tools, zero-trust architectures, enterprise automation—practical
-                        solutions for real-world problems with security and reliability built in.
-                    </p>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact CTA -->
         <div class="contact-cta">
-            <h2>Let's Work Together</h2>
-            <p>Interested in AI systems, network automation, or consulting services?</p>
+            <h2>Let's Connect</h2>
+            <p>Interested in collaborating on open source projects or discussing AI and network automation?</p>
             <a href="mailto:contact@neuralconfig.com">Get in Touch</a>
         </div>
     </div>
