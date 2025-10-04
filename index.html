@@ -342,12 +342,6 @@
             const terminalWidth = terminal.clientWidth - 48; // Account for padding (1.5rem * 2 = 48px)
             const calculatedWidth = Math.floor(terminalWidth / charWidth);
 
-            console.log('[BANNER] Terminal width calculation:', {
-                terminalWidth,
-                charWidth,
-                calculatedWidth
-            });
-
             return calculatedWidth > 0 ? calculatedWidth : 80;
         }
 
@@ -686,7 +680,6 @@
                                 return;
                             }
 
-                            console.log('[TERMINAL] Starting matrix effect (keeping banner visible)');
                             showBanner = false;
 
                             // Start matrix effect with banner still visible
@@ -705,12 +698,9 @@
 
         // Asteroids game implementation
         function startAsteroidsGame() {
-            console.log('[ASTEROIDS] ========== startAsteroidsGame() CALLED ==========');
-            console.log('[ASTEROIDS] Setting window.gameActive = true');
             // Set flag to prevent matrix resize during game initialization
             window.gameActive = true;
 
-            console.log('[ASTEROIDS] Disabling modes - interactiveMode:', interactiveMode, 'autoMode:', autoMode);
             // Disable interactive mode to prevent interference
             if (interactiveMode) {
                 interactiveMode = false;
@@ -718,30 +708,23 @@
 
             // Always pause auto mode during game to prevent key handler conflicts
             autoMode = false;
-            console.log('[ASTEROIDS] Modes after disable - interactiveMode:', interactiveMode, 'autoMode:', autoMode);
 
             // Remove interactive prompt if it exists
             if (currentInputLine) {
-                console.log('[ASTEROIDS] Removing currentInputLine');
                 currentInputLine.remove();
                 currentInputLine = null;
             }
 
-            const WIDTH = 24;
-            const HEIGHT = 8;
             let gameActive = true;
             let score = 0;
             let lives = 3;
             let level = 1;
-            let upgradeTime = 4; // Seconds until vector graphics upgrade
-            let upgraded = false;
             let invincible = false;
             let invincibleTimer = 0;
-            let ship = { x: WIDTH/2, y: HEIGHT/2, angle: 0, vx: 0, vy: 0 };
+            let ship = { x: 350, y: 240, angle: 0, vx: 0, vy: 0 }; // Start at center of canvas
             let asteroids = [];
             let bullets = [];
             let gameInterval;
-            let lastKeyTime = 0;
 
             // Helper function to create random asteroid shape
             function createAsteroidShape() {
@@ -754,88 +737,7 @@
                 return shape;
             }
 
-            // Helper function to spawn asteroid safely (not near ship)
-            function spawnAsteroid(x, y, vx, vy, size, shape) {
-                const safeZone = 100; // pixels
-                const centerX = WIDTH / 2;
-                const centerY = HEIGHT / 2;
-
-                // If position not specified, find safe spawn
-                if (x === undefined) {
-                    do {
-                        x = Math.random() * WIDTH;
-                        y = Math.random() * HEIGHT;
-                    } while (Math.abs(x - centerX) < safeZone/10 && Math.abs(y - centerY) < safeZone/10);
-                }
-
-                asteroids.push({
-                    x: x || Math.random() * WIDTH,
-                    y: y || Math.random() * HEIGHT,
-                    vx: vx || (Math.random() - 0.5) * 0.4, // Slower for retro players
-                    vy: vy || (Math.random() - 0.5) * 0.4,
-                    size: size || 3,
-                    shape: shape || createAsteroidShape()
-                });
-            }
-
-            // Initialize asteroids with safe spawn (fewer for small screen)
-            for (let i = 0; i < 3; i++) {
-                spawnAsteroid();
-            }
-
-            const shipChars = ['^', '>', 'v', '<'];
-
-            function renderGame() {
-                console.log('[ASTEROIDS] renderGame() called');
-                const field = Array(HEIGHT).fill().map(() => Array(WIDTH).fill(' '));
-
-                // Draw asteroids
-                asteroids.forEach(ast => {
-                    const x = Math.floor(ast.x);
-                    const y = Math.floor(ast.y);
-                    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) {
-                        field[y][x] = ast.size === 3 ? 'O' : ast.size === 2 ? 'o' : '*';
-                    }
-                });
-
-                // Draw bullets
-                bullets.forEach(bullet => {
-                    const x = Math.floor(bullet.x);
-                    const y = Math.floor(bullet.y);
-                    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) {
-                        field[y][x] = '·';
-                    }
-                });
-
-                // Draw ship
-                const sx = Math.floor(ship.x);
-                const sy = Math.floor(ship.y);
-                if (sx >= 0 && sx < WIDTH && sy >= 0 && sy < HEIGHT) {
-                    field[sy][sx] = shipChars[ship.angle % 4];
-                }
-
-                // Render inline - minimal oversimplified version
-                let gameContainer = document.getElementById('asteroids-text-game');
-                if (!gameContainer) {
-                    console.log('[ASTEROIDS] Creating new game container (first render)');
-                    gameContainer = document.createElement('div');
-                    gameContainer.id = 'asteroids-text-game';
-                    gameContainer.className = 'terminal-line'; // Use terminal-line class for consistency
-                    gameContainer.style.fontFamily = 'monospace';
-                    gameContainer.style.lineHeight = '1.2';
-                    gameContainer.style.whiteSpace = 'pre';
-                    gameContainer.style.color = '#888';
-                    gameContainer.style.marginTop = '1rem';
-                    gameContainer.style.marginBottom = '0.5rem';
-                    console.log('[ASTEROIDS] Appending game container to terminal');
-                    terminal.appendChild(gameContainer);
-                    console.log('[ASTEROIDS] Game container appended successfully');
-                } else {
-                    console.log('[ASTEROIDS] Reusing existing game container');
-                }
-
-                gameContainer.textContent = field.map(row => row.join('')).join('\n');
-            }
+            // ASCII version removed - game goes directly to vector graphics
 
             // Vector graphics upgrade
             let canvas, ctx, particles = [];
@@ -852,14 +754,10 @@
             let ufoSirenGain = null; // UFO siren gain node
 
             function triggerUpgrade() {
-                // Clear flag to allow matrix resize again (though matrix will be hidden anyway)
-                window.gameActive = false;
+                // Keep game active flag set during vector graphics game
+                // (already set to true at start of startAsteroidsGame)
 
-                upgraded = true;
                 clearInterval(gameInterval);
-
-                // Remove ASCII keyboard handler
-                document.removeEventListener('keydown', asteroidKeyHandler);
 
                 // DON'T restart matrix - it's already running continuously
                 // DON'T hide terminal yet - we'll fade it out smoothly
@@ -1833,161 +1731,8 @@
                 renderVectorGame();
             }
 
-            function updateGame() {
-                if (!gameActive) return;
-
-                // Check for upgrade (silent - no countdown display)
-                if (!upgraded && upgradeTime > 0) {
-                    upgradeTime -= 0.1;
-                    if (upgradeTime <= 0) {
-                        upgradeTime = 0;
-                        // Clean up text version
-                        const textGame = document.getElementById('asteroids-text-game');
-                        if (textGame) textGame.remove();
-                        triggerUpgrade();
-                        return;
-                    }
-                }
-
-                // Update ship position
-                ship.x += ship.vx;
-                ship.y += ship.vy;
-                ship.vx *= 0.98;
-                ship.vy *= 0.98;
-
-                // Wrap ship
-                if (ship.x < 0) ship.x = WIDTH - 1;
-                if (ship.x >= WIDTH) ship.x = 0;
-                if (ship.y < 0) ship.y = HEIGHT - 1;
-                if (ship.y >= HEIGHT) ship.y = 0;
-
-                // Update asteroids
-                asteroids.forEach(ast => {
-                    ast.x += ast.vx;
-                    ast.y += ast.vy;
-                    if (ast.x < 0) ast.x = WIDTH - 1;
-                    if (ast.x >= WIDTH) ast.x = 0;
-                    if (ast.y < 0) ast.y = HEIGHT - 1;
-                    if (ast.y >= HEIGHT) ast.y = 0;
-                });
-
-                // Update bullets
-                bullets = bullets.filter(bullet => {
-                    bullet.x += bullet.vx;
-                    bullet.y += bullet.vy;
-                    return bullet.x >= 0 && bullet.x < WIDTH && bullet.y >= 0 && bullet.y < HEIGHT;
-                });
-
-                // Check bullet-asteroid collisions (safe iteration pattern)
-                const bulletsToRemove = new Set();
-                const asteroidsToRemove = new Set();
-                const newAsteroids = [];
-
-                for (let bi = 0; bi < bullets.length; bi++) {
-                    if (bulletsToRemove.has(bi)) continue;
-
-                    const bullet = bullets[bi];
-                    for (let ai = 0; ai < asteroids.length; ai++) {
-                        if (asteroidsToRemove.has(ai)) continue;
-
-                        const ast = asteroids[ai];
-                        const dx = bullet.x - ast.x;
-                        const dy = bullet.y - ast.y;
-
-                        if (dx*dx + dy*dy < ast.size * ast.size) {
-                            bulletsToRemove.add(bi);
-                            asteroidsToRemove.add(ai);
-                            score += (4 - ast.size) * 10;
-
-                            // Break into smaller asteroids
-                            if (ast.size > 1) {
-                                for (let i = 0; i < 2; i++) {
-                                    newAsteroids.push({
-                                        x: ast.x,
-                                        y: ast.y,
-                                        vx: (Math.random() - 0.5) * 0.8,
-                                        vy: (Math.random() - 0.5) * 0.8,
-                                        size: ast.size - 1
-                                    });
-                                }
-                            }
-                            break; // Bullet can only hit one asteroid
-                        }
-                    }
-                }
-
-                // Remove marked items and add new asteroids
-                bullets = bullets.filter((_, i) => !bulletsToRemove.has(i));
-                asteroids = asteroids.filter((_, i) => !asteroidsToRemove.has(i));
-                asteroids.push(...newAsteroids);
-
-                // Check ship-asteroid collisions
-                asteroids.forEach(ast => {
-                    const dx = ship.x - ast.x;
-                    const dy = ship.y - ast.y;
-                    if (dx*dx + dy*dy < ast.size * ast.size) {
-                        gameActive = false;
-                        window.gameActive = false; // Allow matrix resize again
-                        clearInterval(gameInterval);
-                    }
-                });
-
-                // Spawn new asteroids if needed
-                if (asteroids.length < 3) {
-                    asteroids.push({
-                        x: Math.random() * WIDTH,
-                        y: Math.random() < 0.5 ? 0 : HEIGHT - 1,
-                        vx: (Math.random() - 0.5) * 0.6,
-                        vy: (Math.random() - 0.5) * 0.6,
-                        size: 3
-                    });
-                }
-
-                renderGame();
-            }
-
-            const asteroidKeyHandler = (e) => {
-                const now = Date.now();
-                if (now - lastKeyTime < 50) return;
-                lastKeyTime = now;
-
-                e.preventDefault();
-
-                switch(e.key) {
-                    case 'ArrowLeft':
-                        ship.angle = (ship.angle + 3) % 4;
-                        break;
-                    case 'ArrowRight':
-                        ship.angle = (ship.angle + 1) % 4;
-                        break;
-                    case 'ArrowUp':
-                        const thrust = 0.3;
-                        const angles = [0, Math.PI/2, Math.PI, -Math.PI/2];
-                        ship.vx += Math.sin(angles[ship.angle]) * thrust;
-                        ship.vy -= Math.cos(angles[ship.angle]) * thrust;
-                        break;
-                    case ' ':
-                        const speed = 1.5;
-                        const angles2 = [0, Math.PI/2, Math.PI, -Math.PI/2];
-                        bullets.push({
-                            x: ship.x,
-                            y: ship.y,
-                            vx: Math.sin(angles2[ship.angle]) * speed,
-                            vy: -Math.cos(angles2[ship.angle]) * speed
-                        });
-                        break;
-                }
-            };
-
-            // Remove existing keyboard handler
-            document.removeEventListener('keydown', arguments.callee);
-            document.addEventListener('keydown', asteroidKeyHandler);
-
-            console.log('[ASTEROIDS] Calling renderGame() for first time');
-            renderGame();
-            console.log('[ASTEROIDS] Starting game interval');
-            gameInterval = setInterval(updateGame, 100);
-            console.log('[ASTEROIDS] ========== startAsteroidsGame() COMPLETE ==========');
+            // Launch vector graphics game directly
+            triggerUpgrade();
         }
 
         // Command processor for interactive mode
@@ -2024,8 +1769,6 @@
                     ];
 
                 case 'clear':
-                    console.log('[TERMINAL] Clearing terminal via clear command');
-                    console.trace('[TERMINAL] Stack trace for terminal clear');
                     terminal.innerHTML = '';
                     return null;
 

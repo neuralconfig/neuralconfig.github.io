@@ -111,7 +111,7 @@ async function renderContributionGraph() {
             <div class="contribution-header">
                 <h3>GitHub Contributions</h3>
             </div>
-            <div class="contribution-graph-wrapper" style="background: #0d1117; padding: 1rem; border-radius: 4px;">
+            <div class="contribution-graph-wrapper" style="background: #0a0a0a; padding: 1rem; border-radius: 4px;">
                 <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noopener" style="display: block;">
                     ${graphSVG}
                 </a>
@@ -127,7 +127,7 @@ async function renderContributionGraph() {
             <div class="contribution-header">
                 <h3>GitHub Contributions</h3>
             </div>
-            <div style="padding: 1rem; text-align: center; background: #1e1e1e; border-radius: 4px; color: #888;">
+            <div style="padding: 1rem; text-align: center; background: #0a0a0a; border-radius: 4px; color: #888;">
                 <p style="margin-bottom: 0.5rem;">Contribution data not yet available.</p>
                 <p style="font-size: 0.85rem; margin-bottom: 1rem;">The GitHub Action will generate it soon.</p>
                 <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">
