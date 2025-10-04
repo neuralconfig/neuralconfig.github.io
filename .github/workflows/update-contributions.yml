@@ -1,0 +1,68 @@
+name: Update GitHub Contributions
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-contributions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch GitHub Contributions
+        env:
+          GITHUB_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
+          USERNAME: murphynetworks
+        run: |
+          # GraphQL query to fetch contribution data
+          QUERY=$(cat <<'EOF'
+          {
+            "query": "query($username: String!) { user(login: $username) { contributionsCollection { contributionCalendar { totalContributions weeks { contributionDays { contributionCount date } } } } } }",
+            "variables": {
+              "username": "$USERNAME"
+            }
+          }
+          EOF
+          )
+
+          # Replace $USERNAME in the query
+          QUERY=$(echo "$QUERY" | sed "s/\$USERNAME/$USERNAME/g")
+
+          # Fetch data from GitHub GraphQL API
+          RESPONSE=$(curl -s -X POST https://api.github.com/graphql \
+            -H "Authorization: bearer $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$QUERY")
+
+          # Extract contribution calendar data
+          echo "$RESPONSE" | jq '.data.user.contributionsCollection.contributionCalendar' > contributions.json
+
+          # Verify the JSON is valid
+          if ! jq empty contributions.json 2>/dev/null; then
+            echo "Error: Failed to generate valid JSON"
+            echo "Response: $RESPONSE"
+            exit 1
+          fi
+
+          echo "✓ Contributions data generated successfully"
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git add contributions.json
+
+          # Check if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to contribution data"
+          else
+            git commit -m "chore: update GitHub contributions data [skip ci]"
+            git push
+            echo "✓ Contributions data updated and pushed"
+          fi
