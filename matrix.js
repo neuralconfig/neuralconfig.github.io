@@ -34,26 +34,84 @@ function drawMatrix() {
     }
 }
 
-// Matrix animation control
-let matrixInterval = null;
+// Matrix animation control using requestAnimationFrame for better performance
+let matrixAnimationId = null;
+let lastFrameTime = 0;
+const frameInterval = 50; // Target 50ms between frames (20 FPS for matrix effect)
+
+function animateMatrix(currentTime) {
+    if (!matrixAnimationId) return;
+
+    // Throttle to ~20 FPS for the matrix effect
+    if (currentTime - lastFrameTime >= frameInterval) {
+        drawMatrix();
+        lastFrameTime = currentTime;
+    }
+
+    matrixAnimationId = requestAnimationFrame(animateMatrix);
+}
 
 function startMatrix() {
-    if (!matrixInterval) {
-        matrixInterval = setInterval(drawMatrix, 50);
+    if (!matrixAnimationId) {
+        lastFrameTime = 0;
+        matrixAnimationId = requestAnimationFrame(animateMatrix);
     }
 }
 
 function stopMatrix() {
-    if (matrixInterval) {
-        clearInterval(matrixInterval);
-        matrixInterval = null;
+    if (matrixAnimationId) {
+        cancelAnimationFrame(matrixAnimationId);
+        matrixAnimationId = null;
     }
 }
 
 // Don't start automatically - will be started after banner
 
-// Responsive canvas resize
+// Responsive canvas resize with debouncing for better performance
+let resizeTimeout;
 window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    console.log('[MATRIX] Resize event fired');
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        console.log('[MATRIX] Resize handler executing after 250ms delay');
+        console.log('[MATRIX] window.gameActive =', window.gameActive);
+
+        // Don't resize during game to prevent matrix restart
+        if (window.gameActive) {
+            console.log('[MATRIX] Game is active, skipping resize to prevent matrix restart');
+            return;
+        }
+
+        const newWidth = window.innerWidth;
+        const newHeight = window.innerHeight;
+        console.log('[MATRIX] Current canvas size:', canvas.width, 'x', canvas.height);
+        console.log('[MATRIX] New window size:', newWidth, 'x', newHeight);
+
+        // Only resize if dimensions actually changed
+        // Setting canvas.width/height clears the canvas, so avoid if unchanged
+        if (canvas.width !== newWidth || canvas.height !== newHeight) {
+            console.log('[MATRIX] Dimensions changed, resizing canvas and resetting drops');
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+
+            // Recalculate columns and drops after resize
+            const newColumns = Math.floor(canvas.width / fontSize);
+            console.log('[MATRIX] New columns count:', newColumns);
+
+            // Validate newColumns to prevent RangeError
+            if (isFinite(newColumns) && newColumns > 0 && newColumns < 10000) {
+                drops.length = newColumns;
+                for(let x = 0; x < newColumns; x++) {
+                    if (drops[x] === undefined) {
+                        drops[x] = Math.random() * -100; // Stagger initial drops
+                    }
+                }
+                console.log('[MATRIX] Drops array reset with', newColumns, 'columns');
+            } else {
+                console.error('[MATRIX] Invalid newColumns value:', newColumns);
+            }
+        } else {
+            console.log('[MATRIX] Dimensions unchanged, skipping resize');
+        }
+    }, 250);
 });

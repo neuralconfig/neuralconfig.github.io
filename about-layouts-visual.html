@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page Layout Options - Visual Preview | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #d4d4d4;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .preview-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .preview-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #3e3e42;
+        }
+
+        .preview-tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            color: #9cdcfe;
+            font-size: 1rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .preview-tab:hover {
+            background: rgba(86, 156, 214, 0.1);
+        }
+
+        .preview-tab.active {
+            color: #569cd6;
+            border-bottom-color: #569cd6;
+            font-weight: 600;
+        }
+
+        .layout-preview-content {
+            display: none;
+            background: #1e1e1e;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 3rem;
+            min-height: 800px;
+        }
+
+        .layout-preview-content.active {
+            display: block;
+        }
+
+        /* Layout A: GitHub Developer Portfolio */
+        .layout-a {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .layout-a .profile-section {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .layout-a .avatar {
+            width: 260px;
+            height: 260px;
+            background: linear-gradient(135deg, #569cd6, #4ec9b0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #1e1e1e;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .layout-a .profile-info h1 {
+            font-size: 2rem;
+            color: #d4d4d4;
+            margin-bottom: 0.5rem;
+        }
+
+        .layout-a .profile-info .username {
+            font-size: 1.3rem;
+            color: #9cdcfe;
+            margin-bottom: 1rem;
+        }
+
+        .layout-a .bio {
+            color: #d4d4d4;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .layout-a .stats-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .layout-a .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #9cdcfe;
+            font-size: 0.9rem;
+        }
+
+        .layout-a .pinned-repos {
+            margin-top: 2rem;
+        }
+
+        .layout-a .pinned-repos h2 {
+            color: #569cd6;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .layout-a .repos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1rem;
+        }
+
+        .layout-a .repo-card {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 6px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .layout-a .repo-card:hover {
+            border-color: #569cd6;
+        }
+
+        .layout-a .repo-name {
+            color: #569cd6;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .layout-a .repo-desc {
+            color: #9cdcfe;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .layout-a .repo-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .layout-a .repo-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Layout B: Personal Tech Blog */
+        .layout-b {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .layout-b .hero {
+            text-align: center;
+            padding: 2rem 0 3rem;
+            border-bottom: 1px solid #3e3e42;
+            margin-bottom: 3rem;
+        }
+
+        .layout-b .hero h1 {
+            font-size: 2.5rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+        }
+
+        .layout-b .hero .tagline {
+            font-size: 1.2rem;
+            color: #9cdcfe;
+            margin-bottom: 2rem;
+        }
+
+        .layout-b .story-section {
+            margin-bottom: 3rem;
+        }
+
+        .layout-b .story-section h2 {
+            font-size: 1.8rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+        }
+
+        .layout-b .story-text {
+            color: #d4d4d4;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .layout-b .timeline {
+            margin: 2rem 0;
+        }
+
+        .layout-b .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .layout-b .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            bottom: -20px;
+            width: 2px;
+            background: #3e3e42;
+        }
+
+        .layout-b .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .layout-b .timeline-marker {
+            width: 40px;
+            height: 40px;
+            background: #569cd6;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e1e1e;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .layout-b .timeline-content h3 {
+            color: #9cdcfe;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .layout-b .timeline-content p {
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+
+        /* Layout C: Balanced Professional (Current) */
+        .layout-c {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .layout-c .header-section {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .layout-c .header-section h1 {
+            font-size: 2.2rem;
+            color: #569cd6;
+            margin-bottom: 1rem;
+        }
+
+        .layout-c .header-section .subtitle {
+            font-size: 1.1rem;
+            color: #9cdcfe;
+            margin-bottom: 1.5rem;
+        }
+
+        .layout-c .header-section .bio {
+            color: #d4d4d4;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .layout-c .cards-section {
+            margin: 3rem 0;
+        }
+
+        .layout-c .cards-section h2 {
+            font-size: 1.6rem;
+            color: #569cd6;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .layout-c .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .layout-c .info-card {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .layout-c .info-card:hover {
+            border-color: #569cd6;
+            transform: translateY(-2px);
+        }
+
+        .layout-c .info-card h3 {
+            color: #569cd6;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .layout-c .info-card p {
+            color: #9cdcfe;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .implementation-note {
+            background: rgba(86, 156, 214, 0.1);
+            border: 1px solid #569cd6;
+            border-radius: 6px;
+            padding: 1rem 1.5rem;
+            margin-top: 3rem;
+            color: #9cdcfe;
+        }
+
+        /* Layout D: Minimalist/Clean */
+        .layout-d {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            color: #333333;
+            padding: 3rem;
+            border-radius: 0;
+        }
+
+        .layout-d .minimal-header {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .layout-d .minimal-header h1 {
+            font-size: 2.5rem;
+            color: #000000;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .layout-d .minimal-header .tagline {
+            font-size: 1.1rem;
+            color: #666666;
+            font-weight: 300;
+        }
+
+        .layout-d .section-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999999;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .layout-d .content-block {
+            margin-bottom: 3rem;
+        }
+
+        .layout-d .skill-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .layout-d .skill-list li {
+            padding: 0.5rem 0;
+            color: #333333;
+            font-size: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .layout-d .minimal-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        /* Layout E: Matrix/Terminal Theme */
+        .layout-e {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 2rem;
+            border: 2px solid #00ff00;
+        }
+
+        .layout-e .terminal-header {
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .layout-e .terminal-header::before {
+            content: '> ';
+            color: #00ff00;
+        }
+
+        .layout-e .terminal-header h1 {
+            font-size: 2rem;
+            color: #00ff00;
+            font-weight: normal;
+            display: inline;
+            font-family: 'Courier New', monospace;
+        }
+
+        .layout-e .terminal-line {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .layout-e .terminal-line::before {
+            content: '$ ';
+            color: #00cc00;
+            font-weight: bold;
+        }
+
+        .layout-e .terminal-output {
+            color: #00cc00;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .layout-e .ascii-box {
+            border: 1px solid #00ff00;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .layout-e .prompt {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .layout-e .highlight {
+            color: #00ffff;
+            font-weight: bold;
+        }
+
+        /* Layout F: Magazine/Editorial */
+        .layout-f {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .layout-f .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 3px solid #ff6b35;
+        }
+
+        .layout-f .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .layout-f .hero-section h1 {
+            font-size: 4rem;
+            line-height: 1;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .layout-f .hero-section .subtitle {
+            font-size: 1.4rem;
+            color: #569cd6;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .layout-f .hero-section .intro {
+            font-size: 1.1rem;
+            color: #d4d4d4;
+            line-height: 1.7;
+        }
+
+        .layout-f .hero-right {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            padding: 3rem;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: #ffffff;
+            font-weight: 900;
+        }
+
+        .layout-f .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .layout-f .feature-box {
+            padding: 2rem;
+            background: #252526;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .layout-f .feature-box h3 {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .layout-f .feature-box p {
+            color: #9cdcfe;
+            line-height: 1.6;
+        }
+
+        .layout-f .quote-section {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+            padding: 3rem;
+            margin: 3rem 0;
+            border-left: 6px solid #ff6b35;
+            font-size: 1.3rem;
+            color: #d4d4d4;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .layout-a .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .layout-a .repos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-tab {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .layout-d .skill-list {
+                grid-template-columns: 1fr;
+            }
+
+            .layout-f .hero-section {
+                grid-template-columns: 1fr;
+            }
+
+            .layout-f .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .layout-f .hero-section h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-wrapper">
+        <div class="preview-nav">
+            <button class="preview-tab active" data-layout="layout-a">
+                Layout A: GitHub Developer
+            </button>
+            <button class="preview-tab" data-layout="layout-b">
+                Layout B: Personal Blog
+            </button>
+            <button class="preview-tab" data-layout="layout-c">
+                Layout C: Balanced (Current)
+            </button>
+            <button class="preview-tab" data-layout="layout-d">
+                Layout D: Minimalist
+            </button>
+            <button class="preview-tab" data-layout="layout-e">
+                Layout E: Matrix Theme
+            </button>
+            <button class="preview-tab" data-layout="layout-f">
+                Layout F: Magazine
+            </button>
+        </div>
+
+        <!-- Layout A: GitHub Developer Portfolio -->
+        <div id="layout-a" class="layout-preview-content active">
+            <div class="layout-a">
+                <div class="profile-section">
+                    <div class="avatar">NC</div>
+                    <div class="profile-info">
+                        <h1>John Developer</h1>
+                        <div class="username">@neuralconfig</div>
+                        <div class="bio">
+                            Network engineer × AI developer. Building open-source tools at the intersection of infrastructure and artificial intelligence.
+                            20+ years network experience meets modern AI systems.
+                        </div>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/>
+                                </svg>
+                                15 repositories
+                            </div>
+                            <div class="stat-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                                </svg>
+                                247 stars
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pinned-repos">
+                    <h2>Pinned Open Source Projects</h2>
+                    <div class="repos-grid">
+                        <div class="repo-card">
+                            <div class="repo-name">ruckus-ztp</div>
+                            <div class="repo-desc">AI-powered Zero-Touch Provisioning agent for RUCKUS network devices</div>
+                            <div class="repo-meta">
+                                <span>⭐ 45</span>
+                                <span>🔀 8</span>
+                                <span>🐍 Python</span>
+                            </div>
+                        </div>
+                        <div class="repo-card">
+                            <div class="repo-name">osticket-agent</div>
+                            <div class="repo-desc">Autonomous AI agent for osTicket support automation</div>
+                            <div class="repo-meta">
+                                <span>⭐ 32</span>
+                                <span>🔀 5</span>
+                                <span>🐍 Python</span>
+                            </div>
+                        </div>
+                        <div class="repo-card">
+                            <div class="repo-name">r1-api</div>
+                            <div class="repo-desc">Comprehensive Python SDK for RUCKUS One cloud platform</div>
+                            <div class="repo-meta">
+                                <span>⭐ 28</span>
+                                <span>🔀 6</span>
+                                <span>🐍 Python</span>
+                            </div>
+                        </div>
+                        <div class="repo-card">
+                            <div class="repo-name">survival-rag</div>
+                            <div class="repo-desc">RAG system for survival knowledge with vector database</div>
+                            <div class="repo-meta">
+                                <span>⭐ 15</span>
+                                <span>🔀 3</span>
+                                <span>🐍 Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="implementation-note">
+                    <strong>Best for:</strong> Minimizing day-job concerns, emphasizing open-source contributions, appeal to AI/tech companies. Very developer-authentic.
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout B: Personal Tech Blog -->
+        <div id="layout-b" class="layout-preview-content">
+            <div class="layout-b">
+                <div class="hero">
+                    <h1>Building AI × Network Tools</h1>
+                    <p class="tagline">My journey from network engineer to AI developer</p>
+                </div>
+
+                <div class="story-section">
+                    <h2>My Story</h2>
+                    <p class="story-text">
+                        For over 20 years, I've built and operated enterprise network infrastructure—from routing protocols and wireless architectures
+                        to zero-trust security. But I always felt there was more we could do with automation.
+                    </p>
+                    <p class="story-text">
+                        Then AI happened. Not the hype, but the real capabilities of LLMs and agentic systems. I saw an opportunity to bridge two worlds:
+                        the deep infrastructure knowledge most AI developers don't have, and the modern AI capabilities most network engineers haven't explored.
+                    </p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">01</div>
+                        <div class="timeline-content">
+                            <h3>The Foundation: Network Infrastructure</h3>
+                            <p>Started building enterprise networks in healthcare and education. Learned that production systems need more than just technical specs—they need reliability, security, and practical operation.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">02</div>
+                        <div class="timeline-content">
+                            <h3>The Pivot: Discovering AI</h3>
+                            <p>Completed Stanford's Machine Learning specialization. Built first AI agent for network automation. Realized the potential of combining infrastructure expertise with AI capabilities.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">03</div>
+                        <div class="timeline-content">
+                            <h3>Building in the Open</h3>
+                            <p>Started sharing tools on GitHub. Autonomous agents, RAG systems, zero-touch provisioning—all open source. The community response showed others need this intersection too.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">04</div>
+                        <div class="timeline-content">
+                            <h3>What's Next</h3>
+                            <p>Expanding into iOS development. Writing about the technical challenges. Looking to work with AI companies or network vendors who value both skill sets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="implementation-note">
+                    <strong>Best for:</strong> Personal authenticity, thought leadership, engaging narrative. Requires blog content but positions you as educator/expert.
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout C: Balanced Professional (Current) -->
+        <div id="layout-c" class="layout-preview-content">
+            <div class="layout-c">
+                <div class="header-section">
+                    <h1>Building AI × Network Tools</h1>
+                    <p class="subtitle">Exploring the intersection of deep networking expertise and artificial intelligence</p>
+                    <p class="bio">
+                        I combine 20+ years of network infrastructure experience with AI development to build open-source tools and experiments.
+                        By day, I'm a network systems engineer. In my spare time, I'm exploring agentic AI, network automation,
+                        and iOS development—sharing what I learn along the way.
+                    </p>
+                </div>
+
+                <div class="cards-section">
+                    <h2>What I Build</h2>
+                    <div class="cards-grid">
+                        <div class="info-card">
+                            <h3>Open Source Tools</h3>
+                            <p>
+                                Creating practical network automation tools and AI-powered utilities. Zero-touch provisioning,
+                                autonomous agents, and network management tools available on GitHub.
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Agentic AI Experiments</h3>
+                            <p>
+                                Exploring autonomous AI agents with tool-calling, RAG implementations, and LLM integration.
+                                Building with Claude, OpenAI, and custom frameworks.
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <h3>iOS Development</h3>
+                            <p>
+                                Learning Swift and building iOS applications. Experimenting with ARKit, HealthKit, and native iOS capabilities.
+                                Recently approved for the Apple Developer Program.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="implementation-note">
+                    <strong>Best for:</strong> Safe middle ground. Professional but not corporate. Appeals to all audiences. Easy to maintain. Currently implemented in skills.html.
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout D: Minimalist/Clean -->
+        <div id="layout-d" class="layout-preview-content">
+            <div class="layout-d">
+                <div class="minimal-header">
+                    <h1>John Developer</h1>
+                    <div class="tagline">AI Systems × Network Infrastructure</div>
+                </div>
+
+                <div class="content-block">
+                    <div class="section-title">About</div>
+                    <p>
+                        By day, I'm a network systems engineer with 20+ years of infrastructure experience.
+                        In my spare time, I build intelligent automation tools that bridge traditional networking
+                        with modern AI capabilities.
+                    </p>
+                </div>
+
+                <div class="content-block">
+                    <div class="section-title">Focus Areas</div>
+                    <ul class="skill-list">
+                        <li>Agentic AI Systems</li>
+                        <li>Network Automation</li>
+                        <li>Zero-Touch Provisioning</li>
+                        <li>RAG Systems & LLM Integration</li>
+                        <li>Python Development</li>
+                        <li>Swift/iOS Development</li>
+                        <li>Infrastructure as Code</li>
+                        <li>Security Architecture</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <div class="section-title">Philosophy</div>
+                    <p>
+                        Most AI developers don't understand networks. Most network engineers don't build AI.
+                        I do both. This unique perspective allows me to create tools that actually work in
+                        production environments.
+                    </p>
+                </div>
+
+                <div class="minimal-footer">
+                    contact@neuralconfig.com
+                </div>
+
+                <div class="implementation-note">
+                    <strong>Best for:</strong> Modern, professional look with maximum readability. Apple-inspired minimalism.
+                    Clean white background stands out. Perfect for portfolios targeting design-conscious companies.
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout E: Matrix/Terminal Theme -->
+        <div id="layout-e" class="layout-preview-content">
+            <div class="layout-e">
+                <div class="terminal-header">
+                    <h1>neuralconfig systems</h1>
+                </div>
+
+                <div class="terminal-line">whoami</div>
+                <div class="terminal-output">
+                    root@neuralconfig: <span class="highlight">Network Engineer × AI Developer</span><br>
+                    Status: Building open-source AI and network automation tools<br>
+                    Experience: 20+ years infrastructure | Modern AI systems
+                </div>
+
+                <div class="terminal-line">cat profile.txt</div>
+                <div class="terminal-output">
+                    By day, I'm a network systems engineer.<br>
+                    In my spare time, I build intelligent automation at the<br>
+                    intersection of infrastructure and artificial intelligence.
+                </div>
+
+                <div class="ascii-box">
+                    <pre>
+ █████╗ ██╗    ██╗███╗   ██╗███████╗████████╗██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
+██╔══██╗██║    ██║████╗  ██║██╔════╝╚══██╔══╝██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
+███████║██║ █╗ ██║██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝
+██╔══██║██║███╗██║██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗
+██║  ██║╚███╔███╔╝██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+                    </pre>
+                </div>
+
+                <div class="terminal-line">ls -la projects/</div>
+                <div class="terminal-output">
+                    drwxr-xr-x  10 neural  staff   <span class="highlight">ruckus-ztp</span>         [AI-AGENT]<br>
+                    drwxr-xr-x   8 neural  staff   <span class="highlight">osticket-agent</span>    [AI-AGENT]<br>
+                    drwxr-xr-x   6 neural  staff   <span class="highlight">survival-rag</span>      [AI-RAG]<br>
+                    drwxr-xr-x   4 neural  staff   <span class="highlight">sz-acl</span>            [NETWORK]<br>
+                    drwxr-xr-x   5 neural  staff   <span class="highlight">r1-api</span>            [SDK]
+                </div>
+
+                <div class="terminal-line">systemctl status ai-agent</div>
+                <div class="terminal-output">
+                    ● ai-agent.service - NeuralConfig AI Agent<br>
+                       Loaded: loaded (/etc/systemd/system/ai-agent.service)<br>
+                       Active: <span class="highlight">active (running)</span> since 2025-01-15 10:23:45 UTC
+                </div>
+
+                <div class="terminal-output">
+                    <span class="prompt">[SYSTEM READY]</span> contact@neuralconfig.com
+                </div>
+
+                <div class="implementation-note">
+                    <strong>Best for:</strong> Maximum consistency with main site's matrix aesthetic. Appeals to
+                    technical/hacker audience. Memorable and distinctive. Perfect for developer-focused positioning.
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout F: Magazine/Editorial -->
+        <div id="layout-f" class="layout-preview-content">
+            <div class="layout-f">
+                <div class="hero-section">
+                    <div class="hero-left">
+                        <h1>Building<br>The Future</h1>
+                        <div class="subtitle">AI × Network Infrastructure</div>
+                        <div class="intro">
+                            Where 20 years of network engineering experience meets cutting-edge
+                            AI development. Building intelligent automation that actually works in production.
+                        </div>
+                    </div>
+                    <div class="hero-right">
+                        NC
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <h3>AI Systems</h3>
+                        <p>
+                            Agentic AI architectures, RAG systems, LLM integration.
+                            Building intelligent automation that understands context and makes decisions.
+                        </p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>Network Automation</h3>
+                        <p>
+                            Zero-touch provisioning, configuration management, security automation.
+                            20+ years of infrastructure expertise applied to modern challenges.
+                        </p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>Mobile Development</h3>
+                        <p>
+                            Swift/iOS applications leveraging ARKit, HealthKit, and CoreML.
+                            Native experiences that integrate with AI backends.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="quote-section">
+                    "Most AI developers don't understand networks. Most network engineers don't build AI.
+                    I do both."
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <h3>Day Job</h3>
+                        <p>
+                            Network systems engineer deploying enterprise infrastructure.
+                            Real-world experience informing open-source development.
+                        </p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>Spare Time</h3>
+                        <p>
+                            Building open-source AI and automation tools. Exploring the frontier
+                            where infrastructure meets artificial intelligence.
+                        </p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>Let's Connect</h3>
+                        <p>
+                            Open to consulting projects, collaboration on open-source tools,
+                            and opportunities at AI/network companies. contact@neuralconfig.com
+                        </p>
+                    </div>
+                </div>
+
+                <div class="implementation-note">
+                    <strong>Best for:</strong> Bold, confident presentation. Magazine-style layout with strong typography.
+                    Orange accent color provides energy and stands out. Appeals to forward-thinking companies and startups.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.preview-tab');
+        const contents = document.querySelectorAll('.layout-preview-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const layoutId = tab.getAttribute('data-layout');
+
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(layoutId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

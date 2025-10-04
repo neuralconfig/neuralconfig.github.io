@@ -147,6 +147,137 @@
             border-color: #569cd6;
         }
 
+        /* GitHub Stats Badges */
+        .github-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            padding: 0.75rem 0;
+            border-top: 1px solid #3e3e42;
+            border-bottom: 1px solid #3e3e42;
+        }
+
+        .stat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.6rem;
+            background: #2d2d30;
+            border: 1px solid #3e3e42;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            color: #9cdcfe;
+            transition: all 0.2s ease;
+        }
+
+        .stat-badge:hover {
+            background: #3e3e42;
+            border-color: #569cd6;
+        }
+
+        .stat-badge svg {
+            opacity: 0.8;
+        }
+
+        .stat-badge.stars {
+            color: #ffd700;
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-badge.stars:hover {
+            border-color: #ffd700;
+        }
+
+        .stat-badge.forks {
+            color: #4ec9b0;
+            border-color: rgba(78, 201, 176, 0.3);
+        }
+
+        .stat-badge.forks:hover {
+            border-color: #4ec9b0;
+        }
+
+        .stat-badge.updated {
+            color: #9cdcfe;
+            border-color: rgba(156, 220, 254, 0.3);
+        }
+
+        .stat-badge.updated:hover {
+            border-color: #9cdcfe;
+        }
+
+        /* GitHub Contributions Graph */
+        #github-contributions {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contribution-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .contribution-header h3 {
+            color: #569cd6;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .contribution-graph-wrapper {
+            width: 100%;
+        }
+
+        .contribution-graph {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .contribution-graph .month-label {
+            fill: #9cdcfe;
+            font-size: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .contribution-graph .day-label {
+            fill: #888;
+            font-size: 9px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .contribution-graph .contribution-cell {
+            stroke: #1a1a1a;
+            stroke-width: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .contribution-graph .contribution-cell:hover {
+            stroke: #569cd6;
+            stroke-width: 2px;
+            transform: scale(1.1);
+        }
+
+        .loading {
+            text-align: center;
+            color: #9cdcfe;
+            padding: 2rem;
+        }
+
+        .contribution-error {
+            text-align: center;
+            color: #ff5f56;
+            padding: 2rem;
+        }
+
+        .contribution-error a {
+            color: #569cd6;
+            text-decoration: none;
+        }
+
         .filter-btn.active {
             background: #569cd6;
             color: #1e1e1e;
@@ -203,6 +334,7 @@
                 <a href="projects.html" class="nav-link active">open source</a>
                 <a href="tools.html" class="nav-link">tools</a>
                 <a href="mobile-apps.html" class="nav-link">mobile apps</a>
+                <a href="blog.html" class="nav-link">blog</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -224,7 +356,10 @@
                 <button class="filter-btn" data-filter="automation">Automation</button>
             </div>
         </div>
-        
+
+        <!-- GitHub Contributions Graph -->
+        <div id="github-contributions"></div>
+
         <div class="projects-grid">
             <!-- Agentic AI Projects (Priority) -->
             <div class="project-card network-project automation-project">
@@ -498,6 +633,12 @@
             });
         });
     </script>
+
+    <!-- GitHub Stats Integration -->
+    <script src="github-stats.js"></script>
+
+    <!-- GitHub Contributions Graph -->
+    <script src="github-contributions.js"></script>
 
     <footer class="footer">
         © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>

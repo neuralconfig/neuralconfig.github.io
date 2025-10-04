@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page Layout Options | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #d4d4d4;
+            padding: 2rem 0;
+        }
+
+        .preview-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .preview-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .preview-header h1 {
+            color: #569cd6;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview-header p {
+            color: #9cdcfe;
+            font-size: 1.1rem;
+        }
+
+        .layouts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .layout-option {
+            background: #252526;
+            border: 2px solid #3e3e42;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .layout-option:hover {
+            border-color: #569cd6;
+            box-shadow: 0 8px 24px rgba(86, 156, 214, 0.2);
+        }
+
+        .layout-header {
+            background: #2d2d30;
+            padding: 1.5rem;
+            border-bottom: 1px solid #3e3e42;
+        }
+
+        .layout-header h2 {
+            color: #569cd6;
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .layout-header .layout-subtitle {
+            color: #9cdcfe;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .layout-preview {
+            padding: 1.5rem;
+        }
+
+        .layout-preview h3 {
+            color: #569cd6;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .layout-preview h3:first-child {
+            margin-top: 0;
+        }
+
+        .layout-preview ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .layout-preview li {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .layout-preview li::before {
+            content: '▸';
+            color: #569cd6;
+            position: absolute;
+            left: 0;
+        }
+
+        .layout-features {
+            background: #1e1e1e;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-top: 1px solid #3e3e42;
+        }
+
+        .layout-features strong {
+            color: #569cd6;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .layout-features ul {
+            margin-top: 0.5rem;
+        }
+
+        .layout-features li {
+            font-size: 0.85rem;
+        }
+
+        .pro-con-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pro, .con {
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+
+        .pro {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid #4caf50;
+        }
+
+        .con {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 3px solid #ff9800;
+        }
+
+        .pro strong, .con strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .pro strong {
+            color: #4caf50;
+        }
+
+        .con strong {
+            color: #ff9800;
+        }
+
+        .pro ul, .con ul {
+            margin: 0;
+        }
+
+        .pro li, .con li {
+            font-size: 0.8rem;
+        }
+
+        .implementation-note {
+            background: #2d2d30;
+            border: 1px solid #569cd6;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .implementation-note h3 {
+            color: #569cd6;
+            margin-top: 0;
+        }
+
+        .implementation-note p {
+            color: #d4d4d4;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .layouts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pro-con-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1>About Page Layout Options</h1>
+            <p>Three different visual approaches for your about page</p>
+        </div>
+
+        <div class="layouts-grid">
+            <!-- Layout A: Developer Portfolio -->
+            <div class="layout-option">
+                <div class="layout-header">
+                    <h2>Layout A: Developer Portfolio</h2>
+                    <p class="layout-subtitle">GitHub-inspired, project-focused, minimal business language</p>
+                </div>
+                <div class="layout-preview">
+                    <h3>Visual Style</h3>
+                    <ul>
+                        <li>Pinned repositories grid (featured projects)</li>
+                        <li>Contribution-style activity calendar</li>
+                        <li>Tech stack badges front and center</li>
+                        <li>README-style bio section</li>
+                        <li>Clean, developer-first aesthetic</li>
+                    </ul>
+
+                    <h3>Content Focus</h3>
+                    <ul>
+                        <li>"Building" and "Experimenting" language</li>
+                        <li>Projects take visual priority</li>
+                        <li>Stats: GitHub stars, commits, downloads</li>
+                        <li>Learning journey emphasized</li>
+                    </ul>
+                </div>
+                <div class="layout-features">
+                    <strong>Key Features:</strong>
+                    <ul>
+                        <li>Project showcase cards with GitHub stats</li>
+                        <li>Skills presented as tech badges</li>
+                        <li>Timeline of recent activity/builds</li>
+                        <li>Minimal text, maximum code/projects</li>
+                    </ul>
+
+                    <div class="pro-con-grid">
+                        <div class="pro">
+                            <strong>Pros</strong>
+                            <ul>
+                                <li>Very developer-authentic</li>
+                                <li>Minimal conflict with day job</li>
+                                <li>Appeals to AI/tech companies</li>
+                                <li>Community-focused</li>
+                            </ul>
+                        </div>
+                        <div class="con">
+                            <strong>Cons</strong>
+                            <ul>
+                                <li>Less professional polish</li>
+                                <li>May undersell experience</li>
+                                <li>Requires GitHub API integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layout B: Personal Tech Blog -->
+            <div class="layout-option">
+                <div class="layout-header">
+                    <h2>Layout B: Personal Tech Blog</h2>
+                    <p class="layout-subtitle">Narrative-driven, journey-focused, approachable</p>
+                </div>
+                <div class="layout-preview">
+                    <h3>Visual Style</h3>
+                    <ul>
+                        <li>Personal photo/avatar section</li>
+                        <li>Story-driven narrative layout</li>
+                        <li>Featured blog posts integration</li>
+                        <li>Timeline of learning journey</li>
+                        <li>Warm, conversational design</li>
+                    </ul>
+
+                    <h3>Content Focus</h3>
+                    <ul>
+                        <li>"My journey from X to Y" narrative</li>
+                        <li>Current learning goals highlighted</li>
+                        <li>Projects as case studies</li>
+                        <li>Blog/writing front and center</li>
+                    </ul>
+                </div>
+                <div class="layout-features">
+                    <strong>Key Features:</strong>
+                    <ul>
+                        <li>Author bio with personal touch</li>
+                        <li>"Currently learning" section</li>
+                        <li>Blog post previews integrated</li>
+                        <li>More text, story-driven</li>
+                    </ul>
+
+                    <div class="pro-con-grid">
+                        <div class="pro">
+                            <strong>Pros</strong>
+                            <ul>
+                                <li>Very personal and authentic</li>
+                                <li>Shows thought leadership</li>
+                                <li>Engaging for readers</li>
+                                <li>Flexible for future content</li>
+                            </ul>
+                        </div>
+                        <div class="con">
+                            <strong>Cons</strong>
+                            <ul>
+                                <li>Requires blog content</li>
+                                <li>Less technical/professional</li>
+                                <li>More maintenance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layout C: Balanced Professional -->
+            <div class="layout-option">
+                <div class="layout-header">
+                    <h2>Layout C: Balanced Professional</h2>
+                    <p class="layout-subtitle">Clean modern design, safe middle ground (current improved)</p>
+                </div>
+                <div class="layout-preview">
+                    <h3>Visual Style</h3>
+                    <ul>
+                        <li>Modern card-based layout</li>
+                        <li>Professional but not corporate</li>
+                        <li>Balanced white space</li>
+                        <li>Subtle animations and polish</li>
+                        <li>Clean, scannable sections</li>
+                    </ul>
+
+                    <h3>Content Focus</h3>
+                    <ul>
+                        <li>Balance of projects and experience</li>
+                        <li>Technical depth without jargon</li>
+                        <li>Clear but not salesy</li>
+                        <li>Professional portfolio feel</li>
+                    </ul>
+                </div>
+                <div class="layout-features">
+                    <strong>Key Features:</strong>
+                    <ul>
+                        <li>Three-column "What I Build" cards</li>
+                        <li>Technology badges organized by category</li>
+                        <li>Experience highlights in clean list</li>
+                        <li>Philosophy/approach section</li>
+                    </ul>
+
+                    <div class="pro-con-grid">
+                        <div class="pro">
+                            <strong>Pros</strong>
+                            <ul>
+                                <li>Appeals to all audiences</li>
+                                <li>Professional but safe</li>
+                                <li>Easy to maintain</li>
+                                <li>Good balance of all goals</li>
+                            </ul>
+                        </div>
+                        <div class="con">
+                            <strong>Cons</strong>
+                            <ul>
+                                <li>Less distinctive</li>
+                                <li>May feel generic</li>
+                                <li>Doesn't stand out</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="implementation-note">
+            <h3>Implementation Recommendation</h3>
+            <p>
+                <strong>Layout C (Balanced Professional)</strong> is already implemented in the current skills.html with updated content.<br>
+                <strong>Layout A (Developer Portfolio)</strong> would be the best choice for minimizing day-job concerns while maximizing appeal to AI companies.<br>
+                <strong>Layout B (Personal Tech Blog)</strong> would work great if you want to emphasize writing and thought leadership.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
