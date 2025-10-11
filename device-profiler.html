@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Profiler | neuralconfig</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modern Charcoal color scheme override */
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        .project-detail-title {
+            color: #569cd6 !important;
+        }
+
+        .section h2 {
+            color: #9cdcfe !important;
+        }
+
+        .feature-card h3 {
+            color: #569cd6 !important;
+        }
+
+        .code-block pre {
+            color: #569cd6 !important;
+        }
+
+        .tech-item {
+            background: rgba(86, 156, 214, 0.1) !important;
+            border-color: rgba(86, 156, 214, 0.3) !important;
+            color: #9cdcfe !important;
+        }
+
+        .nav-bar {
+            background: rgba(37, 37, 38, 0.95);
+            border-bottom-color: #569cd6;
+        }
+
+        .nav-logo {
+            color: #569cd6;
+        }
+
+        .brackets {
+            color: #9cdcfe;
+        }
+
+        .nav-link {
+            color: #9cdcfe;
+        }
+
+        .nav-link.active {
+            color: #569cd6;
+        }
+
+        .matrix-bg {
+            opacity: 0.05;
+        }
+
+        .footer {
+            border-top-color: #3e3e42;
+            color: #9cdcfe;
+        }
+
+        .action-button {
+            border-color: #569cd6 !important;
+            color: #569cd6 !important;
+        }
+
+        .action-button:hover {
+            background: #569cd6 !important;
+            color: #1e1e1e !important;
+        }
+
+        .action-button.primary {
+            background: #569cd6 !important;
+            color: #1e1e1e !important;
+        }
+
+        .action-button.primary:hover {
+            background: #9cdcfe !important;
+        }
+
+        .project-detail-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-detail-title {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(5, 5, 5, 0.5);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card h3 {
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .code-block code {
+            color: var(--neon-green);
+            font-family: 'Courier New', monospace;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--accent);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .action-button:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+
+        .action-button.primary {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+
+        .action-button.primary:hover {
+            background: var(--neon-green);
+        }
+
+        .security-highlight {
+            background: rgba(0, 191, 255, 0.1);
+            border-left: 3px solid var(--network-accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Screenshot styles */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .screenshot-item {
+            background: rgba(5, 5, 5, 0.5);
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            border-color: #569cd6;
+            box-shadow: 0 8px 24px rgba(86, 156, 214, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .screenshot-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #3e3e42;
+        }
+
+        .screenshot-caption {
+            padding: 1rem 1.5rem;
+            color: #9cdcfe;
+            font-size: 0.95rem;
+            text-align: center;
+            background: rgba(30, 30, 30, 0.5);
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .project-detail-title {
+                font-size: 2rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tech-stack {
+                gap: 0.75rem;
+            }
+
+            .project-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .action-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-detail-title {
+                font-size: 1.75rem;
+            }
+
+            .feature-card, .security-highlight {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="skills.html" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link">open source</a>
+                <a href="tools.html" class="nav-link">tools</a>
+                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
+                <a href="blog.html" class="nav-link">blog</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-detail-header">
+            <h1 class="project-detail-title">Device Profiler</h1>
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: Network Security & Automation
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Focus<span class="brackets">]</span>: Device Profiling & IoT Security
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Overview</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                An automated network device profiling system that transforms how enterprise networks handle unknown devices.
+                Device Profiler detects devices on quarantine VLANs, fingerprints them using multiple methods, intelligently
+                classifies them with a weighted scoring system, and automatically provisions network access through RADIUS integration.
+            </p>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                This project solves the critical challenge of IoT and headless device onboarding in enterprise networks,
+                where traditional NAC solutions struggle with devices that can't authenticate interactively. By combining
+                multiple detection methods with intelligent fingerprinting, Device Profiler provides automated, secure
+                device provisioning at scale.
+            </p>
+            <p style="line-height: 1.8;">
+                The system features a modern React-based dashboard for real-time monitoring and management, while the
+                backend handles DHCP monitoring, ARP tracking, DNS analysis, and active network scanning to build
+                comprehensive device profiles with confidence scoring.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Multi-Method Detection</h3>
+                    <p>DHCP request monitoring, ARP table analysis, and DNS query pattern recognition for comprehensive device discovery</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Intelligent Fingerprinting</h3>
+                    <p>Fingerbank API integration, MAC OUI lookups, Nmap OS detection, and DNS pattern analysis for accurate identification</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Weighted Classification</h3>
+                    <p>Sophisticated scoring system with confidence thresholds and 14 built-in device profiles for intelligent categorization</p>
+                </div>
+                <div class="feature-card">
+                    <h3>RADIUS Integration</h3>
+                    <p>Automated provisioning through Cloudpath RADIUS with dynamic access policy assignment based on device classification</p>
+                </div>
+                <div class="feature-card">
+                    <h3>React Dashboard</h3>
+                    <p>Real-time web interface for device monitoring, manual classification, and system management with WebSocket updates</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-Switch Support</h3>
+                    <p>Dynamic management of multiple network switches via SSH and SNMP for enterprise-scale deployments</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Screenshots</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="assets/device-profiler/dashboard_overview.png" alt="Device Profiler Dashboard Overview" class="screenshot-img">
+                    <div class="screenshot-caption">Dashboard Overview - Real-time device monitoring and management interface</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/device-profiler/device_list.png" alt="Device List View" class="screenshot-img">
+                    <div class="screenshot-caption">Device List - Comprehensive view of all discovered and classified devices</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="assets/device-profiler/device_details.png" alt="Device Details View" class="screenshot-img">
+                    <div class="screenshot-caption">Device Details - In-depth profiling information with confidence scores and classification data</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                Device Profiler uses a multi-layered approach to device discovery and classification. The system monitors
+                Kea DHCP server hooks, tracks ARP tables on network switches, and analyzes DNS query patterns to detect
+                new devices entering quarantine VLANs. Key technical capabilities include:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Fingerbank API:</strong> Commercial device fingerprinting database for accurate device identification</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>MAC OUI Lookup:</strong> Vendor identification from IEEE OUI database to determine manufacturers</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Nmap Scanning:</strong> Active OS detection and service discovery for comprehensive profiling</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>DNS Analysis:</strong> Pattern matching on DNS queries to identify device types and cloud services</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Confidence Scoring:</strong> Weighted algorithm combining multiple signals for classification accuracy</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Automated Onboarding:</strong> Threshold-based provisioning with manual review fallback for ambiguous cases</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Switch Management:</strong> SSH/SNMP integration for multi-vendor network device control</li>
+            </ul>
+            <p style="line-height: 1.8;">
+                The FastAPI backend provides RESTful APIs for the React frontend while maintaining persistent device
+                state and classification history. WebSocket connections enable real-time dashboard updates as devices
+                are discovered and classified.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Device Classification System</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                The system includes an extensible device taxonomy with 14 built-in profiles for common enterprise device types:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>Access Points:</strong> Wireless infrastructure devices</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Printers:</strong> Network-connected printing devices</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>IoT Sensors:</strong> Environmental and monitoring sensors</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>IP Cameras:</strong> Video surveillance equipment</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>VoIP Phones:</strong> SIP-based communication devices</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Smart TVs:</strong> Media display devices</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Network Equipment:</strong> Switches, routers, and infrastructure</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>And more...</strong> Badge readers, building automation, industrial controllers</li>
+            </ul>
+        </section>
+
+        <div class="security-highlight">
+            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Security & Automation Innovation</h3>
+            <p style="opacity: 0.9;">
+                This project demonstrates advanced network security automation by combining multiple fingerprinting
+                techniques with intelligent decision-making. The confidence-based classification system reduces false
+                positives while maintaining security, and the automated RADIUS provisioning eliminates manual device
+                onboarding workflows. Perfect for enterprises with complex IoT device ecosystems requiring secure,
+                scalable, and intelligent network access control.
+            </p>
+        </div>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.8+</div>
+                <div class="tech-item">FastAPI</div>
+                <div class="tech-item">React</div>
+                <div class="tech-item">Kea DHCP Server</div>
+                <div class="tech-item">Nmap</div>
+                <div class="tech-item">Fingerbank API</div>
+                <div class="tech-item">WebSocket</div>
+                <div class="tech-item">SSH/SNMP</div>
+                <div class="tech-item">Cloudpath RADIUS</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="terminal-prompt">></span> Enterprise Impact</h2>
+            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                Device Profiler demonstrates expertise in:
+            </p>
+            <ul style="list-style: none; padding-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">• <strong>IoT Security:</strong> Automated secure onboarding for headless devices at scale</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Network Automation:</strong> Eliminating manual provisioning workflows and reducing operational overhead</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Multi-Source Intelligence:</strong> Combining passive and active fingerprinting for accurate classification</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Real-Time Systems:</strong> WebSocket-based dashboard with instant device discovery notifications</li>
+                <li style="margin-bottom: 0.5rem;">• <strong>Enterprise Architecture:</strong> Multi-switch support and extensible device taxonomy for large deployments</li>
+            </ul>
+        </section>
+
+        <div class="project-actions">
+            <a href="https://github.com/neuralconfig/device-profiler" class="action-button primary">View on GitHub</a>
+            <a href="projects.html" class="action-button">Back to Projects</a>
+        </div>
+    </div>
+
+    <script src="matrix.js"></script>
+    <footer class="footer">
+        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
+    </footer>
+</body>
+</html>
