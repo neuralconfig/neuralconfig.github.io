@@ -5,266 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survival RAG | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Modern Charcoal color scheme override */
-        body {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-        }
-
-        .project-detail-title {
-            color: #569cd6 !important;
-        }
-
-        .section h2 {
-            color: #9cdcfe !important;
-        }
-
-        .feature-card h3 {
-            color: #569cd6 !important;
-        }
-
-        .code-block pre {
-            color: #569cd6 !important;
-        }
-
-        .tech-item {
-            background: rgba(86, 156, 214, 0.1) !important;
-            border-color: rgba(86, 156, 214, 0.3) !important;
-            color: #9cdcfe !important;
-        }
-
-        .nav-bar {
-            background: rgba(37, 37, 38, 0.95);
-            border-bottom-color: #569cd6;
-        }
-
-        .nav-logo {
-            color: #569cd6;
-        }
-
-        .brackets {
-            color: #9cdcfe;
-        }
-
-        .nav-link {
-            color: #9cdcfe;
-        }
-
-        .nav-link.active {
-            color: #569cd6;
-        }
-
-        .matrix-bg {
-            opacity: 0.05;
-        }
-
-        .footer {
-            border-top-color: #3e3e42;
-            color: #9cdcfe;
-        }
-
-        .action-button {
-            border-color: #569cd6 !important;
-            color: #569cd6 !important;
-        }
-
-        .action-button:hover {
-            background: #569cd6 !important;
-            color: #1e1e1e !important;
-        }
-
-        .action-button.primary {
-            background: #569cd6 !important;
-            color: #1e1e1e !important;
-        }
-
-        .action-button.primary:hover {
-            background: #9cdcfe !important;
-        }
-
-        .project-detail-header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .project-detail-title {
-            font-size: 2.5rem;
-            color: var(--neon-green);
-            margin-bottom: 1rem;
-        }
-        
-        .project-meta {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            opacity: 0.8;
-        }
-        
-        .project-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .section {
-            margin-bottom: 3rem;
-        }
-        
-        .section h2 {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .feature-card {
-            background: rgba(5, 5, 5, 0.5);
-            padding: 1.5rem;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .feature-card h3 {
-            color: var(--neon-green);
-            margin-bottom: 0.5rem;
-        }
-        
-        .code-block {
-            background: var(--darker-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-        
-        .code-block code {
-            color: var(--neon-green);
-            font-family: 'Courier New', monospace;
-        }
-        
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .tech-item {
-            background: rgba(57, 255, 20, 0.1);
-            border: 1px solid rgba(57, 255, 20, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            color: var(--accent);
-        }
-        
-        .project-actions {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .action-button {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .action-button:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-        }
-        
-        .action-button.primary {
-            background: var(--accent);
-            color: var(--dark-bg);
-        }
-        
-        .action-button.primary:hover {
-            background: var(--neon-green);
-        }
-        
-        .architecture-diagram {
-            background: rgba(5, 5, 5, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        /* Mobile responsive styles */
-        @media (max-width: 768px) {
-            .project-detail-title {
-                font-size: 2rem;
-            }
-
-            .project-meta {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .tech-stack {
-                gap: 0.75rem;
-            }
-
-            .project-actions {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .action-button {
-                width: 100%;
-                text-align: center;
-            }
-
-            .architecture-diagram {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .project-detail-title {
-                font-size: 1.75rem;
-            }
-
-            .feature-card {
-                padding: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
-    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-    
     <nav class="nav-bar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
                 <a href="skills.html" class="nav-link">about</a>
-                <a href="projects.html" class="nav-link">open source</a>
-                <a href="tools.html" class="nav-link">tools</a>
-                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
-                <a href="blog.html" class="nav-link">blog</a>
+                <a href="projects.html" class="nav-link">projects</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -287,44 +35,101 @@
         </div>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Overview</h2>
-            <p style="line-height: 1.8; margin-bottom: 1rem;">
-                A Retrieval-Augmented Generation (RAG) system specialized in survival and emergency preparedness knowledge. 
-                This project demonstrates advanced RAG implementation techniques, combining vector databases with LLMs to 
+            <h2 class="section-heading">Overview</h2>
+            <p class="story-text">
+                A Retrieval-Augmented Generation (RAG) system specialized in survival and emergency preparedness knowledge.
+                This project demonstrates advanced RAG implementation techniques, combining vector databases with LLMs to
                 provide accurate, context-aware information retrieval.
             </p>
-            <p style="line-height: 1.8;">
-                The system showcases how domain-specific knowledge can be effectively organized and retrieved using modern 
+            <p class="story-text">
+                The system showcases how domain-specific knowledge can be effectively organized and retrieved using modern
                 AI techniques, making it an excellent example of practical RAG architecture for specialized applications.
             </p>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> RAG Architecture</h2>
-            <div class="architecture-diagram">
-                <pre style="color: var(--neon-green); font-size: 0.9rem;">
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  Document       │────▶│  Embedding       │────▶│  Vector         │
-│  Ingestion      │     │  Generation      │     │  Database       │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-                                                           │
-                                                           ▼
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  User Query     │────▶│  Semantic        │────▶│  Retrieved      │
-│                 │     │  Search          │     │  Context        │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-                                                           │
-                                                           ▼
-                                                  ┌─────────────────┐
-                                                  │  LLM Response   │
-                                                  │  Generation     │
-                                                  └─────────────────┘
-                </pre>
+            <h2 class="section-heading">RAG Architecture</h2>
+            <div class="diagram-container">
+                <svg viewBox="0 0 700 310" class="flow-diagram">
+                    <style>
+                        .diagram-node { fill: #2d2d30; stroke: #569cd6; stroke-width: 2; }
+                        .diagram-node-output { fill: #252526; stroke: #c586c0; stroke-width: 2; }
+                        .diagram-title { fill: #569cd6; font-size: 12px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; }
+                        .diagram-subtitle { fill: #9cdcfe; font-size: 10px; font-family: 'IBM Plex Mono', monospace; }
+                        .diagram-arrow { stroke: #9cdcfe; stroke-width: 2; fill: none; }
+                        .diagram-arrowhead { fill: #9cdcfe; }
+                    </style>
+
+                    <!-- Arrow marker definition -->
+                    <defs>
+                        <marker id="arrow-rag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" class="diagram-arrowhead"/>
+                        </marker>
+                    </defs>
+
+                    <!-- Row 1: Document Ingestion → Embedding → Vector DB -->
+                    <g transform="translate(20, 20)">
+                        <rect class="diagram-node" x="0" y="0" width="140" height="55" rx="4"/>
+                        <text class="diagram-title" x="70" y="24" text-anchor="middle">Document</text>
+                        <text class="diagram-title" x="70" y="42" text-anchor="middle">Ingestion</text>
+                    </g>
+
+                    <path class="diagram-arrow" d="M 165 47 L 200 47" marker-end="url(#arrow-rag)"/>
+
+                    <g transform="translate(210, 20)">
+                        <rect class="diagram-node" x="0" y="0" width="140" height="55" rx="4"/>
+                        <text class="diagram-title" x="70" y="24" text-anchor="middle">Embedding</text>
+                        <text class="diagram-title" x="70" y="42" text-anchor="middle">Generation</text>
+                    </g>
+
+                    <path class="diagram-arrow" d="M 355 47 L 390 47" marker-end="url(#arrow-rag)"/>
+
+                    <g transform="translate(400, 20)">
+                        <rect class="diagram-node" x="0" y="0" width="140" height="55" rx="4"/>
+                        <text class="diagram-title" x="70" y="24" text-anchor="middle">Vector</text>
+                        <text class="diagram-title" x="70" y="42" text-anchor="middle">Database</text>
+                    </g>
+
+                    <!-- Connector down from Vector DB -->
+                    <path class="diagram-arrow" d="M 470 80 L 470 105" marker-end="url(#arrow-rag)"/>
+
+                    <!-- Row 2: User Query → Semantic Search → Retrieved Context -->
+                    <g transform="translate(20, 115)">
+                        <rect class="diagram-node" x="0" y="0" width="140" height="55" rx="4"/>
+                        <text class="diagram-title" x="70" y="32" text-anchor="middle">User Query</text>
+                    </g>
+
+                    <path class="diagram-arrow" d="M 165 142 L 200 142" marker-end="url(#arrow-rag)"/>
+
+                    <g transform="translate(210, 115)">
+                        <rect class="diagram-node" x="0" y="0" width="140" height="55" rx="4"/>
+                        <text class="diagram-title" x="70" y="24" text-anchor="middle">Semantic</text>
+                        <text class="diagram-title" x="70" y="42" text-anchor="middle">Search</text>
+                    </g>
+
+                    <path class="diagram-arrow" d="M 355 142 L 390 142" marker-end="url(#arrow-rag)"/>
+
+                    <g transform="translate(400, 115)">
+                        <rect class="diagram-node" x="0" y="0" width="140" height="55" rx="4"/>
+                        <text class="diagram-title" x="70" y="24" text-anchor="middle">Retrieved</text>
+                        <text class="diagram-title" x="70" y="42" text-anchor="middle">Context</text>
+                    </g>
+
+                    <!-- Connector down from Retrieved Context -->
+                    <path class="diagram-arrow" d="M 470 175 L 470 205" marker-end="url(#arrow-rag)"/>
+
+                    <!-- Row 3: LLM Response Generation (centered) -->
+                    <g transform="translate(330, 215)">
+                        <rect class="diagram-node-output" x="0" y="0" width="280" height="60" rx="4"/>
+                        <text class="diagram-title" x="140" y="26" text-anchor="middle" style="fill: #c586c0;">LLM Response Generation</text>
+                        <text class="diagram-subtitle" x="140" y="46" text-anchor="middle">Context + Query → Answer</text>
+                    </g>
+                </svg>
             </div>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <h2 class="section-heading">Key Features</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <h3>Vector Search</h3>
@@ -346,60 +151,59 @@
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
-            <p style="line-height: 1.8; margin-bottom: 1rem;">
-                The RAG system implements a sophisticated pipeline that combines vector similarity search with LLM generation 
+            <h2 class="section-heading">Technical Implementation</h2>
+            <p class="story-text">
+                The RAG system implements a sophisticated pipeline that combines vector similarity search with LLM generation
                 to provide accurate, context-aware responses. Core technical components include:
             </p>
-            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>Embedding Generation:</strong> Sentence Transformers (all-MiniLM-L6-v2) for converting text to high-quality vector representations</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Vector Storage:</strong> ChromaDB for efficient similarity search with metadata filtering capabilities</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Document Processing:</strong> Custom chunking strategies that preserve context across splits</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Retrieval Logic:</strong> Hybrid approach combining semantic search with keyword matching for improved recall</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Prompt Engineering:</strong> Dynamic prompt templates that inject retrieved context while maintaining coherence</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>LLM Integration:</strong> Async interface to OpenAI/Anthropic APIs with streaming support</li>
+            <ul class="feature-list">
+                <li><strong>Embedding Generation:</strong> Sentence Transformers (all-MiniLM-L6-v2) for converting text to high-quality vector representations</li>
+                <li><strong>Vector Storage:</strong> ChromaDB for efficient similarity search with metadata filtering capabilities</li>
+                <li><strong>Document Processing:</strong> Custom chunking strategies that preserve context across splits</li>
+                <li><strong>Retrieval Logic:</strong> Hybrid approach combining semantic search with keyword matching for improved recall</li>
+                <li><strong>Prompt Engineering:</strong> Dynamic prompt templates that inject retrieved context while maintaining coherence</li>
+                <li><strong>LLM Integration:</strong> Async interface to OpenAI/Anthropic APIs with streaming support</li>
             </ul>
-            <p style="line-height: 1.8;">
-                The architecture emphasizes modularity, allowing independent optimization of each component. The system includes 
-                comprehensive logging and metrics collection for monitoring retrieval quality and response accuracy, 
+            <p class="story-text">
+                The architecture emphasizes modularity, allowing independent optimization of each component. The system includes
+                comprehensive logging and metrics collection for monitoring retrieval quality and response accuracy,
                 enabling continuous improvement through data-driven insights.
             </p>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <h2 class="section-heading">Technology Stack</h2>
             <div class="tech-stack">
-                <div class="tech-item">Python 3.11+</div>
-                <div class="tech-item">LangChain</div>
-                <div class="tech-item">ChromaDB</div>
-                <div class="tech-item">Sentence Transformers</div>
-                <div class="tech-item">OpenAI API</div>
-                <div class="tech-item">FAISS</div>
+                <span class="tech-badge ai">Python 3.11+</span>
+                <span class="tech-badge ai">LangChain</span>
+                <span class="tech-badge ai">ChromaDB</span>
+                <span class="tech-badge ai">Sentence Transformers</span>
+                <span class="tech-badge ai">OpenAI API</span>
+                <span class="tech-badge ai">FAISS</span>
             </div>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> AI Engineering Insights</h2>
-            <p style="line-height: 1.8; margin-bottom: 1rem;">
+            <h2 class="section-heading">AI Engineering Insights</h2>
+            <p class="story-text">
                 This RAG implementation demonstrates several advanced concepts:
             </p>
-            <ul style="list-style: none; padding-left: 1.5rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>Hybrid Search:</strong> Combining semantic and keyword search for optimal retrieval</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Chunking Strategies:</strong> Intelligent document segmentation for better context preservation</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Reranking:</strong> Using cross-encoders to improve retrieval quality</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Evaluation Metrics:</strong> Implementing RAGAS for systematic performance assessment</li>
+            <ul class="feature-list">
+                <li><strong>Hybrid Search:</strong> Combining semantic and keyword search for optimal retrieval</li>
+                <li><strong>Chunking Strategies:</strong> Intelligent document segmentation for better context preservation</li>
+                <li><strong>Reranking:</strong> Using cross-encoders to improve retrieval quality</li>
+                <li><strong>Evaluation Metrics:</strong> Implementing RAGAS for systematic performance assessment</li>
             </ul>
         </section>
 
         <div class="project-actions">
-            <a href="https://github.com/neuralconfig/survival-rag" class="action-button primary">View on GitHub</a>
-            <a href="projects.html" class="action-button">Back to Projects</a>
+            <a href="https://github.com/neuralconfig/survival-rag" class="btn btn-primary">View on GitHub</a>
+            <a href="projects.html" class="btn btn-secondary">Back to Projects</a>
         </div>
     </div>
 
-    <script src="matrix.js"></script>
     <footer class="footer">
-        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
+        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
     </footer>
 </body>
 </html>

@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>neuralconfig | AI & Network Infrastructure Tools</title>
-    <meta name="description" content="Building open-source AI and network automation tools. 20+ years infrastructure experience meets modern agentic AI systems. Autonomous agents, RAG, and zero-touch provisioning.">
-    <meta name="keywords" content="AI, network automation, agentic AI, infrastructure, open source, autonomous agents, RAG, zero-touch provisioning, RUCKUS, network security">
+    <meta name="description" content="AI Systems Engineer building production-ready agentic AI and network automation. 20+ years infrastructure experience, Stanford ML, CISSP. Autonomous agents with tool-calling, RAG systems, and responsible AI design.">
+    <meta name="keywords" content="agentic AI, autonomous agents, tool-calling, AI safety, responsible AI, RAG systems, vector databases, LLM integration, network automation, infrastructure AI, Claude, production AI">
     <meta name="author" content="NeuralConfig">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neuralconfig.com/">
     <meta property="og:title" content="neuralconfig | AI & Network Infrastructure Tools">
-    <meta property="og:description" content="Building open-source AI and network automation tools. 20+ years infrastructure experience meets modern agentic AI systems.">
+    <meta property="og:description" content="AI Systems Engineer building production-ready agentic AI and network automation. Autonomous agents with tool-calling, RAG systems, and responsible AI design.">
     <meta property="og:site_name" content="NeuralConfig">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="neuralconfig | AI & Network Infrastructure Tools">
-    <meta name="twitter:description" content="Building open-source AI and network automation tools. 20+ years infrastructure experience meets modern agentic AI systems.">
+    <meta name="twitter:description" content="AI Systems Engineer building production-ready agentic AI and network automation. Autonomous agents with tool-calling, RAG systems, and responsible AI design.">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://neuralconfig.com/">
@@ -277,10 +277,7 @@
             <a href="index.html" class="nav-logo" aria-label="NeuralConfig Home">neural<span class="brackets" aria-hidden="true">[</span>config<span class="brackets" aria-hidden="true">]</span></a>
             <div class="nav-links" role="list">
                 <a href="skills.html" class="nav-link" role="listitem">about</a>
-                <a href="projects.html" class="nav-link" role="listitem">open source</a>
-                <a href="tools.html" class="nav-link" role="listitem">tools</a>
-                <a href="mobile-apps.html" class="nav-link" role="listitem">mobile apps</a>
-                <a href="blog.html" class="nav-link" role="listitem">blog</a>
+                <a href="projects.html" class="nav-link" role="listitem">projects</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">github</a>
             </div>
         </div>
@@ -362,7 +359,7 @@
                     '',
                     '[AI SYSTEMS]......... <span class="output-success">ONLINE</span>',
                     '[AUTOMATION]......... <span class="output-success">ACTIVE</span>',
-                    '[MOBILE APPS]........ <span class="output-success">DEV</span>',
+                    '[OPEN SOURCE]........ <span class="output-success">LIVE</span>',
                     '[CONSULTING]......... <span class="output-success">READY</span>',
                     '',
                     'contact@neuralconfig.com',
@@ -383,9 +380,8 @@
                     '',
                     '[AI SYSTEMS]......................... <span class="output-success">OPERATIONAL</span>',
                     '[NETWORK AUTOMATION]................. <span class="output-success">ACTIVE</span>',
-                    '[MOBILE DEVELOPMENT]................. <span class="output-success">IN PROGRESS</span>',
-                    '[CONSULTING SERVICES]................ <span class="output-success">AVAILABLE</span>',
                     '[OPEN SOURCE TOOLS].................. <span class="output-success">ONLINE</span>',
+                    '[CONSULTING SERVICES]................ <span class="output-success">AVAILABLE</span>',
                     '',
                     '        Contact: contact@neuralconfig.com',
                     '        GitHub: github.com/neuralconfig',
@@ -414,16 +410,21 @@
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' ls -la projects/',
+                command: ' tree -L 1 ~/projects --dirsfirst',
                 output: [
-                    'drwxr-xr-x  10 neural  staff   320 Jan 15 2025 .',
-                    'drwxr-xr-x   8 neural  staff   256 Jan 15 2025 ..',
-                    '-rw-r--r--   1 neural  staff  8192 Jan 15 10:23 <span class="output-success">ruckus-ztp</span> [AI-AGENT]',
-                    '-rw-r--r--   1 neural  staff  4096 Jan 14 18:45 <span class="output-info">r1-api</span> [SDK]',
-                    '-rw-r--r--   1 neural  staff  6144 Jan 13 14:30 <span class="output-success">osticket-agent</span> [AI-AGENT]',
-                    '-rw-r--r--   1 neural  staff  3072 Jan 12 09:15 <span class="output-info">survival-rag</span> [AI-RAG]',
-                    '-rw-r--r--   1 neural  staff  2048 Jan 10 16:20 <span class="output-success">sz-acl</span> [NETWORK]'
+                    '<span class="output-highlight">~/projects</span>',
+                    '├── <span class="output-success">ruckus-ztp/</span>         # AI-powered network provisioning',
+                    '├── <span class="output-success">osticket-agent/</span>     # Autonomous support agent',
+                    '├── <span class="output-info">r1-api/</span>             # RUCKUS One Python SDK',
+                    '├── <span class="output-info">survival-rag/</span>       # RAG knowledge system',
+                    '├── <span class="output-info">device-profiler/</span>    # IoT device classification',
+                    '└── <span class="output-dim">sz-acl/</span>             # ACL management tool'
                 ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: '# click or press any key to interact',
+                output: []
             },
             {
                 prompt: 'root@neuralconfig:~#',
@@ -434,21 +435,19 @@
                     '  <span class="output-success">✓</span> Network Automation & Zero-Touch Provisioning',
                     '  <span class="output-success">✓</span> Agentic AI Development',
                     '  <span class="output-success">✓</span> RAG Implementation & LLM Integration',
-                    '  <span class="output-success">✓</span> Open Source Network Management Tools',
-                    '  <span class="output-success">✓</span> iOS Mobile Application Development'
+                    '  <span class="output-success">✓</span> Open Source Network Management Tools'
                 ]
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' grep -E "AI|Network|Development" skills.txt',
+                command: ' curl -s localhost:8080/api/profile | jq \'.skills[]\'',
                 output: [
-                    '<span class="output-success">[✓]</span> Agentic AI System Architecture',
-                    '<span class="output-success">[✓]</span> Large Language Model Integration',
-                    '<span class="output-success">[✓]</span> Network Automation (Python/Ansible)',
-                    '<span class="output-success">[✓]</span> RUCKUS One & SmartZone API Development',
-                    '<span class="output-success">[✓]</span> Swift/iOS Development (ARKit, HealthKit)',
-                    '<span class="output-success">[✓]</span> Zero-Touch Provisioning',
-                    '<span class="output-success">[✓]</span> Cybersecurity (CISSP)'
+                    '"Agentic AI System Architecture"',
+                    '"LLM Integration (Claude, GPT, Gemini)"',
+                    '"RAG & Vector Database Implementation"',
+                    '"Network Automation (Python/NETCONF)"',
+                    '"Zero-Touch Provisioning"',
+                    '"CISSP | Zero Trust Security"'
                 ]
             },
             {
@@ -497,35 +496,11 @@
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' python3 -c "import this" | head -5',
-                output: [
-                    '<span class="output-dim">The Zen of Python, by Tim Peters</span>',
-                    '',
-                    '<span class="output-dim">Beautiful is better than ugly.</span>',
-                    '<span class="output-dim">Explicit is better than implicit.</span>',
-                    '<span class="output-dim">Simple is better than complex.</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' cat testimonial.txt',
-                output: [
-                    '<span class="output-highlight">Client Feedback:</span>',
-                    '',
-                    '"Exceptional technical expertise combined with practical business insight.',
-                    'Delivered network automation solutions that transformed our operations."',
-                    '',
-                    '- Fortune 500 Technology Client'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
                 command: ' curl https://neuralconfig.com/tools/ | jq .available',
                 output: [
                     '{',
                     '  "fastiron-navigator": "live",',
-                    '  "sz-acl": "maintenance",',
-                    '  "mobile-apps": "in-development"',
+                    '  "sz-acl": "maintenance"',
                     '}'
                 ]
             },
@@ -613,17 +588,19 @@
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' cat testimonial-2.txt',
+                command: ' cat ai-safety-protocols.md',
                 output: [
-                    '<span class="output-highlight">Enterprise Network Deployment:</span>',
+                    '<span class="output-highlight">AI Safety Principles:</span>',
                     '',
-                    '"Deployed complex AI-driven network automation across 50+ sites.',
-                    'Reduced configuration time by 85% and eliminated human errors.',
-                    'Outstanding technical depth and delivery."',
+                    '<span class="output-success">✓</span> Human-in-the-loop for destructive actions',
+                    '<span class="output-success">✓</span> Comprehensive audit logging',
+                    '<span class="output-success">✓</span> Rate limiting and circuit breakers',
+                    '<span class="output-success">✓</span> Graceful degradation on uncertainty',
+                    '<span class="output-success">✓</span> Explicit approval workflows for production changes',
                     '',
-                    '- Director of IT Infrastructure, Healthcare Provider'
+                    '<span class="output-dim">"Reliable AI is responsible AI"</span>'
                 ]
-            }
+            },
         ];
 
         function addLine(content, className = '') {
@@ -1752,15 +1729,18 @@
                         '  certs                   - View certifications',
                         '',
                         '<span class="output-success">Projects & Skills:</span>',
-                        '  projects [--filter ai|network|mobile] - List projects',
+                        '  projects [--filter ai|network] - List projects',
                         '  skills                  - Show technical skills',
-                        '  services                - Show available services',
+                        '',
+                        '<span class="output-success">AI:</span>',
+                        '  claude                  - Claude/Anthropic experience',
+                        '  agents                  - Agentic AI philosophy',
                         '',
                         '<span class="output-success">Network Tools:</span>',
                         '  ping <host>             - Network diagnostic tool',
                         '',
                         '<span class="output-success">Games:</span>',
-                        '  asteroids               - Play ASCII Asteroids',
+                        '  asteroids               - Play Asteroids',
                         '',
                         '<span class="output-success">System:</span>',
                         '  clear                   - Clear terminal screen',
@@ -1775,7 +1755,6 @@
                 case 'projects':
                 case 'projects --filter ai':
                 case 'projects --filter network':
-                case 'projects --filter mobile':
                     let filter = null;
                     if (cmd.includes('--filter')) {
                         const parts = cmd.split('--filter');
@@ -1795,9 +1774,6 @@
                             '✓ <span class="output-info">sz-acl</span>           [NETWORK] [MAINTENANCE]',
                             '✓ <span class="output-success">pflogs</span>          [SECURITY] [ACTIVE]',
                             '✓ <span class="output-info">wifi-test</span>       [NETWORK] [ACTIVE]'
-                        ],
-                        mobile: [
-                            '✓ <span class="output-warning">iOS Apps</span>        [MOBILE] [IN DEVELOPMENT]'
                         ]
                     };
 
@@ -1807,19 +1783,16 @@
                         output = ['<span class="output-highlight">AI Projects:</span>', ...allProjects.ai];
                     } else if (filter === 'network') {
                         output = ['<span class="output-highlight">Network Projects:</span>', ...allProjects.network];
-                    } else if (filter === 'mobile') {
-                        output = ['<span class="output-highlight">Mobile Projects:</span>', ...allProjects.mobile];
                     } else {
                         output = [
                             '<span class="output-highlight">Active Projects:</span>',
                             ...allProjects.ai,
-                            ...allProjects.network,
-                            ...allProjects.mobile
+                            ...allProjects.network
                         ];
                     }
 
                     output.push('');
-                    output.push('Use --filter [ai|network|mobile] to filter projects.');
+                    output.push('Use --filter [ai|network] to filter projects.');
                     output.push('Visit /projects.html for detailed information.');
 
                     return output;
@@ -1838,17 +1811,32 @@
                         'Visit /skills.html for complete details.'
                     ];
 
-                case 'services':
+                case 'claude':
                     return [
-                        '<span class="output-highlight">NeuralConfig Services:</span>',
-                        '• AI System Architecture & Consulting',
-                        '• Network Automation Solutions',
-                        '• Agentic AI Development',
-                        '• RAG Implementation & LLM Integration',
-                        '• Open Source Network Management Tools',
-                        '• iOS Mobile Application Development',
+                        '<span class="output-highlight">Claude Integration Experience:</span>',
                         '',
-                        'Contact: contact@neuralconfig.com'
+                        '• Built autonomous agents using Claude API',
+                        '• Tool-calling for network device interaction',
+                        '• RAG systems with Claude embeddings',
+                        '• Production deployments: osticket-agent, ruckus-ztp',
+                        '',
+                        '<span class="output-dim">Preferred model for agentic AI workloads</span>'
+                    ];
+
+                case 'agents':
+                    return [
+                        '<span class="output-highlight">Agentic AI Philosophy:</span>',
+                        '',
+                        'Autonomous systems that combine LLMs with tool execution',
+                        'to solve real-world infrastructure problems.',
+                        '',
+                        '<span class="output-success">Key Principles:</span>',
+                        '• Human-in-the-loop for destructive actions',
+                        '• Comprehensive audit logging',
+                        '• Graceful degradation on uncertainty',
+                        '• Domain expertise encoded in tool design',
+                        '',
+                        '<span class="output-dim">See: osticket-agent, ruckus-ztp</span>'
                     ];
 
                 case 'contact':

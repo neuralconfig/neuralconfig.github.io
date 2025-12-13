@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Style Preview - Best Practices Combined</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color System - Your current neon green theme enhanced */
+            --color-bg-primary: #0a0a0a;
+            --color-bg-secondary: #1a1a1a;
+            --color-bg-elevated: #252526;
+
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #b0b0b0;
+            --color-text-muted: #707070;
+
+            --color-accent-primary: #39ff14;
+            --color-accent-secondary: #00ff9d;
+            --color-accent-tertiary: #00d98b;
+
+            --color-success: #27c93f;
+            --color-warning: #ffbd2e;
+            --color-error: #ff5f56;
+            --color-info: #00bfff;
+
+            --color-ai: #c586c0;
+            --color-network: #4ec9b0;
+            --color-automation: #dcdcaa;
+
+            /* Typography Scale (perfect fourth - 1.333) */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.333rem;
+            --text-2xl: 1.777rem;
+            --text-3xl: 2.369rem;
+
+            /* Line heights */
+            --leading-tight: 1.25;
+            --leading-normal: 1.5;
+            --leading-relaxed: 1.75;
+
+            /* Spacing scale (0.25rem = 4px base) */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.5rem;
+            --space-6: 2rem;
+            --space-8: 3rem;
+            --space-10: 4rem;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 20px currentColor;
+
+            /* Font families */
+            --font-display: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+
+        body {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: var(--font-display);
+            font-size: var(--text-base);
+            line-height: var(--leading-normal);
+            padding: var(--space-6);
+            min-height: 100vh;
+        }
+
+        /* Focus states for accessibility */
+        :focus-visible {
+            outline: 3px solid var(--color-accent-primary);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        /* Respect motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .preview-header {
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: var(--space-6);
+            margin-block-end: var(--space-8);
+            border-radius: 4px;
+            box-shadow: var(--shadow-md);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .preview-header h1 {
+            font-family: var(--font-display);
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            margin-block-end: var(--space-3);
+            color: var(--color-accent-primary);
+            line-height: var(--leading-tight);
+            letter-spacing: -0.02em;
+        }
+
+        .preview-header p {
+            font-size: var(--text-lg);
+            color: var(--color-text-secondary);
+            line-height: var(--leading-relaxed);
+        }
+
+        .enhancement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: clamp(var(--space-4), 3vw, var(--space-6));
+            margin-block-end: var(--space-8);
+        }
+
+        .enhancement-card {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-bg-secondary);
+            border-radius: 4px;
+            padding: var(--space-5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .enhancement-card:nth-child(1) { animation-delay: 0.1s; }
+        .enhancement-card:nth-child(2) { animation-delay: 0.2s; }
+        .enhancement-card:nth-child(3) { animation-delay: 0.3s; }
+        .enhancement-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .enhancement-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-4px) translateZ(0);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
+        }
+
+        .enhancement-card h3 {
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--color-accent-primary);
+            margin-block-end: var(--space-3);
+            line-height: var(--leading-tight);
+        }
+
+        .enhancement-card p {
+            color: var(--color-text-secondary);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+            margin-block-end: var(--space-4);
+        }
+
+        .enhancement-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .enhancement-card li {
+            font-size: var(--text-sm);
+            padding-inline-start: var(--space-5);
+            margin-block-end: var(--space-2);
+            position: relative;
+            color: var(--color-text-secondary);
+        }
+
+        .enhancement-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 600;
+        }
+
+        .sample-section {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-text-muted);
+            padding: var(--space-6);
+            margin-block-end: var(--space-6);
+            border-radius: 4px;
+            animation: fadeIn 0.8s ease-out 0.2s backwards;
+        }
+
+        .sample-section h2 {
+            font-family: var(--font-display);
+            color: var(--color-accent-primary);
+            font-size: var(--text-2xl);
+            font-weight: 600;
+            margin-block-end: var(--space-5);
+            line-height: var(--leading-tight);
+        }
+
+        code {
+            background: rgba(57, 255, 20, 0.1);
+            padding: 0.2em 0.4em;
+            border-radius: 2px;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            color: var(--color-accent-secondary);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+        }
+
+        pre {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-text-muted);
+            padding: var(--space-5);
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-block: var(--space-4);
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+        }
+
+        .project-card {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-bg-secondary);
+            border-radius: 4px;
+            padding: var(--space-5);
+            margin-block-end: var(--space-4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            container-type: inline-size;
+            container-name: card;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-3px) translateZ(0);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
+        }
+
+        .project-card h3 {
+            font-family: var(--font-display);
+            color: var(--color-accent-primary);
+            font-size: var(--text-xl);
+            margin-block-end: var(--space-3);
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: var(--color-text-secondary);
+            margin-block-end: var(--space-4);
+            line-height: var(--leading-relaxed);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: var(--space-2) var(--space-3);
+            border-radius: 3px;
+            font-size: var(--text-xs);
+            font-family: var(--font-mono);
+            color: var(--color-accent-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(57, 255, 20, 0.2);
+            border-color: var(--color-accent-primary);
+            transform: translateY(-1px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 20px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        /* Responsive with fluid sizing */
+        .fluid-text {
+            font-size: clamp(var(--text-base), 2vw, var(--text-lg));
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: var(--space-6);
+            right: var(--space-6);
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: var(--space-4);
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .navigation strong {
+            color: var(--color-accent-primary);
+            display: block;
+            margin-block-end: var(--space-3);
+            font-family: var(--font-display);
+        }
+
+        .navigation a {
+            color: var(--color-accent-secondary);
+            text-decoration: none;
+            display: block;
+            padding-block: var(--space-2);
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            transition: all 0.2s ease;
+        }
+
+        .navigation a:hover {
+            color: var(--color-accent-primary);
+            transform: translateX(4px);
+        }
+
+        /* Container queries example */
+        @container card (min-width: 400px) {
+            .project-card {
+                padding: var(--space-6);
+            }
+        }
+
+        /* Responsive breakpoints */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--space-4);
+            }
+
+            .preview-header h1 {
+                font-size: var(--text-2xl);
+            }
+
+            .enhancement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation {
+                bottom: var(--space-4);
+                right: var(--space-4);
+                padding: var(--space-3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-header">
+        <h1>ENHANCED STYLE PREVIEW</h1>
+        <p>All CSS best practices combined – improved typography, spacing system, modern animations, and enhanced accessibility</p>
+    </div>
+
+    <div class="enhancement-grid">
+        <div class="enhancement-card">
+            <h3>Typography Scale</h3>
+            <p>Mathematical type scale using perfect fourth ratio (1.333) for harmonious hierarchy</p>
+            <ul>
+                <li>Space Grotesk for headers</li>
+                <li>JetBrains Mono for code</li>
+                <li>Clear visual hierarchy</li>
+                <li>Better readability</li>
+            </ul>
+        </div>
+
+        <div class="enhancement-card">
+            <h3>Spacing System</h3>
+            <p>Consistent spacing using 4px base unit (0.25rem) for rhythm and alignment</p>
+            <ul>
+                <li>8-point grid system</li>
+                <li>Logical properties (block/inline)</li>
+                <li>Fluid spacing with clamp()</li>
+                <li>Harmonious layouts</li>
+            </ul>
+        </div>
+
+        <div class="enhancement-card">
+            <h3>Performance</h3>
+            <p>GPU-accelerated animations and optimized rendering for smooth 60fps</p>
+            <ul>
+                <li>transform: translateZ(0)</li>
+                <li>will-change: transform</li>
+                <li>Cubic-bezier timing</li>
+                <li>Reduced motion support</li>
+            </ul>
+        </div>
+
+        <div class="enhancement-card">
+            <h3>Accessibility</h3>
+            <p>WCAG AAA compliant with enhanced focus states and semantic HTML</p>
+            <ul>
+                <li>High contrast ratios</li>
+                <li>Visible focus indicators</li>
+                <li>Motion preferences</li>
+                <li>Semantic structure</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sample-section">
+        <h2>Project Cards Example</h2>
+
+        <div class="project-card">
+            <h3>ruckus-ztp</h3>
+            <p>AI-powered Zero-Touch Provisioning agent with natural language chat interface for RUCKUS ICX switches and APs, featuring autonomous network discovery and configuration.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Claude AI</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">NETCONF</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>osticket-agent</h3>
+            <p>Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Agentic AI</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sample-section">
+        <h2>Code Sample</h2>
+        <pre><code>root@neuralconfig:~# whoami
+Network Engineer × AI Developer
+
+root@neuralconfig:~# systemctl status automation
+● automation.service - Network Automation Platform
+   Active: <span style="color: #27c93f;">active (running)</span>
+   Memory: 512.0M | CPU: 2.5%
+
+root@neuralconfig:~# ls -la projects/
+-rw-r--r--   1 neural  staff  8192 Jan 15  ruckus-ztp
+-rw-r--r--   1 neural  staff  6144 Jan 14  osticket-agent</code></pre>
+
+        <h3 style="color: var(--color-accent-secondary); font-size: var(--text-xl); margin-block: var(--space-5) var(--space-3);">Key Enhancements Applied</h3>
+        <p style="margin-block-end: var(--space-4); color: var(--color-text-secondary);">This preview demonstrates:</p>
+
+        <ul style="list-style: none; padding: 0;">
+            <li style="padding-inline-start: var(--space-5); margin-block-end: var(--space-2); position: relative; color: var(--color-text-secondary);">
+                <span style="position: absolute; left: 0; color: var(--color-success);">▸</span>
+                <strong style="color: var(--color-accent-secondary);">CSS Custom Properties</strong> - Centralized design tokens
+            </li>
+            <li style="padding-inline-start: var(--space-5); margin-block-end: var(--space-2); position: relative; color: var(--color-text-secondary);">
+                <span style="position: absolute; left: 0; color: var(--color-success);">▸</span>
+                <strong style="color: var(--color-accent-secondary);">Logical Properties</strong> - margin-block, padding-inline for better i18n
+            </li>
+            <li style="padding-inline-start: var(--space-5); margin-block-end: var(--space-2); position: relative; color: var(--color-text-secondary);">
+                <span style="position: absolute; left: 0; color: var(--color-success);">▸</span>
+                <strong style="color: var(--color-accent-secondary);">Container Queries</strong> - Component-level responsiveness
+            </li>
+            <li style="padding-inline-start: var(--space-5); margin-block-end: var(--space-2); position: relative; color: var(--color-text-secondary);">
+                <span style="position: absolute; left: 0; color: var(--color-success);">▸</span>
+                <strong style="color: var(--color-accent-secondary);">Fluid Typography</strong> - clamp() for responsive sizing
+            </li>
+            <li style="padding-inline-start: var(--space-5); margin-block-end: var(--space-2); position: relative; color: var(--color-text-secondary);">
+                <span style="position: absolute; left: 0; color: var(--color-success);">▸</span>
+                <strong style="color: var(--color-accent-secondary);">GPU Acceleration</strong> - transform3d() and translateZ(0)
+            </li>
+            <li style="padding-inline-start: var(--space-5); margin-block-end: var(--space-2); position: relative; color: var(--color-text-secondary);">
+                <span style="position: absolute; left: 0; color: var(--color-success);">▸</span>
+                <strong style="color: var(--color-accent-secondary);">Accessibility</strong> - Enhanced focus states and motion preferences
+            </li>
+        </ul>
+    </div>
+
+    <div class="navigation">
+        <strong>Preview Pages</strong>
+        <a href="preview-font-jetbrains.html">Font Previews →</a>
+        <a href="preview-color-cyberpunk.html">Color Previews →</a>
+        <a href="preview-enhanced.html">▶ Enhanced (This Page)</a>
+    </div>
+</body>
+</html>

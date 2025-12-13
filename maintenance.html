@@ -25,7 +25,7 @@
 
         .maintenance-title {
             font-size: 2.5rem;
-            color: var(--neon-green);
+            color: var(--accent-primary);
             margin-bottom: 1rem;
             opacity: 0;
             transform: translateY(20px);
@@ -34,7 +34,7 @@
 
         .maintenance-message {
             font-size: 1.2rem;
-            color: var(--accent);
+            color: var(--text-secondary);
             max-width: 600px;
             line-height: 1.8;
             margin-bottom: 2rem;
@@ -44,7 +44,7 @@
         }
 
         .maintenance-details {
-            background: var(--darker-bg);
+            background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: 4px;
             padding: 2rem;
@@ -57,7 +57,7 @@
         }
 
         .maintenance-details h3 {
-            color: var(--accent);
+            color: var(--accent-secondary);
             margin-bottom: 1rem;
         }
 
@@ -70,48 +70,56 @@
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
-            opacity: 0.9;
+            color: var(--text-primary);
         }
 
         .maintenance-details li::before {
             content: '>';
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: var(--accent-primary);
+        }
+
+        .maintenance-details .links {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .maintenance-details .links a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .maintenance-details .links a:hover {
+            text-decoration: underline;
         }
 
         .back-link {
             display: inline-block;
             margin-top: 2rem;
-            padding: 0.8rem 2rem;
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 0.8s ease forwards 0.8s;
         }
 
-        .back-link:hover {
-            background: rgba(0, 255, 157, 0.1);
-            transform: translateY(-2px);
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-
     <nav class="nav-bar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
                 <a href="skills.html" class="nav-link">about</a>
-                <a href="projects.html" class="nav-link">open source</a>
-                <a href="tools.html" class="nav-link">tools</a>
-                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
+                <a href="projects.html" class="nav-link">projects</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -134,24 +142,22 @@
                     <li><strong>Expected:</strong> Back online soon</li>
                 </ul>
 
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-                    <p style="opacity: 0.8; line-height: 1.6;">
+                <div class="links">
+                    <p>
                         While this tool is offline, you can still view the
-                        <a href="sz-acl.html" style="color: var(--neon-green); text-decoration: none;">project documentation</a>
+                        <a href="sz-acl.html">project documentation</a>
                         and
-                        <a href="https://github.com/neuralconfig/sz-acl" style="color: var(--neon-green); text-decoration: none;">source code on GitHub</a>.
+                        <a href="https://github.com/neuralconfig/sz-acl">source code on GitHub</a>.
                     </p>
                 </div>
             </div>
 
-            <a href="tools.html" class="back-link">← Back to Tools</a>
+            <a href="projects.html" class="back-link btn btn-secondary">← Back to Projects</a>
         </div>
     </div>
 
     <footer class="footer">
-        © 2025 NeuralConfig LLC
+        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
     </footer>
-
-    <script src="matrix.js"></script>
 </body>
 </html>

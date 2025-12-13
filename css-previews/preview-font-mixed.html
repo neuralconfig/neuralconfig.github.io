@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Preview: Inter + IBM Plex Mono</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --accent: #00ff9d;
+            --font-display: 'Inter', -apple-system, system-ui, sans-serif;
+            --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-green);
+            font-family: var(--font-display);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .preview-header {
+            background: var(--darker-bg);
+            border: 2px solid var(--accent);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .preview-header h1 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .preview-header p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+            font-family: var(--font-display);
+        }
+
+        .sample-section {
+            background: var(--darker-bg);
+            border: 1px solid #1a1a1a;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .sample-section h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .sample-section h3 {
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem 0;
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .sample-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-family: var(--font-display);
+        }
+
+        code {
+            background: rgba(57, 255, 20, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+            font-family: var(--font-mono);
+            color: var(--accent);
+        }
+
+        pre {
+            background: #000;
+            border: 1px solid #1a1a1a;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: var(--font-mono);
+        }
+
+        .project-card {
+            background: var(--darker-bg);
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .project-card h3 {
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+        }
+
+        .project-card p {
+            font-family: var(--font-display);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--darker-bg);
+            border: 2px solid var(--accent);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .navigation a {
+            color: var(--accent);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            font-family: var(--font-mono);
+        }
+
+        .navigation a:hover {
+            color: var(--neon-green);
+        }
+
+        .font-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .feature-item {
+            background: rgba(57, 255, 20, 0.05);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .feature-item strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+        }
+
+        .font-demo {
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px dashed var(--accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .font-demo p {
+            margin: 0.5rem 0;
+        }
+
+        .font-demo .display-font {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .font-demo .mono-font {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--neon-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-header">
+        <h1>FONT PREVIEW: Inter + IBM Plex Mono</h1>
+        <p>Industry-standard sans-serif paired with your current monospace – maximum readability and professionalism</p>
+    </div>
+
+    <div class="sample-section">
+        <h2>Typography Samples</h2>
+
+        <h3>Font Pairing Strategy</h3>
+        <p>This combination uses <strong>Inter</strong> for headers and body text, one of the most popular and readable fonts for modern interfaces. Designed specifically for computer screens with excellent clarity at small sizes. <strong>IBM Plex Mono</strong> (your current monospace) handles code blocks, maintaining consistency while significantly improving readability of regular text.</p>
+
+        <div class="font-features">
+            <div class="feature-item">
+                <strong>Inter</strong>
+                Headers, paragraphs, UI text
+                <br>Weight: 400-700
+            </div>
+            <div class="feature-item">
+                <strong>IBM Plex Mono</strong>
+                Code, terminal, tech tags
+                <br>Weight: 400-700
+            </div>
+            <div class="feature-item">
+                <strong>Aesthetic</strong>
+                Ultra-readable + technical
+            </div>
+            <div class="feature-item">
+                <strong>Best For</strong>
+                Maximum professionalism
+            </div>
+        </div>
+
+        <h3>Font Comparison</h3>
+        <div class="font-demo">
+            <p class="display-font">Inter: Crisp, neutral, highly legible sans-serif (Headers & Body)</p>
+            <p class="mono-font">IBM Plex Mono: Your current monospace (Code & Terminal)</p>
+        </div>
+
+        <h3>Code Sample</h3>
+        <pre><code>def analyze_network(config):
+    """Analyze network configuration and return insights."""
+    if config.get('ai_enabled', False):
+        return {'status': 'optimal', 'mode': 'autonomous'}
+    return {'status': 'manual', 'mode': 'standard'}
+
+# Mathematical operators showcase
+result = (x >= 10) && (y <= 100) ? true : false
+arrow_func = () => console.log('Hello World');</code></pre>
+
+        <h3>Character Distinction (IBM Plex Mono)</h3>
+        <p>Clear differentiation between commonly confused characters:</p>
+        <pre>0O (zero vs capital O)
+1lI (one vs lowercase L vs capital i)
+`'" (backtick vs single vs double quote)</pre>
+    </div>
+
+    <div class="sample-section">
+        <h2>Project Card Example</h2>
+
+        <div class="project-card">
+            <h3>ruckus-ztp</h3>
+            <p>AI-powered Zero-Touch Provisioning agent with natural language chat interface for RUCKUS ICX switches and APs, featuring autonomous network discovery and configuration.</p>
+            <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Claude AI</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">NETCONF</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>osticket-agent</h3>
+            <p>Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.</p>
+            <div>
+                <span class="tech-tag">Agentic AI</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sample-section">
+        <h2>Text Samples</h2>
+
+        <h3>Terminal Output Style</h3>
+        <pre>root@neuralconfig:~# whoami
+Network Engineer × AI Developer
+Bridging 20+ years of network infrastructure with modern AI systems
+
+root@neuralconfig:~# systemctl status automation-stack
+● automation-stack.service - Network Automation Platform
+   Active: active (running) since Jan 2025
+   Memory: 512.0M | CPU: 2.5%</pre>
+
+        <h3>Inline Code</h3>
+        <p>To configure the system, run <code>npm install</code> followed by <code>npm start</code>. The API endpoint is available at <code>https://api.neuralconfig.com/v1</code>.</p>
+
+        <h3>Numbers and Metrics</h3>
+        <p>Performance: 1,234,567 requests/sec | Latency: 0.123ms | Uptime: 99.99%</p>
+        <p>Font weights: 400 (regular), 500 (medium), 600 (semibold), 700 (bold)</p>
+
+        <h3>Why This Combination Works</h3>
+        <p><strong>Inter</strong> is designed by Rasmus Andersson specifically for user interfaces and computer screens. It has excellent legibility at small sizes, carefully adjusted metrics, and looks professional without being boring. The tall x-height and open apertures make it extremely readable.</p>
+
+        <p>This combination is ideal if you want to:</p>
+        <ul style="margin-left: 2rem; opacity: 0.9;">
+            <li>Maximize readability for longer text content</li>
+            <li>Keep your familiar IBM Plex Mono for code</li>
+            <li>Achieve a more polished, professional appearance</li>
+            <li>Use a battle-tested font used by GitHub, Mozilla, and others</li>
+            <li>Minimal change with maximum impact</li>
+        </ul>
+
+        <h3>Inter's Special Features</h3>
+        <p>Inter includes tabular figures (for aligned numbers in tables), contextual alternates that improve specific letter combinations, and carefully designed metrics that work beautifully across all sizes from 10px to 72px.</p>
+    </div>
+
+    <div class="navigation">
+        <strong style="color: var(--neon-green); display: block; margin-bottom: 0.5rem; font-family: var(--font-mono);">Font Previews</strong>
+        <a href="preview-font-jetbrains.html">JetBrains Mono</a>
+        <a href="preview-font-firacode.html">Fira Code</a>
+        <a href="preview-font-spacegroup.html">Space Grotesk/Mono</a>
+        <a href="preview-font-mixed.html">▶ Inter + IBM Plex</a>
+    </div>
+</body>
+</html>

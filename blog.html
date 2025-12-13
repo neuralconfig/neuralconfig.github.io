@@ -3,242 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | neuralconfig</title>
+    <meta http-equiv="refresh" content="0; url=projects.html">
+    <title>Redirecting... | neuralconfig</title>
+    <link rel="canonical" href="https://neuralconfig.com/projects.html">
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
             background-color: #1e1e1e;
             color: #d4d4d4;
-        }
-
-        .matrix-bg {
-            opacity: 0.02;
-        }
-
-        .blog-header {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .blog-header h1 {
-            color: #569cd6;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-header p {
-            color: #9cdcfe;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .blog-posts {
-            display: grid;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .blog-post-card {
-            background: #252526;
-            border: 1px solid #3e3e42;
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .blog-post-card:hover {
-            border-color: #569cd6;
-            box-shadow: 0 8px 24px rgba(86, 156, 214, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .post-meta {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            color: #9cdcfe;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .post-date {
-            color: #9cdcfe;
-        }
-
-        .post-category {
-            padding: 0.2rem 0.6rem;
-            background: rgba(86, 156, 214, 0.2);
-            border-radius: 3px;
-            color: #569cd6;
-            font-weight: 600;
-        }
-
-        .post-category.ai { background: rgba(197, 134, 192, 0.2); color: #c586c0; }
-        .post-category.network { background: rgba(78, 201, 176, 0.2); color: #4ec9b0; }
-        .post-category.tutorial { background: rgba(220, 220, 170, 0.2); color: #dcdcaa; }
-
-        .post-title {
-            font-size: 1.8rem;
-            color: #569cd6;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .post-title a {
-            color: #569cd6;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .post-title a:hover {
-            color: #9cdcfe;
-        }
-
-        .post-excerpt {
-            color: #d4d4d4;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
-
-        .read-more {
-            display: inline-block;
-            color: #569cd6;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .read-more:hover {
-            color: #9cdcfe;
-        }
-
-        .read-more::after {
-            content: ' →';
-        }
-
-        .coming-soon {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: #252526;
-            border: 1px solid #3e3e42;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        .coming-soon h2 {
-            color: #569cd6;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .coming-soon p {
-            color: #9cdcfe;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .coming-soon .topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
             justify-content: center;
-            margin-top: 2rem;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
-
-        .topic-tag {
-            padding: 0.5rem 1rem;
-            background: #2d2d30;
-            border: 1px solid #3e3e42;
-            border-radius: 4px;
+        .redirect-message {
+            text-align: center;
+            padding: 2rem;
+        }
+        .redirect-message h1 {
+            color: #569cd6;
+            margin-bottom: 1rem;
+        }
+        .redirect-message a {
             color: #9cdcfe;
-            font-size: 0.9rem;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        @media (max-width: 768px) {
-            .blog-header h1 {
-                font-size: 2rem;
-            }
-
-            .post-title {
-                font-size: 1.5rem;
-            }
-
-            .post-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
         }
     </style>
 </head>
 <body>
-    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
-            <div class="nav-links">
-                <a href="skills.html" class="nav-link">about</a>
-                <a href="projects.html" class="nav-link">open source</a>
-                <a href="tools.html" class="nav-link">tools</a>
-                <a href="mobile-apps.html" class="nav-link">mobile apps</a>
-                <a href="blog.html" class="nav-link active">blog</a>
-                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="blog-header">
-            <h1>Technical Blog</h1>
-            <p>Thoughts on AI, network automation, and building production systems</p>
-        </div>
-
-        <div class="blog-posts">
-            <!-- Coming Soon Section -->
-            <div class="coming-soon">
-                <h2>Coming Soon</h2>
-                <p>I'm planning to write about the technical challenges and learnings from building these projects.</p>
-
-                <div class="topics">
-                    <span class="topic-tag">Building Agentic AI Systems</span>
-                    <span class="topic-tag">RAG Implementation Patterns</span>
-                    <span class="topic-tag">Network Automation with Python</span>
-                    <span class="topic-tag">Zero-Touch Provisioning</span>
-                    <span class="topic-tag">RUCKUS API Deep Dives</span>
-                    <span class="topic-tag">iOS Development Journey</span>
-                    <span class="topic-tag">Production AI Challenges</span>
-                    <span class="topic-tag">Tool-Calling Agents</span>
-                </div>
-            </div>
-
-            <!-- Example/Template Post (commented out until real posts exist)
-            <article class="blog-post-card">
-                <div class="post-meta">
-                    <span class="post-date">January 15, 2025</span>
-                    <span class="post-category ai">AI Systems</span>
-                </div>
-                <h2 class="post-title">
-                    <a href="blog/building-autonomous-ai-agents.html">Building Autonomous AI Agents for Network Automation</a>
-                </h2>
-                <p class="post-excerpt">
-                    Lessons learned from building production AI agents that interact with network infrastructure.
-                    How to design tool-calling systems, handle errors gracefully, and ensure reliability in
-                    critical infrastructure environments.
-                </p>
-                <a href="blog/building-autonomous-ai-agents.html" class="read-more">Read more</a>
-            </article>
-            -->
-        </div>
+    <div class="redirect-message">
+        <h1>Redirecting to Projects...</h1>
+        <p>If you are not redirected automatically, <a href="projects.html">click here</a>.</p>
     </div>
-
-    <footer class="footer">
-        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
-    </footer>
-
-    <script src="matrix.js"></script>
 </body>
 </html>
