@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Preview: White Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Classic white/gray phosphor monochrome terminal */
+            --color-bg-primary: #000000;
+            --color-bg-secondary: #0a0a0a;
+            --color-bg-elevated: #1a1a1a;
+
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #d0d0d0;
+            --color-text-muted: #909090;
+
+            --color-accent-primary: #ffffff;     /* Bright white */
+            --color-accent-secondary: #f0f0f0;   /* Soft white */
+            --color-accent-tertiary: #d0d0d0;    /* Gray */
+
+            --color-success: #00ff00;
+            --color-warning: #ffcc00;
+            --color-error: #ff5555;
+            --color-info: #00ddff;
+
+            --color-ai: #e0e0e0;
+            --color-network: #c0c0c0;
+            --color-automation: #f0f0f0;
+
+            --font-display: 'Inter', -apple-system, system-ui, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+        }
+
+        body {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: var(--font-mono);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .preview-header {
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .preview-header h1 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent-primary);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .preview-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            font-family: var(--font-display);
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .color-swatch {
+            padding: 2rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .swatch-white { background: var(--color-accent-primary); color: #000; }
+        .swatch-soft { background: var(--color-accent-secondary); color: #000; }
+        .swatch-gray { background: var(--color-accent-tertiary); color: #000; }
+        .swatch-green { background: var(--color-success); color: #000; }
+        .swatch-cyan { background: var(--color-info); color: #000; }
+
+        .sample-section {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-text-muted);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .sample-section h2 {
+            color: var(--color-accent-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .sample-section h3 {
+            color: var(--color-accent-secondary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem 0;
+            font-family: var(--font-display);
+            font-weight: 600;
+        }
+
+        .sample-section p {
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+            font-family: var(--font-display);
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+            color: var(--color-accent-primary);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        pre {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-text-muted);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            color: var(--color-text-primary);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .project-card {
+            background: var(--color-bg-elevated);
+            border: 1px solid rgba(208, 208, 208, 0.2);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card h3 {
+            color: var(--color-accent-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+        }
+
+        .project-card p {
+            font-family: var(--font-display);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-text-muted);
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+            color: var(--color-accent-secondary);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .navigation a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navigation a:hover {
+            color: var(--color-accent-primary);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-header">
+        <h1>COLOR PREVIEW: White Terminal</h1>
+        <p>Classic white phosphor monochrome – crisp, high-contrast, early computing aesthetic</p>
+    </div>
+
+    <div class="sample-section">
+        <h2>Color Palette</h2>
+
+        <div class="color-palette">
+            <div class="color-swatch swatch-white">
+                <div style="font-weight: 600;">WHITE</div>
+                <div>#ffffff</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Primary</div>
+            </div>
+            <div class="color-swatch swatch-soft">
+                <div style="font-weight: 600;">SOFT WHITE</div>
+                <div>#f0f0f0</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Secondary</div>
+            </div>
+            <div class="color-swatch swatch-gray">
+                <div style="font-weight: 600;">GRAY</div>
+                <div>#d0d0d0</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Tertiary</div>
+            </div>
+            <div class="color-swatch swatch-green">
+                <div style="font-weight: 600;">SUCCESS</div>
+                <div>#00ff00</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Alerts</div>
+            </div>
+            <div class="color-swatch swatch-cyan">
+                <div style="font-weight: 600;">INFO</div>
+                <div>#00ddff</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Info</div>
+            </div>
+        </div>
+
+        <h3>Theme Characteristics</h3>
+        <p><strong>Vibe:</strong> Clean, minimal, high-contrast classic</p>
+        <p><strong>History:</strong> Early monochrome terminals, VT100 variants</p>
+        <p><strong>Contrast:</strong> Maximum – sharp, crisp text rendering</p>
+        <p><strong>Mood:</strong> Pure, minimalist, unadorned computing</p>
+        <p><strong>Aesthetic:</strong> Timeless simplicity, focuses on content over decoration</p>
+    </div>
+
+    <div class="sample-section">
+        <h2>Project Cards</h2>
+
+        <div class="project-card">
+            <h3>ruckus-ztp</h3>
+            <p>AI-powered Zero-Touch Provisioning agent with natural language chat interface for RUCKUS ICX switches and APs, featuring autonomous network discovery and configuration.</p>
+            <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Claude AI</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">NETCONF</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>osticket-agent</h3>
+            <p>Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.</p>
+            <div>
+                <span class="tech-tag">Agentic AI</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sample-section">
+        <h2>Code Sample</h2>
+        <pre><code>root@neuralconfig:~# whoami
+Network Engineer × AI Developer
+
+root@neuralconfig:~# systemctl status automation
+● automation.service - Network Automation Platform
+   Active: <span style="color: #00ff00;">active (running)</span>
+   Memory: 512.0M | CPU: 2.5%
+
+root@neuralconfig:~# ls -la projects/
+-rw-r--r--   1 neural  staff  8192 Jan 15  ruckus-ztp
+-rw-r--r--   1 neural  staff  6144 Jan 14  osticket-agent
+
+root@neuralconfig:~# echo "Minimalist terminal aesthetics"
+Minimalist terminal aesthetics</code></pre>
+
+        <h3>Inline Code</h3>
+        <p>To configure the system, run <code>npm install</code> followed by <code>npm start</code>. The API endpoint is available at <code>https://api.neuralconfig.com/v1</code>.</p>
+
+        <h3>Why White?</h3>
+        <p>White phosphor monochrome terminals represented the purest form of early computing displays. Before color became standard, white-on-black offered maximum contrast and clarity. This aesthetic is timeless and professional, letting content speak for itself without the distraction of color. Perfect for a no-nonsense, focused presentation of technical information.</p>
+    </div>
+
+    <div class="navigation">
+        <strong style="color: var(--color-accent-primary); display: block; margin-bottom: 0.5rem;">Terminal Colors</strong>
+        <a href="preview-color-amber.html">Amber Terminal</a>
+        <a href="preview-color-white.html">▶ White Terminal</a>
+        <a href="preview-color-ibm.html">IBM Green</a>
+        <a href="preview-color-apple2.html">Apple II</a>
+        <a href="preview-color-c64.html">Commodore 64</a>
+    </div>
+</body>
+</html>

@@ -5,258 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SZ-ACL | neuralconfig</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Modern Charcoal color scheme override */
-        body {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-        }
-
-        .project-detail-title {
-            color: #569cd6 !important;
-        }
-
-        .section h2 {
-            color: #9cdcfe !important;
-        }
-
-        .feature-card h3 {
-            color: #569cd6 !important;
-        }
-
-        .code-block pre {
-            color: #569cd6 !important;
-        }
-
-        .tech-item {
-            background: rgba(86, 156, 214, 0.1) !important;
-            border-color: rgba(86, 156, 214, 0.3) !important;
-            color: #9cdcfe !important;
-        }
-
-        .nav-bar {
-            background: rgba(37, 37, 38, 0.95);
-            border-bottom-color: #569cd6;
-        }
-
-        .nav-logo {
-            color: #569cd6;
-        }
-
-        .brackets {
-            color: #9cdcfe;
-        }
-
-        .nav-link {
-            color: #9cdcfe;
-        }
-
-        .nav-link.active {
-            color: #569cd6;
-        }
-
-        .matrix-bg {
-            opacity: 0.05;
-        }
-
-        .footer {
-            border-top-color: #3e3e42;
-            color: #9cdcfe;
-        }
-
-        .action-button {
-            border-color: #569cd6 !important;
-            color: #569cd6 !important;
-        }
-
-        .action-button:hover {
-            background: #569cd6 !important;
-            color: #1e1e1e !important;
-        }
-
-        .action-button.primary {
-            background: #569cd6 !important;
-            color: #1e1e1e !important;
-        }
-
-        .action-button.primary:hover {
-            background: #9cdcfe !important;
-        }
-
-        .project-detail-header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .project-detail-title {
-            font-size: 2.5rem;
-            color: var(--neon-green);
-            margin-bottom: 1rem;
-        }
-        
-        .project-meta {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            opacity: 0.8;
-        }
-        
-        .project-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .section {
-            margin-bottom: 3rem;
-        }
-        
-        .section h2 {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .feature-card {
-            background: rgba(5, 5, 5, 0.5);
-            padding: 1.5rem;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .feature-card h3 {
-            color: var(--neon-green);
-            margin-bottom: 0.5rem;
-        }
-        
-        .code-block {
-            background: var(--darker-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 1.5rem;
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-        
-        .code-block code {
-            color: var(--neon-green);
-            font-family: 'Courier New', monospace;
-        }
-        
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .tech-item {
-            background: rgba(57, 255, 20, 0.1);
-            border: 1px solid rgba(57, 255, 20, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            color: var(--accent);
-        }
-        
-        .project-actions {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .action-button {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .action-button:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-        }
-        
-        .action-button.primary {
-            background: var(--accent);
-            color: var(--dark-bg);
-        }
-        
-        .action-button.primary:hover {
-            background: var(--neon-green);
-        }
-        
-        .security-highlight {
-            background: rgba(0, 191, 255, 0.1);
-            border-left: 3px solid var(--network-accent);
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        /* Mobile responsive styles */
-        @media (max-width: 768px) {
-            .project-detail-title {
-                font-size: 2rem;
-            }
-
-            .project-meta {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .tech-stack {
-                gap: 0.75rem;
-            }
-
-            .project-actions {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .action-button {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .project-detail-title {
-                font-size: 1.75rem;
-            }
-
-            .feature-card, .security-highlight {
-                padding: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
-    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-    
     <nav class="nav-bar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
                 <a href="skills.html" class="nav-link">about</a>
                 <a href="projects.html" class="nav-link">projects</a>
-                <a href="tools.html" class="nav-link">tools</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
             </div>
         </div>
@@ -279,25 +35,25 @@
         </div>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Overview</h2>
-            <p style="line-height: 1.8; margin-bottom: 1rem;">
-                An advanced Access Control List (ACL) management system designed for Ruckus SmartZone enterprise networks. 
-                SZ-ACL provides both CLI tools and a web interface to automate the complex task of ACL rule generation, 
+            <h2 class="section-heading">Overview</h2>
+            <p class="story-text">
+                An advanced Access Control List (ACL) management system designed for Ruckus SmartZone enterprise networks.
+                SZ-ACL provides both CLI tools and a web interface to automate the complex task of ACL rule generation,
                 validation, and deployment while providing intelligent conflict detection and resolution capabilities.
             </p>
-            <p style="line-height: 1.8; margin-bottom: 1rem;">
-                This project addresses the critical challenge of maintaining secure, efficient network policies at scale, 
+            <p class="story-text">
+                This project addresses the critical challenge of maintaining secure, efficient network policies at scale,
                 combining security best practices with automation to reduce human error and improve network performance.
             </p>
-            <p style="line-height: 1.8;">
-                <strong>Now available as a web application:</strong> The SZ-ACL tool is deployed on Google Cloud Platform 
-                and accessible at <a href="https://szacl.neuralconfig.com" style="color: var(--neon-green);">szacl.neuralconfig.com</a>, 
+            <p class="story-text">
+                <strong>Now available as a web application:</strong> The SZ-ACL tool is deployed on Google Cloud Platform
+                and accessible at <a href="https://szacl.neuralconfig.com" class="link">szacl.neuralconfig.com</a>,
                 providing a user-friendly interface for managing Layer 3 Access Control Policies without CLI expertise.
             </p>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Key Features</h2>
+            <h2 class="section-heading">Key Features</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <h3>Web Interface</h3>
@@ -319,69 +75,68 @@
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Technical Implementation</h2>
-            <p style="line-height: 1.8; margin-bottom: 1rem;">
-                The ACL management system provides efficient Layer 3 Access Control Policy management for Ruckus 
+            <h2 class="section-heading">Technical Implementation</h2>
+            <p class="story-text">
+                The ACL management system provides efficient Layer 3 Access Control Policy management for Ruckus
                 SmartZone controllers through REST API interactions. Key technical features include:
             </p>
-            <ul style="list-style: none; padding-left: 1.5rem; margin-bottom: 1rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>REST API Integration:</strong> Direct communication with Ruckus SmartZone controllers</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Wildcard Support:</strong> Template-based rule creation with IP address substitution for multi-site deployments</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Bulk Operations:</strong> CSV and JSON-based policy creation and management</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Policy Lifecycle:</strong> Create, retrieve, update, and delete operations for ACL policies</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Firewall Profile Management:</strong> Integrated management of firewall profiles with rate limiting</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Clean-up Utilities:</strong> Tools for removing test and temporary configurations</li>
+            <ul class="feature-list">
+                <li><strong>REST API Integration:</strong> Direct communication with Ruckus SmartZone controllers</li>
+                <li><strong>Wildcard Support:</strong> Template-based rule creation with IP address substitution for multi-site deployments</li>
+                <li><strong>Bulk Operations:</strong> CSV and JSON-based policy creation and management</li>
+                <li><strong>Policy Lifecycle:</strong> Create, retrieve, update, and delete operations for ACL policies</li>
+                <li><strong>Firewall Profile Management:</strong> Integrated management of firewall profiles with rate limiting</li>
+                <li><strong>Clean-up Utilities:</strong> Tools for removing test and temporary configurations</li>
             </ul>
-            <p style="line-height: 1.8;">
-                The system provides both CLI and web interfaces for policy management, supporting standardized 
+            <p class="story-text">
+                The system provides both CLI and web interfaces for policy management, supporting standardized
                 configurations across multiple sites while maintaining flexibility for site-specific requirements.
             </p>
         </section>
 
-        <div class="security-highlight">
-            <h3 style="color: var(--network-accent); margin-bottom: 0.5rem;">Security Innovation</h3>
-            <p style="opacity: 0.9;">
-                This project streamlines ACL management for enterprise networks by providing intuitive tools for policy 
-                creation and deployment. The wildcard substitution feature enables consistent security policies across 
+        <div class="network-highlight">
+            <h3>Security Innovation</h3>
+            <p>
+                This project streamlines ACL management for enterprise networks by providing intuitive tools for policy
+                creation and deployment. The wildcard substitution feature enables consistent security policies across
                 multiple sites while reducing configuration errors and administrative overhead.
             </p>
         </div>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Technology Stack</h2>
+            <h2 class="section-heading">Technology Stack</h2>
             <div class="tech-stack">
-                <div class="tech-item">Python 3.11+</div>
-                <div class="tech-item">Google App Engine</div>
-                <div class="tech-item">Ruckus SmartZone API</div>
-                <div class="tech-item">Requests</div>
-                <div class="tech-item">CSV/JSON Processing</div>
-                <div class="tech-item">Cloud Deployment</div>
+                <span class="tech-badge network">Python 3.11+</span>
+                <span class="tech-badge cloud">Google App Engine</span>
+                <span class="tech-badge network">Ruckus SmartZone API</span>
+                <span class="tech-badge network">Requests</span>
+                <span class="tech-badge network">CSV/JSON Processing</span>
+                <span class="tech-badge cloud">Cloud Deployment</span>
             </div>
         </section>
 
         <section class="section">
-            <h2><span class="terminal-prompt">></span> Enterprise Impact</h2>
-            <p style="line-height: 1.8; margin-bottom: 1rem;">
+            <h2 class="section-heading">Enterprise Impact</h2>
+            <p class="story-text">
                 SZ-ACL demonstrates expertise in:
             </p>
-            <ul style="list-style: none; padding-left: 1.5rem;">
-                <li style="margin-bottom: 0.5rem;">• <strong>Security Architecture:</strong> Designing systems that enforce security policies at scale</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Performance Engineering:</strong> Optimizing critical network path operations</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Automation:</strong> Reducing manual configuration errors significantly</li>
-                <li style="margin-bottom: 0.5rem;">• <strong>Compliance:</strong> Built-in support for SOC2, PCI-DSS requirements</li>
+            <ul class="feature-list">
+                <li><strong>Security Architecture:</strong> Designing systems that enforce security policies at scale</li>
+                <li><strong>Performance Engineering:</strong> Optimizing critical network path operations</li>
+                <li><strong>Automation:</strong> Reducing manual configuration errors significantly</li>
+                <li><strong>Compliance:</strong> Built-in support for SOC2, PCI-DSS requirements</li>
             </ul>
         </section>
 
         <div class="project-actions">
-            <a href="https://szacl.neuralconfig.com" class="action-button primary">Try Web App</a>
-            <a href="https://github.com/neuralconfig/sz-acl" class="action-button">View on GitHub</a>
-            <a href="projects.html" class="action-button">Back to Projects</a>
+            <a href="https://szacl.neuralconfig.com" class="btn btn-primary">Try Web App</a>
+            <a href="https://github.com/neuralconfig/sz-acl" class="btn btn-secondary">View on GitHub</a>
+            <a href="projects.html" class="btn btn-secondary">Back to Projects</a>
         </div>
     </div>
 
-    <script src="matrix.js"></script>
     <footer class="footer">
-        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
+        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
     </footer>
 </body>
 </html>

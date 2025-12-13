@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Preview: Cyberpunk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Cyberpunk neon color scheme */
+            --color-bg-primary: #0a0014;
+            --color-bg-secondary: #1a0a2e;
+            --color-bg-elevated: #2a1a3e;
+
+            --color-text-primary: #e0c5ff;
+            --color-text-secondary: #b098d4;
+            --color-text-muted: #7d5e9b;
+
+            --color-accent-primary: #ff006e;     /* Hot pink */
+            --color-accent-secondary: #8338ec;   /* Purple */
+            --color-accent-tertiary: #00f5ff;    /* Cyan */
+
+            --color-success: #00ff9d;
+            --color-warning: #ffbe0b;
+            --color-error: #ff006e;
+            --color-info: #00f5ff;
+
+            --color-ai: #ff006e;
+            --color-network: #00f5ff;
+            --color-automation: #ffbe0b;
+
+            --font-mono: 'IBM Plex Mono', monospace;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+            color: var(--color-text-primary);
+            font-family: var(--font-mono);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .preview-header {
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .preview-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent-primary);
+            text-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+        }
+
+        .preview-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .color-swatch {
+            padding: 2rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .swatch-pink { background: var(--color-accent-primary); color: #fff; }
+        .swatch-purple { background: var(--color-accent-secondary); color: #fff; }
+        .swatch-cyan { background: var(--color-accent-tertiary); color: #000; }
+        .swatch-yellow { background: var(--color-automation); color: #000; }
+        .swatch-green { background: var(--color-success); color: #000; }
+
+        .sample-section {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-accent-secondary);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(131, 56, 236, 0.2);
+        }
+
+        .sample-section h2 {
+            color: var(--color-accent-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+        }
+
+        .sample-section h3 {
+            color: var(--color-accent-tertiary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem 0;
+            font-weight: 500;
+        }
+
+        .sample-section p {
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+        }
+
+        code {
+            background: rgba(255, 0, 110, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+            color: var(--color-accent-tertiary);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+        }
+
+        pre {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-accent-secondary);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            color: var(--color-text-primary);
+        }
+
+        .project-card {
+            background: var(--color-bg-elevated);
+            border: 1px solid rgba(255, 0, 110, 0.3);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+        }
+
+        .project-card h3 {
+            color: var(--color-accent-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(131, 56, 236, 0.2);
+            border: 1px solid var(--color-accent-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+            color: var(--color-accent-tertiary);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .navigation a {
+            color: var(--color-accent-tertiary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navigation a:hover {
+            color: var(--color-accent-primary);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-header">
+        <h1>COLOR PREVIEW: Cyberpunk</h1>
+        <p>Neon pink, electric purple, and cyan – high-energy cyberpunk aesthetic with bold contrasts</p>
+    </div>
+
+    <div class="sample-section">
+        <h2>Color Palette</h2>
+
+        <div class="color-palette">
+            <div class="color-swatch swatch-pink">
+                <div style="font-weight: 600;">HOT PINK</div>
+                <div>#ff006e</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Primary Accent</div>
+            </div>
+            <div class="color-swatch swatch-purple">
+                <div style="font-weight: 600;">PURPLE</div>
+                <div>#8338ec</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Secondary</div>
+            </div>
+            <div class="color-swatch swatch-cyan">
+                <div style="font-weight: 600;">CYAN</div>
+                <div>#00f5ff</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Tertiary</div>
+            </div>
+            <div class="color-swatch swatch-yellow">
+                <div style="font-weight: 600;">YELLOW</div>
+                <div>#ffbe0b</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Automation</div>
+            </div>
+            <div class="color-swatch swatch-green">
+                <div style="font-weight: 600;">GREEN</div>
+                <div>#00ff9d</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Success</div>
+            </div>
+        </div>
+
+        <h3>Theme Characteristics</h3>
+        <p><strong>Vibe:</strong> High-energy, futuristic, bold</p>
+        <p><strong>Best for:</strong> Standing out, modern tech brands, gaming/tech culture</p>
+        <p><strong>Contrast:</strong> Very high – excellent accessibility</p>
+        <p><strong>Mood:</strong> Energetic, cutting-edge, rebellious</p>
+    </div>
+
+    <div class="sample-section">
+        <h2>Project Cards</h2>
+
+        <div class="project-card">
+            <h3>ruckus-ztp</h3>
+            <p>AI-powered Zero-Touch Provisioning agent with natural language chat interface for RUCKUS ICX switches and APs, featuring autonomous network discovery and configuration.</p>
+            <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Claude AI</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">NETCONF</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>osticket-agent</h3>
+            <p>Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.</p>
+            <div>
+                <span class="tech-tag">Agentic AI</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sample-section">
+        <h2>Code Sample</h2>
+        <pre><code>root@neuralconfig:~# whoami
+Network Engineer × AI Developer
+
+root@neuralconfig:~# systemctl status automation
+● automation.service - Network Automation Platform
+   Active: <span style="color: #00ff9d;">active (running)</span>
+   Memory: 512.0M | CPU: 2.5%
+
+root@neuralconfig:~# ls -la projects/
+-rw-r--r--   1 neural  staff  8192 Jan 15  ruckus-ztp
+-rw-r--r--   1 neural  staff  6144 Jan 14  osticket-agent</code></pre>
+
+        <h3>Inline Code</h3>
+        <p>To configure the system, run <code>npm install</code> followed by <code>npm start</code>. The API endpoint is available at <code>https://api.neuralconfig.com/v1</code>.</p>
+    </div>
+
+    <div class="navigation">
+        <strong style="color: var(--color-accent-primary); display: block; margin-bottom: 0.5rem;">Color Previews</strong>
+        <a href="preview-color-cyberpunk.html">▶ Cyberpunk</a>
+        <a href="preview-color-synthwave.html">Synthwave</a>
+        <a href="preview-color-dracula.html">Dracula</a>
+        <a href="preview-color-nord.html">Nord</a>
+        <a href="preview-color-tokyo.html">Tokyo Night</a>
+    </div>
+</body>
+</html>

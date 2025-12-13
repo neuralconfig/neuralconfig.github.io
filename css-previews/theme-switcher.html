@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Theme Switcher - NeuralConfig</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Default theme - Hacker Green */
+            --color-bg-primary: #0d0d0d;
+            --color-bg-secondary: #050505;
+            --color-bg-elevated: #1a1a1a;
+            --color-text-primary: #e0ffe0;
+            --color-text-secondary: #b3ffb3;
+            --color-text-muted: #66cc66;
+            --color-accent-primary: #00ff41;
+            --color-accent-secondary: #00d936;
+            --color-accent-tertiary: #39ff14;
+            --color-success: #00ff88;
+            --color-warning: #ffcc00;
+            --color-error: #ff3366;
+            --color-info: #00ffff;
+            --color-ai: #00ff88;
+            --color-network: #00ffcc;
+            --color-automation: #88ff00;
+
+            --font-display: 'Inter', -apple-system, system-ui, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: var(--font-display);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        /* Theme Switcher Control Panel */
+        .theme-control-panel {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10000;
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            min-width: 280px;
+            animation: slideIn 0.5s ease;
+            transition: all var(--transition-speed) ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .theme-control-panel h3 {
+            color: var(--color-accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .theme-selector {
+            width: 100%;
+            padding: 0.6rem;
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-accent-secondary);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 0.75rem;
+        }
+
+        .theme-selector:hover {
+            border-color: var(--color-accent-primary);
+            box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.3);
+        }
+
+        .theme-selector:focus {
+            outline: none;
+            border-color: var(--color-accent-primary);
+            box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
+        }
+
+        .toggle-animations {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .toggle-animations input {
+            cursor: pointer;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-accent-primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            color: var(--color-accent-primary);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.8;
+        }
+
+        .brackets {
+            color: var(--color-accent-secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+            border-bottom: 1px solid var(--color-accent-secondary);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--color-accent-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            transition: all var(--transition-speed) ease;
+        }
+
+        body.animations-enabled .hero h1 {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+            }
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .subtitle {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--color-accent-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .section-header p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-bg-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all var(--transition-speed) ease;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .project-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
+        }
+
+        body.animations-enabled .project-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3), 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .project-card h3 {
+            color: var(--color-accent-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--color-accent-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            color: var(--color-accent-tertiary);
+            transition: all 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(0, 255, 65, 0.2);
+            border-color: var(--color-accent-primary);
+            transform: translateY(-1px);
+        }
+
+        /* Code Sample */
+        .code-sample {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-accent-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            overflow-x: auto;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .code-sample pre {
+            color: var(--color-text-primary);
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--color-accent-secondary);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .theme-control-panel {
+                top: auto;
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                width: auto;
+                min-width: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Theme info badge */
+        .theme-info {
+            margin-top: 0.75rem;
+            padding: 0.5rem;
+            background: rgba(0, 255, 65, 0.05);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+<body class="animations-enabled">
+
+    <!-- Theme Control Panel -->
+    <div class="theme-control-panel">
+        <h3>🎨 Theme Switcher</h3>
+        <select class="theme-selector" id="themeSelector">
+            <optgroup label="Classic Terminal">
+                <option value="amber">Amber Terminal</option>
+                <option value="white">White Terminal</option>
+                <option value="ibm">IBM Green</option>
+                <option value="apple2">Apple II</option>
+                <option value="c64">Commodore 64</option>
+            </optgroup>
+            <optgroup label="Modern Developer">
+                <option value="hacker" selected>Hacker Green (Modern Matrix)</option>
+                <option value="onedark">One Dark Pro</option>
+                <option value="gruvbox">Gruvbox Dark</option>
+            </optgroup>
+            <optgroup label="Grey + Purple">
+                <option value="slatepurple">Slate Purple</option>
+                <option value="purplerain">Purple Rain</option>
+                <option value="twilight">Twilight Grey</option>
+            </optgroup>
+            <optgroup label="Grey + Green">
+                <option value="graphite">Graphite Green</option>
+                <option value="concrete">Concrete Matrix</option>
+            </optgroup>
+            <optgroup label="Green Variations">
+                <option value="phosphor">Phosphor Green</option>
+                <option value="emerald">Emerald Terminal</option>
+                <option value="mint">Mint Terminal</option>
+            </optgroup>
+            <optgroup label="Vibrant">
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="synthwave">Synthwave</option>
+                <option value="dracula">Dracula</option>
+                <option value="nord">Nord</option>
+                <option value="tokyo">Tokyo Night</option>
+            </optgroup>
+        </select>
+
+        <label class="toggle-animations">
+            <input type="checkbox" id="animationsToggle" checked>
+            Enable animations
+        </label>
+
+        <div class="theme-info" id="themeInfo">
+            Current: Hacker Green (Modern Matrix)
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                neural<span class="brackets">[</span>config<span class="brackets">]</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Network Engineer × AI Developer</h1>
+        <p class="tagline">
+            Bridging 20+ years of infrastructure expertise with modern agentic AI systems
+        </p>
+        <p class="subtitle">
+            Select a theme above to preview different color schemes
+        </p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="section-header">
+            <h2>Open Source Projects</h2>
+            <p>AI-powered network automation and infrastructure tools</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>ruckus-ztp</h3>
+                <p>AI-powered Zero-Touch Provisioning agent with natural language chat interface for RUCKUS ICX switches and APs, featuring autonomous network discovery and configuration.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Claude AI</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">NETCONF</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>osticket-agent</h3>
+                <p>Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Agentic AI</span>
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">REST API</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>r1-api</h3>
+                <p>Comprehensive Python SDK for RUCKUS One network management with interactive CLI tool and complete API coverage for automation workflows.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python SDK</span>
+                    <span class="tech-tag">OAuth2</span>
+                    <span class="tech-tag">CLI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Terminal Output Example</h2>
+            <p>See how code looks in this theme</p>
+        </div>
+
+        <div class="code-sample">
+            <pre><code>root@neuralconfig:~# whoami
+Network Engineer × AI Developer
+
+root@neuralconfig:~# systemctl status automation
+● automation.service - Network Automation Platform
+   Active: <span style="color: var(--color-success);">active (running)</span>
+   Memory: 512.0M | CPU: 2.5%
+
+root@neuralconfig:~# ls -la projects/
+-rw-r--r--   1 neural  staff  8192 Jan 15  ruckus-ztp
+-rw-r--r--   1 neural  staff  6144 Jan 14  osticket-agent
+-rw-r--r--   1 neural  staff  4096 Jan 13  r1-api</code></pre>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Interactive Theme Switcher • Try different themes to find your perfect style</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">© 2025 NeuralConfig LLC</p>
+    </div>
+
+    <script>
+        // Theme definitions
+        const themes = {
+            // Classic Terminal
+            amber: {
+                name: 'Amber Terminal',
+                colors: {
+                    bgPrimary: '#000000', bgSecondary: '#0a0500', bgElevated: '#1a0f00',
+                    textPrimary: '#ffb000', textSecondary: '#ff9500', textMuted: '#cc7700',
+                    accentPrimary: '#ffb000', accentSecondary: '#ffa500', accentTertiary: '#ff9500',
+                    success: '#00ff00', warning: '#ffcc00', error: '#ff4444', info: '#ffb000'
+                }
+            },
+            white: {
+                name: 'White Terminal',
+                colors: {
+                    bgPrimary: '#000000', bgSecondary: '#0a0a0a', bgElevated: '#1a1a1a',
+                    textPrimary: '#f0f0f0', textSecondary: '#d0d0d0', textMuted: '#909090',
+                    accentPrimary: '#ffffff', accentSecondary: '#f0f0f0', accentTertiary: '#d0d0d0',
+                    success: '#00ff00', warning: '#ffcc00', error: '#ff5555', info: '#00ddff'
+                }
+            },
+            ibm: {
+                name: 'IBM Green Terminal',
+                colors: {
+                    bgPrimary: '#000000', bgSecondary: '#001100', bgElevated: '#002200',
+                    textPrimary: '#33ff33', textSecondary: '#00ff00', textMuted: '#00cc00',
+                    accentPrimary: '#33ff33', accentSecondary: '#00ff00', accentTertiary: '#00dd00',
+                    success: '#00ff00', warning: '#ffff00', error: '#ff4444', info: '#00ffff'
+                }
+            },
+            apple2: {
+                name: 'Apple II Green',
+                colors: {
+                    bgPrimary: '#0f380f', bgSecondary: '#072007', bgElevated: '#144514',
+                    textPrimary: '#2fff2f', textSecondary: '#22ff22', textMuted: '#18cc18',
+                    accentPrimary: '#2fff2f', accentSecondary: '#33ff33', accentTertiary: '#22dd22',
+                    success: '#44ff44', warning: '#ffff00', error: '#ff4444', info: '#00ffff'
+                }
+            },
+            c64: {
+                name: 'Commodore 64',
+                colors: {
+                    bgPrimary: '#3e31a2', bgSecondary: '#352888', bgElevated: '#4a3eb8',
+                    textPrimary: '#a5a5ff', textSecondary: '#7b7bff', textMuted: '#5555cc',
+                    accentPrimary: '#a5a5ff', accentSecondary: '#7b7bff', accentTertiary: '#ffffff',
+                    success: '#50e89d', warning: '#f4f171', error: '#cb4a4a', info: '#50d5e8'
+                }
+            },
+            // Modern Developer
+            hacker: {
+                name: 'Hacker Green (Modern Matrix)',
+                colors: {
+                    bgPrimary: '#0d0d0d', bgSecondary: '#050505', bgElevated: '#1a1a1a',
+                    textPrimary: '#e0ffe0', textSecondary: '#b3ffb3', textMuted: '#66cc66',
+                    accentPrimary: '#00ff41', accentSecondary: '#00d936', accentTertiary: '#39ff14',
+                    success: '#00ff88', warning: '#ffcc00', error: '#ff3366', info: '#00ffff'
+                }
+            },
+            onedark: {
+                name: 'One Dark Pro',
+                colors: {
+                    bgPrimary: '#282c34', bgSecondary: '#21252b', bgElevated: '#2c313c',
+                    textPrimary: '#abb2bf', textSecondary: '#9da5b4', textMuted: '#5c6370',
+                    accentPrimary: '#61afef', accentSecondary: '#c678dd', accentTertiary: '#56b6c2',
+                    success: '#98c379', warning: '#e5c07b', error: '#e06c75', info: '#61afef'
+                }
+            },
+            gruvbox: {
+                name: 'Gruvbox Dark',
+                colors: {
+                    bgPrimary: '#282828', bgSecondary: '#1d2021', bgElevated: '#3c3836',
+                    textPrimary: '#ebdbb2', textSecondary: '#d5c4a1', textMuted: '#a89984',
+                    accentPrimary: '#fe8019', accentSecondary: '#fabd2f', accentTertiary: '#83a598',
+                    success: '#b8bb26', warning: '#fabd2f', error: '#fb4934', info: '#83a598'
+                }
+            },
+            // Grey + Purple
+            slatepurple: {
+                name: 'Slate Purple',
+                colors: {
+                    bgPrimary: '#1e1e2e', bgSecondary: '#181825', bgElevated: '#2a2a3e',
+                    textPrimary: '#cdd6f4', textSecondary: '#bac2de', textMuted: '#9399b2',
+                    accentPrimary: '#cba6f7', accentSecondary: '#b4a0e5', accentTertiary: '#9b87d3',
+                    success: '#a6e3a1', warning: '#f9e2af', error: '#f38ba8', info: '#89dceb'
+                }
+            },
+            purplerain: {
+                name: 'Purple Rain',
+                colors: {
+                    bgPrimary: '#2b2836', bgSecondary: '#1f1b2e', bgElevated: '#3d3650',
+                    textPrimary: '#e0d6ff', textSecondary: '#c9bcf0', textMuted: '#9d8cc7',
+                    accentPrimary: '#b794f6', accentSecondary: '#9d7ee8', accentTertiary: '#d4bfff',
+                    success: '#98d379', warning: '#f4c96e', error: '#f77287', info: '#7dd3fc'
+                }
+            },
+            twilight: {
+                name: 'Twilight Grey',
+                colors: {
+                    bgPrimary: '#232136', bgSecondary: '#1b1926', bgElevated: '#2f2b47',
+                    textPrimary: '#e0def4', textSecondary: '#c4c0e0', textMuted: '#908caa',
+                    accentPrimary: '#c4a7e7', accentSecondary: '#b399d8', accentTertiary: '#d0b6f2',
+                    success: '#9ccfd8', warning: '#f6c177', error: '#eb6f92', info: '#7fb4ca'
+                }
+            },
+            // Grey + Green
+            graphite: {
+                name: 'Graphite Green',
+                colors: {
+                    bgPrimary: '#1a1a1a', bgSecondary: '#0f0f0f', bgElevated: '#2a2a2a',
+                    textPrimary: '#d0d0d0', textSecondary: '#b0b0b0', textMuted: '#707070',
+                    accentPrimary: '#00ff00', accentSecondary: '#00dd00', accentTertiary: '#00cc00',
+                    success: '#00ff88', warning: '#ffcc00', error: '#ff5555', info: '#00ffff'
+                }
+            },
+            concrete: {
+                name: 'Concrete Matrix',
+                colors: {
+                    bgPrimary: '#2a2a2a', bgSecondary: '#1f1f1f', bgElevated: '#353535',
+                    textPrimary: '#c8c8c8', textSecondary: '#a8a8a8', textMuted: '#808080',
+                    accentPrimary: '#00ff41', accentSecondary: '#00d936', accentTertiary: '#39ff14',
+                    success: '#00ff88', warning: '#ffbb00', error: '#ff4466', info: '#00ddff'
+                }
+            },
+            // Green Variations
+            phosphor: {
+                name: 'Phosphor Green',
+                colors: {
+                    bgPrimary: '#000000', bgSecondary: '#0a0a0a', bgElevated: '#1a1a1a',
+                    textPrimary: '#99ff99', textSecondary: '#88ee88', textMuted: '#66cc66',
+                    accentPrimary: '#33ff33', accentSecondary: '#22ee22', accentTertiary: '#44ff44',
+                    success: '#00ff88', warning: '#ffdd00', error: '#ff5566', info: '#00ffee'
+                }
+            },
+            emerald: {
+                name: 'Emerald Terminal',
+                colors: {
+                    bgPrimary: '#001a0f', bgSecondary: '#000f08', bgElevated: '#002a18',
+                    textPrimary: '#b3ffe6', textSecondary: '#99ffdd', textMuted: '#66ccaa',
+                    accentPrimary: '#00ff80', accentSecondary: '#00ee77', accentTertiary: '#10ff90',
+                    success: '#00ffaa', warning: '#ffcc44', error: '#ff5577', info: '#00eeff'
+                }
+            },
+            mint: {
+                name: 'Mint Terminal',
+                colors: {
+                    bgPrimary: '#0f1f18', bgSecondary: '#0a1710', bgElevated: '#152a20',
+                    textPrimary: '#d4ffe8', textSecondary: '#b8ffd9', textMuted: '#88ccaa',
+                    accentPrimary: '#88ffaa', accentSecondary: '#77ee99', accentTertiary: '#99ffbb',
+                    success: '#66ff99', warning: '#ffdd88', error: '#ff8899', info: '#88eeff'
+                }
+            },
+            // Vibrant
+            cyberpunk: {
+                name: 'Cyberpunk',
+                colors: {
+                    bgPrimary: '#0a0014', bgSecondary: '#1a0a2e', bgElevated: '#2a1a3e',
+                    textPrimary: '#e0c5ff', textSecondary: '#b098d4', textMuted: '#7d5e9b',
+                    accentPrimary: '#ff006e', accentSecondary: '#8338ec', accentTertiary: '#00f5ff',
+                    success: '#00ff9d', warning: '#ffbe0b', error: '#ff006e', info: '#00f5ff'
+                }
+            },
+            synthwave: {
+                name: 'Synthwave',
+                colors: {
+                    bgPrimary: '#2b213a', bgSecondary: '#3d2e4f', bgElevated: '#4a3b5c',
+                    textPrimary: '#ffeeff', textSecondary: '#d9c8e0', textMuted: '#a690b3',
+                    accentPrimary: '#f97e72', accentSecondary: '#ff7edb', accentTertiary: '#36f9f6',
+                    success: '#72f1b8', warning: '#fede5d', error: '#f97e72', info: '#36f9f6'
+                }
+            },
+            dracula: {
+                name: 'Dracula',
+                colors: {
+                    bgPrimary: '#282a36', bgSecondary: '#1e1f29', bgElevated: '#363849',
+                    textPrimary: '#f8f8f2', textSecondary: '#b8b8b0', textMuted: '#6272a4',
+                    accentPrimary: '#bd93f9', accentSecondary: '#ff79c6', accentTertiary: '#8be9fd',
+                    success: '#50fa7b', warning: '#f1fa8c', error: '#ff5555', info: '#8be9fd'
+                }
+            },
+            nord: {
+                name: 'Nord',
+                colors: {
+                    bgPrimary: '#2e3440', bgSecondary: '#242933', bgElevated: '#3b4252',
+                    textPrimary: '#eceff4', textSecondary: '#d8dee9', textMuted: '#81a1c1',
+                    accentPrimary: '#88c0d0', accentSecondary: '#81a1c1', accentTertiary: '#5e81ac',
+                    success: '#a3be8c', warning: '#ebcb8b', error: '#bf616a', info: '#88c0d0'
+                }
+            },
+            tokyo: {
+                name: 'Tokyo Night',
+                colors: {
+                    bgPrimary: '#1a1b26', bgSecondary: '#16161e', bgElevated: '#24283b',
+                    textPrimary: '#c0caf5', textSecondary: '#a9b1d6', textMuted: '#565f89',
+                    accentPrimary: '#7aa2f7', accentSecondary: '#bb9af7', accentTertiary: '#7dcfff',
+                    success: '#9ece6a', warning: '#e0af68', error: '#f7768e', info: '#7dcfff'
+                }
+            }
+        };
+
+        const themeSelector = document.getElementById('themeSelector');
+        const animationsToggle = document.getElementById('animationsToggle');
+        const themeInfo = document.getElementById('themeInfo');
+
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            if (!theme) return;
+
+            const root = document.documentElement;
+            const colors = theme.colors;
+
+            root.style.setProperty('--color-bg-primary', colors.bgPrimary);
+            root.style.setProperty('--color-bg-secondary', colors.bgSecondary);
+            root.style.setProperty('--color-bg-elevated', colors.bgElevated);
+            root.style.setProperty('--color-text-primary', colors.textPrimary);
+            root.style.setProperty('--color-text-secondary', colors.textSecondary);
+            root.style.setProperty('--color-text-muted', colors.textMuted);
+            root.style.setProperty('--color-accent-primary', colors.accentPrimary);
+            root.style.setProperty('--color-accent-secondary', colors.accentSecondary);
+            root.style.setProperty('--color-accent-tertiary', colors.accentTertiary);
+            root.style.setProperty('--color-success', colors.success);
+            root.style.setProperty('--color-warning', colors.warning);
+            root.style.setProperty('--color-error', colors.error);
+            root.style.setProperty('--color-info', colors.info);
+
+            themeInfo.textContent = `Current: ${theme.name}`;
+        }
+
+        themeSelector.addEventListener('change', (e) => {
+            applyTheme(e.target.value);
+        });
+
+        animationsToggle.addEventListener('change', (e) => {
+            document.body.classList.toggle('animations-enabled', e.target.checked);
+        });
+
+        // Apply default theme on load
+        applyTheme('hacker');
+    </script>
+</body>
+</html>

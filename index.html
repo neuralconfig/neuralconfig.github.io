@@ -278,7 +278,6 @@
             <div class="nav-links" role="list">
                 <a href="skills.html" class="nav-link" role="listitem">about</a>
                 <a href="projects.html" class="nav-link" role="listitem">projects</a>
-                <a href="tools.html" class="nav-link" role="listitem">tools</a>
                 <a href="https://github.com/neuralconfig" class="nav-link external" role="listitem" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">github</a>
             </div>
         </div>
@@ -411,16 +410,21 @@
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' ls -la projects/',
+                command: ' tree -L 1 ~/projects --dirsfirst',
                 output: [
-                    'drwxr-xr-x  10 neural  staff   320 Jan 15 2025 .',
-                    'drwxr-xr-x   8 neural  staff   256 Jan 15 2025 ..',
-                    '-rw-r--r--   1 neural  staff  8192 Jan 15 10:23 <span class="output-success">ruckus-ztp</span> [AI-AGENT]',
-                    '-rw-r--r--   1 neural  staff  4096 Jan 14 18:45 <span class="output-info">r1-api</span> [SDK]',
-                    '-rw-r--r--   1 neural  staff  6144 Jan 13 14:30 <span class="output-success">osticket-agent</span> [AI-AGENT]',
-                    '-rw-r--r--   1 neural  staff  3072 Jan 12 09:15 <span class="output-info">survival-rag</span> [AI-RAG]',
-                    '-rw-r--r--   1 neural  staff  2048 Jan 10 16:20 <span class="output-success">sz-acl</span> [NETWORK]'
+                    '<span class="output-highlight">~/projects</span>',
+                    '├── <span class="output-success">ruckus-ztp/</span>         # AI-powered network provisioning',
+                    '├── <span class="output-success">osticket-agent/</span>     # Autonomous support agent',
+                    '├── <span class="output-info">r1-api/</span>             # RUCKUS One Python SDK',
+                    '├── <span class="output-info">survival-rag/</span>       # RAG knowledge system',
+                    '├── <span class="output-info">device-profiler/</span>    # IoT device classification',
+                    '└── <span class="output-dim">sz-acl/</span>             # ACL management tool'
                 ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: '# click or press any key to interact',
+                output: []
             },
             {
                 prompt: 'root@neuralconfig:~#',
@@ -436,14 +440,14 @@
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' grep -E "AI|Network|Security" skills.txt',
+                command: ' curl -s localhost:8080/api/profile | jq \'.skills[]\'',
                 output: [
-                    '<span class="output-success">[✓]</span> Agentic AI System Architecture',
-                    '<span class="output-success">[✓]</span> Large Language Model Integration (Claude, GPT)',
-                    '<span class="output-success">[✓]</span> RAG & Vector Database Implementation',
-                    '<span class="output-success">[✓]</span> Network Automation (Python/Ansible)',
-                    '<span class="output-success">[✓]</span> Zero-Touch Provisioning',
-                    '<span class="output-success">[✓]</span> Cybersecurity (CISSP)'
+                    '"Agentic AI System Architecture"',
+                    '"LLM Integration (Claude, GPT, Gemini)"',
+                    '"RAG & Vector Database Implementation"',
+                    '"Network Automation (Python/NETCONF)"',
+                    '"Zero-Touch Provisioning"',
+                    '"CISSP | Zero Trust Security"'
                 ]
             },
             {
@@ -596,7 +600,7 @@
                     '',
                     '<span class="output-dim">"Reliable AI is responsible AI"</span>'
                 ]
-            }
+            },
         ];
 
         function addLine(content, className = '') {
@@ -1725,15 +1729,18 @@
                         '  certs                   - View certifications',
                         '',
                         '<span class="output-success">Projects & Skills:</span>',
-                        '  projects [--filter ai|network|mobile] - List projects',
+                        '  projects [--filter ai|network] - List projects',
                         '  skills                  - Show technical skills',
-                        '  services                - Show available services',
+                        '',
+                        '<span class="output-success">AI:</span>',
+                        '  claude                  - Claude/Anthropic experience',
+                        '  agents                  - Agentic AI philosophy',
                         '',
                         '<span class="output-success">Network Tools:</span>',
                         '  ping <host>             - Network diagnostic tool',
                         '',
                         '<span class="output-success">Games:</span>',
-                        '  asteroids               - Play ASCII Asteroids',
+                        '  asteroids               - Play Asteroids',
                         '',
                         '<span class="output-success">System:</span>',
                         '  clear                   - Clear terminal screen',
@@ -1748,7 +1755,6 @@
                 case 'projects':
                 case 'projects --filter ai':
                 case 'projects --filter network':
-                case 'projects --filter mobile':
                     let filter = null;
                     if (cmd.includes('--filter')) {
                         const parts = cmd.split('--filter');
@@ -1768,9 +1774,6 @@
                             '✓ <span class="output-info">sz-acl</span>           [NETWORK] [MAINTENANCE]',
                             '✓ <span class="output-success">pflogs</span>          [SECURITY] [ACTIVE]',
                             '✓ <span class="output-info">wifi-test</span>       [NETWORK] [ACTIVE]'
-                        ],
-                        mobile: [
-                            '✓ <span class="output-warning">iOS Apps</span>        [MOBILE] [IN DEVELOPMENT]'
                         ]
                     };
 
@@ -1780,19 +1783,16 @@
                         output = ['<span class="output-highlight">AI Projects:</span>', ...allProjects.ai];
                     } else if (filter === 'network') {
                         output = ['<span class="output-highlight">Network Projects:</span>', ...allProjects.network];
-                    } else if (filter === 'mobile') {
-                        output = ['<span class="output-highlight">Mobile Projects:</span>', ...allProjects.mobile];
                     } else {
                         output = [
                             '<span class="output-highlight">Active Projects:</span>',
                             ...allProjects.ai,
-                            ...allProjects.network,
-                            ...allProjects.mobile
+                            ...allProjects.network
                         ];
                     }
 
                     output.push('');
-                    output.push('Use --filter [ai|network|mobile] to filter projects.');
+                    output.push('Use --filter [ai|network] to filter projects.');
                     output.push('Visit /projects.html for detailed information.');
 
                     return output;
@@ -1811,17 +1811,32 @@
                         'Visit /skills.html for complete details.'
                     ];
 
-                case 'services':
+                case 'claude':
                     return [
-                        '<span class="output-highlight">NeuralConfig Services:</span>',
-                        '• AI System Architecture & Consulting',
-                        '• Network Automation Solutions',
-                        '• Agentic AI Development',
-                        '• RAG Implementation & LLM Integration',
-                        '• Open Source Network Management Tools',
-                        '• iOS Mobile Application Development',
+                        '<span class="output-highlight">Claude Integration Experience:</span>',
                         '',
-                        'Contact: contact@neuralconfig.com'
+                        '• Built autonomous agents using Claude API',
+                        '• Tool-calling for network device interaction',
+                        '• RAG systems with Claude embeddings',
+                        '• Production deployments: osticket-agent, ruckus-ztp',
+                        '',
+                        '<span class="output-dim">Preferred model for agentic AI workloads</span>'
+                    ];
+
+                case 'agents':
+                    return [
+                        '<span class="output-highlight">Agentic AI Philosophy:</span>',
+                        '',
+                        'Autonomous systems that combine LLMs with tool execution',
+                        'to solve real-world infrastructure problems.',
+                        '',
+                        '<span class="output-success">Key Principles:</span>',
+                        '• Human-in-the-loop for destructive actions',
+                        '• Comprehensive audit logging',
+                        '• Graceful degradation on uncertainty',
+                        '• Domain expertise encoded in tool design',
+                        '',
+                        '<span class="output-dim">See: osticket-agent, ruckus-ztp</span>'
                     ];
 
                 case 'contact':

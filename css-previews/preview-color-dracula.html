@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Preview: Dracula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dracula theme - popular developer color scheme */
+            --color-bg-primary: #282a36;
+            --color-bg-secondary: #1e1f29;
+            --color-bg-elevated: #363849;
+
+            --color-text-primary: #f8f8f2;
+            --color-text-secondary: #b8b8b0;
+            --color-text-muted: #6272a4;
+
+            --color-accent-primary: #bd93f9;     /* Purple */
+            --color-accent-secondary: #ff79c6;   /* Pink */
+            --color-accent-tertiary: #8be9fd;    /* Cyan */
+
+            --color-success: #50fa7b;
+            --color-warning: #f1fa8c;
+            --color-error: #ff5555;
+            --color-info: #8be9fd;
+
+            --color-ai: #ff79c6;
+            --color-network: #8be9fd;
+            --color-automation: #f1fa8c;
+
+            --font-mono: 'IBM Plex Mono', monospace;
+        }
+
+        body {
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: var(--font-mono);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .preview-header {
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .preview-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent-primary);
+        }
+
+        .preview-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .color-swatch {
+            padding: 2rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .swatch-purple { background: var(--color-accent-primary); color: #000; }
+        .swatch-pink { background: var(--color-accent-secondary); color: #000; }
+        .swatch-cyan { background: var(--color-accent-tertiary); color: #000; }
+        .swatch-yellow { background: var(--color-automation); color: #000; }
+        .swatch-green { background: var(--color-success); color: #000; }
+
+        .sample-section {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-text-muted);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .sample-section h2 {
+            color: var(--color-accent-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .sample-section h3 {
+            color: var(--color-accent-secondary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem 0;
+            font-weight: 500;
+        }
+
+        .sample-section p {
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+        }
+
+        code {
+            background: rgba(139, 233, 253, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 2px;
+            color: var(--color-accent-tertiary);
+            border: 1px solid rgba(139, 233, 253, 0.3);
+        }
+
+        pre {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-text-muted);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            color: var(--color-text-primary);
+        }
+
+        .project-card {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-text-muted);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(189, 147, 249, 0.3);
+        }
+
+        .project-card h3 {
+            color: var(--color-accent-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(189, 147, 249, 0.15);
+            border: 1px solid var(--color-accent-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+            color: var(--color-accent-tertiary);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--color-bg-elevated);
+            border: 2px solid var(--color-accent-primary);
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navigation a {
+            color: var(--color-accent-tertiary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navigation a:hover {
+            color: var(--color-accent-pink);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-header">
+        <h1>COLOR PREVIEW: Dracula</h1>
+        <p>Popular developer theme – purple, pink, and cyan with excellent readability</p>
+    </div>
+
+    <div class="sample-section">
+        <h2>Color Palette</h2>
+
+        <div class="color-palette">
+            <div class="color-swatch swatch-purple">
+                <div style="font-weight: 600;">PURPLE</div>
+                <div>#bd93f9</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Primary Accent</div>
+            </div>
+            <div class="color-swatch swatch-pink">
+                <div style="font-weight: 600;">PINK</div>
+                <div>#ff79c6</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Secondary</div>
+            </div>
+            <div class="color-swatch swatch-cyan">
+                <div style="font-weight: 600;">CYAN</div>
+                <div>#8be9fd</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Tertiary</div>
+            </div>
+            <div class="color-swatch swatch-yellow">
+                <div style="font-weight: 600;">YELLOW</div>
+                <div>#f1fa8c</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Automation</div>
+            </div>
+            <div class="color-swatch swatch-green">
+                <div style="font-weight: 600;">GREEN</div>
+                <div>#50fa7b</div>
+                <div style="margin-top: 0.5rem; opacity: 0.8;">Success</div>
+            </div>
+        </div>
+
+        <h3>Theme Characteristics</h3>
+        <p><strong>Vibe:</strong> Balanced, familiar, developer-friendly</p>
+        <p><strong>Best for:</strong> Professional developer portfolios, widely recognized theme</p>
+        <p><strong>Contrast:</strong> Excellent – carefully tuned for long coding sessions</p>
+        <p><strong>Mood:</strong> Professional yet playful, familiar to developers</p>
+        <p><strong>Popularity:</strong> One of the most popular dark themes across editors (VSCode, Sublime, Vim, etc.)</p>
+    </div>
+
+    <div class="sample-section">
+        <h2>Project Cards</h2>
+
+        <div class="project-card">
+            <h3>ruckus-ztp</h3>
+            <p>AI-powered Zero-Touch Provisioning agent with natural language chat interface for RUCKUS ICX switches and APs, featuring autonomous network discovery and configuration.</p>
+            <div>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Claude AI</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">NETCONF</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>osticket-agent</h3>
+            <p>Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.</p>
+            <div>
+                <span class="tech-tag">Agentic AI</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sample-section">
+        <h2>Code Sample</h2>
+        <pre><code>root@neuralconfig:~# whoami
+Network Engineer × AI Developer
+
+root@neuralconfig:~# systemctl status automation
+● automation.service - Network Automation Platform
+   Active: <span style="color: #50fa7b;">active (running)</span>
+   Memory: 512.0M | CPU: 2.5%
+
+root@neuralconfig:~# ls -la projects/
+-rw-r--r--   1 neural  staff  8192 Jan 15  ruckus-ztp
+-rw-r--r--   1 neural  staff  6144 Jan 14  osticket-agent</code></pre>
+
+        <h3>Inline Code</h3>
+        <p>To configure the system, run <code>npm install</code> followed by <code>npm start</code>. The API endpoint is available at <code>https://api.neuralconfig.com/v1</code>.</p>
+    </div>
+
+    <div class="navigation">
+        <strong style="color: var(--color-accent-primary); display: block; margin-bottom: 0.5rem;">Color Previews</strong>
+        <a href="preview-color-cyberpunk.html">Cyberpunk</a>
+        <a href="preview-color-synthwave.html">Synthwave</a>
+        <a href="preview-color-dracula.html">▶ Dracula</a>
+        <a href="preview-color-nord.html">Nord</a>
+        <a href="preview-color-tokyo.html">Tokyo Night</a>
+    </div>
+</body>
+</html>

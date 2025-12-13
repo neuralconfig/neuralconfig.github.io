@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Preview Gallery - NeuralConfig Website Styling Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #39ff14;
+            font-family: 'IBM Plex Mono', monospace;
+            line-height: 1.6;
+            padding: 3rem 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            border: 2px solid #00ff9d;
+            border-radius: 8px;
+            background: rgba(0, 255, 157, 0.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00ff9d;
+            text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #d0d0d0;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .preview-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #00ff9d;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: #39ff14;
+        }
+
+        .section-header .count {
+            background: #00ff9d;
+            color: #0a0a0a;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .preview-card {
+            background: rgba(0, 255, 157, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .preview-card:hover {
+            border-color: #00ff9d;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.2);
+            background: rgba(0, 255, 157, 0.08);
+        }
+
+        .preview-card h3 {
+            font-size: 1.3rem;
+            color: #39ff14;
+            margin-bottom: 0.75rem;
+        }
+
+        .preview-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .preview-card .features {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .preview-card .features li {
+            font-size: 0.85rem;
+            color: #909090;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .preview-card .features li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00ff9d;
+        }
+
+        .preview-card a {
+            display: inline-block;
+            color: #00ff9d;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.25rem;
+            border: 1px solid #00ff9d;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .preview-card a:hover {
+            background: #00ff9d;
+            color: #0a0a0a;
+        }
+
+        .enhanced-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.1) 0%, rgba(0, 255, 157, 0.1) 100%);
+            border: 2px solid #39ff14;
+        }
+
+        .enhanced-card h3 {
+            font-size: 1.6rem;
+            color: #39ff14;
+            margin-bottom: 1rem;
+        }
+
+        .enhanced-card .badge {
+            display: inline-block;
+            background: #39ff14;
+            color: #0a0a0a;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 157, 0.3);
+            text-align: center;
+            color: #707070;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .enhanced-card {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS Preview Gallery</h1>
+            <p class="subtitle">NeuralConfig Website Styling Options</p>
+            <p class="intro">
+                Explore different font combinations and color schemes for your website. Each preview is fully self-contained
+                and ready to view. Open multiple previews in separate tabs to compare options side-by-side.
+            </p>
+        </header>
+
+        <div class="preview-section">
+            <div class="section-header">
+                <h2>Font Combinations</h2>
+                <span class="count">4 Options</span>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <h3>JetBrains Mono</h3>
+                    <p>Modern developer-focused monospace font with excellent readability and ligature support</p>
+                    <ul class="features">
+                        <li>Clean, technical aesthetic</li>
+                        <li>Optional programming ligatures</li>
+                        <li>Designed specifically for code</li>
+                    </ul>
+                    <a href="preview-font-jetbrains.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Fira Code</h3>
+                    <p>Popular programming font with extensive ligatures for common code symbols</p>
+                    <ul class="features">
+                        <li>Extensive ligature support</li>
+                        <li>Arrow operators (→ ← =>)</li>
+                        <li>Logic symbols (&& || !=)</li>
+                    </ul>
+                    <a href="preview-font-firacode.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Space Grotesk + Space Mono</h3>
+                    <p>Modern geometric sans-serif paired with monospace – perfect balance of style and function</p>
+                    <ul class="features">
+                        <li>Professional sans-serif headers</li>
+                        <li>Clear visual hierarchy</li>
+                        <li>Modern geometric aesthetic</li>
+                    </ul>
+                    <a href="preview-font-spacegroup.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Inter + IBM Plex Mono</h3>
+                    <p>Industry-standard sans-serif paired with your current monospace</p>
+                    <ul class="features">
+                        <li>Maximum readability</li>
+                        <li>Keep familiar IBM Plex Mono</li>
+                        <li>Used by GitHub, Mozilla, etc.</li>
+                    </ul>
+                    <a href="preview-font-mixed.html">View Preview →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div class="section-header">
+                <h2>Classic Terminal Colors</h2>
+                <span class="count">5 Options</span>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <h3>Amber Terminal</h3>
+                    <p>Classic amber phosphor CRT – warm, nostalgic 1980s DEC terminal aesthetic</p>
+                    <ul class="features">
+                        <li>DEC VT220/VT100 amber glow</li>
+                        <li>Warm, easier on eyes</li>
+                        <li>Sysadmin favorite</li>
+                    </ul>
+                    <a href="preview-color-amber.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>White Terminal</h3>
+                    <p>Classic white phosphor monochrome – crisp, high-contrast early computing</p>
+                    <ul class="features">
+                        <li>Maximum contrast clarity</li>
+                        <li>Pure minimalist aesthetic</li>
+                        <li>Timeless simplicity</li>
+                    </ul>
+                    <a href="preview-color-white.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>IBM Green Terminal</h3>
+                    <p>IBM 3270/5250 mainframe green – iconic enterprise computing color</p>
+                    <ul class="features">
+                        <li>Mainframe terminal heritage</li>
+                        <li>Enterprise-grade feel</li>
+                        <li>Fortune 500 nostalgia</li>
+                    </ul>
+                    <a href="preview-color-ibm.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Apple II Green</h3>
+                    <p>Apple II phosphor monitor – the color of home computing revolution</p>
+                    <ul class="features">
+                        <li>Darker green background</li>
+                        <li>Educational computing era</li>
+                        <li>Accessible tech pioneer</li>
+                    </ul>
+                    <a href="preview-color-apple2.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Commodore 64</h3>
+                    <p>Iconic C64 blue screen – best-selling computer of all time</p>
+                    <ul class="features">
+                        <li>Unique blue-on-blue</li>
+                        <li>Demo scene & BASIC culture</li>
+                        <li>Playful yet serious</li>
+                    </ul>
+                    <a href="preview-color-c64.html">View Preview →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div class="section-header">
+                <h2>Modern Developer Themes</h2>
+                <span class="count">3 Options</span>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <h3>Hacker Green (Modern Matrix)</h3>
+                    <p>Your current green refined – better hierarchy while keeping the Matrix vibe</p>
+                    <ul class="features">
+                        <li>Multiple green shades for depth</li>
+                        <li>Softer text for eye comfort</li>
+                        <li>Elite hacker aesthetic</li>
+                    </ul>
+                    <a href="preview-color-hacker.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>One Dark Pro</h3>
+                    <p>VSCode's most popular theme – balanced, professional, industry standard</p>
+                    <ul class="features">
+                        <li>10M+ downloads</li>
+                        <li>Scientifically balanced colors</li>
+                        <li>Developer-recognized</li>
+                    </ul>
+                    <a href="preview-color-onedark.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Gruvbox Dark</h3>
+                    <p>Warm retro groove colors – earthy tones with excellent eye comfort</p>
+                    <ul class="features">
+                        <li>Warm, comfortable palette</li>
+                        <li>1970s retro groove vibe</li>
+                        <li>Vim enthusiast favorite</li>
+                    </ul>
+                    <a href="preview-color-gruvbox.html">View Preview →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div class="section-header">
+                <h2>Vibrant Themes</h2>
+                <span class="count">5 Options</span>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <h3>Cyberpunk</h3>
+                    <p>High-energy neon pink, electric purple, and cyan – bold cyberpunk aesthetic</p>
+                    <ul class="features">
+                        <li>Hot pink (#ff006e) primary</li>
+                        <li>Electric purple accents</li>
+                        <li>High-energy, futuristic vibe</li>
+                    </ul>
+                    <a href="preview-color-cyberpunk.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Synthwave</h3>
+                    <p>Retro 80s vaporwave aesthetic – coral, magenta, and cyan</p>
+                    <ul class="features">
+                        <li>Nostalgic retro-futuristic</li>
+                        <li>Dreamy gradient backgrounds</li>
+                        <li>Softer than cyberpunk</li>
+                    </ul>
+                    <a href="preview-color-synthwave.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Dracula</h3>
+                    <p>Popular developer theme – purple, pink, and cyan with excellent readability</p>
+                    <ul class="features">
+                        <li>Widely recognized theme</li>
+                        <li>Proven eye-comfort</li>
+                        <li>Professional yet playful</li>
+                    </ul>
+                    <a href="preview-color-dracula.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Nord</h3>
+                    <p>Arctic-inspired palette – cool blues and soft contrasts for calm, professional aesthetic</p>
+                    <ul class="features">
+                        <li>Calm, professional feel</li>
+                        <li>Nordic minimalist design</li>
+                        <li>Reduced eye strain</li>
+                    </ul>
+                    <a href="preview-color-nord.html">View Preview →</a>
+                </div>
+
+                <div class="preview-card">
+                    <h3>Tokyo Night</h3>
+                    <p>Modern dark theme inspired by Tokyo at night – vibrant yet refined</p>
+                    <ul class="features">
+                        <li>Urban sophistication</li>
+                        <li>Energetic yet refined</li>
+                        <li>Harmonious color palette</li>
+                    </ul>
+                    <a href="preview-color-tokyo.html">View Preview →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div class="section-header">
+                <h2>Interactive Theme Switcher</h2>
+                <span class="count">NEW!</span>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card enhanced-card">
+                    <h3>
+                        Live Theme Switcher
+                        <span class="badge">INTERACTIVE</span>
+                    </h3>
+                    <p style="font-size: 1rem; margin-bottom: 1.5rem;">
+                        Try all color schemes instantly! Switch between 21+ themes in real-time with smooth transitions.
+                        Combines hero section from your about page with project cards from your projects page.
+                    </p>
+                    <ul class="features">
+                        <li>Instant theme switching with dropdown selector</li>
+                        <li>All 21+ color schemes available</li>
+                        <li>Smooth color transitions and optional animations</li>
+                        <li>Combines elements from your actual website</li>
+                        <li>Grey + Purple, Grey + Green, and Green variation themes</li>
+                        <li>See code samples in each theme</li>
+                    </ul>
+                    <a href="theme-switcher.html" style="margin-top: 0.5rem;">Open Interactive Switcher →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <div class="section-header">
+                <h2>Enhanced Design</h2>
+                <span class="count">Recommended</span>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card enhanced-card">
+                    <h3>
+                        Best Practices Combined
+                        <span class="badge">RECOMMENDED</span>
+                    </h3>
+                    <p style="font-size: 1rem; margin-bottom: 1.5rem;">
+                        See all CSS recommendations applied together: typography scale, spacing system, modern animations,
+                        enhanced accessibility, and performance optimizations.
+                    </p>
+                    <ul class="features">
+                        <li>Typography scale with Space Grotesk + JetBrains Mono</li>
+                        <li>Systematic spacing using 8-point grid</li>
+                        <li>GPU-accelerated animations (60fps)</li>
+                        <li>WCAG AAA accessibility compliance</li>
+                        <li>Container queries for component responsiveness</li>
+                        <li>CSS logical properties for better i18n</li>
+                    </ul>
+                    <a href="preview-enhanced.html" style="margin-top: 0.5rem;">View Enhanced Preview →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>All preview pages are self-contained and can be opened directly in your browser.</p>
+            <p style="margin-top: 0.5rem;">Compare options by opening multiple previews in separate tabs.</p>
+        </footer>
+    </div>
+</body>
+</html>
