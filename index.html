@@ -1725,19 +1725,14 @@
                         '  help                    - Show this help message',
                         '  whoami                  - Show user information',
                         '  contact                 - Contact information',
-                        '  resume                  - Download resume',
-                        '  certs                   - View certifications',
                         '',
                         '<span class="output-success">Projects & Skills:</span>',
                         '  projects [--filter ai|network] - List projects',
                         '  skills                  - Show technical skills',
                         '',
                         '<span class="output-success">AI:</span>',
-                        '  claude                  - Claude/Anthropic experience',
-                        '  agents                  - Agentic AI philosophy',
-                        '',
-                        '<span class="output-success">Network Tools:</span>',
-                        '  ping <host>             - Network diagnostic tool',
+                        '  llm                     - LLM & AI model experience',
+                        '  agents                  - Agentic AI systems',
                         '',
                         '<span class="output-success">Games:</span>',
                         '  asteroids               - Play Asteroids',
@@ -1806,37 +1801,44 @@
                         '• Swift/iOS Development (ARKit, HealthKit)',
                         '• Cybersecurity (CISSP)',
                         '• Python/JavaScript Development',
-                        '• RUCKUS Network Technologies',
                         '',
                         'Visit /skills.html for complete details.'
                     ];
 
-                case 'claude':
+                case 'llm':
                     return [
-                        '<span class="output-highlight">Claude Integration Experience:</span>',
+                        '<span class="output-highlight">LLM & AI Model Experience:</span>',
                         '',
-                        '• Built autonomous agents using Claude API',
-                        '• Tool-calling for network device interaction',
-                        '• RAG systems with Claude embeddings',
-                        '• Production deployments: osticket-agent, ruckus-ztp',
+                        '<span class="output-success">Commercial APIs:</span>',
+                        '  • Anthropic Claude',
+                        '  • OpenAI',
                         '',
-                        '<span class="output-dim">Preferred model for agentic AI workloads</span>'
+                        '<span class="output-success">Open Source Models:</span>',
+                        '  • Qwen (Alibaba)',
+                        '  • Llama (Meta)',
+                        '  • Mistral',
+                        '  • DeepSeek',
+                        '',
+                        '<span class="output-dim">Local inference, API integration, model selection strategies</span>'
                     ];
 
                 case 'agents':
                     return [
-                        '<span class="output-highlight">Agentic AI Philosophy:</span>',
+                        '<span class="output-highlight">Agentic AI Systems:</span>',
                         '',
-                        'Autonomous systems that combine LLMs with tool execution',
-                        'to solve real-world infrastructure problems.',
+                        '<span class="output-success">Architecture:</span>',
+                        '  • Autonomous agent orchestration',
+                        '  • Tool-calling & function execution',
+                        '  • RAG systems with vector databases',
                         '',
-                        '<span class="output-success">Key Principles:</span>',
-                        '• Human-in-the-loop for destructive actions',
-                        '• Comprehensive audit logging',
-                        '• Graceful degradation on uncertainty',
-                        '• Domain expertise encoded in tool design',
+                        '<span class="output-success">Safety Principles:</span>',
+                        '  • Human-in-the-loop for destructive actions',
+                        '  • Comprehensive audit logging',
+                        '  • Graceful degradation on uncertainty',
                         '',
-                        '<span class="output-dim">See: osticket-agent, ruckus-ztp</span>'
+                        '<span class="output-success">Production Deployments:</span>',
+                        '  • osticket-agent - Autonomous support triage',
+                        '  • ruckus-ztp - AI-powered network provisioning'
                     ];
 
                 case 'contact':
@@ -1859,55 +1861,6 @@
                     const now = new Date();
                     return [now.toString()];
 
-                case 'resume':
-                    return [
-                        '<span class="output-highlight">Resume Information:</span>',
-                        '',
-                        'Download PDF: <span class="output-success">Coming Soon</span>',
-                        'LinkedIn: <a href="https://linkedin.com/in/neuralconfig" style="color: var(--accent)">linkedin.com/in/neuralconfig</a>',
-                        'GitHub: <a href="https://github.com/neuralconfig" style="color: var(--accent)">github.com/neuralconfig</a>',
-                        '',
-                        'Contact: contact@neuralconfig.com for full resume'
-                    ];
-
-                case 'certs':
-                case 'certifications':
-                    return [
-                        '<span class="output-highlight">Active Certifications:</span>',
-                        '',
-                        '<span class="output-success">Security & AI:</span>',
-                        '  • CISSP (ISC2) - Active',
-                        '  • Machine Learning Specialization (Stanford/DeepLearning.AI)',
-                        '  • Advanced Learning Algorithms (Stanford)',
-                        '  • Microsoft Azure AI Fundamentals',
-                        '',
-                        '<span class="output-success">Cloud & Networking:</span>',
-                        '  • Kubernetes and Cloud Native Associate (CNCF)',
-                        '  • CCNP (Cisco)',
-                        '  • Certified Wireless Design Professional (CWDP)',
-                        '  • Certified Wireless Security Professional (CWSP)',
-                        '  • IPv6 Forum Certified Engineer (Gold)',
-                        '',
-                        'Visit /skills.html for complete list'
-                    ];
-
-                case 'ping':
-                case 'ping 8.8.8.8':
-                case 'ping google.com':
-                case 'ping neuralconfig.com':
-                    const pingHost = cmd.split(' ')[1] || 'neuralconfig.com';
-                    return [
-                        `PING ${pingHost} (172.67.178.123): 56 data bytes`,
-                        '64 bytes from 172.67.178.123: icmp_seq=0 ttl=57 time=12.3 ms',
-                        '64 bytes from 172.67.178.123: icmp_seq=1 ttl=57 time=11.8 ms',
-                        '64 bytes from 172.67.178.123: icmp_seq=2 ttl=57 time=12.1 ms',
-                        '64 bytes from 172.67.178.123: icmp_seq=3 ttl=57 time=11.9 ms',
-                        '',
-                        `--- ${pingHost} ping statistics ---`,
-                        '4 packets transmitted, 4 packets received, 0.0% packet loss',
-                        'round-trip min/avg/max/stddev = 11.8/12.0/12.3/0.2 ms'
-                    ];
-
                 case 'asteroids':
                     startAsteroidsGame();
                     return null;
@@ -1922,20 +1875,6 @@
                     return null;
 
                 default:
-                    // Check for ping with custom host
-                    if (cmd.startsWith('ping ')) {
-                        const host = cmd.substring(5).trim();
-                        return [
-                            `PING ${host} (192.0.2.1): 56 data bytes`,
-                            '64 bytes from 192.0.2.1: icmp_seq=0 ttl=57 time=12.3 ms',
-                            '64 bytes from 192.0.2.1: icmp_seq=1 ttl=57 time=11.8 ms',
-                            '64 bytes from 192.0.2.1: icmp_seq=2 ttl=57 time=12.1 ms',
-                            '',
-                            `--- ${host} ping statistics ---`,
-                            '3 packets transmitted, 3 packets received, 0.0% packet loss'
-                        ];
-                    }
-
                     return [`<span class="output-error">Command not found: ${cmd}</span>`, 'Type "help" for available commands.'];
             }
         }
@@ -1995,7 +1934,7 @@
             if (currentInputLine) return; // Already have an active prompt
 
             currentInputLine = addLine('');
-            currentInputLine.innerHTML = '<span class="terminal-prompt">root@neuralconfig:~#</span> <span class="terminal-input"></span><span class="terminal-cursor"></span>';
+            currentInputLine.innerHTML = '<span class="terminal-prompt">root@neuralconfig:~#</span><span class="terminal-input"></span><span class="terminal-cursor"></span>';
             currentInputLine.classList.add('interactive-line');
         }
 
@@ -2334,7 +2273,21 @@
                         updateInputDisplay();
                     }
                     break;
-                    
+
+                case 'Tab':
+                    e.preventDefault();
+                    const tabCommands = ['help', 'whoami', 'contact', 'projects', 'skills',
+                                         'llm', 'agents', 'date', 'asteroids', 'clear', 'auto'];
+                    const partial = currentInput.toLowerCase().trim();
+                    if (partial.length > 0) {
+                        const matches = tabCommands.filter(cmd => cmd.startsWith(partial));
+                        if (matches.length === 1) {
+                            currentInput = matches[0];
+                            updateInputDisplay();
+                        }
+                    }
+                    break;
+
                 default:
                     // Handle regular character input
                     if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
