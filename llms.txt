@@ -1,0 +1,41 @@
+# NeuralConfig LLC
+
+> AI consulting and software development company specializing in agentic AI systems, RAG implementations, and network automation. Founded by an AI Systems Engineer with 20+ years infrastructure experience, Stanford ML certification, and CISSP.
+
+## Services
+
+- **AI Consulting**: Architecture and strategy for implementing AI systems in enterprise environments
+- **AI-Assisted Software Development**: Building production-ready agentic AI applications with tool-calling capabilities
+- **iOS App Development**: Native iOS applications with AI integration and Apple Intelligence features
+- **Network Automation**: AI-powered infrastructure automation and zero-touch provisioning
+
+## Expertise
+
+- Agentic AI systems with autonomous tool-calling
+- Retrieval-Augmented Generation (RAG) implementations
+- LLM integration (Claude, GPT, Gemini, open source models)
+- Vector database integration (ChromaDB, Pinecone)
+- Network automation and infrastructure
+- Zero-trust security architecture (CISSP certified)
+
+## Open Source Projects
+
+- **osticket-agent**: Autonomous AI agent for osTicket support automation with NLP and infrastructure interaction
+- **ruckus-ztp**: AI-powered zero-touch provisioning for RUCKUS network infrastructure
+- **survival-rag**: RAG system demonstrating vector database integration and semantic search
+- **r1-api**: Python SDK for RUCKUS One network management
+- **device-profiler**: IoT device classification and network access control
+
+## Contact
+
+- Website: https://neuralconfig.com
+- Email: contact@neuralconfig.com
+- GitHub: https://github.com/neuralconfig
+
+## Technical Background
+
+- 20+ years enterprise network infrastructure experience
+- Stanford Machine Learning Specialization
+- CISSP, CCNP, CWDP, CWSP certifications
+- Kubernetes and Cloud Native Associate (CNCF)
+- Experience with AWS, GCP, Azure cloud platforms

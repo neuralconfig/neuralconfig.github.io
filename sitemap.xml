@@ -7,95 +7,97 @@
     <!-- Main Pages -->
     <url>
         <loc>https://neuralconfig.com/</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/skills.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/projects.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://neuralconfig.com/tools.html</loc>
-        <lastmod>2025-01-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
     </url>
 
     <!-- Project Pages -->
     <url>
         <loc>https://neuralconfig.com/osticket-agent.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://neuralconfig.com/device-profiler.html</loc>
-        <lastmod>2025-01-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/ruckus-ztp.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://neuralconfig.com/survival-rag.html</loc>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/openrouter-chat-app.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://neuralconfig.com/survival-rag.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <loc>https://neuralconfig.com/device-profiler.html</loc>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/r1-api.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/sz-acl.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/pflogs.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/wifi-test.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/wispr-portal.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://neuralconfig.com/ap-reboot-manager.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <!-- LLM Optimization Files -->
+    <url>
+        <loc>https://neuralconfig.com/llms.txt</loc>
+        <lastmod>2025-12-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
     </url>
 
 </urlset>

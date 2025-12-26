@@ -1,0 +1,182 @@
+# NeuralConfig LLC - Comprehensive Information
+
+> AI consulting and software development company specializing in agentic AI systems, RAG implementations, and network automation. Founded by an AI Systems Engineer with 20+ years infrastructure experience, Stanford ML certification, and CISSP.
+
+## About NeuralConfig
+
+NeuralConfig LLC provides AI consulting and software development services at the intersection of artificial intelligence and infrastructure. The company is positioned to serve organizations that need:
+
+1. AI expertise applied to real-world infrastructure challenges
+2. Agentic AI systems that interact with physical network devices
+3. Production-ready AI implementations with proper safety guardrails
+4. Bridge between traditional IT operations and modern AI capabilities
+
+### Unique Value Proposition
+
+Most AI developers lack deep infrastructure experience. Most network engineers haven't explored modern AI. NeuralConfig bridges both worlds, offering:
+
+- Deep understanding of enterprise networks (routing, switching, wireless, security)
+- Modern AI capabilities (agentic systems, RAG, LLM integration)
+- Production mindset (reliability, security, operational excellence)
+- Open source portfolio demonstrating real capabilities
+
+## Services
+
+### AI Consulting
+Architecture and strategy for implementing AI systems in enterprise environments. This includes:
+- AI readiness assessment
+- System architecture design
+- Model selection and evaluation
+- Integration planning
+- Safety and governance frameworks
+
+### AI-Assisted Software Development
+Building production-ready agentic AI applications with tool-calling capabilities:
+- Autonomous agents that interact with APIs and infrastructure
+- RAG systems for knowledge retrieval
+- LLM-powered automation workflows
+- AI-assisted decision support systems
+
+### iOS App Development
+Native iOS applications with AI integration:
+- Apple Intelligence integration
+- Frontier model integration (Claude, GPT, Gemini)
+- HealthKit, ARKit, and other framework expertise
+- Swift and SwiftUI development
+
+### Network Automation
+AI-powered infrastructure automation:
+- Zero-touch provisioning systems
+- Configuration management automation
+- Network monitoring and alerting
+- Infrastructure-as-code implementations
+
+## Technical Expertise
+
+### AI & Machine Learning
+- **Agentic AI**: Autonomous systems with tool-calling capabilities
+- **RAG Systems**: Retrieval-Augmented Generation with vector databases
+- **LLM Integration**: Claude, GPT-4, Gemini, Llama, Mistral, Qwen
+- **Vector Databases**: ChromaDB, Pinecone, FAISS
+- **Frameworks**: LangChain, Anthropic SDK, OpenAI SDK
+
+### Network & Security
+- **Routing Protocols**: BGP, OSPF, MPLS
+- **Wireless**: RUCKUS, Cisco, enterprise WiFi design
+- **Security**: Zero Trust architecture, CISSP certified
+- **Automation**: Python, NETCONF, REST APIs, SSH
+
+### Cloud & Infrastructure
+- **Cloud Platforms**: AWS, GCP, Azure
+- **Containers**: Kubernetes, Docker
+- **Infrastructure as Code**: Terraform
+- **Monitoring**: Prometheus, Grafana
+
+## Open Source Projects
+
+### osticket-agent
+Autonomous AI agent for osTicket that uses NLP and tool-calling to analyze tickets, interact with network infrastructure, and generate intelligent responses.
+
+**Key Features:**
+- ML-powered ticket classification
+- Agentic tool use for infrastructure interaction
+- SSH/API integration with network devices
+- Autonomous problem resolution
+- Comprehensive audit logging
+
+**Technologies:** Python, Claude API, LangChain, FastAPI, SSH/Paramiko
+
+### ruckus-ztp
+AI-powered Zero-Touch Provisioning agent for RUCKUS ICX network infrastructure.
+
+**Key Features:**
+- Natural language chat interface
+- Autonomous network discovery via LLDP
+- AI-generated optimal configurations
+- Real-time topology visualization
+- Self-healing network capabilities
+
+**Technologies:** Python, Claude API, FastAPI, SNMP, SSH
+
+### survival-rag
+Retrieval-Augmented Generation system demonstrating practical RAG implementation.
+
+**Key Features:**
+- Semantic similarity search
+- Context-aware response generation
+- Hybrid search (semantic + keyword)
+- RAGAS evaluation metrics
+- Modular architecture
+
+**Technologies:** Python, LangChain, ChromaDB, Sentence Transformers
+
+### r1-api
+Comprehensive Python SDK for RUCKUS One network management.
+
+**Key Features:**
+- Complete API coverage
+- Interactive CLI with network device-like interface
+- OAuth2 authentication
+- Bulk operations support
+- Error resilience with automatic retry
+
+**Technologies:** Python, OAuth2, REST API, Click CLI
+
+### device-profiler
+Automated network device profiling for IoT security.
+
+**Key Features:**
+- Multi-method device detection (DHCP, ARP, DNS)
+- Fingerbank API integration
+- Confidence-based classification
+- RADIUS provisioning automation
+- React dashboard
+
+**Technologies:** Python, FastAPI, React, Fingerbank, RADIUS
+
+## Approach to AI Development
+
+NeuralConfig believes AI systems that interact with production infrastructure must be built with safety as a first principle. All autonomous agents include:
+
+1. **Human-in-the-loop**: Destructive or irreversible actions require explicit approval
+2. **Comprehensive logging**: Full audit trail for all AI decisions
+3. **Graceful degradation**: Systems handle uncertainty safely
+4. **Approval workflows**: Production changes require human verification
+
+## Certifications & Education
+
+### Security & AI
+- CISSP (ISC2)
+- Stanford Machine Learning Specialization
+- Hugging Face Agents Course
+- Azure AI Fundamentals
+
+### Cloud & Networking
+- Kubernetes and Cloud Native Associate (CNCF)
+- CCNP (Cisco)
+- Certified Wireless Design Professional (CWDP)
+- Certified Wireless Security Professional (CWSP)
+- Ekahau Certified Survey Engineer
+
+## Contact Information
+
+- **Website**: https://neuralconfig.com
+- **Email**: contact@neuralconfig.com
+- **GitHub**: https://github.com/neuralconfig
+
+## Frequently Asked Questions
+
+### What types of AI projects does NeuralConfig specialize in?
+NeuralConfig specializes in agentic AI systems that interact with real-world infrastructure, RAG implementations for knowledge retrieval, and AI-powered automation tools. The focus is on production-ready systems with proper safety guardrails.
+
+### Does NeuralConfig offer network consulting?
+NeuralConfig focuses on AI consulting and software development. While the founder has extensive network engineering experience, the company emphasizes AI-related services rather than traditional network consulting.
+
+### What industries does NeuralConfig serve?
+NeuralConfig serves organizations needing AI expertise for infrastructure automation, particularly those with complex IT environments requiring intelligent automation solutions.
+
+### Is NeuralConfig open to remote work?
+Yes, NeuralConfig operates remotely and can serve clients worldwide.
+
+### Does NeuralConfig contribute to open source?
+Yes, NeuralConfig maintains several open source projects on GitHub demonstrating AI and network automation capabilities. These serve both as portfolio pieces and community contributions.

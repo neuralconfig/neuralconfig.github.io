@@ -1,3 +1,39 @@
+# robots.txt for neuralconfig.com
+
+# Allow all crawlers
 User-agent: *
-Disallow: 
+Disallow:
+
+# Sitemap location
 Sitemap: https://neuralconfig.com/sitemap.xml
+
+# LLM-specific content
+# See llms.txt for LLM-optimized site information
+# https://neuralconfig.com/llms.txt
+
+# AI Crawler Permissions
+# We welcome AI crawlers to help users discover our content
+
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+
+# Anthropic ClaudeBot
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google Gemini (Google-Extended)
+User-agent: Google-Extended
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Common Crawl (used by many LLMs for training)
+User-agent: CCBot
+Allow: /
