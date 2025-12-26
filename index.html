@@ -3,28 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>neuralconfig | AI & Network Infrastructure Tools</title>
-    <meta name="description" content="AI Systems Engineer building production-ready agentic AI and network automation. 20+ years infrastructure experience, Stanford ML, CISSP. Autonomous agents with tool-calling, RAG systems, and responsible AI design.">
-    <meta name="keywords" content="agentic AI, autonomous agents, tool-calling, AI safety, responsible AI, RAG systems, vector databases, LLM integration, network automation, infrastructure AI, Claude, production AI">
-    <meta name="author" content="NeuralConfig">
+    <title>NeuralConfig | AI Consulting & Software Development</title>
+    <meta name="description" content="AI consulting and software development services. Agentic AI, RAG systems, network automation. 20+ years infrastructure experience, Stanford ML, CISSP.">
+    <meta name="keywords" content="AI consulting, AI software development, agentic AI, autonomous agents, RAG systems, LLM integration, network automation, CISSP">
+    <meta name="author" content="NeuralConfig LLC">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neuralconfig.com/">
-    <meta property="og:title" content="neuralconfig | AI & Network Infrastructure Tools">
-    <meta property="og:description" content="AI Systems Engineer building production-ready agentic AI and network automation. Autonomous agents with tool-calling, RAG systems, and responsible AI design.">
+    <meta property="og:title" content="NeuralConfig | AI Consulting & Software Development">
+    <meta property="og:description" content="AI consulting and software development services. Agentic AI, RAG systems, and network automation expertise.">
+    <meta property="og:image" content="https://neuralconfig.com/images/og-home.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="NeuralConfig">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="neuralconfig | AI & Network Infrastructure Tools">
-    <meta name="twitter:description" content="AI Systems Engineer building production-ready agentic AI and network automation. Autonomous agents with tool-calling, RAG systems, and responsible AI design.">
+    <meta name="twitter:site" content="@neuralconfig">
+    <meta name="twitter:title" content="NeuralConfig | AI Consulting & Software Development">
+    <meta name="twitter:description" content="AI consulting and software development services. Agentic AI, RAG systems, and network automation expertise.">
+    <meta name="twitter:image" content="https://neuralconfig.com/images/og-home.png">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://neuralconfig.com/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "NeuralConfig LLC",
+        "description": "AI consulting and software development services specializing in agentic AI systems, RAG implementations, and network automation.",
+        "url": "https://neuralconfig.com",
+        "logo": "https://neuralconfig.com/images/logo.png",
+        "serviceType": ["AI Consulting", "Software Development", "iOS App Development"],
+        "areaServed": "Worldwide",
+        "sameAs": [
+            "https://github.com/neuralconfig"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@neuralconfig.com",
+            "contactType": "sales"
+        }
+    }
+    </script>
     <style>
         /* Skip link for keyboard accessibility - visible only on focus */
         .skip-link {
@@ -41,6 +68,19 @@
         .skip-link:focus {
             left: 0 !important;
             top: 0 !important;
+        }
+
+        /* Visually hidden but accessible to screen readers and search engines */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Home page specific styles */
@@ -284,6 +324,7 @@
     </nav>
 
     <main id="main-content" role="main">
+        <h1 class="sr-only">NeuralConfig - AI Consulting and Software Development Services</h1>
         <div class="home-container">
             <div class="hero-content">
                 <div class="terminal" id="terminal-output" role="log" aria-live="polite" aria-label="Terminal output">

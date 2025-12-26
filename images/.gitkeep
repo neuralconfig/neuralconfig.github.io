@@ -1,0 +1,22 @@
+# OG Images Needed
+
+Create the following 1200x630px images for social sharing:
+
+- og-home.png
+- og-projects.png
+- og-about.png
+- og-osticket.png
+- og-ruckus-ztp.png
+- og-survival-rag.png
+- og-openrouter.png
+- og-device-profiler.png
+- og-r1-api.png
+- og-sz-acl.png
+- og-pflogs.png
+- og-wifi-test.png
+- og-wispr.png
+- og-ap-reboot.png
+- logo.png (for JSON-LD)
+
+Design with terminal/VS Code Dark+ aesthetic.
+Colors: #569cd6 (blue), #1e1e1e (dark), #39ff14 (green)
