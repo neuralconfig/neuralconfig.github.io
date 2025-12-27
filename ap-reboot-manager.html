@@ -6,13 +6,14 @@
     <title>AP Reboot Manager - Mass Access Point Management | NeuralConfig</title>
     <meta name="description" content="Mass AP reboot management tool for RUCKUS One. Batch processing with safety controls and simulation mode for enterprise wireless management.">
     <link rel="canonical" href="https://neuralconfig.com/ap-reboot-manager.html">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neuralconfig.com/ap-reboot-manager.html">
     <meta property="og:title" content="AP Reboot Manager - Mass Access Point Management">
     <meta property="og:description" content="Mass AP reboot management tool for RUCKUS One with safety controls.">
-    <meta property="og:image" content="https://neuralconfig.com/images/og-ap-reboot.png">
+    <meta property="og:image" content="https://neuralconfig.com/images/og-ap-reboot-manager.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="NeuralConfig">
@@ -22,7 +23,7 @@
     <meta name="twitter:site" content="@neuralconfig">
     <meta name="twitter:title" content="AP Reboot Manager - Mass Access Point Management">
     <meta name="twitter:description" content="Mass AP reboot management tool for RUCKUS One with safety controls.">
-    <meta name="twitter:image" content="https://neuralconfig.com/images/og-ap-reboot.png">
+    <meta name="twitter:image" content="https://neuralconfig.com/images/og-ap-reboot-manager.jpg">
 
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -264,9 +265,10 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
 
-    <nav class="nav-bar">
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
@@ -277,6 +279,7 @@
         </div>
     </nav>
 
+    <main id="main-content" role="main">
     <div class="container">
         <div class="project-detail-header">
             <h1 class="project-detail-title">AP Reboot Manager</h1>
@@ -420,12 +423,13 @@
             <a href="projects.html" class="action-button">Back to Projects</a>
         </div>
     </div>
+    </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
     </footer>
 
-    <script src="matrix.js"></script>
+    <script src="matrix.js" defer></script>
     <script data-goatcounter="https://neuralconfig.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
 </body>

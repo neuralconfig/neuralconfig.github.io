@@ -7,13 +7,14 @@
     <meta name="description" content="AI consulting and software development services. Agentic AI, RAG systems, network automation. 20+ years infrastructure experience, Stanford ML, CISSP.">
     <meta name="keywords" content="AI consulting, AI software development, agentic AI, autonomous agents, RAG systems, LLM integration, network automation, CISSP">
     <meta name="author" content="NeuralConfig LLC">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neuralconfig.com/">
     <meta property="og:title" content="NeuralConfig | AI Consulting & Software Development">
     <meta property="og:description" content="AI consulting and software development services. Agentic AI, RAG systems, and network automation expertise.">
-    <meta property="og:image" content="https://neuralconfig.com/images/og-home.png">
+    <meta property="og:image" content="https://neuralconfig.com/images/og-home.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="NeuralConfig">
@@ -23,7 +24,7 @@
     <meta name="twitter:site" content="@neuralconfig">
     <meta name="twitter:title" content="NeuralConfig | AI Consulting & Software Development">
     <meta name="twitter:description" content="AI consulting and software development services. Agentic AI, RAG systems, and network automation expertise.">
-    <meta name="twitter:image" content="https://neuralconfig.com/images/og-home.png">
+    <meta name="twitter:image" content="https://neuralconfig.com/images/og-home.jpg">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://neuralconfig.com/">
@@ -40,7 +41,7 @@
         "description": "AI consulting and software development services specializing in agentic AI systems, RAG implementations, and network automation.",
         "url": "https://neuralconfig.com",
         "logo": "https://neuralconfig.com/images/logo.png",
-        "image": "https://neuralconfig.com/images/og-home.png",
+        "image": "https://neuralconfig.com/images/og-home.jpg",
         "serviceType": ["AI Consulting", "Software Development", "iOS App Development"],
         "areaServed": "Worldwide",
         "provider": {
@@ -342,7 +343,7 @@
         © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
     </footer>
 
-    <script src="matrix.js"></script>
+    <script src="matrix.js" defer></script>
     <script>
         // Terminal simulation
         const terminal = document.getElementById('terminal-output');
@@ -696,7 +697,6 @@
                         setTimeout(() => {
                             // Don't start matrix if game is active
                             if (window.gameActive) {
-                                console.log('[TERMINAL] Skipping matrix start - game is active');
                                 showBanner = false;
                                 resolve();
                                 return;
@@ -888,8 +888,6 @@
                         // Hide terminal completely after fade
                         setTimeout(() => {
                             terminal.style.display = 'none';
-                            console.log('[TERMINAL] Clearing terminal after vector graphics fade');
-                            console.trace('[TERMINAL] Stack trace for terminal clear');
                             terminal.innerHTML = ''; // Clear content after it's hidden
                         }, 300);
                     }, 100);
@@ -1118,7 +1116,6 @@
                         osc.stop(now + 0.15);
                     };
                 } catch (e) {
-                    console.log('Audio not supported');
                     sounds = { shoot: ()=>{}, explode: ()=>{}, thrust: ()=>{}, heartbeat: ()=>{}, startUfoSiren: ()=>{}, stopUfoSiren: ()=>{}, ufoShoot: ()=>{} };
                 }
             }
@@ -2174,13 +2171,9 @@
                             } else {
                                 // Restart from beginning
                                 const restartTimeoutId = setTimeout(() => {
-                                    console.log('[AUTO-DEMO] Restart timeout fired - autoMode:', autoMode, 'interactiveMode:', interactiveMode);
                                     if (autoMode && !interactiveMode) {
-                                        console.log('[AUTO-DEMO] Restarting demo from beginning (location 1)');
                                         commandIndex = 0;
                                         showCommand();
-                                    } else {
-                                        console.log('[AUTO-DEMO] Skipping demo restart - conditions not met');
                                     }
                                 }, commandDelay);
                                 autoTimeouts.push(restartTimeoutId);
@@ -2204,13 +2197,9 @@
             if (commandIndex >= commands.length) {
                 // Restart demo from beginning
                 const timeoutId = setTimeout(() => {
-                    console.log('[AUTO-DEMO] End-of-demo timeout fired - autoMode:', autoMode, 'interactiveMode:', interactiveMode);
                     if (autoMode && !interactiveMode) {
-                        console.log('[AUTO-DEMO] Restarting demo from beginning (location 2)');
                         commandIndex = 0;
                         showCommand();
-                    } else {
-                        console.log('[AUTO-DEMO] Skipping demo restart - conditions not met');
                     }
                 }, commandDelay);
                 autoTimeouts.push(timeoutId);
@@ -2245,13 +2234,9 @@
                     } else {
                         // Restart from beginning
                         const restartTimeoutId = setTimeout(() => {
-                            console.log('[AUTO-DEMO] Final restart timeout fired - autoMode:', autoMode, 'interactiveMode:', interactiveMode);
                             if (autoMode && !interactiveMode) {
-                                console.log('[AUTO-DEMO] Restarting demo from beginning (location 3)');
                                 commandIndex = 0;
                                 showCommand();
-                            } else {
-                                console.log('[AUTO-DEMO] Skipping demo restart - conditions not met');
                             }
                         }, commandDelay);
                         autoTimeouts.push(restartTimeoutId);

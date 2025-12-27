@@ -6,13 +6,14 @@
     <title>WISPr Portal - Captive Portal Diagnostics | NeuralConfig</title>
     <meta name="description" content="Diagnostic tool for WISPr captive portal troubleshooting. Debug authentication and redirection issues in RUCKUS One environments.">
     <link rel="canonical" href="https://neuralconfig.com/wispr-portal.html">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neuralconfig.com/wispr-portal.html">
     <meta property="og:title" content="WISPr Portal - Captive Portal Diagnostics">
     <meta property="og:description" content="Diagnostic tool for WISPr captive portal troubleshooting in RUCKUS environments.">
-    <meta property="og:image" content="https://neuralconfig.com/images/og-wispr.png">
+    <meta property="og:image" content="https://neuralconfig.com/images/og-wispr-portal.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="NeuralConfig">
@@ -22,7 +23,7 @@
     <meta name="twitter:site" content="@neuralconfig">
     <meta name="twitter:title" content="WISPr Portal - Captive Portal Diagnostics">
     <meta name="twitter:description" content="Diagnostic tool for WISPr captive portal troubleshooting in RUCKUS environments.">
-    <meta name="twitter:image" content="https://neuralconfig.com/images/og-wispr.png">
+    <meta name="twitter:image" content="https://neuralconfig.com/images/og-wispr-portal.jpg">
 
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -242,9 +243,10 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
 
-    <nav class="nav-bar">
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
@@ -255,6 +257,7 @@
         </div>
     </nav>
 
+    <main id="main-content" role="main">
     <div class="container">
         <div class="project-detail-header">
             <h1 class="project-detail-title">WISPr Portal Diagnostic Tool</h1>
@@ -382,12 +385,13 @@
             <a href="projects.html" class="action-button">Back to Projects</a>
         </div>
     </div>
+    </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
     </footer>
 
-    <script src="matrix.js"></script>
+    <script src="matrix.js" defer></script>
     <script data-goatcounter="https://neuralconfig.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
 </body>

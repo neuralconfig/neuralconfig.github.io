@@ -6,13 +6,14 @@
     <title>RUCKUS One Python SDK - Network Management API | NeuralConfig</title>
     <meta name="description" content="Python SDK for RUCKUS One network management. Complete API coverage with OAuth2 authentication and interactive CLI for enterprise wireless management.">
     <link rel="canonical" href="https://neuralconfig.com/r1-api.html">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neuralconfig.com/r1-api.html">
     <meta property="og:title" content="RUCKUS One Python SDK - Network Management API">
     <meta property="og:description" content="Python SDK for RUCKUS One with complete API coverage and interactive CLI.">
-    <meta property="og:image" content="https://neuralconfig.com/images/og-r1-api.png">
+    <meta property="og:image" content="https://neuralconfig.com/images/og-r1-api.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="NeuralConfig">
@@ -22,7 +23,7 @@
     <meta name="twitter:site" content="@neuralconfig">
     <meta name="twitter:title" content="RUCKUS One Python SDK - Network Management API">
     <meta name="twitter:description" content="Python SDK for RUCKUS One with complete API coverage and interactive CLI.">
-    <meta name="twitter:image" content="https://neuralconfig.com/images/og-r1-api.png">
+    <meta name="twitter:image" content="https://neuralconfig.com/images/og-r1-api.jpg">
 
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -268,9 +269,10 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
-    
-    <nav class="nav-bar">
+
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
@@ -281,6 +283,7 @@
         </div>
     </nav>
 
+    <main id="main-content" role="main">
     <div class="container">
         <div class="project-detail-header">
             <h1 class="project-detail-title">RUCKUS One Python SDK</h1>
@@ -456,7 +459,7 @@ venues = client.venues.list()<br>
         </div>
     </div>
 
-    <script src="matrix.js"></script>
+    <script src="matrix.js" defer></script>
     <script>
         // Fetch GitHub stats
         (function() {
@@ -497,11 +500,13 @@ venues = client.venues.list()<br>
                     localStorage.setItem(cacheKey, JSON.stringify(stats));
                 })
                 .catch(error => {
-                    console.log('GitHub API fetch failed:', error);
+                    // Silently fail API fetch
                 });
         })();
     </script>
-    <footer class="footer">
+    </main>
+
+    <footer class="footer" role="contentinfo">
         © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
     </footer>
     <script data-goatcounter="https://neuralconfig.goatcounter.com/count"

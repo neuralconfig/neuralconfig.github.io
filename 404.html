@@ -87,7 +87,8 @@
     </style>
 </head>
 <body>
-    <nav class="nav-bar">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
             <div class="nav-links">
@@ -99,6 +100,7 @@
         </div>
     </nav>
 
+    <main id="main-content" role="main">
     <div class="error-container">
         <div class="error-content">
             <div class="error-code glitch">404</div>
@@ -128,8 +130,9 @@
             </div>
         </div>
     </div>
+    </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
     </footer>
     <script data-goatcounter="https://neuralconfig.goatcounter.com/count"
