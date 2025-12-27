@@ -42,7 +42,7 @@ function setCachedStats(data) {
             timestamp: Date.now()
         }));
     } catch (e) {
-        console.log('Failed to cache GitHub stats');
+        // Silently fail cache operations
     }
 }
 
@@ -64,7 +64,6 @@ async function fetchRepoStats(repoName) {
             description: data.description
         };
     } catch (error) {
-        console.error(`Failed to fetch stats for ${repoName}:`, error);
         return null;
     }
 }
@@ -200,7 +199,7 @@ async function initGitHubStats() {
         const statsData = await fetchAllStats();
         addStatsToProjects(statsData);
     } catch (error) {
-        console.error('Failed to initialize GitHub stats:', error);
+        // Silently fail initialization
     }
 }
 
