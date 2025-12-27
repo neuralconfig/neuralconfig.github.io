@@ -26,6 +26,36 @@
     <meta name="twitter:image" content="https://neuralconfig.com/images/og-survival-rag.jpg">
 
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Survival RAG",
+          "description": "RAG system for knowledge retrieval using vector databases and LLM integration. Demonstrates practical RAG implementation with semantic search.",
+          "url": "https://neuralconfig.com/survival-rag.html",
+          "codeRepository": "https://github.com/neuralconfig/survival-rag",
+          "programmingLanguage": "Python",
+          "author": {
+            "@type": "Organization",
+            "name": "NeuralConfig",
+            "url": "https://neuralconfig.com"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://neuralconfig.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://neuralconfig.com/projects.html"},
+            {"@type": "ListItem", "position": 3, "name": "Survival RAG"}
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
