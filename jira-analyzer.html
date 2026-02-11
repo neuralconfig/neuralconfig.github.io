@@ -92,14 +92,13 @@
             <p class="story-text">
                 An <strong>AI-powered analysis pipeline</strong> that transforms raw Jira feature requests into
                 prioritized, revenue-enriched intelligence. The system extracts issues from Jira, enriches them
-                with Salesforce revenue data, uses local LLMs to rate vertical-specific relevance, detects
-                duplicates through multi-stage fuzzy matching, and publishes ranked reports to Confluence.
+                with Salesforce revenue data, uses local LLMs to rate vertical-specific relevance, ranks by
+                revenue-weighted priority, and publishes ranked reports to Confluence.
             </p>
             <p class="story-text">
                 <strong>Key Innovation:</strong> By running all AI inference through local Ollama models, the pipeline
                 keeps sensitive customer data and feature request details entirely on-premises—no data leaves the
-                network. The 3-stage duplicate detection combines TF-IDF (term frequency-inverse document frequency) similarity, sentence-transformer embeddings (numerical representations of meaning),
-                and LLM-based semantic comparison to catch duplicates that keyword matching alone would miss.
+                network. The repository also includes a standalone deduplication utility that combines TF-IDF similarity, sentence-transformer embeddings, and LLM-based semantic comparison to identify duplicate feature requests independently.
             </p>
             <p class="story-text">
                 The pipeline produces priority-ranked feature requests weighted by customer revenue impact, enabling
@@ -161,16 +160,6 @@
                         <text class="diagram-subtitle" x="75" y="52" text-anchor="middle">Cross-Vertical</text>
                     </g>
 
-                    <!-- Branch down from Vertical Rating to Duplicate Detection -->
-                    <path class="diagram-arrow" d="M 485 85 L 485 130" marker-end="url(#arrow-jira)"/>
-
-                    <g transform="translate(410, 140)">
-                        <rect class="diagram-node-verify" x="0" y="0" width="150" height="60" rx="4"/>
-                        <text class="diagram-title" x="75" y="22" text-anchor="middle" style="fill: #4ec9b0;">Duplicate Detection</text>
-                        <text class="diagram-subtitle" x="75" y="38" text-anchor="middle">TF-IDF + Embeddings</text>
-                        <text class="diagram-subtitle" x="75" y="52" text-anchor="middle">LLM Verification</text>
-                    </g>
-
                     <!-- Branch down from Priority Ranking to Confluence Reports -->
                     <path class="diagram-arrow" d="M 685 85 L 685 130" marker-end="url(#arrow-jira)"/>
 
@@ -201,7 +190,7 @@
                 </div>
                 <div class="feature-card">
                     <h3>Duplicate Detection</h3>
-                    <p>3-stage dedup pipeline: TF-IDF similarity, sentence-transformer embeddings, and LLM verification</p>
+                    <p>Standalone companion utility: TF-IDF similarity, sentence-transformer embeddings, and LLM verification for independent dedup analysis</p>
                 </div>
                 <div class="feature-card">
                     <h3>Priority Ranking</h3>
@@ -283,7 +272,7 @@
     </main>
 
     <footer class="footer" role="contentinfo">
-        &copy; 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
+        &copy; 2025-2026 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
     </footer>
     <script data-goatcounter="https://neuralconfig.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>

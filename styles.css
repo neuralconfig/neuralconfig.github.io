@@ -403,13 +403,23 @@ a:hover {
 }
 
 .section {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-2xl);
 }
 
 .section h2 {
     color: var(--accent-secondary);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
     font-size: 1.5rem;
+}
+
+.story-text {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+}
+
+.feature-list li {
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
 }
 
 .feature-grid {

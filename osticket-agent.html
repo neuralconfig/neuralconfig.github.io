@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>osTicket AI Agent - Autonomous Support Automation | NeuralConfig</title>
-    <meta name="description" content="Agentic AI system for osTicket that autonomously manages support tickets using NLP, tool-calling, and network infrastructure interaction.">
+    <meta name="description" content="Autonomous IT operations agent built with Claude Haiku. LLM tool calling for enterprise network switch management with structured audit trails.">
     <link rel="canonical" href="https://neuralconfig.com/osticket-agent.html">
     <meta name="robots" content="index, follow">
 
@@ -84,6 +84,9 @@
                 <div class="project-meta-item">
                     <span class="brackets">[</span>License<span class="brackets">]</span>: MIT
                 </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>LLM<span class="brackets">]</span>: Claude Haiku
+                </div>
             </div>
         </div>
 
@@ -91,15 +94,15 @@
             <h2 class="section-heading">Overview</h2>
             <p class="story-text">
                 An <strong>Agentic AI system</strong> that autonomously manages support tickets in osTicket by combining
-                natural language understanding with intelligent tool-calling capabilities. This cutting-edge agent doesn't
+                natural language understanding with intelligent tool-calling capabilities. The agent doesn't
                 just categorize tickets—it actively interacts with network infrastructure, queries databases, and executes
                 commands to resolve issues without human intervention.
             </p>
             <p class="story-text">
-                <strong>Key Innovation:</strong> The AI agent uses advanced tool orchestration to analyze support tickets,
+                <strong>Key Innovation:</strong> The agent uses Claude Haiku's tool-calling capabilities to analyze support tickets,
                 then autonomously connects to network switches, servers, and other infrastructure to diagnose and resolve
                 issues. It can execute SSH commands, query APIs, analyze logs, and implement fixes—all while maintaining
-                a conversational interface with the ticket submitter.
+                a conversational interface with the ticket submitter. Claude was chosen for production deployment due to reliable tool calling, consistent JSON output, and API ergonomics.
             </p>
         </section>
 
@@ -134,9 +137,9 @@
 
                     <g transform="translate(200, 20)">
                         <rect class="diagram-node" x="0" y="0" width="140" height="60" rx="4"/>
-                        <text class="diagram-title" x="70" y="22" text-anchor="middle">AI Agent</text>
-                        <text class="diagram-subtitle" x="70" y="38" text-anchor="middle">LLM Analysis</text>
-                        <text class="diagram-subtitle" x="70" y="52" text-anchor="middle">Intent Extract</text>
+                        <text class="diagram-title" x="70" y="22" text-anchor="middle">Claude Haiku</text>
+                        <text class="diagram-subtitle" x="70" y="38" text-anchor="middle">Intent Analysis</text>
+                        <text class="diagram-subtitle" x="70" y="52" text-anchor="middle">Tool Calling</text>
                     </g>
 
                     <path class="diagram-arrow" d="M 345 50 L 380 50" marker-end="url(#arrow)"/>
@@ -183,6 +186,15 @@
                         <rect class="diagram-node-verify" x="0" y="0" width="150" height="40" rx="4"/>
                         <text class="diagram-title" x="75" y="26" text-anchor="middle" style="fill: #4ec9b0;">Autonomous Verify</text>
                     </g>
+
+                    <!-- Audit Trail branch from Action Execution -->
+                    <path class="diagram-arrow" d="M 422 180 L 422 210" marker-end="url(#arrow)"/>
+
+                    <g transform="translate(350, 220)">
+                        <rect class="diagram-node-verify" x="0" y="0" width="145" height="40" rx="4"/>
+                        <text class="diagram-title" x="72" y="16" text-anchor="middle" style="fill: #4ec9b0;">Audit Trail</text>
+                        <text class="diagram-subtitle" x="72" y="32" text-anchor="middle">Structured Logging</text>
+                    </g>
                 </svg>
             </div>
         </section>
@@ -216,7 +228,7 @@
                 understanding with real-world tool execution. Core technical innovations:
             </p>
             <ul class="feature-list">
-                <li><strong>LLM-Powered Decision Engine:</strong> Advanced language model that analyzes tickets and determines appropriate tool sequences</li>
+                <li><strong>LLM-Powered Decision Engine:</strong> Claude Haiku that analyzes tickets and determines appropriate tool sequences</li>
                 <li><strong>Tool Orchestration Framework:</strong> Intelligent selection and execution of tools based on ticket context</li>
                 <li><strong>Network Device Integration:</strong> SSH/API connectors for direct interaction with switches, routers, and servers</li>
                 <li><strong>Autonomous Problem Solving:</strong> Agent chains together multiple tools to diagnose and resolve complex issues</li>
@@ -234,9 +246,9 @@
         <div class="ai-highlight">
             <h3>Agentic AI Innovation</h3>
             <p>
-                This project exemplifies the cutting edge of Agentic AI in 2025—autonomous agents that don't just
-                understand and categorize, but actively interact with physical infrastructure to solve problems.
-                By combining LLMs with tool-calling capabilities, the agent bridges the gap between understanding
+                This project demonstrates production-grade agentic AI — autonomous systems that execute real
+                changes on enterprise infrastructure with full audit accountability.
+                By combining Claude with tool-calling capabilities, the agent bridges the gap between understanding
                 natural language and executing real-world actions on network devices.
             </p>
         </div>
@@ -245,8 +257,8 @@
             <h2 class="section-heading">Technology Stack</h2>
             <div class="tech-stack">
                 <span class="tech-badge ai">Python 3.11+</span>
-                <span class="tech-badge ai">Agentic AI Framework</span>
-                <span class="tech-badge ai">LangChain</span>
+                <span class="tech-badge ai">Claude API</span>
+                <span class="tech-badge ai">Anthropic SDK</span>
                 <span class="tech-badge ai">Tool Calling</span>
                 <span class="tech-badge network">SSH/Paramiko</span>
                 <span class="tech-badge ai">FastAPI</span>
@@ -257,14 +269,14 @@
         <section class="section">
             <h2 class="section-heading">Enterprise Impact</h2>
             <p class="story-text">
-                Revolutionary capabilities enabled by Agentic AI:
+                Production capabilities:
             </p>
             <ul class="feature-list">
                 <li><strong>Autonomous Resolution:</strong> AI agent resolves issues without human intervention</li>
                 <li><strong>Infrastructure Integration:</strong> Direct interaction with network devices and servers</li>
                 <li><strong>Intelligent Tool Use:</strong> Agent selects and executes appropriate tools based on context</li>
                 <li><strong>24/7 Operations:</strong> Continuous autonomous support without human availability constraints</li>
-                <li><strong>Future-Ready:</strong> Positioned at the forefront of AI-driven IT operations</li>
+                <li><strong>Extensible Architecture:</strong> New tool integrations added without modifying the core agent loop</li>
             </ul>
         </section>
 
@@ -276,7 +288,7 @@
     </main>
 
     <footer class="footer" role="contentinfo">
-        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
+        © 2025-2026 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
     </footer>
     <script data-goatcounter="https://neuralconfig.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
