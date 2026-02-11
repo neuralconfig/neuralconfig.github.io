@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuralConfig | AI Consulting & Software Development</title>
-    <meta name="description" content="AI consulting and software development services. Agentic AI, RAG systems, network automation. 20+ years infrastructure experience, Stanford ML, CISSP.">
+    <title>NeuralConfig | Enterprise AI Systems & Automation</title>
+    <meta name="description" content="Production AI systems for enterprise operations. Agentic tool calling, RAG architectures, Python SDKs. 12+ years enterprise architecture. Stanford ML, CISSP.">
     <meta name="keywords" content="AI consulting, AI software development, agentic AI, autonomous agents, RAG systems, LLM integration, network automation, CISSP">
     <meta name="author" content="NeuralConfig LLC">
     <meta name="robots" content="index, follow">
@@ -340,7 +340,7 @@
     </main>
 
     <footer class="footer" role="contentinfo">
-        © 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
+        © 2025-2026 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com" style="color: var(--accent); text-decoration: none;">contact@neuralconfig.com</a>
     </footer>
 
     <script src="matrix.js" defer></script>
@@ -446,9 +446,9 @@
                 prompt: 'root@neuralconfig:~#',
                 command: ' whoami',
                 output: [
-                    '<span class="output-highlight">Network Engineer × AI Developer</span>',
-                    'Bridging 20+ years of network infrastructure with modern AI systems',
-                    'Building production-ready intelligent automation',
+                    '<span class="output-highlight">Solutions Architect × AI Builder</span>',
+                    '12+ years enterprise architecture | Pre-sales technical leadership',
+                    'Building production AI systems for enterprise operations',
                     '',
                     'Most AI devs don\'t understand networks. Most network engineers don\'t build AI.',
                     'I do both.'
@@ -459,41 +459,11 @@
                 command: ' tree -L 1 ~/projects --dirsfirst',
                 output: [
                     '<span class="output-highlight">~/projects</span>',
-                    '├── <span class="output-success">ruckus-ztp/</span>         # AI-powered network provisioning',
-                    '├── <span class="output-success">osticket-agent/</span>     # Autonomous support agent',
-                    '├── <span class="output-info">r1-api/</span>             # RUCKUS One Python SDK',
-                    '├── <span class="output-info">survival-rag/</span>       # RAG knowledge system',
-                    '├── <span class="output-info">device-profiler/</span>    # IoT device classification',
-                    '└── <span class="output-dim">sz-acl/</span>             # ACL management tool'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: '# click or press any key to interact',
-                output: []
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' cat services.yaml',
-                output: [
-                    '<span class="output-highlight">Core Services:</span>',
-                    '  <span class="output-success">✓</span> AI System Architecture & Consulting',
-                    '  <span class="output-success">✓</span> Network Automation & Zero-Touch Provisioning',
-                    '  <span class="output-success">✓</span> Agentic AI Development',
-                    '  <span class="output-success">✓</span> RAG Implementation & LLM Integration',
-                    '  <span class="output-success">✓</span> Open Source Network Management Tools'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' curl -s localhost:8080/api/profile | jq \'.skills[]\'',
-                output: [
-                    '"Agentic AI System Architecture"',
-                    '"LLM Integration (Claude, GPT, Gemini)"',
-                    '"RAG & Vector Database Implementation"',
-                    '"Network Automation (Python/NETCONF)"',
-                    '"Zero-Touch Provisioning"',
-                    '"CISSP | Zero Trust Security"'
+                    '├── <span class="output-success">jira-analyzer/</span>        # AI feature request pipeline (19 modules)',
+                    '├── <span class="output-success">osticket-agent/</span>       # Autonomous AI agent (Claude Haiku)',
+                    '├── <span class="output-success">ruckus-ztp/</span>           # AI-powered network provisioning',
+                    '├── <span class="output-info">r1-api/</span>               # RUCKUS One Python SDK',
+                    '└── <span class="output-info">device-profiler/</span>      # IoT device classification'
                 ]
             },
             {
@@ -509,127 +479,34 @@
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' git log --oneline -5',
+                command: '# click or press any key to interact',
+                output: []
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' curl -s localhost:8080/api/profile | jq \'.skills[]\'',
                 output: [
-                    '<span class="output-warning">eba9d52</span> feat: update positioning to Principal Systems Engineer',
-                    '<span class="output-warning">01977cc</span> feat: add r1-api project and enhance terminal',
-                    '<span class="output-warning">e9314e9</span> feat: add ruckus-ztp and enhance AI agent emphasis',
-                    '<span class="output-warning">d11c795</span> feat: add RUCKUS One Python SDK',
-                    '<span class="output-warning">41e41cb</span> feat: osticket autonomous AI agent'
+                    '"Agentic AI System Architecture"',
+                    '"LLM Integration (Claude, GPT, Gemini)"',
+                    '"RAG & Vector Database Implementation"',
+                    '"Network Automation (Python/NETCONF)"',
+                    '"Zero-Touch Provisioning"',
+                    '"CISSP | Zero Trust Security"'
                 ]
             },
             {
                 prompt: 'root@neuralconfig:~#',
-                command: ' systemctl status automation-stack',
+                command: ' python -m jira_analyzer --stages',
                 output: [
-                    '<span class="output-success">●</span> automation-stack.service - Network Automation Platform',
-                    '   Loaded: loaded (/etc/systemd/system/automation.service; enabled)',
-                    '   Active: <span class="output-success">active (running)</span> since Jan 2025',
-                    '   Status: "Processing automation workflows"',
-                    '   Memory: 512.0M | CPU: 2.5%'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' docker ps --format "table {{.Names}}\\t{{.Status}}"',
-                output: [
-                    'NAMES                STATUS',
-                    'ai-agent             Up 45 days',
-                    'vector-database      Up 45 days',
-                    'api-gateway          Up 45 days',
-                    'monitoring           Up 45 days'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' curl https://neuralconfig.com/tools/ | jq .available',
-                output: [
-                    '{',
-                    '  "fastiron-navigator": "live",',
-                    '  "sz-acl": "maintenance"',
-                    '}'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' cat ruckus-ztp/agent.py | head -20',
-                output: [
-                    '<span class="output-dim"># AI Agent for RUCKUS Zero-Touch Provisioning</span>',
-                    '<span class="output-dim">from anthropic import Anthropic</span>',
-                    '<span class="output-dim">import json</span>',
+                    '<span class="output-highlight">Pipeline Stages:</span>',
                     '',
-                    '<span class="output-dim">def configure_device(device_info):</span>',
-                    '<span class="output-dim">    """Use AI to generate optimal configuration"""</span>',
-                    '<span class="output-dim">    client = Anthropic()</span>',
-                    '<span class="output-dim">    response = client.messages.create(</span>',
-                    '<span class="output-dim">        model="claude-3-5-sonnet-20241022",</span>',
-                    '<span class="output-dim">        tools=[network_config_tool],</span>',
-                    '<span class="output-dim">        messages=[{</span>',
-                    '<span class="output-dim">            "role": "user",</span>',
-                    '<span class="output-dim">            "content": f"Configure {device_info}"</span>',
-                    '<span class="output-dim">        }]</span>',
-                    '<span class="output-dim">    )</span>',
+                    '  <span class="output-success">1.</span> Jira Extract        → JQL queries, feature request filtering',
+                    '  <span class="output-success">2.</span> SFDC Revenue        → Account matching, revenue enrichment',
+                    '  <span class="output-success">3.</span> Vertical Rating     → Qwen3-30B-A3B scoring per industry',
+                    '  <span class="output-success">4.</span> Priority Ranking    → Revenue-weighted cross-vertical aggregation',
+                    '  <span class="output-success">5.</span> Confluence Publish  → Auto-generated ranked reports',
                     '',
-                    '<span class="output-success">✓ Autonomous AI configuration engine</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' kubectl get pods -n production',
-                output: [
-                    'NAME                          READY   STATUS    RESTARTS   AGE',
-                    'ai-agent-7d9f8c4b5-x9k2m      1/1     Running   0          15d',
-                    'vector-db-6c8d7f9b4-p7q3n     1/1     Running   0          15d',
-                    'api-gateway-5b7c8d9f2-m4r5t   1/1     Running   0          15d',
-                    'rag-service-8f9d2c3b7-k6p8w   1/1     Running   0          12d',
-                    '',
-                    '<span class="output-success">All systems operational</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' tail -f /var/log/ai-agent/activity.log',
-                output: [
-                    '<span class="output-dim">2025-01-15 14:23:45</span> <span class="output-success">[INFO]</span> Processing support ticket #4521',
-                    '<span class="output-dim">2025-01-15 14:23:46</span> <span class="output-success">[INFO]</span> RAG context retrieved: 15 documents',
-                    '<span class="output-dim">2025-01-15 14:23:47</span> <span class="output-success">[INFO]</span> Agent decision: route to network team',
-                    '<span class="output-dim">2025-01-15 14:23:48</span> <span class="output-success">[INFO]</span> Ticket categorized: L3 routing issue',
-                    '<span class="output-dim">2025-01-15 14:23:49</span> <span class="output-success">[INFO]</span> Response generated and validated',
-                    '',
-                    '<span class="output-dim">^C</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' terraform plan -out=infrastructure.tfplan',
-                output: [
-                    '<span class="output-info">Terraform v1.6.0</span>',
-                    '<span class="output-dim">Refreshing state... [36s elapsed]</span>',
-                    '',
-                    '<span class="output-success">Plan: 3 to add, 0 to change, 0 to destroy.</span>',
-                    '',
-                    '  + google_cloud_function.ai_agent',
-                    '  + google_cloud_run.api_service',
-                    '  + google_compute_instance.monitoring',
-                    '',
-                    '<span class="output-dim">Saved the plan to: infrastructure.tfplan</span>'
-                ]
-            },
-            {
-                prompt: 'root@neuralconfig:~#',
-                command: ' cat osticket-agent/stats.json | jq .',
-                output: [
-                    '{',
-                    '  "tickets_processed": <span class="output-success">2,847</span>,',
-                    '  "avg_response_time": "<span class="output-success">45s</span>",',
-                    '  "accuracy_rate": "<span class="output-success">94.3%</span>",',
-                    '  "categories": {',
-                    '    "network": 1203,',
-                    '    "security": 892,',
-                    '    "application": 752',
-                    '  },',
-                    '  "status": "<span class="output-success">operational</span>"',
-                    '}'
+                    '<span class="output-dim">19 modules | All inference runs locally via Ollama</span>'
                 ]
             },
             {
@@ -645,6 +522,18 @@
                     '<span class="output-success">✓</span> Explicit approval workflows for production changes',
                     '',
                     '<span class="output-dim">"Reliable AI is responsible AI"</span>'
+                ]
+            },
+            {
+                prompt: 'root@neuralconfig:~#',
+                command: ' cat services.yaml',
+                output: [
+                    '<span class="output-highlight">Core Services:</span>',
+                    '  <span class="output-success">✓</span> AI System Architecture & Consulting',
+                    '  <span class="output-success">✓</span> Network Automation & Zero-Touch Provisioning',
+                    '  <span class="output-success">✓</span> Agentic AI Development',
+                    '  <span class="output-success">✓</span> RAG Implementation & LLM Integration',
+                    '  <span class="output-success">✓</span> Open Source Network Management Tools'
                 ]
             },
         ];
@@ -1802,9 +1691,9 @@
 
                     const allProjects = {
                         ai: [
-                            '✓ <span class="output-success">ruckus-ztp</span>        [AI-AGENT] [ACTIVE]',
-                            '✓ <span class="output-success">osticket-agent</span>   [AI-AGENT] [DEPLOYED]',
-                            '✓ <span class="output-success">survival-rag</span>     [AI-RAG] [ACTIVE]'
+                            '✓ <span class="output-success">jira-analyzer</span>    [AI-PIPELINE] [ACTIVE]',
+                            '✓ <span class="output-success">osticket-agent</span>   [CLAUDE API] [DEPLOYED]',
+                            '✓ <span class="output-success">ruckus-ztp</span>        [AI-AGENT] [ACTIVE]'
                         ],
                         network: [
                             '✓ <span class="output-info">r1-api</span>           [SDK] [LIVE]',
@@ -1893,10 +1782,10 @@
 
                 case 'whoami':
                     return [
-                        '<span class="output-highlight">AI & Infrastructure Architect</span>',
-                        'Specializing in AI-driven network automation',
-                        '20+ years network infrastructure experience',
-                        'Building intelligent systems at the intersection of AI and networking'
+                        '<span class="output-highlight">Solutions Architect × AI Builder</span>',
+                        '12+ years designing enterprise architectures at global scale',
+                        'Networking, wireless, security | Linux, virtualization, storage',
+                        'Building production AI systems that solve real infrastructure problems'
                     ];
 
                 case 'date':
