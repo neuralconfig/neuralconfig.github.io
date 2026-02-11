@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Analyzer - AI-Powered Feature Request Pipeline | NeuralConfig</title>
+    <meta name="description" content="AI-powered pipeline for analyzing Jira feature requests using local LLMs, Salesforce revenue enrichment, duplicate detection, and Confluence report publishing.">
+    <link rel="canonical" href="https://neuralconfig.com/jira-analyzer.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neuralconfig.com/jira-analyzer.html">
+    <meta property="og:title" content="Jira Analyzer - AI-Powered Feature Request Pipeline">
+    <meta property="og:description" content="AI pipeline for Jira feature request analysis with local LLMs, revenue enrichment, and priority ranking.">
+    <meta property="og:image" content="https://neuralconfig.com/images/og-jira-analyzer.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="NeuralConfig">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@neuralconfig">
+    <meta name="twitter:title" content="Jira Analyzer - AI-Powered Feature Request Pipeline">
+    <meta name="twitter:description" content="AI pipeline for Jira feature request analysis with local LLMs, revenue enrichment, and priority ranking.">
+    <meta name="twitter:image" content="https://neuralconfig.com/images/og-jira-analyzer.jpg">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Jira Analyzer",
+          "description": "AI-powered pipeline for analyzing Jira feature requests using local LLMs, Salesforce revenue enrichment, duplicate detection, and Confluence report publishing.",
+          "url": "https://neuralconfig.com/jira-analyzer.html",
+          "codeRepository": "https://github.com/neuralconfig/jira-analyzer",
+          "programmingLanguage": "Python",
+          "author": {
+            "@type": "Organization",
+            "name": "NeuralConfig",
+            "url": "https://neuralconfig.com"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://neuralconfig.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://neuralconfig.com/projects.html"},
+            {"@type": "ListItem", "position": 3, "name": "Jira Analyzer"}
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">neural<span class="brackets">[</span>config<span class="brackets">]</span></a>
+            <div class="nav-links">
+                <a href="skills.html" class="nav-link">about</a>
+                <a href="projects.html" class="nav-link">projects</a>
+                <a href="https://github.com/neuralconfig" class="nav-link external">github</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" role="main">
+    <div class="container">
+        <div class="project-detail-header">
+            <h1 class="project-detail-title">Jira Analyzer</h1>
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Type<span class="brackets">]</span>: AI Pipeline
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>Language<span class="brackets">]</span>: Python
+                </div>
+                <div class="project-meta-item">
+                    <span class="brackets">[</span>License<span class="brackets">]</span>: BSL 1.1
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-heading">Overview</h2>
+            <p class="story-text">
+                An <strong>AI-powered analysis pipeline</strong> that transforms raw Jira feature requests into
+                prioritized, revenue-enriched intelligence. The system extracts issues from Jira, enriches them
+                with Salesforce revenue data, uses local LLMs to rate vertical-specific relevance, detects
+                duplicates through multi-stage fuzzy matching, and publishes ranked reports to Confluence.
+            </p>
+            <p class="story-text">
+                <strong>Key Innovation:</strong> By running all AI inference through local Ollama models, the pipeline
+                keeps sensitive customer data and feature request details entirely on-premises—no data leaves the
+                network. The 3-stage duplicate detection combines TF-IDF (term frequency-inverse document frequency) similarity, sentence-transformer embeddings (numerical representations of meaning),
+                and LLM-based semantic comparison to catch duplicates that keyword matching alone would miss.
+            </p>
+            <p class="story-text">
+                The pipeline produces priority-ranked feature requests weighted by customer revenue impact, enabling
+                product teams to make data-driven roadmap decisions across multiple industry verticals.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-heading">Analysis Pipeline</h2>
+            <div class="diagram-container">
+                <svg viewBox="0 0 780 280" class="flow-diagram">
+                    <style>
+                        .diagram-node { fill: #2d2d30; stroke: #569cd6; stroke-width: 2; }
+                        .diagram-node-verify { fill: #252526; stroke: #4ec9b0; stroke-width: 2; }
+                        .diagram-title { fill: #569cd6; font-size: 12px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; }
+                        .diagram-subtitle { fill: #9cdcfe; font-size: 10px; font-family: 'IBM Plex Mono', monospace; }
+                        .diagram-arrow { stroke: #9cdcfe; stroke-width: 2; fill: none; }
+                        .diagram-arrowhead { fill: #9cdcfe; }
+                    </style>
+
+                    <defs>
+                        <marker id="arrow-jira" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" class="diagram-arrowhead"/>
+                        </marker>
+                    </defs>
+
+                    <!-- Row 1: Main pipeline -->
+                    <g transform="translate(20, 20)">
+                        <rect class="diagram-node" x="0" y="0" width="140" height="60" rx="4"/>
+                        <text class="diagram-title" x="70" y="22" text-anchor="middle">Jira Extract</text>
+                        <text class="diagram-subtitle" x="70" y="38" text-anchor="middle">JQL Queries</text>
+                        <text class="diagram-subtitle" x="70" y="52" text-anchor="middle">Feature Requests</text>
+                    </g>
+
+                    <path class="diagram-arrow" d="M 165 50 L 200 50" marker-end="url(#arrow-jira)"/>
+
+                    <g transform="translate(210, 20)">
+                        <rect class="diagram-node" x="0" y="0" width="150" height="60" rx="4"/>
+                        <text class="diagram-title" x="75" y="22" text-anchor="middle">SFDC Revenue</text>
+                        <text class="diagram-subtitle" x="75" y="38" text-anchor="middle">Account Matching</text>
+                        <text class="diagram-subtitle" x="75" y="52" text-anchor="middle">Revenue Enrichment</text>
+                    </g>
+
+                    <path class="diagram-arrow" d="M 365 50 L 400 50" marker-end="url(#arrow-jira)"/>
+
+                    <g transform="translate(410, 20)">
+                        <rect class="diagram-node" x="0" y="0" width="150" height="60" rx="4"/>
+                        <text class="diagram-title" x="75" y="22" text-anchor="middle">Vertical Rating</text>
+                        <text class="diagram-subtitle" x="75" y="38" text-anchor="middle">Ollama LLM</text>
+                        <text class="diagram-subtitle" x="75" y="52" text-anchor="middle">Industry Scoring</text>
+                    </g>
+
+                    <path class="diagram-arrow" d="M 565 50 L 600 50" marker-end="url(#arrow-jira)"/>
+
+                    <g transform="translate(610, 20)">
+                        <rect class="diagram-node" x="0" y="0" width="150" height="60" rx="4"/>
+                        <text class="diagram-title" x="75" y="22" text-anchor="middle">Priority Ranking</text>
+                        <text class="diagram-subtitle" x="75" y="38" text-anchor="middle">Revenue-Weighted</text>
+                        <text class="diagram-subtitle" x="75" y="52" text-anchor="middle">Cross-Vertical</text>
+                    </g>
+
+                    <!-- Branch down from Vertical Rating to Duplicate Detection -->
+                    <path class="diagram-arrow" d="M 485 85 L 485 130" marker-end="url(#arrow-jira)"/>
+
+                    <g transform="translate(410, 140)">
+                        <rect class="diagram-node-verify" x="0" y="0" width="150" height="60" rx="4"/>
+                        <text class="diagram-title" x="75" y="22" text-anchor="middle" style="fill: #4ec9b0;">Duplicate Detection</text>
+                        <text class="diagram-subtitle" x="75" y="38" text-anchor="middle">TF-IDF + Embeddings</text>
+                        <text class="diagram-subtitle" x="75" y="52" text-anchor="middle">LLM Verification</text>
+                    </g>
+
+                    <!-- Branch down from Priority Ranking to Confluence Reports -->
+                    <path class="diagram-arrow" d="M 685 85 L 685 130" marker-end="url(#arrow-jira)"/>
+
+                    <g transform="translate(610, 140)">
+                        <rect class="diagram-node-verify" x="0" y="0" width="150" height="60" rx="4"/>
+                        <text class="diagram-title" x="75" y="22" text-anchor="middle" style="fill: #4ec9b0;">Confluence Reports</text>
+                        <text class="diagram-subtitle" x="75" y="38" text-anchor="middle">Auto-Published</text>
+                        <text class="diagram-subtitle" x="75" y="52" text-anchor="middle">Ranked Tables</text>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-heading">Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Jira Integration</h3>
+                    <p>Automated extraction of feature requests via JQL (Jira Query Language) with configurable filters and pagination</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Revenue Enrichment</h3>
+                    <p>Salesforce account matching to attach revenue data for revenue-weighted prioritization</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Vertical Rating</h3>
+                    <p>Local LLM-based scoring of feature relevance across industry verticals using Ollama</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Duplicate Detection</h3>
+                    <p>3-stage dedup pipeline: TF-IDF similarity, sentence-transformer embeddings, and LLM verification</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Priority Ranking</h3>
+                    <p>Revenue-weighted scoring with cross-vertical aggregation for data-driven roadmap decisions</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Confluence Publishing</h3>
+                    <p>Automated report generation with ranked tables published directly to Confluence Cloud</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-heading">Technical Implementation</h2>
+            <p class="story-text">
+                The pipeline is architected as a series of composable stages, each responsible for a distinct
+                transformation of the feature request data. This design enables independent testing, selective
+                re-runs, and easy extension with new data sources or analysis stages.
+            </p>
+            <ul class="feature-list">
+                <li><strong>Local LLM Inference:</strong> All AI processing runs through Ollama (qwen3), keeping sensitive feature request and customer data entirely on-premises with zero external API calls for inference</li>
+                <li><strong>3-Stage Duplicate Detection:</strong> TF-IDF cosine similarity for fast candidate screening, sentence-transformer embeddings for semantic matching, and LLM-based verification to eliminate false positives</li>
+                <li><strong>Revenue Pipeline:</strong> Salesforce API integration matches Jira reporter organizations to SFDC accounts, enriching each request with revenue data for business-impact weighting</li>
+                <li><strong>Vertical Scoring:</strong> LLM evaluates each feature request against configurable industry vertical definitions, producing relevance scores that enable per-vertical priority views</li>
+                <li><strong>Confluence Integration:</strong> Generates formatted HTML tables with priority rankings and publishes directly to Confluence Cloud pages via REST API</li>
+                <li><strong>Excel Export:</strong> Full analysis results exported to structured Excel workbooks via openpyxl for offline review and stakeholder distribution</li>
+            </ul>
+            <p class="story-text">
+                The system is designed for enterprise-scale analysis, processing hundreds of feature requests
+                through the full pipeline while maintaining data privacy through exclusive use of local models.
+            </p>
+        </section>
+
+        <div class="ai-highlight">
+            <h3>AI Pipeline Engineering</h3>
+            <p>
+                This project demonstrates production-grade AI pipeline architecture—combining local LLM inference
+                for data privacy, multi-stage NLP for duplicate detection, and enterprise API integration across
+                Jira, Salesforce, and Confluence. By running all inference through Ollama, sensitive customer
+                data and feature request details never leave the network, making it suitable for enterprise
+                environments with strict data governance requirements.
+            </p>
+        </div>
+
+        <section class="section">
+            <h2 class="section-heading">Technology Stack</h2>
+            <div class="tech-stack">
+                <span class="tech-badge ai">Python</span>
+                <span class="tech-badge ai">Ollama (qwen3)</span>
+                <span class="tech-badge ai">sentence-transformers</span>
+                <span class="tech-badge ai">rapidfuzz</span>
+                <span class="tech-badge network">Jira REST API</span>
+                <span class="tech-badge network">Salesforce API</span>
+                <span class="tech-badge network">Confluence Cloud API</span>
+                <span class="tech-badge ai">pandas</span>
+                <span class="tech-badge ai">openpyxl</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-heading">Enterprise Value</h2>
+            <p class="story-text">
+                Transforms feature request management from manual triage to automated, data-driven prioritization:
+            </p>
+            <ul class="feature-list">
+                <li><strong>Revenue-Driven Prioritization:</strong> Feature requests ranked by actual customer revenue impact, replacing subjective prioritization with data-driven decisions</li>
+                <li><strong>Cross-Vertical Intelligence:</strong> Identifies features with broad appeal across industry verticals, maximizing development ROI</li>
+                <li><strong>Operational Efficiency:</strong> Automates hours of manual Jira triage, Salesforce lookups, and duplicate identification into a single pipeline run</li>
+                <li><strong>Data Privacy:</strong> All AI inference runs locally via Ollama—no customer data or feature details are sent to external LLM providers</li>
+                <li><strong>Stakeholder Reporting:</strong> Auto-published Confluence reports and Excel exports keep product teams aligned without manual report creation</li>
+            </ul>
+        </section>
+
+        <div class="project-actions">
+            <a href="https://github.com/neuralconfig/jira-analyzer" class="btn btn-primary">View on GitHub</a>
+            <a href="projects.html" class="btn btn-secondary">Back to Projects</a>
+        </div>
+    </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        &copy; 2025 NeuralConfig LLC | <a href="mailto:contact@neuralconfig.com">contact@neuralconfig.com</a>
+    </footer>
+    <script data-goatcounter="https://neuralconfig.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
